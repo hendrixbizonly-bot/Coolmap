@@ -209,7 +209,7 @@ struct MapScreen:View {
         #endif
     }
     private var appleMap:some View {
-        BatchedRouteMap(routes:model.routes,selected:model.active?.id,origin:model.hasOrigin ? model.origin : nil,destination:model.hasDestination ? model.destination : nil,shadows:polygons,shadowsRevision:shadowRevision,exposureRevision:model.exposureRevision,hazards:reports.active,barriers:model.stepFree ? model.barriers : [],onCenterChange:{ mapCenter.coordinate=$0 },routeTint:shadePreferred ? .systemBlue : .systemYellow,onHeadingChange:{ heading=$0 },floatingControls:true)
+        BatchedRouteMap(routes:model.routes,selected:model.active?.id,origin:model.hasOrigin ? model.origin : nil,destination:model.hasDestination ? model.destination : nil,shadows:polygons,shadowsRevision:shadowRevision,exposureRevision:model.exposureRevision,hazards:reports.active,barriers:model.stepFree ? model.barriers : [],onCenterChange:{ mapCenter.coordinate=$0 },routeTint:shadePreferred ? .systemBlue : .systemYellow,onHeadingChange:{ heading=$0 },floatingControls:true,etaSeconds:{ model.eta($0) })
     }
     private var settingsView:some View {
         NavigationStack {
