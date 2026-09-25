@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 import { Experimental_EvaluationMockModelV4 } from 'ai/test';
-import { decideReroute } from './reroute';
+import { decideReroute, rerouteSchema } from './reroute';
 import scenarios from '../eval/reroute.scenarios.json';
 
 const base = {
@@ -26,6 +26,36 @@ const blocked = [{ category: 'Blocked crossing', metersAhead: 150 }];
 const noQuestions = { decidedBy: 'none', jev: 'skipped', questions: [] };
 
 describe('decideReroute', () => {
+  it('asks Jev about a community report even with only 3% less heat', async () => {
+    const report = { category: 'No shade', note: 'Shade sail torn down', metersAhead: 60, minutesAgo: 12, confirmed: true };
+    const request = rerouteSchema.parse(req({ alternative: { ...base.alternative, heat: 1455 }, hazardsAhead: [report] }));
+    const doEvaluate = evaluator(0.82);
+    const result = await decideReroute(request, { model: new Experimental_EvaluationMockModelV4({ doEvaluate }), weather: vi.fn(async () => 42) });
+    expect(result).toEqual({ prompt: true, urgency: 2, reason: 'jev', confidence: 0.82,
+      debug: { decidedBy: 'jev', jev: 'ok', questions: debugQuestions(true, 0.82), temperatureC: 42 } });
+    expect(doEvaluate).toHaveBeenCalledExactlyOnceWith(expect.objectContaining({
+      state: { ...request, hazardsAhead: [report], temperatureC: 42 },
+      providerOptions: { gateway: { zeroDataRetention: true } },
+    }));
+  });
+  it('still skips a 3% heat saving without community reports', async () => {
+    const doEvaluate = evaluator(0.82);
+    const weather = vi.fn();
+    const result = await decideReroute(req({ alternative: { ...base.alternative, heat: 1455 } }),
+      { model: new Experimental_EvaluationMockModelV4({ doEvaluate }), weather });
+    expect(result).toEqual({ prompt: false, urgency: 0, reason: 'none', debug: noQuestions });
+    expect(doEvaluate).not.toHaveBeenCalled();
+    expect(weather).not.toHaveBeenCalled();
+  });
+  it.each([{ minutesAgo: -1 }, { confirmed: 'yes' }])('rejects invalid community metadata %o', metadata => {
+    expect(rerouteSchema.safeParse(req({ hazardsAhead: [{ category: 'No shade', metersAhead: 60, ...metadata }] })).success).toBe(false);
+  });
+  it.each([[1500, 1455], [0, 0]])('does not invent fallback heat savings with reports (%i to %i)', async (remainingHeat, heat) => {
+    const model = new Experimental_EvaluationMockModelV4({ doEvaluate: async () => { throw new Error('offline'); } });
+    const result = await decideReroute(req({ current: { ...base.current, remainingHeat }, alternative: { ...base.alternative, heat },
+      hazardsAhead: [{ category: 'No shade', metersAhead: 60 }] }), { model, weather: vi.fn(async () => undefined) });
+    expect(result).toEqual({ prompt: false, urgency: 0, reason: 'rule', debug: { decidedBy: 'rule', jev: 'failed', questions: [] } });
+  });
   it('skips on cooldown and missing alternative even with a hazard', async () => {
     const doEvaluate = evaluator(0.82);
     const weather = vi.fn();
