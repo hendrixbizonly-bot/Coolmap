@@ -245,7 +245,7 @@ The **Stage demo** button on the walking screen is now a menu with two scenarios
 - Deterministic gates run first: a 180 s prompt cooldown and missing alternative stay quiet; blocked/closed/fallen-tree hazards ahead hard-trigger an immediate prompt; alternatives saving under 10% of remaining heat stay quiet.
 - Otherwise `lib/weather.ts` fetches the current Dubai-hour temperature from Open-Meteo (10 min per-coordinate cache, 1.5 s timeout, silently optional) and `evaluateWithJev` scores `rerouteWorthIt` (boolean) and `urgency` (0–3); prompting requires probability ≥ 0.6.
 - If Jev fails or times out, a rule fallback prompts only when the alternative cuts ≥ 25% of remaining heat for ≤ 3 extra minutes. Debug output lists each question's answer and probability.
-- Zero Data Retention is off for the demo because the gateway hobby plan rejects it; no runtime flag is added.
+- Zero Data Retention is enabled on every Jev call through the Vercel Pro gateway.
 
 **Files changed**
 

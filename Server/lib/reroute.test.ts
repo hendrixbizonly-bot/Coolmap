@@ -63,7 +63,7 @@ describe('decideReroute', () => {
     expect(doEvaluate).not.toHaveBeenCalled();
     expect(weather).not.toHaveBeenCalled();
   });
-  it('passes state plus temperatureC to Jev at the boundaries', async () => {
+  it('passes state plus temperatureC to Jev with zero data retention at the boundaries', async () => {
     const doEvaluate = evaluator(0.82);
     const request = req({ secondsSinceLastPrompt: 180, alternative: { ...base.alternative, heat: 1350 } });
     const result = await decideReroute(request, {
@@ -72,6 +72,7 @@ describe('decideReroute', () => {
       debug: { decidedBy: 'jev', jev: 'ok', questions: debugQuestions(true, 0.82), temperatureC: 42 } });
     expect(doEvaluate).toHaveBeenCalledExactlyOnceWith(expect.objectContaining({
       state: { ...request, temperatureC: 42 },
+      providerOptions: { gateway: { zeroDataRetention: true } },
     }));
   });
   it.each([[0.82, true, true, 0.82], [0.2, false, false, 0.8], [0.59, false, true, 0.59], [0.6, true, true, 0.6], [0.5, false, true, 0.5]] as const)
