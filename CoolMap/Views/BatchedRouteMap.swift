@@ -28,7 +28,7 @@ struct BatchedRouteMap: UIViewRepresentable {
         let c=context.coordinator
         c.onHeadingChange=onHeadingChange
         c.onCenterChange=onCenterChange
-        let hazardKey=hazards.map { $0.id.uuidString }.joined()
+        let hazardKey=hazards.map { "\($0.id.uuidString)@\($0.expiresAt.timeIntervalSinceReferenceDate)" }.joined()
         if c.hazardKey != hazardKey {
             c.hazardKey=hazardKey
             map.removeAnnotations(c.hazardPins)
