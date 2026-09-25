@@ -83,3 +83,27 @@ On the walking screen, tap the orange **Stage demo** toggle (bottom-left). It pl
 
 - Requires Xcode with an iOS simulator runtime and network access for routing.
 - No app source changes; Google Maps path and shared reports are not exercised.
+
+## Feature D2 — Offline Abu Dhabi building heights
+
+**What it does**
+
+- Bundles 19,381 footprints for longitude 54.31–54.41, latitude 24.42–24.52 (6.78 MB), without changing app loading or adding app network calls.
+- Matches GlobalBuildingAtlas footprints to OpenStreetMap by centroid containment or intersection-over-union above 0.3; height priority is OSM height, OSM levels × 3.5 m, then GBA model height.
+- Drops footprints below 15 m², rounds coordinates to six decimals, and preserves named OSM towers including ADNOC Headquarters (342 m).
+- Run `python3 Scripts/build_buildings.py` after installing `Scripts/requirements.txt`; source snapshots default to `/tmp/coolmap-buildings-cache` for identical offline reruns, and `--refresh` fetches current upstream data.
+
+**Files changed**
+
+| File | Change |
+| --- | --- |
+| `Scripts/build_buildings.py`, `Scripts/requirements.txt` | Reproducible offline importer, Overpass fallback, pinned dependencies and printed source shares/top ten. |
+| `CoolMap/Resources/abudhabi-buildings.json` | GlobalBuildingAtlas (CC BY-NC) footprints with OpenStreetMap (ODbL) height overrides. |
+| `Sources/ShadeCore/ShadeEngine.swift` | Adds the `model` height source. |
+| `Tests/ShadeCoreTests/AbuDhabiBuildingTests.swift` | Decodes the bundled file and checks heights, sources, polygons, unique IDs, size and a named ≥150 m OSM tower. |
+| `CoolMap.xcodeproj/project.pbxproj` | Regenerated to bundle the new JSON. |
+
+**Not covered / follow-ups**
+
+- D5 owns loading the bundle in the app; this change does not activate it.
+- Upstream snapshots are cached locally, not committed; refreshing can change results as OSM evolves. The core footprint model stores exterior rings only.
