@@ -126,15 +126,15 @@ struct MapScreen:View {
                     Label("Step-free",systemImage:"figure.roll").font(.subheadline.bold())
                 }.tint(Color(red:0.2,green:0.85,blue:0.6))
                 if model.stepFree {
-                    Text("Wheelchair & stroller friendly: avoids steps, raised kerbs and >8.3% slopes · slower pace ETA").font(.caption2).foregroundStyle(.white.opacity(0.8))
+                    Text("Wheelchair & stroller friendly: avoids steps, raised kerbs and >8.3% slopes · slower pace ETA").font(.caption2).foregroundStyle(.white.opacity(0.8)).fixedSize(horizontal:false,vertical:true)
                 }
             }.padding(.horizontal,12).padding(.vertical,8).coolGlass()
             HStack(spacing:8) {
                 if let shortest=model.routes.first(where:{$0.id==model.shortest}) {
-                    routePill(shortest,title:model.stepFree && shortest.id==model.bestStepFree ? "Step-free" : "Shortest",color:model.stepFree && shortest.id==model.bestStepFree ? Color(red:0.2,green:0.85,blue:0.6) : .yellow,isShade:false)
+                    routePill(shortest,title:model.stepFree && shortest.id==model.bestStepFree ? (model.accessibility(shortest).isStepFree ? "Step-free" : "Fewest barriers") : "Shortest",color:model.stepFree && shortest.id==model.bestStepFree ? Color(red:0.2,green:0.85,blue:0.6) : .yellow,isShade:false)
                 }
                 if let shade=model.routes.first(where:{$0.id==model.shadeEstimate}),shade.id != model.shortest {
-                    routePill(shade,title:model.stepFree && shade.id==model.bestStepFree ? "Step-free" : "Shade",color:model.stepFree && shade.id==model.bestStepFree ? Color(red:0.2,green:0.85,blue:0.6) : .blue,isShade:true)
+                    routePill(shade,title:model.stepFree && shade.id==model.bestStepFree ? (model.accessibility(shade).isStepFree ? "Step-free" : "Fewest barriers") : "Shade",color:model.stepFree && shade.id==model.bestStepFree ? Color(red:0.2,green:0.85,blue:0.6) : .blue,isShade:true)
                 } else {
                     Text(model.loadingBuildings || model.calculating ? "Checking shade…" : "No shadier route found")
                         .font(.caption).frame(maxWidth:.infinity).padding(.vertical,17).coolGlass()
@@ -144,8 +144,8 @@ struct MapScreen:View {
                 if let active=model.active {
                     let a=model.accessibility(active)
                     Text(a.isStepFree ? "Step-free ✓"+(a.penaltySeconds>0 ? " · \(Int(a.penaltySeconds/60)) min slower for slope/surface" : "") : "⚠ \(a.blocking.count) barrier(s): "+a.blocking.prefix(2).map(\.detail).joined(separator:", "))
-                        .font(.caption).foregroundStyle(a.isStepFree ? .green : .red)
-                    if !a.isStepFree { Text("No fully step-free route found — barriers are marked in red on the map.").font(.caption).foregroundStyle(.red) }
+                        .font(.caption).foregroundStyle(a.isStepFree ? .green : .red).fixedSize(horizontal:false,vertical:true)
+                    if !a.isStepFree { Text("No fully step-free route found — barriers are marked in red on the map.").font(.caption).foregroundStyle(.red).fixedSize(horizontal:false,vertical:true) }
                 }
             }
             HStack(spacing:10) {
