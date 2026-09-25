@@ -12,7 +12,9 @@ struct BatchedRouteMap: UIViewRepresentable {
     var shadows:[[GeoPoint]]=[]
     var shadowsRevision=0
     var exposureRevision=0
+    var hazards:[RouteReport]=[]
     var onHeadingChange:((Double)->Void)?
+    var onCenterChange:((CLLocationCoordinate2D)->Void)?
     func makeCoordinator()->Coordinator { Coordinator() }
     func makeUIView(context:Context)->MKMapView {
         let map=RouteFittingMapView()
@@ -25,6 +27,14 @@ struct BatchedRouteMap: UIViewRepresentable {
     func updateUIView(_ map:MKMapView,context:Context) {
         let c=context.coordinator
         c.onHeadingChange=onHeadingChange
+        c.onCenterChange=onCenterChange
+        let hazardKey=hazards.map { $0.id.uuidString }.joined()
+        if c.hazardKey != hazardKey {
+            c.hazardKey=hazardKey
+            map.removeAnnotations(c.hazardPins)
+            c.hazardPins=hazards.map(HazardAnnotation.init)
+            map.addAnnotations(c.hazardPins)
+        }
         if c.recordsRevision != recordsRevision {
             c.recordsRevision=recordsRevision
             c.replace("buildings",on:map,with:records.isEmpty ? [] : [MKMultiPolygon(records.map { MKPolygon(coordinates:$0.footprint.map(\.coordinate),count:$0.footprint.count) })])
@@ -56,7 +66,7 @@ struct BatchedRouteMap: UIViewRepresentable {
         let fitKey="\(selected?.uuidString ?? "")-\(origin?.latitude ?? 0)-\(origin?.longitude ?? 0)-\(destination?.latitude ?? 0)-\(destination?.longitude ?? 0)"
         if c.fitKey != fitKey {
             c.fitKey=fitKey
-            map.removeAnnotations(map.annotations)
+            map.removeAnnotations(map.annotations.filter { !($0 is HazardAnnotation) })
             for (name,coordinate) in [("Start",origin),("Finish",destination)] {
                 if let coordinate { let pin=MKPointAnnotation(); pin.title=name; pin.coordinate=coordinate; map.addAnnotation(pin) }
             }
@@ -70,7 +80,9 @@ struct BatchedRouteMap: UIViewRepresentable {
     final class Coordinator:NSObject,MKMapViewDelegate {
         var recordsRevision:UUID?
         var shadowsRevision:Int?
-        var routeKey="",fitKey=""
+        var routeKey="",fitKey="",hazardKey=""
+        var hazardPins:[HazardAnnotation]=[]
+        var onCenterChange:((CLLocationCoordinate2D)->Void)?
         var layers:[String:[MKOverlay]]=[:]
         var onHeadingChange:((Double)->Void)?
         private var lastHeading=Double.nan
@@ -96,17 +108,40 @@ struct BatchedRouteMap: UIViewRepresentable {
         }
         func mapView(_ mapView:MKMapView,viewFor annotation:MKAnnotation)->MKAnnotationView? {
             guard !(annotation is MKUserLocation) else { return nil }
+            if let hazard=annotation as? HazardAnnotation {
+                let view=mapView.dequeueReusableAnnotationView(withIdentifier:"hazard") as? MKMarkerAnnotationView ?? MKMarkerAnnotationView(annotation:annotation,reuseIdentifier:"hazard")
+                view.annotation=annotation
+                view.markerTintColor=UIColor(hazard.report.hazard.color)
+                view.glyphImage=UIImage(systemName:hazard.report.hazard.icon)
+                view.canShowCallout=true
+                view.displayPriority = .required
+                return view
+            }
             let view=mapView.dequeueReusableAnnotationView(withIdentifier:"endpoint") as? MKMarkerAnnotationView ?? MKMarkerAnnotationView(annotation:annotation,reuseIdentifier:"endpoint")
             view.annotation=annotation
             view.markerTintColor=annotation.title=="Start" ? .systemBlue : .systemRed
             return view
         }
         func mapViewDidChangeVisibleRegion(_ mapView:MKMapView) {
+            DispatchQueue.main.async { [weak self] in self?.onCenterChange?(mapView.centerCoordinate) }
             let heading=mapView.camera.heading
             guard !lastHeading.isFinite || abs(heading-lastHeading)>0.5 else { return }
             lastHeading=heading
             DispatchQueue.main.async { [weak self] in self?.onHeadingChange?(heading) }
         }
+    }
+}
+
+final class HazardAnnotation:NSObject,MKAnnotation {
+    let report:RouteReport
+    init(report:RouteReport) { self.report=report }
+    var coordinate:CLLocationCoordinate2D { report.coordinate.coordinate }
+    var title:String? { report.hazard.rawValue }
+    var subtitle:String? {
+        let age=RelativeDateTimeFormatter().localizedString(for:report.date,relativeTo:Date())
+        let left=report.expiresAt.timeIntervalSinceNow
+        let clears=left<3600 ? "clears in \(max(1,Int(left/60))) min" : left<86400 ? "clears in \(Int(left/3600)) h" : "clears in \(Int(left/86400)) days"
+        return [report.note.isEmpty ? nil : report.note,"Reported \(age) · \(clears)"].compactMap { $0 }.joined(separator:" — ")
     }
 }
 
