@@ -47,6 +47,7 @@ final class AppModel: ObservableObject {
         chooseOrigin(.init(latitude:24.4995,longitude:54.3888),name:"Rosewood · Abu Dhabi demo")
         chooseDestination(.init(latitude:24.5020,longitude:54.3885),name:"The Galleria")
         setHour(15); await load()
+        if let active { RouteReportStore.shared.seedDemoRoute(active.coordinates.map(\.geo)) }
     }
     var shortest:UUID? { routes.min { $0.distance < $1.distance }?.id }
     var shadeEstimate:UUID? {

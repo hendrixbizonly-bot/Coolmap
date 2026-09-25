@@ -147,7 +147,7 @@ struct WalkingSessionView: View {
             VStack(alignment:.leading,spacing:8) {
                 if stageDemo,let tree=reports.demo.first {
                     let gap=Int(max(0,demoHazardDistance-demoDistance))
-                    Text(gap>0 ? "Another walker reported “\(tree.note)” 10 min ago · \(gap) m ahead" : "You’re at the reported tree")
+                    Text(gap>0 ? "Another walker reported “\(tree.note)” 10 min ago · \(gap) m ahead" : "You’re at the reported obstacle")
                         .font(.caption).padding(.horizontal,12).padding(.vertical,8).background(panel,in:Capsule())
                 }
                 Toggle(isOn:Binding(get:{ stageDemo },set:setStageDemo)) {
@@ -195,9 +195,9 @@ struct WalkingSessionView: View {
             guard stageDemo,demoDistance<route.distance,reports.verification==nil else { return }
             demoDistance+=Self.demoMetresPerSecond*0.5
             update()
-            if let c=freshCoordinate { reports.checkProximity(to:c.geo) }
+            if let c=freshCoordinate { reports.checkProximity(to:c.geo,simulated:true) }
         }
-        .onReceive(location.$coordinate) { c in guard !stageDemo else { return }; update(); if let c { reports.checkProximity(to:c.geo) } }
+        .onReceive(location.$coordinate) { c in guard !stageDemo && !demo else { return }; update(); if let c { reports.checkProximity(to:c.geo,fix:location.lastFix) } }
         .onReceive(location.$heading) { _ in if follow && !stageDemo { update() } }
         .sheet(isPresented:$steps) { WalkNavigationView(route:route,location:location) }
         .sheet(isPresented:$report) { HazardReportSheet(store:reports,coordinate:(followCoordinate ?? origin).geo,locationDescription:demo || stageDemo ? "Simulated demo position (not GPS)" : followCoordinate == nil ? "Route start (preview — not your GPS location)" : "Your current GPS position") }

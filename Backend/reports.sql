@@ -1,4 +1,6 @@
 -- Run once in the Supabase SQL editor. No service-role key belongs in the iOS app.
+-- Legacy base schema. Always apply profiles.sql immediately afterwards for the
+-- current app. Never reapply this file over an authenticated profile deployment.
 create table if not exists public.route_reports (
   id uuid primary key,
   category text not null check (category in ('Broken sidewalk','Blocked crossing','No shade','Construction','Other','Blocked path','Missing shade','No pavement')),

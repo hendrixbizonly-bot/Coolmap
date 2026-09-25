@@ -49,6 +49,8 @@ Native SwiftUI/MapKit map, origin/destination autocomplete, location permission,
 
 Walking mode follows fresh GPS fixes and projects them onto the route to estimate remaining distance/time. It includes a steps list, on-demand spoken instruction, report form and End action. It is prototype guidance: no automatic rerouting, background navigation or production navigation guarantees. Reports queue locally and sync to Supabase when configured. Nearby shared reports are unverified and never alter building calculations.
 
+**Profiles & points:** Menu → Profile supports email-code sign-in, display names, server-controlled points and history. Another walker confirming a report awards its author +5; a No deducts 2. Self-votes, repeat votes and direct balance edits are rejected by PostgreSQL. Apply both database migrations and configure your Supabase project as described in [Backend setup](Backend/SETUP.md). A live project is still required; the unconfigured build shows a setup-pending state. Run `npm ci --prefix Backend && npm test --prefix Backend` for database security/scoring checks.
+
 Simulator GPS is simulated and may be outside Dubai. If My location cannot produce a walk, choose a starting point using search or use the Marina demo. A very distant origin now produces an explanatory message and a Change starting point action.
 
 ## Files

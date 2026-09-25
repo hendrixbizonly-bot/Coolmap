@@ -5,6 +5,8 @@ struct MapScreen:View {
     @StateObject private var model=AppModel()
     @StateObject private var location=LocationService()
     @ObservedObject private var reports=RouteReportStore.shared
+    @ObservedObject private var account=WalkerAccount.shared
+    @State private var showingProfile=false
     @State private var reporting=false
     @State private var mapCenter=MapCenter()
     private let expiryTicker=Timer.publish(every:60,on:.main,in:.common).autoconnect()
@@ -61,8 +63,9 @@ struct MapScreen:View {
             }
         }
         .sheet(isPresented:$reporting) { HazardReportSheet(store:reports,coordinate:reportPoint.coordinate,locationDescription:reportPoint.description) }
-        .onReceive(expiryTicker) { _ in reports.purgeExpired() }
-        .onReceive(location.$coordinate) { coordinate in if let coordinate,!navigation { reports.checkProximity(to:coordinate.geo) } }
+        .onReceive(expiryTicker) { _ in reports.purgeExpired(); if model.hasOrigin { Task { await reports.refresh(around:model.origin.geo) } } }
+        .onReceive(location.$coordinate) { coordinate in if let coordinate,!navigation { reports.checkProximity(to:coordinate.geo,fix:location.lastFix) } }
+        .onChange(of:account.userID) { _,_ in reports.accountChanged(); Task { await reports.sync(); if model.hasOrigin { await reports.refresh(around:model.origin.geo) } } }
         .onChange(of:model.hasOrigin) { _,has in if has { Task { await reports.refresh(around:model.origin.geo) } } }
         .sheet(isPresented:$settings) { settingsView }
         .alert("Google Maps needs API keys",isPresented:$providerNotice) {
@@ -196,7 +199,7 @@ struct MapScreen:View {
         NavigationStack {
             Form {
                 Section {
-                    Label("Profile · coming soon",systemImage:"person.crop.circle").foregroundStyle(.secondary)
+                    Button { showingProfile=true } label: { Label(account.profile?.display_name ?? "Profile & points",systemImage:"person.crop.circle") }
                     Button("Try Abu Dhabi demo") { settings=false; Task { await model.demo() } }
                 }
                 Section("Map") {
@@ -222,6 +225,7 @@ struct MapScreen:View {
                     Link("© OpenStreetMap contributors",destination:URL(string:"https://www.openstreetmap.org/copyright")!)
                 }
             }.navigationTitle("Map options").toolbar { Button("Done") { settings=false } }
+                .sheet(isPresented:$showingProfile) { WalkerProfileView() }
         }
     }
     private func selectPreferredRoute() {

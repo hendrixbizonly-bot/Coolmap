@@ -45,21 +45,25 @@ struct StillThereCard: View {
             }
             HStack(spacing:12) {
                 Button { store.answerVerification(stillThere:true) } label: {
-                    Label("Still there",systemImage:"hand.thumbsup.fill").font(.subheadline.bold()).frame(maxWidth:.infinity).padding(.vertical,12)
+                    Label("Yes · still there",systemImage:"hand.thumbsup.fill").font(.subheadline.bold()).frame(maxWidth:.infinity).padding(.vertical,12)
                         .foregroundStyle(.white).background(Color(red:0.25,green:0.50,blue:1),in:RoundedRectangle(cornerRadius:14))
                 }
                 Button { store.answerVerification(stillThere:false) } label: {
-                    Label("Not there",systemImage:"xmark.circle.fill").font(.subheadline.bold()).frame(maxWidth:.infinity).padding(.vertical,12)
+                    Label("No · it’s gone",systemImage:"xmark.circle.fill").font(.subheadline.bold()).frame(maxWidth:.infinity).padding(.vertical,12)
                         .foregroundStyle(.black).background(Color(red:1,green:0.6,blue:0.1),in:RoundedRectangle(cornerRadius:14))
                 }
-            }
+            }.disabled(store.voting)
+            if store.voting { ProgressView("Saving your check…") }
+            if let error=store.verificationError { Text(error).font(.caption).foregroundStyle(.orange) }
+            Text(store.demo.contains(where:{$0.id==report.id}) ? "Demo only · no real points" : "Reporter earns +5 for Yes or loses 2 for No. Only answer what you can see.").font(.caption2).foregroundStyle(.secondary)
             GeometryReader { g in
                 Capsule().fill(.white.opacity(0.1)).overlay(alignment:.leading) { Capsule().fill(.white.opacity(0.5)).frame(width:g.size.width*remaining/8) }
             }.frame(height:3)
         }
         .padding(16).background(panel,in:RoundedRectangle(cornerRadius:22)).overlay(RoundedRectangle(cornerRadius:22).stroke(.white.opacity(0.12)))
         .shadow(color:.black.opacity(0.4),radius:12,y:6)
-        .onReceive(tick) { _ in remaining-=0.1; if remaining<=0 { store.dismissVerification() } }
+        .onReceive(tick) { _ in if !store.voting && store.verificationError==nil { remaining-=0.1; if remaining<=0 { store.dismissVerification() } } }
+        .onChange(of:report.id) { _,_ in remaining=8 }
         .accessibilityElement(children:.contain)
         .accessibilityLabel("Is the \(report.summary) still there?")
     }
@@ -69,6 +73,8 @@ struct StillThereCard: View {
 struct HazardReportSheet: View {
     @Environment(\.dismiss) private var dismiss
     @ObservedObject var store:RouteReportStore
+    @ObservedObject private var account=WalkerAccount.shared
+    @State private var profile=false
     let coordinate:GeoPoint
     let locationDescription:String
     @State private var picked:HazardCategory?
@@ -81,8 +87,9 @@ struct HazardReportSheet: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment:.leading,spacing:18) {
-                    Text("Pinned at \(locationDescription.lowercased()). Other walkers see it until it clears.")
+                    Text("Pinned at \(locationDescription.lowercased()). \(account.isSignedIn ? "Shared reports can earn points when other walkers check them." : "Reports stay on this device until community sharing is available and you sign in.")")
                         .font(.subheadline).foregroundStyle(.secondary)
+                    if !account.isSignedIn { Button("Sign in to earn points") { profile=true } }
                     LazyVGrid(columns:columns,spacing:14) {
                         ForEach(HazardCategory.allCases) { hazard in
                             Button { picked = picked==hazard ? nil : hazard } label: {
@@ -118,7 +125,9 @@ struct HazardReportSheet: View {
                     Task {
                         do {
                             try await store.save(.init(category:picked.rawValue,note:note.trimmingCharacters(in:.whitespacesAndNewlines),coordinate:coordinate,date:Date(),locationDescription:locationDescription))
-                            dismiss()
+                            saving=false
+                            if store.reports.first?.shared==true { dismiss() }
+                            else { self.error=store.message ?? "Saved on this device."; self.picked=nil }
                         } catch { self.error="Couldn’t save the report. Please try again."; saving=false }
                     }
                 } label: {
@@ -133,5 +142,6 @@ struct HazardReportSheet: View {
         }
         .preferredColorScheme(.dark)
         .presentationDetents([.large])
+        .sheet(isPresented:$profile) { WalkerProfileView() }
     }
 }

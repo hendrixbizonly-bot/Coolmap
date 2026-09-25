@@ -11,4 +11,5 @@ Config/Local.xcconfig
 .env
 .env.*
 !.env.example
+Backend/node_modules/
 Verification/smoke/
