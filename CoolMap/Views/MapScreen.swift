@@ -44,13 +44,6 @@ struct MapScreen: View {
                         }.accessibilityLabel("Use my location")
                         if !navigation { HazardReportButton { reporting = true } }
                     }
-                }
-                .overlay(alignment:.bottomLeading) {
-                    if reports.demoMode && !navigation, let next=reports.nextDemoHazard {
-                        Button { reports.simulateApproach(to:next) } label: {
-                            Label("Demo: walk into \(next.summary.lowercased())",systemImage:"figure.walk.motion").font(.caption.bold()).padding(.horizontal,12).padding(.vertical,8).background(panel,in:Capsule())
-                        }.accessibilityLabel("Simulate walking into the next demo hazard").padding(.bottom,22)
-                    }
                 }.padding(.horizontal,20).padding(.bottom,12)
             }
         }
@@ -334,24 +327,6 @@ struct MapScreen: View {
                 Section("About shade estimates") {
                     Text("Buildings are loaded on demand along routes across Dubai. Missing heights, complex buildings, and unavailable tiles limit shade estimates.")
                     Text("Some building heights are missing. Sun times are upper estimates using known buildings, not guaranteed exposure.").font(.subheadline).foregroundStyle(.secondary)
-                }
-                Section {
-                    Toggle("Demo mode",isOn:Binding(get:{ reports.demoMode },set:{ on in
-                        if on { reports.plantDemoHazards(around:reportPoint.coordinate) } else { reports.clearDemoHazards() }
-                    }))
-                    if reports.demoMode {
-                        ForEach(reports.demo) { r in
-                            Button {
-                                settings=false
-                                DispatchQueue.main.asyncAfter(deadline:.now()+0.4) { reports.simulateApproach(to:r) }
-                            } label: {
-                                Label { VStack(alignment:.leading) { Text("Walk into: \(r.summary)"); Text(r.hazard.rawValue).font(.caption).foregroundStyle(.secondary) } }
-                                icon: { Image(systemName:r.hazard.icon).foregroundStyle(r.hazard.color) }
-                            }
-                        }
-                    }
-                } header: { Text("Demo") } footer: {
-                    Text("Plants sample community hazards around you and lets you simulate stepping into a pin's 40 m trigger zone to see the Still there? prompt. Demo pins are never saved or shared.")
                 }
                 Section("Developer tools") {
                     Toggle("Debug shade on map",isOn:$model.debug)

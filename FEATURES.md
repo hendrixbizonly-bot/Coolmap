@@ -42,17 +42,17 @@ One entry per feature so the team can see exactly what changed and where.
 - **Reputation weighting (local-only for now, no accounts yet):** each device has a `WalkerReputation` score starting at 1.0; every 5 answered prompts it rises by 0.25, capped at 2.0 (floor 0.5). The score is the weight of each vote. Server-side accuracy scoring can lower it later.
 - Votes are POSTed to a new Supabase table `route_report_votes` when sharing is configured (best-effort); otherwise everything stays on-device.
 
-**Demo mode (for showing the flow without a route or other users)**
+**Stage demo (show the flow on stage without a real hazard)**
 
-Map settings (slider icon) → **Demo mode**. It plants four sample community pins around your position (fallen tree, fenced-off crossing, broken sidewalk, no shade) and lists "Walk into: …" buttons — tapping one closes the sheet and fires the Still there? popup exactly as a real approach would. A "Demo: walk into …" chip also sits bottom-left on the map and walking screens so you can trigger the next one mid-demo. Demo pins live in memory only: never saved to disk, never uploaded, and votes on them aren't sent.
+On the walking screen, tap the orange **Stage demo** toggle (bottom-left). It plants a "Fallen tree across the path" pin on your own route, reported by another walker 10 minutes ago (~150 m in, or mid-route on short walks), and starts a simulated walker 90 m before it moving along the route at 3 m/s. When the walker enters the pin's 40 m trigger zone the real `checkProximity` path fires the Still there? card — nothing is faked downstream. The walker pauses while the card is up so you can talk, then continues after Still there / Not there / timeout. A caption shows "Another walker reported … 10 min ago · N m ahead". Turning the toggle off (or ending the walk) removes the pin. Demo pins are in memory only: never saved, uploaded, or voted to the backend.
 
 **Files changed**
 
 | File | Change |
 | --- | --- |
-| `CoolMap/Services/RouteReports.swift` | `RouteReport` gains `confirmedAt`, `denials` (backwards-compatible decoding); `expiresAt` counts from the last confirmation; `isActive` also requires `denials < 2`. New `WalkerReputation`. `RouteReportStore` gains `verification`, `checkProximity(to:)`, `answerVerification(stillThere:)`, `dismissVerification()`, haversine `distance`, vote upload; demo mode (`demo`, `plantDemoHazards(around:)`, `nextDemoHazard`, `simulateApproach(to:)`). |
+| `CoolMap/Services/RouteReports.swift` | `RouteReport` gains `confirmedAt`, `denials` (backwards-compatible decoding); `expiresAt` counts from the last confirmation; `isActive` also requires `denials < 2`. New `WalkerReputation`. `RouteReportStore` gains `verification`, `checkProximity(to:)`, `answerVerification(stillThere:)`, `dismissVerification()`, haversine `distance`, vote upload; stage demo (`demo`, `plantStageDemo(at:)`, `clearDemoHazards()`). |
 | `CoolMap/Views/HazardReportSheet.swift` | New `StillThereCard` (icon, "Still there" / "Not there", 8 s timeout bar). |
-| `CoolMap/Views/MapScreen.swift`, `WalkingSessionView.swift` | Feed location fixes into `checkProximity`, show the card at the top; Demo section in Map settings and demo chip. |
+| `CoolMap/Views/MapScreen.swift`, `WalkingSessionView.swift` | Feed location fixes into `checkProximity`, show the card at the top; WalkingSessionView also hosts the Stage demo toggle and simulated walker. |
 | `Backend/reports.sql` | New `route_report_votes` table + insert policy. |
 
 **Not covered / follow-ups**
