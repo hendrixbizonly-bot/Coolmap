@@ -236,3 +236,27 @@ The **Stage demo** button on the walking screen is now a menu with two scenarios
 - Barriers are only as good as OSM coverage: an untagged flight of steps is invisible, and steps whose end touches the sidewalk within 12 m can flag a route that merely passes them. Elevation-model slope (no `incline` tag) is not computed yet.
 - MapKit still produces the candidate routes; the app re-ranks and penalises, it does not compute a detour itself. Google Maps provider does not draw barriers.
 - Photo upload/sharing to Supabase; per-account reputation for accessibility reports.
+
+## Feature 8 — Jev reroute-decision API (R-J1)
+
+**What it does**
+
+- `POST /api/reroute-decision` validates a walking-state payload (zod) and returns `{ prompt, urgency, reason, confidence?, debug }` deciding whether to interrupt the walker with a cooler alternative route.
+- Deterministic gates run first: a 180 s prompt cooldown and missing alternative stay quiet; blocked/closed/fallen-tree hazards ahead hard-trigger an immediate prompt; alternatives saving under 10% of remaining heat stay quiet.
+- Otherwise `lib/weather.ts` fetches the current Dubai-hour temperature from Open-Meteo (10 min per-coordinate cache, 1.5 s timeout, silently optional) and `evaluateWithJev` scores `rerouteWorthIt` (boolean) and `urgency` (0–3); prompting requires probability ≥ 0.6.
+- If Jev fails or times out, a rule fallback prompts only when the alternative cuts ≥ 25% of remaining heat for ≤ 3 extra minutes. Debug output lists each question's answer and probability.
+
+**Files changed**
+
+| File | Change |
+| --- | --- |
+| `Server/lib/reroute.ts` (+ `reroute.test.ts`) | **New.** Request schema, Jev question definitions, `decideReroute` gating/fallback logic + mock-model tests. |
+| `Server/lib/weather.ts` (+ `weather.test.ts`) | **New.** `currentTemperature` Open-Meteo lookup with cache + tests. |
+| `Server/app/api/reroute-decision/route.ts` (+ `route.test.ts`) | **New.** POST endpoint with 400 validation and decision tests. |
+| `Server/package.json`, `Server/pnpm-lock.yaml` | Pin `zod@4.1.12`. |
+| `FEATURES.md` | This entry. |
+
+**Not covered / follow-ups**
+
+- Vercel preview pending H1b; no Swift changes here.
+- Live Jev/weather calls untested; mock-model tests and a local HTTP POST cover the endpoint.
