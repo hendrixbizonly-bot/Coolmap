@@ -2,6 +2,7 @@
 
 First-time setup: `Scripts/setup.sh` (checks Xcode, creates `Config/Local.xcconfig`, regenerates the project and resolves packages). Add `--run` to build and launch on a simulator, `--test` to run the ShadeCore tests.
 
+Checks: `Scripts/verify.sh core|app|all`; `Scripts/smoke.sh` runs the locked Apple Maps demo check and saves a screenshot under `Verification/smoke/`.
 Open `CoolMap.xcodeproj` in Xcode, select an iPhone simulator and Run. Tap **Where to?**, choose a destination, and allow location access or choose a starting point. Routes load automatically. The route-selection screen automatically shows the sun marker, estimated shadows, time slider and Play control; **Start walk** opens GPS progress, spoken instructions, steps and reporting. The Marina shortcut remains available. Apple Maps works without keys; Google Maps and shared reports need your own configuration (see [setup](Backend/SETUP.md)). Network access is required for routes and new building tiles. Physical-device builds require your own signing team.
 
 ## Verified core
