@@ -11,15 +11,16 @@ import urllib.request
 import duckdb
 import numpy as np
 import rasterio
-from rasterio.features import shapes
+from rasterio.features import shapes, geometry_mask
 from rasterio.warp import transform as warp, transform_bounds
 from rasterio.windows import from_bounds
 from scipy import ndimage
-from shapely.geometry import LineString, Point, Polygon, box, shape
+from shapely.geometry import LineString, Point, Polygon, box, shape, mapping
 from shapely.ops import transform
 
 BBOX = (54.31, 24.42, 54.41, 24.52)
 MIN_CROWN_AREA = 30
+CELL_SIZE = 25
 INDEX = "https://data.source.coop/tge-labs/meta-chm-v2/tiles.parquet"
 UA = "CoolMap-hackathon/1.0 (shade-data importer)"
 ROOT = Path(__file__).resolve().parents[1]
@@ -45,13 +46,34 @@ def record(identifier, polygon, height, minimum, transmission, kind, source="fal
     coords = list(project(polygon, "EPSG:32640", "EPSG:4326").exterior.coords)[:-1]
     precision = 5 if kind == "tree" else 6
     coords = [(round(x, precision), round(y, precision)) for x, y in coords]
-    if kind == "tree":
-        coords = list(Polygon(coords).convex_hull.exterior.coords)[:-1]
     footprint = [{"latitude": y, "longitude": x} for x, y in coords]
     height, minimum = round(float(height), 2), round(float(minimum), 2)
     return dict(id=identifier, footprint=footprint, heightMeters=int(height) if height.is_integer() else height,
                 heightSource=source, minHeightMeters=int(minimum) if minimum.is_integer() else minimum,
                 transmissivity=transmission, kind=kind)
+
+
+def polygons(geometry):
+    if geometry.geom_type == "Polygon":
+        yield geometry
+    elif hasattr(geometry, "geoms"):
+        for part in geometry.geoms:
+            yield from polygons(part)
+
+
+def fit_budget(records, stats):
+    selected, used = [], 3
+    stats["retainedAreaM2"] = 0
+    for item in sorted(records, key=lambda r: -r.get("_pixelArea", float("inf"))):
+        area = item.pop("_pixelArea", 0)
+        cost = len(json.dumps(item, separators=(",", ":")).encode()) + 1
+        if item["kind"] != "tree" and used + cost > 10_000_000:
+            raise ValueError("Structures alone exceed the output budget")
+        if used + cost <= 10_000_000:
+            selected.append(item)
+            used += cost
+            stats["retainedAreaM2"] += area
+    return selected
 
 
 def crowns(data, affine, crs, tile, minimum_area=MIN_CROWN_AREA, stats=None):
@@ -68,16 +90,42 @@ def crowns(data, affine, crs, tile, minimum_area=MIN_CROWN_AREA, stats=None):
             stats["candidateAreaM2"] += pixel_polygon.area
         if pixel_polygon.area < minimum_area:
             continue
-        if stats is not None:
-            stats["retainedAreaM2"] += pixel_polygon.area
-        hull = pixel_polygon.convex_hull
-        tolerance = 0.35
-        polygon = hull.simplify(tolerance, preserve_topology=True)
-        while len(polygon.exterior.coords) > 9:
-            tolerance *= 1.5
-            polygon = hull.simplify(tolerance, preserve_topology=True)
-        height = float(np.percentile(data[region][mask], 90))
-        yield record(f"meta-{tile}-{component}", polygon, height, height * 0.5, 0.65, "tree")
+        source = pixel_polygon.buffer(0)
+        if source.area > 200:
+            left, bottom, right, top = source.bounds
+            cells = (source.intersection(box(x, y, x + CELL_SIZE, y + CELL_SIZE))
+                     for x in range(math.floor(left / CELL_SIZE) * CELL_SIZE, math.ceil(right), CELL_SIZE)
+                     for y in range(math.floor(bottom / CELL_SIZE) * CELL_SIZE, math.ceil(top), CELL_SIZE))
+        else:
+            cells = [source]
+        for cell in cells:
+            for piece in polygons(cell):
+                if piece.area < minimum_area:
+                    continue
+                tolerance = 0.6
+                polygon = piece.simplify(tolerance, preserve_topology=True)
+                while len(polygon.exterior.coords) > 9:
+                    tolerance *= 1.5
+                    polygon = piece.simplify(tolerance, preserve_topology=True)
+                raster_piece = project(piece, "EPSG:32640", crs)
+                window = from_bounds(*raster_piece.bounds, local)
+                r0, c0 = max(0, math.floor(window.row_off)), max(0, math.floor(window.col_off))
+                r1, c1 = min(mask.shape[0], math.ceil(window.row_off + window.height)), min(mask.shape[1], math.ceil(window.col_off + window.width))
+                inside = geometry_mask([mapping(raster_piece)], out_shape=(r1-r0, c1-c0),
+                                       transform=local * rasterio.Affine.translation(c0, r0), invert=True)
+                pixels = data[region][r0:r1, c0:c1][inside & mask[r0:r1, c0:c1]]
+                if not pixels.size:
+                    continue
+                height = float(np.percentile(pixels, 90))
+                item = record(f"meta-{tile}-{component}", polygon, height, height * 0.5, 0.65, "tree")
+                output = project(Polygon([(p["longitude"], p["latitude"]) for p in item["footprint"]]),
+                                 "EPSG:4326", "EPSG:32640")
+                if not output.is_valid or not minimum_area <= output.area <= piece.area * 1.15:
+                    continue
+                if stats is not None:
+                    stats["retainedAreaM2"] += piece.area
+                item["_pixelArea"] = piece.area
+                yield item
 
 
 def trees(bbox, cache, stats=None):
@@ -138,6 +186,8 @@ def structure(element):
             polygon = project(Polygon(coords), "EPSG:4326", "EPSG:32640")
         else:
             return None
+    if kind == "bridge":
+        polygon = Polygon(polygon.exterior)
     if not polygon.is_valid or polygon.is_empty or polygon.area <= 0 or height <= minimum:
         return None
     transmission = 0.1 if kind == "canopy" and tags.get("material") == "fabric" else 0
@@ -179,8 +229,7 @@ def preview(records, path, cache):
     import matplotlib.pyplot as plt
     polygons = [project(Polygon([(p["longitude"], p["latitude"]) for p in r["footprint"]]),
                         "EPSG:4326", "EPSG:32640") for r in records if r["kind"] == "tree"]
-    cells = Counter((int(p.centroid.x // 500), int(p.centroid.y // 500)) for p in polygons)
-    x, y = cells.most_common(1)[0][0]
+    x, y = 471, 5419
     bounds = (x * 500, y * 500, (x + 1) * 500, (y + 1) * 500)
     block = box(*bounds)
     image_path = cache / f"preview-satellite-{x}-{y}.png"
@@ -209,11 +258,11 @@ def preview(records, path, cache):
 
 
 def self_test():
-    affine = rasterio.Affine(1, 0, 230000, 0, -1, 2710000)
+    affine = rasterio.Affine(2, 0, 230000, 0, -2, 2710000)
     data = np.array([[3, 4, 0, 0], [5, 10, 0, 0], [0, 0, 0, 0], [0, 0, 0, 7]], dtype="uint8")
     stats = dict(candidateAreaM2=0, retainedAreaM2=0)
-    result = list(crowns(data, affine, "EPSG:32640", "test", minimum_area=4, stats=stats))
-    assert stats == dict(candidateAreaM2=5, retainedAreaM2=4)
+    result = list(crowns(data, affine, "EPSG:32640", "test", minimum_area=10, stats=stats))
+    assert stats == dict(candidateAreaM2=20, retainedAreaM2=16)
     assert len(result) == 1
     assert result[0]["heightMeters"] == 8.5 and result[0]["minHeightMeters"] == 4.25
     assert result[0]["transmissivity"] == 0.65 and len(result[0]["footprint"]) <= 8
@@ -225,7 +274,15 @@ def self_test():
     diagonal = np.zeros((4, 4), dtype="uint8")
     diagonal[:2, :2] = 5
     diagonal[2:, 2:] = 7
-    assert len(list(crowns(diagonal, affine, "EPSG:32640", "diagonal", minimum_area=4))) == 1
+    assert len(list(crowns(diagonal, affine, "EPSG:32640", "diagonal", minimum_area=10))) == 2
+    rows = np.zeros((50, 50), dtype="uint8")
+    rows[:4, :] = rows[10:14, :] = rows[:, :4] = 8
+    row_stats = dict(candidateAreaM2=0, retainedAreaM2=0)
+    split = list(crowns(rows, affine, "EPSG:32640", "rows", stats=row_stats))
+    areas = [project(Polygon([(p["longitude"], p["latitude"]) for p in r["footprint"]]),
+                     "EPSG:4326", "EPSG:32640").area for r in split]
+    assert len(split) > 2 and max(areas) <= CELL_SIZE ** 2 * 1.15
+    assert sum(areas) <= row_stats["retainedAreaM2"] * 1.15
     geometry = [{"lon": 54.35, "lat": 24.47}, {"lon": 54.3501, "lat": 24.47}]
     ring = geometry + [{"lon": 54.3501, "lat": 24.4701},
                        {"lon": 54.35, "lat": 24.4701}, geometry[0]]
@@ -284,6 +341,7 @@ def main():
         for index, item in enumerate(records):
             if item["kind"] == "tree":
                 item["id"] = f"t{index}"
+        records = fit_budget(records, stats)
         payload = json.dumps(records, separators=(",", ":"), allow_nan=False)
         print(json.dumps(dict(minimumCrownAreaM2=MIN_CROWN_AREA, count=len(records),
                               counts=dict(Counter(r["kind"] for r in records)),

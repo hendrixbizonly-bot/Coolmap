@@ -180,7 +180,7 @@ On the walking screen, tap the orange **Stage demo** toggle (bottom-left). It pl
 **What it does**
 
 - `Scripts/build_shade.py` builds `abudhabi-shade.json` for longitude 54.31–54.41 and latitude 24.42–24.52 from Meta canopy height v2 (CC BY 4.0) and OpenStreetMap (ODbL).
-- Trees use connected pixels ≥ 3 m, drop components below 30 m² (coordinator-approved to fit the 10 MB bundle cap), simplify convex crowns to ≤ 8 vertices, and store the 90th-percentile height, half-height clearance and 0.65 transmissivity.
+- Trees use connected pixels ≥ 3 m, split components over 200 m² on a 25 m grid, keep pieces ≥ 30 m², and simplify pixel-following polygons to ≤ 8 vertices; p90 height, half-height clearance and 0.65 transmissivity remain unchanged.
 - OSM adds covered highways, roofs/canopies, shelters and bridges with metre-based buffers and the agreed clearance/transmission defaults. Bridge width is full deck width (half on each side).
 - Optional fields remain compatible with today's BuildingRecord decoder; this data-only change does not activate new app behaviour.
 
@@ -190,5 +190,5 @@ On the walking screen, tap the orange **Stage demo** toggle (bottom-left). It pl
 
 **Not covered / follow-ups**
 
-- Canopy crowns are simplified connected-component hulls, not individually detected palms; touching crowns can merge and convex hulls can span gaps. Imagery and canopy observations may differ in date.
-- Run with a fresh `--cache` directory to refresh source data; failed source downloads fail the build rather than publish a partial dataset. Tree coordinates use 5 decimals, structures 6; canopy-area retention is reported by the generator.
+- Per-piece quantized footprint area is capped at 115% of source-mask area; the 10 MB budget keeps the largest accurate pieces, so some canopy is omitted. Bridge interiors are explicitly filled because the record contract has no holes; closed-loop bridge centers remain a known limitation.
+- Run with a fresh `--cache` directory to refresh source data; failed source downloads fail the build rather than publish a partial dataset. Tree coordinates use 5 decimals, structures 6; canopy-area retention is reported by the generator. Historical byte reproducibility requires the unversioned cached snapshot; fresh live sources can change.
