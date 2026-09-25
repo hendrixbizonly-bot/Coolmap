@@ -37,7 +37,7 @@ command -v xcodebuild >/dev/null || die "Xcode is not installed. Install it from
 [[ $(xcode-select -p) == *CommandLineTools* ]] && die "Command Line Tools are selected instead of Xcode. Run: sudo xcode-select -s /Applications/Xcode.app"
 xcodebuild -checkFirstLaunchStatus || die "Xcode needs first-launch setup. Run: sudo xcodebuild -runFirstLaunch"
 command -v python3 >/dev/null || die "python3 is required to generate the Xcode project."
-xcodebuild -version | head -1
+xcodebuild -version | sed -n '1p'
 
 step "Local configuration"
 if [[ -f Config/Local.xcconfig ]]; then

@@ -59,3 +59,27 @@ On the walking screen, tap the orange **Stage demo** toggle (bottom-left). It pl
 
 - Server-side aggregation of votes (extend/clear for *all* users) — currently each device applies its own vote locally and uploads it.
 - Route-aware pre-alerting ("hazard ahead in 200 m along your route") — trigger is pure proximity for now.
+
+## Feature 3 — D0 repeatable verification checks
+
+**What it does**
+
+- `Scripts/verify.sh core|app|all` runs the ShadeCore `swift test` suite (isolated scratch/module cache under `/tmp`), the simulator app build, or both.
+- `Scripts/smoke.sh` runs the locked Apple Maps demo check: picks an iPhone simulator, builds Debug with empty Google/report flags, installs, launches with `--demo-autoload`, and polls `Documents/last-analysis.json` for a fresh top-level route array with a finite numeric `sunSecondsUpperEstimate` (up to 90 s). A mkdir lock at `/tmp/coolmap-smoke.lock` prevents concurrent runs.
+- On pass it saves a simulator screenshot to `Verification/smoke/<short-sha>.png` (directory gitignored).
+
+**Files changed**
+
+| File | Change |
+| --- | --- |
+| `Scripts/verify.sh` | **New.** Core tests and/or simulator app build. |
+| `Scripts/smoke.sh` | **New.** Locked demo smoke check with freshness guard and screenshot artifact. |
+| `Scripts/setup.sh` | Replaces `head -1` with `sed -n '1p'` when printing the Xcode version to avoid intermittent SIGPIPE (exit 141) under pipefail. |
+| `README.md` | One line documenting the checks. |
+| `.gitignore` | Ignores `Verification/smoke/`. |
+| `FEATURES.md` | This entry. |
+
+**Not covered / follow-ups**
+
+- Requires Xcode with an iOS simulator runtime and network access for routing.
+- No app source changes; Google Maps path and shared reports are not exercised.
