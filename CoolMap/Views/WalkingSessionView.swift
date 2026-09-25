@@ -7,6 +7,8 @@ struct WalkingSessionView: View {
     @ObservedObject var location:LocationService
     @ObservedObject private var reports=RouteReportStore.shared
     let destinationName:String
+    var stepFree=false
+    var barriers:[AccessBarrier]=[]
     @State private var position=MapCameraPosition.automatic
     @State private var progress:WalkingProgress?
     @State private var steps=false
@@ -73,13 +75,16 @@ struct WalkingSessionView: View {
         }
         return c.count>1 ? c.last : first
     }
-    private func setStageDemo(_ on:Bool) {
+    private var access:RouteAccessibility { StepFreeAssessment.assess(route:route.coordinates.map(\.geo),barriers:barriers) }
+    /// Wheelchair/stroller pace and slope/surface penalties replace MapKit's estimate when step-free is on.
+    private var expectedSeconds:Double { stepFree ? access.adjustedSeconds(expected:route.expectedTravelTime) : route.expectedTravelTime }
+    private func setStageDemo(_ on:Bool,category:HazardCategory = .other,note:String = "Fallen tree across the path") {
         stageDemo=on
         guard on else { reports.clearDemoHazards(); update(); return }
-        // Pin the tree ~150 m in, or mid-route on short walks, and start the walker 90 m before it.
+        // Pin the hazard ~150 m in, or mid-route on short walks, and start the walker 90 m before it.
         demoHazardDistance=min(150,route.distance*0.6)
         demoDistance=max(0,demoHazardDistance-90)
-        if let p=coordinate(alongRoute:demoHazardDistance) { reports.plantStageDemo(at:p.geo) }
+        if let p=coordinate(alongRoute:demoHazardDistance) { reports.plantStageDemo(at:p.geo,category:category,note:note,ageMinutes:10) }
         follow=true; previewing=false; update()
     }
     var body:some View {
@@ -89,7 +94,7 @@ struct WalkingSessionView: View {
                 Image(systemName:"location.north.fill").font(.largeTitle)
                 VStack(alignment:.leading,spacing:7) {
                     Text(instruction).font(.headline)
-                    Text(followCoordinate == nil ? destinationName : onRoute ? "Following your location · walking estimate" : "Head to the nearby route").font(.caption).opacity(0.8)
+                    Text((followCoordinate == nil ? destinationName : onRoute ? "Following your location · walking estimate" : "Head to the nearby route")+(stepFree ? " · step-free pace" : "")).font(.caption).opacity(0.8)
                 }
                 Spacer()
             }.padding(20).background(.blue,in:RoundedRectangle(cornerRadius:20)).padding(12)
@@ -107,12 +112,16 @@ struct WalkingSessionView: View {
             VStack(alignment:.leading,spacing:8) {
                 if stageDemo,let tree=reports.demo.first {
                     let gap=Int(max(0,demoHazardDistance-demoDistance))
-                    Text(gap>0 ? "Another walker reported “\(tree.note)” 10 min ago · \(gap) m ahead" : "You’re at the reported tree")
+                    Text(gap>0 ? "Another walker reported “\(tree.summary)” 10 min ago · \(gap) m ahead" : "You’re at the reported hazard")
                         .font(.caption).padding(.horizontal,12).padding(.vertical,8).background(panel,in:Capsule())
                 }
-                Toggle(isOn:Binding(get:{ stageDemo },set:setStageDemo)) {
-                    Label("Stage demo",systemImage:"figure.walk.motion").font(.caption.bold())
-                }.toggleStyle(.button).tint(.orange).background(panel,in:Capsule())
+                Menu {
+                    Button("Fallen tree ahead") { setStageDemo(true) }
+                    Button("Broken elevator (step-free)") { setStageDemo(true,category:.brokenElevator,note:"Lift out of service — use the ramp on the north side") }
+                    if stageDemo { Button("Stop demo",role:.destructive) { setStageDemo(false) } }
+                } label: {
+                    Label(stageDemo ? "Stop demo" : "Stage demo",systemImage:"figure.walk.motion").font(.caption.bold()).foregroundStyle(.orange).padding(.horizontal,12).padding(.vertical,8).background(panel,in:Capsule())
+                }
                 .accessibilityHint("Simulates walking this route into a hazard another walker reported")
             }.padding().padding(.bottom,10)
         }
@@ -125,7 +134,7 @@ struct WalkingSessionView: View {
                         Spacer(); metric(Date().addingTimeInterval(p.remainingSeconds).formatted(date:.omitted,time:.shortened),"arrival estimate")
                     }
                 } else {
-                    Text("\(Int(ceil(route.expectedTravelTime/60))) min · \(Int(route.distance)) m walk").font(.headline)
+                    Text("\(Int(ceil(expectedSeconds/60))) min · \(Int(route.distance)) m walk").font(.headline)
                     Text(followCoordinate == nil ? previewMessage : "Join the route to start tracking your walk.").font(.caption).foregroundStyle(.secondary)
                 }
                 HStack(alignment:.top) {
@@ -169,6 +178,12 @@ struct WalkingSessionView: View {
             MapPolyline(coordinates:route.coordinates).stroke(.blue,lineWidth:6)
             if let end=route.coordinates.last { Marker(destinationName,coordinate:end).tint(.red) }
             ForEach(reports.active) { r in Marker(r.hazard.rawValue,systemImage:r.hazard.icon,coordinate:r.coordinate.coordinate).tint(r.hazard.color) }
+            if stepFree {
+                ForEach(barriers.filter { !$0.id.hasPrefix("report-") }) { b in
+                    if b.points.count>=2 { MapPolyline(coordinates:b.points.map(\.coordinate)).stroke(.red,lineWidth:5) }
+                    else if let point=b.points.first { Marker(b.detail,systemImage:b.kind.mapIcon,coordinate:point.coordinate).tint(.red) }
+                }
+            }
         }.mapStyle(.standard(elevation:.realistic,pointsOfInterest:.excludingAll))
     }
     private func metric(_ value:String,_ caption:String) -> some View { VStack(alignment:.leading) { Text(value).font(.title3.bold()); Text(caption).font(.caption).foregroundStyle(.secondary) } }
@@ -181,7 +196,7 @@ struct WalkingSessionView: View {
     }
     private func update() {
         guard let coordinate=freshCoordinate else { progress=nil; if !previewing { showRoute() }; return }
-        progress=WalkingProgress.calculate(point:projection.geoToLocal(coordinate.geo),route:route.coordinates.map { projection.geoToLocal($0.geo) },expectedSeconds:route.expectedTravelTime)
+        progress=WalkingProgress.calculate(point:projection.geoToLocal(coordinate.geo),route:route.coordinates.map { projection.geoToLocal($0.geo) },expectedSeconds:expectedSeconds)
         guard progress?.canFollowLocation == true else { if !previewing { showRoute() }; return }
         previewing=false
         if follow { position = .camera(.init(centerCoordinate:coordinate,distance:stageDemo ? 350 : 500,heading:demoHeading,pitch:55)) }

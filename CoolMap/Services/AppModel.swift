@@ -30,11 +30,18 @@ final class AppModel: ObservableObject {
     @Published var usesCurrentLocation = true
     @Published var loadingBuildings = false
     @Published var calculating = false
+    @Published var stepFree = UserDefaults.standard.bool(forKey:"step-free") {
+        didSet {
+            UserDefaults.standard.set(stepFree,forKey:"step-free")
+            if stepFree, let best=bestStepFree, let i=routes.firstIndex(where:{$0.id==best}) { selected=i }
+        }
+    }
+    @Published private(set) var barriers:[AccessBarrier]=[]
     @Published var dataNote = ""
     private var exposureTask: Task<Void,Never>?
     private var requestID = UUID()
     func invalidate() {
-        exposureTask?.cancel(); loadingBuildings = false; calculating = false; requestID = UUID(); busy = false; routes = []; records = []; selectedSample = nil; status = ""
+        exposureTask?.cancel(); loadingBuildings = false; calculating = false; requestID = UUID(); busy = false; routes = []; records = []; barriers = []; selectedSample = nil; status = ""
     }
     func chooseOrigin(_ coordinate: CLLocationCoordinate2D, name: String, current: Bool = false) {
         invalidate(); origin = coordinate; originName = name; hasOrigin = true; usesCurrentLocation = current
@@ -56,6 +63,24 @@ final class AppModel: ObservableObject {
     var active: RouteOption? { routes.indices.contains(selected) ? routes[selected] : nil }
     var hasUnknownHeights: Bool { cachedBuildings.count != records.count }
     var fastest: UUID? { routes.min(by: { $0.expectedTravelTime < $1.expectedTravelTime })?.id }
+    /// Reports that physically block a wheelchair or stroller, as map barriers.
+    var reportBarriers:[AccessBarrier] {
+        RouteReportStore.shared.active.filter { $0.hazard.isAccessBarrier }.map {
+            AccessBarrier(id:"report-\($0.id.uuidString)",kind:$0.hazard.barrierKind,points:[$0.coordinate],detail:$0.hazard.rawValue+($0.note.isEmpty ? "" : " · "+$0.note),blocking:true)
+        }
+    }
+    func accessibility(_ route:RouteOption)->RouteAccessibility {
+        StepFreeAssessment.assess(route:route.coordinates.map(\.geo),barriers:barriers+reportBarriers)
+    }
+    var bestStepFree: UUID? {
+        guard !routes.isEmpty else { return nil }
+        let ranked = routes.map { ($0,accessibility($0)) }
+        return (ranked.filter { $0.1.isStepFree }.isEmpty ? ranked : ranked.filter { $0.1.isStepFree })
+            .min { $0.1.adjustedSeconds(expected:$0.0.expectedTravelTime) < $1.1.adjustedSeconds(expected:$1.0.expectedTravelTime) }?.0.id
+    }
+    func eta(_ route:RouteOption)->Double {
+        stepFree ? accessibility(route).adjustedSeconds(expected:route.expectedTravelTime) : route.expectedTravelTime
+    }
     var bestShade: UUID? {
         guard routes.count > 1, !hasUnknownHeights, routes.allSatisfy({ $0.exposure != nil }) else { return nil }
         return routes.min(by: { $0.exposure!.sunSeconds < $1.exposure!.sunSeconds })?.id
@@ -70,7 +95,7 @@ final class AppModel: ObservableObject {
         let token = UUID(); requestID = token; busy = true
         defer { if requestID == token { busy = false } }
         exposureTask?.cancel(); calculating=false; loadingBuildings=false
-        routes = []; records = []; selectedSample = nil; status = ""
+        routes = []; records = []; barriers = []; selectedSample = nil; status = ""
         let start = origin, finish = destination
         do {
             let candidates = try await DirectionsService().routes(from:start,to:finish)
@@ -80,7 +105,7 @@ final class AppModel: ObservableObject {
             let loaded = await CityBuildingProvider.shared.load(routes:candidates.map { $0.coordinates.map(\.geo) },buffer:buffer)
             guard requestID == token else { return }
             loadingBuildings = false; dataNote = loaded.note
-            if loaded.completeFetch { records = loaded.records }
+            if loaded.completeFetch { records = loaded.records; barriers = loaded.barriers }
             else if candidates.allSatisfy({ $0.coordinates.allSatisfy(Self.inCoverage) }) {
                 var all:[String:BuildingRecord]=[:]
                 for route in candidates {

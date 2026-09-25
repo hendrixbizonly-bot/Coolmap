@@ -77,7 +77,7 @@ struct MapScreen: View {
             }.presentationDetents([.height(300)])
         }
         .fullScreenCover(isPresented:$navigation) {
-            if let route=model.active { WalkingSessionView(route:route,location:location,destinationName:model.destinationName) }
+            if let route=model.active { WalkingSessionView(route:route,location:location,destinationName:model.destinationName,stepFree:model.stepFree,barriers:model.stepFree ? model.barriers+model.reportBarriers : []) }
         }
         .onChange(of:minute) { _,_ in if !scrubbing { commitTime() } }
         .onChange(of:model.recordsRevision) { _,_ in updateShadows() }
@@ -148,22 +148,41 @@ struct MapScreen: View {
                     Button { timePicker = true } label: { Label(departureLabel,systemImage:"clock").font(.subheadline) }
                     Button { model.invalidate(); model.hasDestination = false } label: { Image(systemName:"xmark.circle.fill").foregroundStyle(.secondary) }.accessibilityLabel("Clear destination")
                 }
+                VStack(alignment:.leading,spacing:4) {
+                    Toggle(isOn:$model.stepFree) {
+                        Label("Step-free",systemImage:"figure.roll").font(.subheadline.bold())
+                    }.tint(Color(red:0.2,green:0.85,blue:0.6)).padding(10).background(.white.opacity(0.06),in:RoundedRectangle(cornerRadius:14))
+                    if model.stepFree {
+                        Text("Wheelchair & stroller friendly: avoids steps, raised kerbs and >8.3% slopes · slower pace ETA").font(.caption2).foregroundStyle(.secondary)
+                    }
+                }
                 ForEach(Array(model.routes.enumerated()),id:\.element.id) { index,route in
                     Button { model.selected = index; model.selectedSample = nil } label: {
                         HStack(spacing:12) {
                             Image(systemName:"figure.walk").font(.title3).frame(width:40,height:40).background(accent.opacity(0.2),in:Circle())
                             VStack(alignment:.leading,spacing:5) {
-                                Text(route.id == model.fastest ? "Fastest" : route.id == model.bestShade ? "Most shade" : "Alternative").font(.headline).foregroundStyle(.white)
+                                Text(model.stepFree && route.id == model.bestStepFree ? "Step-free" : route.id == model.fastest ? "Fastest" : route.id == model.bestShade ? "Most shade" : "Alternative").font(.headline).foregroundStyle(.white)
                                 Text(sunText(route)).font(.subheadline).foregroundStyle(route.exposure == nil ? Color.secondary : .orange)
+                                if model.stepFree {
+                                    let a=model.accessibility(route)
+                                    if a.isStepFree {
+                                        Text("Step-free ✓"+(a.penaltySeconds>0 ? " · \(Int(a.penaltySeconds/60)) min slower for slope/surface" : "")).font(.caption).foregroundStyle(.green)
+                                    } else {
+                                        Text("⚠ \(a.blocking.count) barrier(s): "+a.blocking.prefix(2).map(\.detail).joined(separator:", ")).font(.caption).foregroundStyle(.red)
+                                    }
+                                }
                             }
                             Spacer()
                             VStack(alignment:.trailing,spacing:6) {
-                                Text("\(Int(ceil(route.expectedTravelTime/60))) min").font(.headline).foregroundStyle(.white)
+                                Text("\(Int(ceil(model.eta(route)/60))) min").font(.headline).foregroundStyle(.white)
                                 Text(route.distance < 1000 ? "\(Int(route.distance)) m" : String(format:"%.1f km",route.distance/1000)).font(.caption).foregroundStyle(.secondary)
                             }
                             if model.selected == index { Image(systemName:"checkmark.circle.fill") }
                         }.padding(12).background(model.selected == index ? accent.opacity(0.18) : .white.opacity(0.04),in:RoundedRectangle(cornerRadius:18)).overlay(RoundedRectangle(cornerRadius:18).stroke(model.selected == index ? accent : .clear,lineWidth:1.5))
                     }.buttonStyle(.plain)
+                }
+                if model.stepFree,let active=model.active,!model.accessibility(active).isStepFree {
+                    Text("No fully step-free route found — barriers are marked in red on the map.").font(.caption).foregroundStyle(.red)
                 }
                 sunControls
                 if model.active?.exposure != nil {
@@ -286,7 +305,7 @@ struct MapScreen: View {
     }
     @ViewBuilder private var appleDisplayMap:some View {
         if model.debug { map }
-        else { BatchedRouteMap(routes:model.routes,selected:model.active?.id,origin:model.hasOrigin ? model.origin : nil,destination:model.hasDestination ? model.destination : nil,records:model.records,recordsRevision:model.recordsRevision,shadows:polygons,shadowsRevision:shadowRevision,exposureRevision:model.exposureRevision,hazards:reports.active,onHeadingChange:{ heading=$0 },onCenterChange:{ mapCenter.coordinate=$0 }) }
+        else { BatchedRouteMap(routes:model.routes,selected:model.active?.id,origin:model.hasOrigin ? model.origin : nil,destination:model.hasDestination ? model.destination : nil,records:model.records,recordsRevision:model.recordsRevision,shadows:polygons,shadowsRevision:shadowRevision,exposureRevision:model.exposureRevision,hazards:reports.active,barriers:model.stepFree ? model.barriers : [],onHeadingChange:{ heading=$0 },onCenterChange:{ mapCenter.coordinate=$0 }) }
     }
     private var map: some View {
         Map(position:$position) {
