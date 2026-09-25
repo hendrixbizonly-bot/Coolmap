@@ -1,5 +1,5 @@
 import Foundation
-public enum HeightSource: String, Codable, Sendable { case exact, levelsEstimate, manualPatch, fallback }
+public enum HeightSource: String, Codable, Sendable { case exact, levelsEstimate, manualPatch, fallback, model }
 public struct BuildingGeometry: Sendable {
     public let id: String
     public let footprint: [LocalPoint]

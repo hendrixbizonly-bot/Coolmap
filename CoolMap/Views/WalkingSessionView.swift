@@ -5,6 +5,7 @@ struct WalkingSessionView: View {
     @Environment(\.dismiss) private var dismiss
     let route:RouteOption
     @ObservedObject var location:LocationService
+    @ObservedObject private var reports=RouteReportStore.shared
     let destinationName:String
     var routeColor:Color = .blue
     @State private var position=MapCameraPosition.automatic
@@ -19,6 +20,11 @@ struct WalkingSessionView: View {
     private let demoTimer=Timer.publish(every:1,on:.main,in:.common).autoconnect()
     private let freshnessTimer=Timer.publish(every:5,on:.main,in:.common).autoconnect()
     @State private var speech=AVSpeechSynthesizer()
+    /// Stage demo: a simulated walker moves along the route into a pin another walker reported 10 min ago.
+    @State private var stageDemo=false
+    @State private var demoHazardDistance=0.0
+    private let stageTimer=Timer.publish(every:0.5,on:.main,in:.common).autoconnect()
+    private static let demoMetresPerSecond=3.0
     private let panel=Color(red:0.055,green:0.09,blue:0.14)
     private var origin:CLLocationCoordinate2D { route.coordinates.first ?? .init(latitude:25.2,longitude:55.27) }
     private var projection:CoordinateProjection { .init(origin:origin.geo) }
@@ -40,6 +46,7 @@ struct WalkingSessionView: View {
         return (origin,0)
     }
     private var walkingHeading:Double {
+        if stageDemo { return demoHeading }
         if demo { return demoPose.heading }
         if let fix=location.lastFix,fix.course>=0,fix.speed>0.5 { return fix.course }
         return location.heading
@@ -60,6 +67,7 @@ struct WalkingSessionView: View {
         return progress?.remainingDistance ?? route.distance
     }
     private var freshCoordinate:CLLocationCoordinate2D? {
+        if stageDemo { return coordinate(alongRoute:demoDistance) }
         if demo { return demoPose.coordinate }
         guard let fix=location.lastFix,abs(fix.timestamp.timeIntervalSinceNow)<30,
               fix.horizontalAccuracy>=0,fix.horizontalAccuracy<65 else { return nil }
@@ -85,6 +93,34 @@ struct WalkingSessionView: View {
         if (progress?.remainingDistance ?? 100)>20 { return nextStep?.instructions ?? "Continue along the route" }
         return "You’re near your destination"
     }
+    private var demoHeading:Double {
+        guard stageDemo,let a=coordinate(alongRoute:demoDistance),let b=coordinate(alongRoute:demoDistance+15) else { return location.heading }
+        let dLon=(b.longitude-a.longitude)*Double.pi/180,lat1=a.latitude*Double.pi/180,lat2=b.latitude*Double.pi/180
+        let y=sin(dLon)*cos(lat2),x=cos(lat1)*sin(lat2)-sin(lat1)*cos(lat2)*cos(dLon)
+        return (atan2(y,x)*180/Double.pi+360).truncatingRemainder(dividingBy:360)
+    }
+    /// Point `metres` along the route polyline (nil if the route is empty).
+    private func coordinate(alongRoute metres:Double)->CLLocationCoordinate2D? {
+        let c=route.coordinates
+        guard let first=c.first else { return nil }
+        var left=max(0,metres)
+        for (a,b) in zip(c,c.dropFirst()) {
+            let seg=RouteReportStore.distance(a.geo,b.geo)
+            if left<=seg,seg>0 { let t=left/seg; return .init(latitude:a.latitude+(b.latitude-a.latitude)*t,longitude:a.longitude+(b.longitude-a.longitude)*t) }
+            left-=seg
+        }
+        return c.count>1 ? c.last : first
+    }
+    private func setStageDemo(_ on:Bool) {
+        stageDemo=on
+        if on { demo=false }
+        guard on else { reports.clearDemoHazards(); update(); return }
+        // Pin the tree ~150 m in, or mid-route on short walks, and start the walker 90 m before it.
+        demoHazardDistance=min(150,route.distance*0.6)
+        demoDistance=max(0,demoHazardDistance-90)
+        if let p=coordinate(alongRoute:demoHazardDistance) { reports.plantStageDemo(at:p.geo) }
+        follow=true; previewing=false; update()
+    }
     var body:some View {
         activeMap
         .safeAreaInset(edge:.top) {
@@ -93,13 +129,32 @@ struct WalkingSessionView: View {
                 VStack(alignment:.leading,spacing:7) {
                     if followCoordinate != nil { Text("In \(Int(stepDistance.rounded())) m").font(.subheadline).opacity(0.85) }
                     Text(instruction).font(.title3.bold())
-                    Text(followCoordinate == nil ? destinationName : onRoute ? (demo ? "DEMO WALK · simulated location" : "Walking to \(destinationName)") : "Head to the nearby route").font(.caption).opacity(0.8)
+                    Text(followCoordinate == nil ? destinationName : onRoute ? ((demo || stageDemo) ? "DEMO WALK · simulated location" : "Walking to \(destinationName)") : "Head to the nearby route").font(.caption).opacity(0.8)
                 }
                 Spacer()
             }.padding(20).coolGlass().padding(12)
         }
+        .overlay(alignment:.top) {
+            if let r=reports.verification { StillThereCard(store:reports,report:r).padding(.horizontal,16).transition(.move(edge:.top).combined(with:.opacity)) }
+        }
         .overlay(alignment:.trailing) {
-            Button { follow=true; previewing=false; update() } label: { Image(systemName:"location.viewfinder").font(.title2).padding().background(panel,in:Circle()) }.padding().accessibilityLabel("Show route or nearby location")
+            VStack(spacing:14) {
+                Button { follow=true; previewing=false; update() } label: { Image(systemName:"location.viewfinder").font(.title2).padding().background(panel,in:Circle()) }.accessibilityLabel("Show route or nearby location")
+                HazardReportButton { report=true }
+            }.padding()
+        }
+        .overlay(alignment:.bottomLeading) {
+            VStack(alignment:.leading,spacing:8) {
+                if stageDemo,let tree=reports.demo.first {
+                    let gap=Int(max(0,demoHazardDistance-demoDistance))
+                    Text(gap>0 ? "Another walker reported “\(tree.note)” 10 min ago · \(gap) m ahead" : "You’re at the reported tree")
+                        .font(.caption).padding(.horizontal,12).padding(.vertical,8).background(panel,in:Capsule())
+                }
+                Toggle(isOn:Binding(get:{ stageDemo },set:setStageDemo)) {
+                    Label("Stage demo",systemImage:"figure.walk.motion").font(.caption.bold())
+                }.toggleStyle(.button).tint(.orange).background(panel,in:Capsule())
+                .accessibilityHint("Simulates walking this route into a hazard another walker reported")
+            }.padding().padding(.bottom,10)
         }
         .safeAreaInset(edge:.bottom) {
             VStack(spacing:18) {
@@ -113,7 +168,7 @@ struct WalkingSessionView: View {
                     Text("\(Int(ceil(route.expectedTravelTime/60))) min · \(Int(route.distance)) m walk").font(.headline)
                     Text(followCoordinate == nil ? previewMessage : "Join the route to start tracking your walk.").font(.caption).foregroundStyle(.secondary)
                     if followCoordinate == nil {
-                        Button("Demo walk") { demo=true; demoDistance=0; follow=true; update() }.buttonStyle(.borderedProminent)
+                        Button("Demo walk") { if stageDemo { setStageDemo(false) }; demo=true; demoDistance=0; follow=true; update() }.buttonStyle(.borderedProminent)
                     }
                 }
                 if demo { Button("Stop demo") { demo=false; progress=nil; showRoute(); update() }.font(.caption) }
@@ -127,7 +182,7 @@ struct WalkingSessionView: View {
         }
         .preferredColorScheme(.dark)
         .onAppear { showRoute(); location.startTracking(); update() }
-        .onDisappear { location.stopTracking(); speech.stopSpeaking(at:.immediate) }
+        .onDisappear { location.stopTracking(); speech.stopSpeaking(at:.immediate); if stageDemo { reports.clearDemoHazards() } }
         .onReceive(demoTimer) { _ in
             guard demo else { return }
             // Accelerated preview, independent of the user's real GPS.
@@ -136,10 +191,16 @@ struct WalkingSessionView: View {
             withAnimation(.linear(duration:1)) { update() }
         }
         .onReceive(freshnessTimer) { _ in update() }
-        .onReceive(location.$coordinate) { _ in update() }
-        .onReceive(location.$heading) { _ in if follow { update() } }
+        .onReceive(stageTimer) { _ in
+            guard stageDemo,demoDistance<route.distance,reports.verification==nil else { return }
+            demoDistance+=Self.demoMetresPerSecond*0.5
+            update()
+            if let c=freshCoordinate { reports.checkProximity(to:c.geo) }
+        }
+        .onReceive(location.$coordinate) { c in guard !stageDemo else { return }; update(); if let c { reports.checkProximity(to:c.geo) } }
+        .onReceive(location.$heading) { _ in if follow && !stageDemo { update() } }
         .sheet(isPresented:$steps) { WalkNavigationView(route:route,location:location) }
-        .sheet(isPresented:$report) { RouteReportView(coordinate:(followCoordinate ?? origin).geo,locationDescription:demo ? "Simulated demo position (not GPS)" : followCoordinate == nil ? "Route start (preview — not your GPS location)" : "Your current GPS position") }
+        .sheet(isPresented:$report) { HazardReportSheet(store:reports,coordinate:(followCoordinate ?? origin).geo,locationDescription:demo || stageDemo ? "Simulated demo position (not GPS)" : followCoordinate == nil ? "Route start (preview — not your GPS location)" : "Your current GPS position") }
     }
     @ViewBuilder private var activeMap:some View {
         #if canImport(GoogleMaps)
@@ -152,7 +213,7 @@ struct WalkingSessionView: View {
     }
     private var appleMap:some View {
         Map(position:$position) {
-            Annotation(demo ? "Demo position" : followCoordinate == nil ? "Route start" : "You",coordinate:followCoordinate ?? origin) {
+            Annotation((demo || stageDemo) ? "Demo position" : followCoordinate == nil ? "Route start" : "You",coordinate:followCoordinate ?? origin) {
                 Image(systemName:"location.north.fill")
                     .font(.system(size:30,weight:.bold)).foregroundStyle(.blue)
                     .rotationEffect(.degrees((followCoordinate == nil ? demoPose.heading : walkingHeading)-cameraHeading))
@@ -163,6 +224,7 @@ struct WalkingSessionView: View {
             MapPolyline(coordinates:route.coordinates).stroke(.white,lineWidth:10)
             MapPolyline(coordinates:route.coordinates).stroke(routeColor,lineWidth:6)
             if let end=route.coordinates.last { Marker(destinationName,coordinate:end).tint(.red) }
+            ForEach(reports.active) { r in Marker(r.hazard.rawValue,systemImage:r.hazard.icon,coordinate:r.coordinate.coordinate).tint(r.hazard.color) }
         }.mapStyle(.standard(elevation:.realistic,pointsOfInterest:.excludingAll))
         .onMapCameraChange { context in
             cameraHeading=context.camera.heading

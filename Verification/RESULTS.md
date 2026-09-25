@@ -103,3 +103,6 @@ The app filters route candidates to <=3,600 seconds before requesting buildings.
 - Expanded single-route fallback to real pedestrian legs through two sides of the origin/destination corridor. Rejects disconnected joins, near-duplicate paths, walks over one hour, and detours over 1.8 times the baseline duration.
 - Only exposes a Shade choice when the least-sun result is a distinct route. Abu Dhabi demo still produced no qualifying shadier alternative; this requirement is limited by returned pedestrian directions, not solved by fabricated route geometry.
 - Verified simulator home, menu/profile placeholder, and yellow/grey route preview. Simulator build and 28 core tests passed. Distinct blue shade selection not live-tested because this demo returned no shadier alternative.
+
+## Main integration — 25 September 2026
+Merged current teammate main into the UI update before publication. Preserved hazard reporting, map pins, proximity verification, stage hazard demo, heat scoring, off-route tracking core, bundled Abu Dhabi data, and server files. Integrated the stage demo with the new walking arrow and kept it mutually exclusive with ordinary walking preview. Regenerated the Xcode project with all new files. Combined simulator build and core test suite passed; server code was unchanged by conflict resolution.

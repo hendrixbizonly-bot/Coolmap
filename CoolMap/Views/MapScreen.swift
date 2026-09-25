@@ -4,6 +4,10 @@ import MapKit
 struct MapScreen:View {
     @StateObject private var model=AppModel()
     @StateObject private var location=LocationService()
+    @ObservedObject private var reports=RouteReportStore.shared
+    @State private var reporting=false
+    @State private var mapCenter=MapCenter()
+    private let expiryTicker=Timer.publish(every:60,on:.main,in:.common).autoconnect()
     @State private var searchOrigin:Bool?
     @State private var settings=false
     @State private var navigation=false
@@ -33,7 +37,9 @@ struct MapScreen:View {
                         Button("Try Abu Dhabi demo") { Task { await model.demo() } }
                     }.padding().coolGlass()
                 }
+                if let verification=reports.verification,!navigation { StillThereCard(store:reports,report:verification) }
                 Spacer(minLength:12)
+                HStack { Spacer(); HazardReportButton { reporting=true } }
                 if !model.hasDestination {
                     HStack { Spacer(); Button { useLocation() } label: { Image(systemName:"location.fill").font(.title2).padding(18) }.coolGlass().accessibilityLabel("Use current location") }
                     if let error=location.error { Text(error).font(.caption).padding().coolGlass() }
@@ -54,6 +60,10 @@ struct MapScreen:View {
                 if !model.hasOrigin { useLocation() } else { Task { await model.load() } }
             }
         }
+        .sheet(isPresented:$reporting) { HazardReportSheet(store:reports,coordinate:reportPoint.coordinate,locationDescription:reportPoint.description) }
+        .onReceive(expiryTicker) { _ in reports.purgeExpired() }
+        .onReceive(location.$coordinate) { coordinate in if let coordinate,!navigation { reports.checkProximity(to:coordinate.geo) } }
+        .onChange(of:model.hasOrigin) { _,has in if has { Task { await reports.refresh(around:model.origin.geo) } } }
         .sheet(isPresented:$settings) { settingsView }
         .alert("Google Maps needs API keys",isPresented:$providerNotice) {
             Button("OK",role:.cancel) {}
@@ -180,7 +190,7 @@ struct MapScreen:View {
         #endif
     }
     private var appleMap:some View {
-        BatchedRouteMap(routes:model.routes,selected:model.active?.id,origin:model.hasOrigin ? model.origin : nil,destination:model.hasDestination ? model.destination : nil,shadows:polygons,shadowsRevision:shadowRevision,exposureRevision:model.exposureRevision,routeTint:shadePreferred ? .systemBlue : .systemYellow,onHeadingChange:{ heading=$0 },floatingControls:true)
+        BatchedRouteMap(routes:model.routes,selected:model.active?.id,origin:model.hasOrigin ? model.origin : nil,destination:model.hasDestination ? model.destination : nil,shadows:polygons,shadowsRevision:shadowRevision,exposureRevision:model.exposureRevision,hazards:reports.active,onCenterChange:{ mapCenter.coordinate=$0 },routeTint:shadePreferred ? .systemBlue : .systemYellow,onHeadingChange:{ heading=$0 },floatingControls:true)
     }
     private var settingsView:some View {
         NavigationStack {
@@ -199,6 +209,12 @@ struct MapScreen:View {
                 Section("When are you walking?") {
                     DatePicker("Departure",selection:$model.departure).environment(\.timeZone,TimeZone(identifier:"Asia/Dubai")!)
                     Text("Abu Dhabi time · walks limited to one hour")
+                }
+                if let active=model.active,let heat=model.heatCost(for:active) {
+                    Section("Route detail") {
+                        Text(active.id==model.coolest ? "Lowest heat score among returned routes" : "Heat score")
+                        Text(String(format:"%.0f solar-weighted cost",heat))
+                    }
                 }
                 Section("About this preview") {
                     Text("Shortest compares distance. Shade compares estimated sun minutes among the returned routes. Missing building heights affect these estimates. Grey route segments have a known building blocking the sun. Yellow identifies Shortest; blue identifies Shade.")
@@ -239,5 +255,14 @@ struct MapScreen:View {
         let date=c.date(bySettingHour:Int(minute)/60,minute:Int(minute)%60,second:0,of:model.departure)!
         if date != model.departure { model.departure=date }
     }
+    private var reportPoint:(coordinate:GeoPoint,description:String) {
+        if let fix=location.lastFix,abs(fix.timestamp.timeIntervalSinceNow)<120,fix.horizontalAccuracy<100 { return (fix.coordinate.geo,"Your current location") }
+        if let center=mapCenter.coordinate { return (center.geo,"Map center") }
+        if model.hasOrigin { return (model.origin.geo,model.originName) }
+        return (.init(latitude:24.5005,longitude:54.3888),"Abu Dhabi")
+    }
     private func useLocation() { model.invalidate(); model.hasOrigin=false; model.usesCurrentLocation=true; location.request() }
 }
+
+/// Reference holder avoids SwiftUI updates while the map pans.
+final class MapCenter { var coordinate:CLLocationCoordinate2D? }

@@ -1,0 +1,661 @@
+[
+  {
+    "id": "clear-win-01",
+    "group": "clear_win",
+    "request": {
+      "lat": 24.47,
+      "lon": 54.37,
+      "localTime": "2026-09-25T15:45:00+04:00",
+      "offRouteMeters": 0,
+      "offRouteSeconds": 0,
+      "walkedSeconds": 300,
+      "secondsSinceLastPrompt": 9999,
+      "minutesToSunset": 150,
+      "current": {
+        "remainingSeconds": 600,
+        "remainingHeat": 1500,
+        "remainingSunSeconds": 420
+      },
+      "alternative": {
+        "totalSeconds": 660,
+        "heat": 950,
+        "sunSeconds": 120
+      },
+      "hazardsAhead": []
+    },
+    "label": "should_prompt",
+    "rationale": "About 37% less remaining heat for one extra minute is a worthwhile interruption."
+  },
+  {
+    "id": "clear-win-02",
+    "group": "clear_win",
+    "request": {
+      "lat": 24.47,
+      "lon": 54.37,
+      "localTime": "2026-09-25T15:45:00+04:00",
+      "offRouteMeters": 0,
+      "offRouteSeconds": 0,
+      "walkedSeconds": 300,
+      "secondsSinceLastPrompt": 9999,
+      "minutesToSunset": 150,
+      "current": {
+        "remainingSeconds": 900,
+        "remainingHeat": 2000,
+        "remainingSunSeconds": 650
+      },
+      "alternative": {
+        "totalSeconds": 1020,
+        "heat": 1400,
+        "sunSeconds": 400
+      },
+      "hazardsAhead": []
+    },
+    "label": "should_prompt",
+    "rationale": "Exactly 30% less heat for exactly two extra minutes still offers a clear benefit."
+  },
+  {
+    "id": "clear-win-03",
+    "group": "clear_win",
+    "request": {
+      "lat": 24.481,
+      "lon": 54.355,
+      "localTime": "2026-09-25T15:45:00+04:00",
+      "offRouteMeters": 0,
+      "offRouteSeconds": 0,
+      "walkedSeconds": 600,
+      "secondsSinceLastPrompt": 9999,
+      "minutesToSunset": 150,
+      "current": {
+        "remainingSeconds": 720,
+        "remainingHeat": 1800,
+        "remainingSunSeconds": 500
+      },
+      "alternative": {
+        "totalSeconds": 720,
+        "heat": 900,
+        "sunSeconds": 200
+      },
+      "hazardsAhead": []
+    },
+    "label": "should_prompt",
+    "rationale": "Halving the remaining heat without adding walking time warrants a prompt."
+  },
+  {
+    "id": "clear-win-04",
+    "group": "clear_win",
+    "request": {
+      "lat": 24.455,
+      "lon": 54.392,
+      "localTime": "2026-09-25T15:45:00+04:00",
+      "offRouteMeters": 0,
+      "offRouteSeconds": 0,
+      "walkedSeconds": 300,
+      "secondsSinceLastPrompt": 9999,
+      "minutesToSunset": 150,
+      "current": {
+        "remainingSeconds": 600,
+        "remainingHeat": 1600,
+        "remainingSunSeconds": 450
+      },
+      "alternative": {
+        "totalSeconds": 540,
+        "heat": 1000,
+        "sunSeconds": 180
+      },
+      "hazardsAhead": []
+    },
+    "label": "should_prompt",
+    "rationale": "The alternative cuts heat by 37.5% and arrives one minute sooner."
+  },
+  {
+    "id": "clear-win-05",
+    "group": "clear_win",
+    "request": {
+      "lat": 24.47,
+      "lon": 54.37,
+      "localTime": "2026-09-25T15:45:00+04:00",
+      "offRouteMeters": 0,
+      "offRouteSeconds": 0,
+      "walkedSeconds": 900,
+      "secondsSinceLastPrompt": 9999,
+      "minutesToSunset": 150,
+      "current": {
+        "remainingSeconds": 1200,
+        "remainingHeat": 3000,
+        "remainingSunSeconds": 900
+      },
+      "alternative": {
+        "totalSeconds": 1290,
+        "heat": 1200,
+        "sunSeconds": 300
+      },
+      "hazardsAhead": []
+    },
+    "label": "should_prompt",
+    "rationale": "A 60% heat reduction over a long remaining walk justifies 90 extra seconds."
+  },
+  {
+    "id": "clear-win-06",
+    "group": "clear_win",
+    "request": {
+      "lat": 24.47,
+      "lon": 54.37,
+      "localTime": "2026-09-25T15:45:00+04:00",
+      "offRouteMeters": 45,
+      "offRouteSeconds": 35,
+      "walkedSeconds": 300,
+      "secondsSinceLastPrompt": 9999,
+      "minutesToSunset": 150,
+      "current": {
+        "remainingSeconds": 480,
+        "remainingHeat": 1200,
+        "remainingSunSeconds": 350
+      },
+      "alternative": {
+        "totalSeconds": 510,
+        "heat": 720,
+        "sunSeconds": 160
+      },
+      "hazardsAhead": []
+    },
+    "label": "should_prompt",
+    "rationale": "A 40% heat reduction costs only 30 extra seconds."
+  },
+  {
+    "id": "clear-win-07",
+    "group": "clear_win",
+    "request": {
+      "lat": 24.495,
+      "lon": 54.365,
+      "localTime": "2026-09-25T15:45:00+04:00",
+      "offRouteMeters": 0,
+      "offRouteSeconds": 0,
+      "walkedSeconds": 1200,
+      "secondsSinceLastPrompt": 9999,
+      "minutesToSunset": 150,
+      "current": {
+        "remainingSeconds": 1500,
+        "remainingHeat": 4000,
+        "remainingSunSeconds": 1100
+      },
+      "alternative": {
+        "totalSeconds": 1620,
+        "heat": 2000,
+        "sunSeconds": 500
+      },
+      "hazardsAhead": []
+    },
+    "label": "should_prompt",
+    "rationale": "Halving substantial remaining heat is worth two extra minutes."
+  },
+  {
+    "id": "clear-win-08",
+    "group": "clear_win",
+    "request": {
+      "lat": 24.47,
+      "lon": 54.37,
+      "localTime": "2026-09-25T15:45:00+04:00",
+      "offRouteMeters": 0,
+      "offRouteSeconds": 0,
+      "walkedSeconds": 300,
+      "secondsSinceLastPrompt": 1800,
+      "minutesToSunset": 150,
+      "current": {
+        "remainingSeconds": 660,
+        "remainingHeat": 1600,
+        "remainingSunSeconds": 470
+      },
+      "alternative": {
+        "totalSeconds": 720,
+        "heat": 1000,
+        "sunSeconds": 180
+      },
+      "hazardsAhead": []
+    },
+    "label": "should_prompt",
+    "rationale": "A 37.5% heat reduction for one extra minute merits a new prompt after a long quiet interval."
+  },
+  {
+    "id": "marginal-01",
+    "group": "marginal",
+    "request": {
+      "lat": 24.47,
+      "lon": 54.37,
+      "localTime": "2026-09-25T15:45:00+04:00",
+      "offRouteMeters": 0,
+      "offRouteSeconds": 0,
+      "walkedSeconds": 300,
+      "secondsSinceLastPrompt": 9999,
+      "minutesToSunset": 150,
+      "current": {
+        "remainingSeconds": 600,
+        "remainingHeat": 1000,
+        "remainingSunSeconds": 350
+      },
+      "alternative": {
+        "totalSeconds": 620,
+        "heat": 950,
+        "sunSeconds": 330
+      },
+      "hazardsAhead": []
+    },
+    "label": "stay_quiet",
+    "rationale": "Saving only 5% of heat does not justify interrupting the walker for a longer route."
+  },
+  {
+    "id": "marginal-02",
+    "group": "marginal",
+    "request": {
+      "lat": 24.47,
+      "lon": 54.37,
+      "localTime": "2026-09-25T15:45:00+04:00",
+      "offRouteMeters": 0,
+      "offRouteSeconds": 0,
+      "walkedSeconds": 300,
+      "secondsSinceLastPrompt": 9999,
+      "minutesToSunset": 150,
+      "current": {
+        "remainingSeconds": 900,
+        "remainingHeat": 2000,
+        "remainingSunSeconds": 650
+      },
+      "alternative": {
+        "totalSeconds": 1020,
+        "heat": 1700,
+        "sunSeconds": 570
+      },
+      "hazardsAhead": []
+    },
+    "label": "stay_quiet",
+    "rationale": "A modest 15% heat saving is too small to justify two extra minutes."
+  },
+  {
+    "id": "marginal-03",
+    "group": "marginal",
+    "request": {
+      "lat": 24.47,
+      "lon": 54.37,
+      "localTime": "2026-09-25T15:45:00+04:00",
+      "offRouteMeters": 0,
+      "offRouteSeconds": 0,
+      "walkedSeconds": 300,
+      "secondsSinceLastPrompt": 9999,
+      "minutesToSunset": 150,
+      "current": {
+        "remainingSeconds": 480,
+        "remainingHeat": 1200,
+        "remainingSunSeconds": 350
+      },
+      "alternative": {
+        "totalSeconds": 900,
+        "heat": 780,
+        "sunSeconds": 200
+      },
+      "hazardsAhead": []
+    },
+    "label": "stay_quiet",
+    "rationale": "A 35% heat saving does not justify adding seven minutes to an eight-minute remainder."
+  },
+  {
+    "id": "marginal-04",
+    "group": "marginal",
+    "request": {
+      "lat": 24.47,
+      "lon": 54.37,
+      "localTime": "2026-09-25T15:45:00+04:00",
+      "offRouteMeters": 0,
+      "offRouteSeconds": 0,
+      "walkedSeconds": 300,
+      "secondsSinceLastPrompt": 9999,
+      "minutesToSunset": 150,
+      "current": {
+        "remainingSeconds": 600,
+        "remainingHeat": 1000,
+        "remainingSunSeconds": 350
+      },
+      "alternative": {
+        "totalSeconds": 600,
+        "heat": 990,
+        "sunSeconds": 345
+      },
+      "hazardsAhead": []
+    },
+    "label": "stay_quiet",
+    "rationale": "A 1% heat difference at identical travel time is negligible."
+  },
+  {
+    "id": "marginal-05",
+    "group": "marginal",
+    "request": {
+      "lat": 24.47,
+      "lon": 54.37,
+      "localTime": "2026-09-25T15:45:00+04:00",
+      "offRouteMeters": 0,
+      "offRouteSeconds": 0,
+      "walkedSeconds": 300,
+      "secondsSinceLastPrompt": 9999,
+      "minutesToSunset": 150,
+      "current": {
+        "remainingSeconds": 600,
+        "remainingHeat": 1200,
+        "remainingSunSeconds": 350
+      },
+      "alternative": {
+        "totalSeconds": 570,
+        "heat": 1260,
+        "sunSeconds": 390
+      },
+      "hazardsAhead": []
+    },
+    "label": "stay_quiet",
+    "rationale": "Arriving 30 seconds sooner does not warrant a heat-avoidance prompt when exposure increases."
+  },
+  {
+    "id": "marginal-06",
+    "group": "marginal",
+    "request": {
+      "lat": 24.47,
+      "lon": 54.37,
+      "localTime": "2026-09-25T15:45:00+04:00",
+      "offRouteMeters": 8,
+      "offRouteSeconds": 10,
+      "walkedSeconds": 300,
+      "secondsSinceLastPrompt": 9999,
+      "minutesToSunset": 150,
+      "current": {
+        "remainingSeconds": 720,
+        "remainingHeat": 1800,
+        "remainingSunSeconds": 500
+      },
+      "alternative": null,
+      "hazardsAhead": []
+    },
+    "label": "stay_quiet",
+    "rationale": "There is no alternative route to offer, so do not interrupt."
+  },
+  {
+    "id": "just-prompted-01",
+    "group": "just_prompted",
+    "request": {
+      "lat": 24.47,
+      "lon": 54.37,
+      "localTime": "2026-09-25T15:45:00+04:00",
+      "offRouteMeters": 0,
+      "offRouteSeconds": 0,
+      "walkedSeconds": 300,
+      "secondsSinceLastPrompt": 0,
+      "minutesToSunset": 150,
+      "current": {
+        "remainingSeconds": 600,
+        "remainingHeat": 1500,
+        "remainingSunSeconds": 420
+      },
+      "alternative": {
+        "totalSeconds": 660,
+        "heat": 950,
+        "sunSeconds": 120
+      },
+      "hazardsAhead": []
+    },
+    "label": "stay_quiet",
+    "rationale": "A prompt was just shown, so repeating the same useful heat-saving offer immediately would be disruptive."
+  },
+  {
+    "id": "just-prompted-02",
+    "group": "just_prompted",
+    "request": {
+      "lat": 24.47,
+      "lon": 54.37,
+      "localTime": "2026-09-25T15:45:00+04:00",
+      "offRouteMeters": 0,
+      "offRouteSeconds": 0,
+      "walkedSeconds": 300,
+      "secondsSinceLastPrompt": 15,
+      "minutesToSunset": 150,
+      "current": {
+        "remainingSeconds": 900,
+        "remainingHeat": 2400,
+        "remainingSunSeconds": 700
+      },
+      "alternative": {
+        "totalSeconds": 960,
+        "heat": 1200,
+        "sunSeconds": 300
+      },
+      "hazardsAhead": []
+    },
+    "label": "stay_quiet",
+    "rationale": "Only 15 seconds have passed since the last prompt and no new hazard requires another interruption."
+  },
+  {
+    "id": "just-prompted-03",
+    "group": "just_prompted",
+    "request": {
+      "lat": 24.47,
+      "lon": 54.37,
+      "localTime": "2026-09-25T15:45:00+04:00",
+      "offRouteMeters": 0,
+      "offRouteSeconds": 0,
+      "walkedSeconds": 600,
+      "secondsSinceLastPrompt": 30,
+      "minutesToSunset": 150,
+      "current": {
+        "remainingSeconds": 720,
+        "remainingHeat": 1800,
+        "remainingSunSeconds": 500
+      },
+      "alternative": {
+        "totalSeconds": 720,
+        "heat": 900,
+        "sunSeconds": 200
+      },
+      "hazardsAhead": []
+    },
+    "label": "stay_quiet",
+    "rationale": "The strong heat benefit does not warrant another prompt only 30 seconds after the previous one."
+  },
+  {
+    "id": "just-prompted-04",
+    "group": "just_prompted",
+    "request": {
+      "lat": 24.47,
+      "lon": 54.37,
+      "localTime": "2026-09-25T15:45:00+04:00",
+      "offRouteMeters": 0,
+      "offRouteSeconds": 0,
+      "walkedSeconds": 900,
+      "secondsSinceLastPrompt": 60,
+      "minutesToSunset": 150,
+      "current": {
+        "remainingSeconds": 1200,
+        "remainingHeat": 3000,
+        "remainingSunSeconds": 900
+      },
+      "alternative": {
+        "totalSeconds": 1290,
+        "heat": 1200,
+        "sunSeconds": 300
+      },
+      "hazardsAhead": []
+    },
+    "label": "stay_quiet",
+    "rationale": "Allow time to act on the recent prompt instead of repeating it 60 seconds later."
+  },
+  {
+    "id": "near-sunset-01",
+    "group": "near_sunset",
+    "request": {
+      "lat": 24.47,
+      "lon": 54.37,
+      "localTime": "2026-09-25T18:14:00+04:00",
+      "offRouteMeters": 0,
+      "offRouteSeconds": 0,
+      "walkedSeconds": 1200,
+      "secondsSinceLastPrompt": 9999,
+      "minutesToSunset": 1,
+      "current": {
+        "remainingSeconds": 600,
+        "remainingHeat": 80,
+        "remainingSunSeconds": 45
+      },
+      "alternative": {
+        "totalSeconds": 660,
+        "heat": 50,
+        "sunSeconds": 20
+      },
+      "hazardsAhead": []
+    },
+    "label": "stay_quiet",
+    "rationale": "With sunset one minute away and little heat left, a 37.5% relative saving is not worth an extra minute."
+  },
+  {
+    "id": "near-sunset-02",
+    "group": "near_sunset",
+    "request": {
+      "lat": 24.47,
+      "lon": 54.37,
+      "localTime": "2026-09-25T18:12:00+04:00",
+      "offRouteMeters": 0,
+      "offRouteSeconds": 0,
+      "walkedSeconds": 1800,
+      "secondsSinceLastPrompt": 9999,
+      "minutesToSunset": 3,
+      "current": {
+        "remainingSeconds": 900,
+        "remainingHeat": 180,
+        "remainingSunSeconds": 150
+      },
+      "alternative": {
+        "totalSeconds": 1020,
+        "heat": 110,
+        "sunSeconds": 70
+      },
+      "hazardsAhead": []
+    },
+    "label": "stay_quiet",
+    "rationale": "Sunset in three minutes makes the small absolute heat saving poor compensation for a two-minute detour."
+  },
+  {
+    "id": "near-sunset-03",
+    "group": "near_sunset",
+    "request": {
+      "lat": 24.47,
+      "lon": 54.37,
+      "localTime": "2026-09-25T18:15:00+04:00",
+      "offRouteMeters": 0,
+      "offRouteSeconds": 0,
+      "walkedSeconds": 900,
+      "secondsSinceLastPrompt": 9999,
+      "minutesToSunset": 0,
+      "current": {
+        "remainingSeconds": 300,
+        "remainingHeat": 20,
+        "remainingSunSeconds": 10
+      },
+      "alternative": {
+        "totalSeconds": 360,
+        "heat": 10,
+        "sunSeconds": 5
+      },
+      "hazardsAhead": []
+    },
+    "label": "stay_quiet",
+    "rationale": "At sunset the tiny remaining exposure does not justify extending the final five minutes of the walk."
+  },
+  {
+    "id": "hazard-ahead-01",
+    "group": "hazard_ahead",
+    "request": {
+      "lat": 24.47,
+      "lon": 54.37,
+      "localTime": "2026-09-25T15:45:00+04:00",
+      "offRouteMeters": 0,
+      "offRouteSeconds": 0,
+      "walkedSeconds": 300,
+      "secondsSinceLastPrompt": 9999,
+      "minutesToSunset": 150,
+      "current": {
+        "remainingSeconds": 600,
+        "remainingHeat": 1500,
+        "remainingSunSeconds": 420
+      },
+      "alternative": {
+        "totalSeconds": 660,
+        "heat": 1400,
+        "sunSeconds": 390
+      },
+      "hazardsAhead": [
+        {
+          "category": "Blocked crossing",
+          "metersAhead": 80
+        }
+      ]
+    },
+    "label": "should_prompt",
+    "rationale": "A blocked crossing 80 metres ahead warrants offering an alternative despite its modest heat benefit."
+  },
+  {
+    "id": "hazard-ahead-02",
+    "group": "hazard_ahead",
+    "request": {
+      "lat": 24.47,
+      "lon": 54.37,
+      "localTime": "2026-09-25T15:45:00+04:00",
+      "offRouteMeters": 25,
+      "offRouteSeconds": 20,
+      "walkedSeconds": 300,
+      "secondsSinceLastPrompt": 9999,
+      "minutesToSunset": 150,
+      "current": {
+        "remainingSeconds": 900,
+        "remainingHeat": 2000,
+        "remainingSunSeconds": 650
+      },
+      "alternative": {
+        "totalSeconds": 990,
+        "heat": 1850,
+        "sunSeconds": 600
+      },
+      "hazardsAhead": [
+        {
+          "category": "Closed sidewalk",
+          "metersAhead": 40
+        },
+        {
+          "category": "Construction",
+          "metersAhead": 120
+        }
+      ]
+    },
+    "label": "should_prompt",
+    "rationale": "A closed sidewalk 40 metres ahead makes a timely alternative worth presenting for a small detour."
+  },
+  {
+    "id": "hazard-ahead-03",
+    "group": "hazard_ahead",
+    "request": {
+      "lat": 24.47,
+      "lon": 54.37,
+      "localTime": "2026-09-25T15:45:00+04:00",
+      "offRouteMeters": 0,
+      "offRouteSeconds": 0,
+      "walkedSeconds": 300,
+      "secondsSinceLastPrompt": 9999,
+      "minutesToSunset": 150,
+      "current": {
+        "remainingSeconds": 600,
+        "remainingHeat": 1500,
+        "remainingSunSeconds": 420
+      },
+      "alternative": null,
+      "hazardsAhead": [
+        {
+          "category": "Blocked crossing",
+          "metersAhead": 60
+        }
+      ]
+    },
+    "label": "stay_quiet",
+    "rationale": "The blocked crossing still needs a hazard warning, but no alternative exists for a reroute prompt."
+  }
+]

@@ -11,3 +11,4 @@ Config/Local.xcconfig
 .env
 .env.*
 !.env.example
+Verification/smoke/

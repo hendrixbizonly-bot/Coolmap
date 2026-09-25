@@ -22,3 +22,16 @@ public struct WalkingProgress: Sendable {
         return .init(distanceFromStart:at,remainingDistance:cumulative-at,distanceOffRoute:nearest,remainingSeconds:expectedSeconds*(cumulative-at)/cumulative)
     }
 }
+public struct OffRouteTracker: Sendable {
+    private var offRouteSince: Date?
+    public init() {}
+    public mutating func update(distanceOffRoute:Double,at:Date) -> (meters:Double,seconds:Double) {
+        guard distanceOffRoute>25 else {
+            offRouteSince=nil
+            return (distanceOffRoute,0)
+        }
+        let start=offRouteSince ?? at
+        offRouteSince=start
+        return (distanceOffRoute,max(0,at.timeIntervalSince(start)))
+    }
+}

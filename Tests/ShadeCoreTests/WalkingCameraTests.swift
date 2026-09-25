@@ -15,4 +15,38 @@ final class WalkingCameraTests:XCTestCase {
             XCTAssertEqual(progress.canFollowLocation,expected)
         }
     }
+    func testOnRouteTimeStaysZero() {
+        var tracker=OffRouteTracker()
+        let start=Date(timeIntervalSince1970:1000)
+        for (elapsed,distance) in [(0.0,0.0),(15.0,10.0),(30.0,25.0)] {
+            let result=tracker.update(distanceOffRoute:distance,at:start.addingTimeInterval(elapsed))
+            XCTAssertEqual(result.meters,distance)
+            XCTAssertEqual(result.seconds,0)
+        }
+    }
+    func testOffRouteTimeAccumulates() {
+        var tracker=OffRouteTracker()
+        let start=Date(timeIntervalSince1970:1000)
+        XCTAssertEqual(tracker.update(distanceOffRoute:40,at:start).seconds,0)
+        XCTAssertEqual(tracker.update(distanceOffRoute:50,at:start.addingTimeInterval(15)).seconds,15)
+        let result=tracker.update(distanceOffRoute:40,at:start.addingTimeInterval(30))
+        XCTAssertEqual(result.meters,40)
+        XCTAssertEqual(result.seconds,30)
+    }
+    func testReturningToRouteResetsClock() {
+        var tracker=OffRouteTracker()
+        let start=Date(timeIntervalSince1970:1000)
+        _=tracker.update(distanceOffRoute:40,at:start)
+        XCTAssertEqual(tracker.update(distanceOffRoute:40,at:start.addingTimeInterval(30)).seconds,30)
+        XCTAssertEqual(tracker.update(distanceOffRoute:25,at:start.addingTimeInterval(40)).seconds,0)
+        XCTAssertEqual(tracker.update(distanceOffRoute:10,at:start.addingTimeInterval(50)).seconds,0)
+        XCTAssertEqual(tracker.update(distanceOffRoute:40,at:start.addingTimeInterval(60)).seconds,0)
+        XCTAssertEqual(tracker.update(distanceOffRoute:40,at:start.addingTimeInterval(70)).seconds,10)
+    }
+    func testOffRouteTimeCannotBeNegative() {
+        var tracker=OffRouteTracker()
+        let start=Date(timeIntervalSince1970:1000)
+        _=tracker.update(distanceOffRoute:40,at:start)
+        XCTAssertEqual(tracker.update(distanceOffRoute:40,at:start.addingTimeInterval(-10)).seconds,0)
+    }
 }
