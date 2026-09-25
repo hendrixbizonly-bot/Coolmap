@@ -65,6 +65,8 @@ struct RouteReport: Codable, Identifiable {
     var denials:Double=0
     static let clearThreshold=2.0
     var hazard:HazardCategory { HazardCategory(legacy:category) }
+    /// What the walker is being asked about: the reporter's note when there is one, else the category.
+    var summary:String { note.isEmpty ? hazard.rawValue : note }
     var expiresAt:Date { (confirmedAt ?? date).addingTimeInterval(hazard.lifetime) }
     var isActive:Bool { expiresAt>Date() && denials<RouteReport.clearThreshold }
     init(id:UUID=UUID(),category:String,note:String,coordinate:GeoPoint,date:Date,locationDescription:String,shared:Bool=false,confirmedAt:Date?=nil,denials:Double=0) {
@@ -141,11 +143,13 @@ final class RouteReportStore: ObservableObject {
         if let i=updated.firstIndex(where:{$0.id==id}) { change(&updated[i]); try? persist(updated); reports=updated }
         var near=nearby
         if let i=near.firstIndex(where:{$0.id==id}) { change(&near[i]); nearby=near }
+        var d=demo
+        if let i=d.firstIndex(where:{$0.id==id}) { change(&d[i]); demo=d.filter(\.isActive) }
         purgeExpired()
     }
     private func saveReputation() { if let data=try? JSONEncoder().encode(reputation) { UserDefaults.standard.set(data,forKey:reputationKey) } }
     private func sendVote(report:RouteReport,stillThere:Bool) async {
-        guard AppConfiguration.sharedReportsEnabled else { return }
+        guard AppConfiguration.sharedReportsEnabled, !demo.contains(where:{$0.id==report.id}) else { return }
         let body:[String:Any]=["report_id":report.id.uuidString,"still_there":stillThere,"weight":reputation.weight]
         guard let data=try? JSONSerialization.data(withJSONObject:body),var request=try? request(query:"",body:data) else { return }
         request.url=request.url.flatMap { URL(string:$0.absoluteString.replacingOccurrences(of:"route_reports",with:"route_report_votes")) }
@@ -159,8 +163,29 @@ final class RouteReportStore: ObservableObject {
     /// Unexpired pins for the map: your own reports plus nearby community reports, deduplicated by id.
     var active:[RouteReport] {
         var seen=Set<UUID>()
-        return (reports+nearby).filter { $0.isActive && seen.insert($0.id).inserted }
+        return (reports+nearby+demo).filter { $0.isActive && seen.insert($0.id).inserted }
     }
+    /// Demo mode: sample “community” hazards planted around a point so the Still there? flow can be shown
+    /// without walking a route or waiting for another user. Never persisted or uploaded.
+    @Published private(set) var demo:[RouteReport]=[]
+    var demoMode:Bool { !demo.isEmpty }
+    func plantDemoHazards(around p:GeoPoint) {
+        let m=1/111_320.0 // degrees per metre (latitude)
+        let lonM=m/cos(p.latitude*Double.pi/180)
+        func at(_ n:Double,_ e:Double)->GeoPoint { .init(latitude:p.latitude+n*m,longitude:p.longitude+e*lonM) }
+        let now=Date()
+        demo=[
+            RouteReport(category:HazardCategory.other.rawValue,note:"Fallen tree across the path",coordinate:at(70,40),date:now-25*60,locationDescription:"Demo"),
+            RouteReport(category:HazardCategory.blockedCrossing.rawValue,note:"Crossing fenced off",coordinate:at(-90,110),date:now-50*60,locationDescription:"Demo"),
+            RouteReport(category:HazardCategory.brokenSidewalk.rawValue,note:"",coordinate:at(130,-80),date:now-3*3600,locationDescription:"Demo"),
+            RouteReport(category:HazardCategory.noShade.rawValue,note:"Long stretch with no cover",coordinate:at(-40,-150),date:now-86400,locationDescription:"Demo"),
+        ]
+    }
+    func clearDemoHazards() { demo=[]; if let v=verification, !reports.contains(where:{$0.id==v.id}) && !nearby.contains(where:{$0.id==v.id}) { verification=nil } }
+    /// Demo pin to walk into next: cycles through the planted ones, least recently prompted first.
+    var nextDemoHazard:RouteReport? { demo.min { (prompted[$0.id] ?? .distantPast)<(prompted[$1.id] ?? .distantPast) } }
+    /// Pretends the walker just stepped into the trigger zone of `report` (ignores the 30 min cooldown).
+    func simulateApproach(to report:RouteReport) { prompted[report.id]=Date(); verification=report }
     func purgeExpired() {
         let now=Date()
         let kept=reports.filter { $0.expiresAt>now && $0.denials<RouteReport.clearThreshold }

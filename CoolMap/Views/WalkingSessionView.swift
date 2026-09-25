@@ -69,6 +69,13 @@ struct WalkingSessionView: View {
                 HazardReportButton { report=true }
             }.padding()
         }
+        .overlay(alignment:.bottomLeading) {
+            if let next=reports.nextDemoHazard {
+                Button { reports.simulateApproach(to:next) } label: {
+                    Label("Demo: walk into \(next.summary.lowercased())",systemImage:"figure.walk.motion").font(.caption.bold()).padding(.horizontal,12).padding(.vertical,8).background(panel,in:Capsule())
+                }.padding().accessibilityLabel("Simulate walking into the next demo hazard")
+            }
+        }
         .safeAreaInset(edge:.bottom) {
             VStack(spacing:18) {
                 if let p=progress,onRoute {

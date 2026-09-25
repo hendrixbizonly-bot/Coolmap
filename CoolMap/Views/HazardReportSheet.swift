@@ -38,7 +38,7 @@ struct StillThereCard: View {
                 Image(systemName:report.hazard.icon).font(.title2).foregroundStyle(.black).frame(width:44,height:44).background(report.hazard.color,in:Circle())
                 VStack(alignment:.leading,spacing:3) {
                     Text("Still there?").font(.headline)
-                    Text("\(report.hazard.rawValue) · reported \(RelativeDateTimeFormatter().localizedString(for:report.date,relativeTo:Date()))").font(.caption).foregroundStyle(.secondary)
+                    Text("\(report.summary) · reported \(RelativeDateTimeFormatter().localizedString(for:report.date,relativeTo:Date()))").font(.caption).foregroundStyle(.secondary)
                 }
                 Spacer()
                 Button { store.dismissVerification() } label: { Image(systemName:"xmark").font(.caption.bold()).padding(8).background(.white.opacity(0.1),in:Circle()) }.accessibilityLabel("Dismiss")
@@ -61,7 +61,7 @@ struct StillThereCard: View {
         .shadow(color:.black.opacity(0.4),radius:12,y:6)
         .onReceive(tick) { _ in remaining-=0.1; if remaining<=0 { store.dismissVerification() } }
         .accessibilityElement(children:.contain)
-        .accessibilityLabel("Is the \(report.hazard.rawValue) still there?")
+        .accessibilityLabel("Is the \(report.summary) still there?")
     }
 }
 
