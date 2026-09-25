@@ -242,7 +242,8 @@ The **Stage demo** button on the walking screen is now a menu with two scenarios
 **What it does**
 
 - `POST /api/reroute-decision` validates a walking-state payload (zod) and returns `{ prompt, urgency, reason, confidence?, debug }` deciding whether to interrupt the walker with a cooler alternative route.
-- Deterministic gates run first: a 180 s prompt cooldown and missing alternative stay quiet; blocked/closed/fallen-tree hazards ahead hard-trigger an immediate prompt; alternatives saving under 10% of remaining heat stay quiet.
+- Deterministic gates run first: a 180 s prompt cooldown and missing alternative stay quiet; blocked/closed/fallen-tree hazards ahead hard-trigger an immediate prompt; alternatives saving under 10% of remaining heat stay quiet only when there are no community reports ahead.
+- Non-blocking community reports bypass the heat-saving gate so Jev can weigh category, note, distance, optional age in minutes and confirmation; recent, confirmed, nearby reports can justify a small-heat-saving reroute.
 - Otherwise `lib/weather.ts` fetches the current Dubai-hour temperature from Open-Meteo (10 min per-coordinate cache, 1.5 s timeout, silently optional) and `evaluateWithJev` scores `rerouteWorthIt` (boolean) and `urgency` (0–3); prompting requires probability ≥ 0.6.
 - If Jev fails or times out, a rule fallback prompts only when the alternative cuts ≥ 25% of remaining heat for ≤ 3 extra minutes. Debug output lists each question's answer and probability.
 - Zero Data Retention is enabled on every Jev call through the Vercel Pro gateway.
