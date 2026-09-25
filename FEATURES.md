@@ -274,3 +274,8 @@ The **Stage demo** button on the walking screen is now a menu with two scenarios
 **Not covered / follow-ups**
 
 - The panel surfaces optional `debug.temperatureC`; absent values render as `—`.
+
+## Jev live viewer + demo walk
+- `/jev-live.html` shows live decisions, polling same-origin `/api/decisions` every 250 ms.
+- `pnpm demo:walk -- --loop` submits the approved illustrative walk to the live API (macOS `date`, default `GAP=2.5` seconds).
+- Heat numbers are illustrative; community reports and Jev calls flow through the live server.

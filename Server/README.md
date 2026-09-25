@@ -43,3 +43,8 @@ pnpm build
     key), `timeout` (>3 s), `missing_probabilities` (model answered but did not
     return a distribution — treated as failure rather than guessing), or
     `evaluation_failed` (any provider error; details are not surfaced).
+
+## Live demo
+- Run `pnpm dev` and open `http://localhost:3000/jev-live.html`.
+- Run `pnpm demo:walk -- --loop` (default `GAP=2.5` seconds; requires macOS `date`).
+- Walk heat numbers are illustrative; reports are submitted live and Jev calls are live.
