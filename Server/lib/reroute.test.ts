@@ -69,7 +69,7 @@ describe('decideReroute', () => {
     const result = await decideReroute(request, {
       model: new Experimental_EvaluationMockModelV4({ doEvaluate }), weather: vi.fn(async () => 42) });
     expect(result).toEqual({ prompt: true, urgency: 2, reason: 'jev', confidence: 0.82,
-      debug: { decidedBy: 'jev', jev: 'ok', questions: debugQuestions(true, 0.82) } });
+      debug: { decidedBy: 'jev', jev: 'ok', questions: debugQuestions(true, 0.82), temperatureC: 42 } });
     expect(doEvaluate).toHaveBeenCalledExactlyOnceWith(expect.objectContaining({
       state: { ...request, temperatureC: 42 },
     }));
@@ -78,15 +78,15 @@ describe('decideReroute', () => {
     ('probability %f', async (p, prompt, answer, probability) => {
       const result = await decideReroute(req(), { model: mockModel(p), weather: vi.fn(async () => 42) });
       expect(result).toEqual({ prompt, urgency: 2, reason: 'jev', confidence: p,
-        debug: { decidedBy: 'jev', jev: 'ok', questions: debugQuestions(answer, probability) } });
+        debug: { decidedBy: 'jev', jev: 'ok', questions: debugQuestions(answer, probability), temperatureC: 42 } });
     });
   it('falls back to the rule when the provider throws', async () => {
     const model = new Experimental_EvaluationMockModelV4({ doEvaluate: vi.fn(async () => { throw new Error('private'); }) });
     const weather = vi.fn(async () => 42);
     const alt = (heat: number, totalSeconds: number) => ({ alternative: { ...base.alternative, heat, totalSeconds } });
     expect(await decideReroute(req(alt(1125, 780)), { model, weather })).toEqual(
-      { prompt: true, urgency: 2, reason: 'rule', debug: { decidedBy: 'rule', jev: 'failed', questions: [] } });
-    const failed = { decidedBy: 'rule', jev: 'failed', questions: [] };
+      { prompt: true, urgency: 2, reason: 'rule', debug: { decidedBy: 'rule', jev: 'failed', questions: [], temperatureC: 42 } });
+    const failed = { decidedBy: 'rule', jev: 'failed', questions: [], temperatureC: 42 };
     expect(await decideReroute(req(alt(1126, 780)), { model, weather }))
       .toEqual({ prompt: false, urgency: 0, reason: 'rule', debug: failed });
     expect(await decideReroute(req(alt(1125, 781)), { model, weather }))
@@ -98,6 +98,7 @@ describe('decideReroute', () => {
     }, warnings: [] }) });
     const result = await decideReroute(req(), { model, weather: vi.fn(async () => 42) });
     expect(result.urgency).toBe(3);
+    expect(result.debug.temperatureC).toBe(42);
     expect(result.debug.questions[1]).toEqual({ id: 'urgency', label: 'Urgency', type: 'score', answer: 3, max: 3, probability: 0.4 });
   });
   it.each(scenarios.filter(s => s.group === 'just_prompted' || s.group === 'hazard_ahead'))('honors deterministic scenario $id', async scenario => {
@@ -113,7 +114,7 @@ describe('decideReroute', () => {
   it('times out a hung provider and still answers via the rule', async () => {
     const model = new Experimental_EvaluationMockModelV4({ doEvaluate: () => new Promise(() => {}) });
     expect(await decideReroute(req(), { model, weather: vi.fn(async () => 42) })).toEqual(
-      { prompt: true, urgency: 2, reason: 'rule', debug: { decidedBy: 'rule', jev: 'failed', questions: [] } });
+      { prompt: true, urgency: 2, reason: 'rule', debug: { decidedBy: 'rule', jev: 'failed', questions: [], temperatureC: 42 } });
   }, 5000);
   it('omits temperatureC when weather fails but still asks the model', async () => {
     const doEvaluate = evaluator(0.82);
@@ -126,5 +127,10 @@ describe('decideReroute', () => {
     const state = doEvaluate.mock.calls[0]![0].state;
     expect(state).toEqual(request);
     expect('temperatureC' in (state as object)).toBe(false);
+    expect(result.debug).not.toHaveProperty('temperatureC');
+  });
+  it('preserves a zero-degree temperature in debug', async () => {
+    const result = await decideReroute(req(), { model: mockModel(0.82), weather: vi.fn(async () => 0) });
+    expect(result.debug.temperatureC).toBe(0);
   });
 });

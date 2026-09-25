@@ -29,8 +29,8 @@ export const rerouteQuestions = {
 } as const;
 type Reason = 'hard_trigger' | 'jev' | 'rule' | 'none';
 type DebugQuestion = { id: string; label: string; type: 'boolean' | 'score'; answer: boolean | number; probability: number; max?: number };
-function response(prompt: boolean, urgency: number, reason: Reason, jev: 'ok' | 'skipped' | 'failed', questions: DebugQuestion[] = [], confidence?: number) {
-  return { prompt, urgency, reason, ...(confidence === undefined ? {} : { confidence }), debug: { decidedBy: reason, jev, questions } };
+function response(prompt: boolean, urgency: number, reason: Reason, jev: 'ok' | 'skipped' | 'failed', questions: DebugQuestion[] = [], confidence?: number, temperatureC?: number) {
+  return { prompt, urgency, reason, ...(confidence === undefined ? {} : { confidence }), debug: { decidedBy: reason, jev, questions, ...(temperatureC === undefined ? {} : { temperatureC }) } };
 }
 export async function decideReroute(request: RerouteRequest, options: {
   model?: Parameters<typeof evaluateWithJev>[0]['model'];
@@ -44,7 +44,7 @@ export async function decideReroute(request: RerouteRequest, options: {
   const result = await evaluateWithJev({ state: { ...request, ...(temperature === undefined ? {} : { temperatureC: temperature }) }, questions: rerouteQuestions, model: options.model });
   if (!result.ok) {
     const prompt = alternative.heat <= current.remainingHeat * 0.75 && alternative.totalSeconds - current.remainingSeconds <= 180;
-    return response(prompt, prompt ? 2 : 0, 'rule', 'failed');
+    return response(prompt, prompt ? 2 : 0, 'rule', 'failed', [], undefined, temperature);
   }
   const probability = result.answers.rerouteWorthIt.probability;
   const worthIt = probability >= 0.5;
@@ -53,5 +53,5 @@ export async function decideReroute(request: RerouteRequest, options: {
   return response(probability >= 0.6, urgency, 'jev', 'ok', [
     { id: 'rerouteWorthIt', label: 'Worth rerouting?', type: 'boolean', answer: worthIt, probability: worthIt ? probability : 1 - probability },
     { id: 'urgency', label: 'Urgency', type: 'score', answer: urgency, max: 3, probability: distribution[String(urgency)] },
-  ], probability);
+  ], probability, temperature);
 }
