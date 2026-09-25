@@ -22,7 +22,7 @@
   border: 1px solid #2c4059; border-radius: 24px;
   padding: clamp(20px, 3vw, 32px);
 }
-.hero h2 { font-size: clamp(40px, 5vw, 60px); line-height: 1.05; margin: 20px 0; }
+.hero h2 { font-size: clamp(40px, 5vw, 56px); line-height: 1.05; margin: 20px 0; }
 .meta { display: flex; align-items: center; gap: 12px; color: #a8bacd; font-size: 15px; }
 .badge {
   background: rgba(110, 241, 194, 0.14); color: #6ef1c2;
@@ -30,18 +30,16 @@
   padding: 4px 12px; font-weight: 600;
 }
 .warning { color: #fbbf24; margin: 12px 0 0; }
-.questions { display: grid; gap: 14px; margin: 8px 0 24px; }
-.questionTop { display: flex; justify-content: space-between; font-size: 24px; margin-bottom: 8px; }
-.questionTop strong { color: #6ef1c2; }
-.track { height: 10px; border-radius: 999px; background: #223349; overflow: hidden; }
+.track { height: 16px; border-radius: 999px; background: #223349; overflow: hidden; }
 .track span {
   display: block; height: 100%;
   background: #6ef1c2; border-radius: inherit;
   transition: width 650ms ease;
 }
 @starting-style { .track span { width: 0 !important; } }
-.confidence { margin-top: 6px; font-size: 18px; color: #a8bacd; }
-.inputs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 0; }
+.outcome { font-size: 24px; margin: 12px 0; }
+.urgency { display: inline-block; font-size: 14px; color: #a8bacd; background: #223349; padding: 4px 10px; border-radius: 999px; margin: 0 0 18px; }
+.inputs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 0; }
 .inputs > div {
   background: rgba(11, 18, 32, 0.6);
   border: 1px solid #2c4059; border-radius: 14px;
@@ -72,7 +70,6 @@
   .panel { padding: 20px; }
   .hero { padding: 20px; }
   .hero h2 { font-size: 40px; }
-  .inputs { grid-template-columns: repeat(2, 1fr); }
   .hazard { grid-column: 1 / -1; }
 }
 @media (prefers-reduced-motion: reduce) {

@@ -266,19 +266,9 @@ The **Stage demo** button on the walking screen is now a menu with two scenarios
 
 **What it does**
 
-- `GET /demo` renders a dark live panel that polls `/api/decisions` every second (no-store, abortable, keeps last good data on errors) and shows the newest reroute decision hero: who decided, prompt outcome, Jev question confidence bars, heat saved, extra time, temperature, and next hazard, plus a timeline of up to 19 earlier checks.
-- `POST /api/reroute-decision` now records every validated decision into a bounded in-process log (20 entries, newest first, snapshotted payloads) stored on `globalThis` so it survives Next.js dev module reloads.
-- `GET /api/decisions` returns the log newest-first with `Cache-Control: no-store`; the log is per server instance and in-memory only, so restarts clear it and it is not shared across replicas.
-
-**Files changed**
-
-| File | Change |
-| --- | --- |
-| `Server/lib/decision-log.ts` (+ `decision-log.test.ts`) | **New.** `recordDecision`/`recentDecisions` bounded global log + tests. |
-| `Server/app/api/decisions/route.ts` | **New.** Force-dynamic GET returning the log with no-store. |
-| `Server/app/api/reroute-decision/route.ts` | Record each successful decision. |
-| `Server/app/demo/page.tsx` (+ `page.module.css`) | **New.** Live panel UI. |
-| `FEATURES.md` | This entry. |
+- `GET /demo` polls `/api/decisions` every second (no-store, keeps last good data on errors) and renders the newest decision hero — `rerouteWorthIt` answer + confidence bar, urgency, outcome, heat/time/temperature/sunset/hazard metrics — plus a timeline of earlier checks; without Jev questions it falls back to a truthful prompt headline.
+- `POST /api/reroute-decision` records each validated decision into a bounded in-process log (20, newest-first, snapshotted); `GET /api/decisions` serves it with `no-store`. The log is per server instance, so restarts or replicas do not share it.
+- `pnpm demo:replay` (`BASE_URL` to override) posts five staged states ~6 s apart to fill the panel; scenario values deliberately expire the prompt cooldown so decisions vary.
 
 **Not covered / follow-ups**
 

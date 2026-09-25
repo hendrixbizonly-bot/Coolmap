@@ -4,7 +4,7 @@ import type { Decision } from '../../lib/decision-log';
 import styles from './page.module.css';
 
 const time = (value: string) => new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Dubai', hour: '2-digit', minute: '2-digit', second: '2-digit' }).format(new Date(value));
-const decider = (d: Decision) => ({ jev: 'Jev', hard_trigger: 'Hard rule', rule: 'Fallback rule', none: 'No reroute' }[d.response.reason]);
+const decider = (d: Decision) => ({ jev: 'Jev', hard_trigger: 'Safety rule', rule: 'Backup rule', none: 'No reroute' }[d.response.reason]);
 const heatSaved = ({ request: r }: Decision) => !r.alternative ? 'no alternative' : r.current.remainingHeat <= 0 ? '—' : `${Math.round((1 - r.alternative.heat / r.current.remainingHeat) * 100)}%`;
 const extraTime = ({ request: r }: Decision) => {
   if (!r.alternative) return '—';
@@ -16,23 +16,6 @@ const hazard = ({ request: r }: Decision) => {
   const h = r.hazardsAhead[0];
   return h ? `${h.note || h.category} · ${Math.round(h.metersAhead)} m` : 'none';
 };
-
-function Question({ question: q }: { question: Decision['response']['debug']['questions'][number] }) {
-  const pct = Math.round(Math.max(0, Math.min(1, q.probability)) * 100);
-  const answer = q.type === 'boolean' ? (q.answer ? 'Yes' : 'No') : `${q.answer}/${q.max ?? 3}`;
-  return (
-    <div className={styles.question}>
-      <div className={styles.questionTop}>
-        <span>{q.label}</span>
-        <strong>{answer}</strong>
-      </div>
-      <div role="progressbar" aria-label={`${q.label} confidence`} aria-valuemin={0} aria-valuemax={100} aria-valuenow={pct} className={styles.track}>
-        <span style={{ width: `${pct}%` }} />
-      </div>
-      <div className={styles.confidence}>{pct}% confidence</div>
-    </div>
-  );
-}
 
 export default function Demo() {
   const [decisions, setDecisions] = useState<Decision[]>([]);
@@ -67,6 +50,8 @@ export default function Demo() {
     };
   }, []);
   const latest = decisions[0];
+  const worth = latest?.response.debug.questions.find(q => q.id === 'rerouteWorthIt');
+  const confidence = worth ? Math.round(Math.max(0, Math.min(1, worth.probability)) * 100) : undefined;
   return (
     <main className={styles.panel}>
       <header className={styles.header}>
@@ -86,14 +71,23 @@ export default function Demo() {
               <time>{time(latest.receivedAt)} UAE</time>
             </div>
             {latest.response.debug.jev === 'failed' && <p className={styles.warning}>Jev unavailable</p>}
-            <h2>{latest.response.prompt ? 'Cooler way suggested' : 'Stayed quiet'}</h2>
-            <div className={styles.questions}>
-              {latest.response.debug.questions.map(q => <Question key={q.id} question={q} />)}
-            </div>
+            {worth ? (
+              <>
+                <h2>Worth rerouting? {worth.answer ? 'Yes' : 'No'} · {confidence}%</h2>
+                <div role="progressbar" aria-label="Reroute confidence" aria-valuemin={0} aria-valuemax={100} aria-valuenow={confidence} className={styles.track}>
+                  <span style={{ width: `${confidence}%` }} />
+                </div>
+                <p className={styles.outcome}>{latest.response.prompt ? 'Cooler way suggested' : 'Stayed quiet'}</p>
+              </>
+            ) : (
+              <h2>{latest.response.prompt ? 'Cooler way suggested' : 'Stayed quiet'}</h2>
+            )}
+            <span className={styles.urgency}>Urgency {latest.response.urgency}/3</span>
             <dl className={styles.inputs}>
               <div><dt>Heat saved</dt><dd>{heatSaved(latest)}</dd></div>
               <div><dt>Extra time</dt><dd>{extraTime(latest)}</dd></div>
               <div><dt>Temperature</dt><dd>{latest.response.debug.temperatureC === undefined ? '—' : `${latest.response.debug.temperatureC}°C`}</dd></div>
+              <div><dt>To sunset</dt><dd>{Math.round(latest.request.minutesToSunset)} min</dd></div>
               <div className={styles.hazard}><dt>Hazard ahead</dt><dd>{hazard(latest)}</dd></div>
             </dl>
           </section>
