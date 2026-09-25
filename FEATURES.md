@@ -107,3 +107,27 @@ On the walking screen, tap the orange **Stage demo** toggle (bottom-left). It pl
 
 - D5 owns loading the bundle in the app; this change does not activate it.
 - Upstream snapshots are cached locally, not committed; refreshing can change results as OSM evolves. The core footprint model stores exterior rings only.
+
+## Feature 4 — Coolmap server scaffold (Next.js + Jev evaluation wrapper)
+
+**What it does**
+
+- New `Server/` package: minimal Next.js App Router app (`next dev`/`build`/`start`, `pnpm check` = tsc + eslint + vitest) with a root page and `GET /api/health` returning `{ ok: true }`.
+- `lib/jev.ts` `evaluateWithJev` wraps AI SDK `experimental_evaluate` for `typesafe-ai/jev` via Vercel AI Gateway (`AI_GATEWAY_API_KEY`, local-only env): zero data retention, hard 3 s timeout, no retries, returns `{ ok, answers, probabilities }` or a safe failure reason — including `missing_probabilities` when the model returns no distribution.
+- No iOS/Swift behaviour change — server only.
+
+**Files changed**
+
+| File | Change |
+| --- | --- |
+| `Server/package.json`, `Server/pnpm-lock.yaml` | New package `coolmap-server` with pinned deps (ai, next, react) and dev deps (typescript, eslint, vitest, types). |
+| `Server/tsconfig.json`, `Server/eslint.config.mjs`, `Server/.gitignore`, `Server/next-env.d.ts` | Strict Next TS config, flat ESLint (core-web-vitals + typescript), ignores for `.next`/env files. |
+| `Server/app/layout.tsx`, `Server/app/page.tsx` | Minimal root layout and page. |
+| `Server/app/api/health/route.ts` (+ `route.test.ts`) | Health endpoint `{ ok: true }`. |
+| `Server/lib/jev.ts` (+ `jev.test.ts`) | Jev evaluation wrapper + vitest coverage (typed answers/probabilities, 3 s timeout, missing distribution, provider error, missing key). |
+| `Server/README.md` | Setup, commands, and return contract docs. |
+
+**Not covered / follow-ups**
+
+- Live model credentials not tested — all Jev tests use `Experimental_EvaluationMockModelV4`; real gateway calls need a valid `AI_GATEWAY_API_KEY`.
+- No routes consume `evaluateWithJev` yet; no deployment config.
