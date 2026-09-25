@@ -56,9 +56,11 @@ final class AppModel: ObservableObject {
     var active: RouteOption? { routes.indices.contains(selected) ? routes[selected] : nil }
     var hasUnknownHeights: Bool { cachedBuildings.count != records.count }
     var fastest: UUID? { routes.min(by: { $0.expectedTravelTime < $1.expectedTravelTime })?.id }
-    var bestShade: UUID? {
-        guard routes.count > 1, !hasUnknownHeights, routes.allSatisfy({ $0.exposure != nil }) else { return nil }
-        return routes.min(by: { $0.exposure!.sunSeconds < $1.exposure!.sunSeconds })?.id
+    var coolest: UUID? {
+        routes.compactMap { route in heatCost(for:route).map { (route.id,$0) } }.min(by: { $0.1 < $1.1 })?.0
+    }
+    func heatCost(for route: RouteOption) -> Double? {
+        route.exposure.map { RouteHeat.cost($0,expectedTravelTime:route.expectedTravelTime) }
     }
     func setHour(_ hour:Int) {
         var calendar = Calendar(identifier:.gregorian); calendar.timeZone = TimeZone(identifier:"Asia/Dubai")!
@@ -145,6 +147,7 @@ final class AppModel: ObservableObject {
             ["distance":route.distance,"travelSeconds":route.expectedTravelTime,
              "coordinates":route.coordinates.map { ["latitude":$0.latitude,"longitude":$0.longitude] },
              "sunSecondsUpperEstimate":route.exposure?.sunSeconds as Any? ?? NSNull(),
+             "heatCost":heatCost(for:route) as Any? ?? NSNull(),
              "samples":route.exposure?.samples.map { value -> [String:Any] in
                 let geo = projection.localToGeo(value.sample.point)
                 return ["latitude":geo.latitude,"longitude":geo.longitude,"sun":value.decision.directSun,

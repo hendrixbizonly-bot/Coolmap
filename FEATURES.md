@@ -151,3 +151,26 @@ On the walking screen, tap the orange **Stage demo** toggle (bottom-left). It pl
 **Not covered / follow-ups**
 
 - Wiring the tracker into the walking UI / reroute flow is a separate task.
+
+## Feature 5 — Heat-score route ranking (coolest route label)
+
+**What it does**
+
+- A new `SunIntensity.weight(elevationDegrees:)` in ShadeCore converts solar elevation to a normalised 0–1 intensity (projected irradiance × air-mass-attenuated direct normal, scaled by the numerically solved global peak at ~32.41°). Degrees are converted to radians inside the formula.
+- `RouteHeat.cost(_:expectedTravelTime:k:fromDistance:)` prices a route as `travelTime × Σ share_i × (1 + k · sunFraction_i · weight_i)`. Samples are midpoint intervals, so `fromDistance` clips the partially covered interval rather than filtering midpoints; the time-share denominator is always the whole sampled route length. `k` is the single constant `RouteHeat.defaultK = 2`.
+- `AppModel.coolest` ranks every route with an exposure by heat cost — no gating on missing building heights or unexposed routes — and `heatCost` is exported in diagnostics.
+- Route cards label the winner "Coolest · +N min" (or "Fastest · coolest" when it coincides with the fastest) and append "· X% less sun" only when the fastest route's baseline is present, positive, and the reduction rounds above zero — it never claims more sun.
+
+**Files changed**
+
+| File | Change |
+| --- | --- |
+| `Sources/ShadeCore/HeatScore.swift` | **New.** `SunIntensity`, `ShadeDecision.sunFraction`, `RouteHeat` cost function. |
+| `Tests/ShadeCoreTests/HeatScoreTests.swift` | **New.** Weight reference values, bounds/peak, shade/sun costs, `fromDistance` clipping, degenerate inputs, uneven sample weighting, shade-vs-sun ranking. |
+| `CoolMap/Services/AppModel.swift` | `bestShade` replaced by `coolest` + `heatCost(for:)`; `heatCost` added to diagnostics export. |
+| `CoolMap/Views/MapScreen.swift` | Route-card label now `routeLabel(_:)` with "Coolest · +N min" and optional "· X% less sun". |
+
+**Not covered / follow-ups**
+
+- `k` is fixed at `RouteHeat.defaultK`; no UI preference for sun sensitivity.
+- Remaining-walk recosting via `fromDistance` is exposed in ShadeCore but not yet wired into the walking session UI.
