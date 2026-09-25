@@ -193,7 +193,7 @@ On the walking screen, tap the orange **Stage demo** toggle (bottom-left). It pl
 - Per-piece quantized footprint area is capped at 115% of source-mask area; the 10 MB budget keeps the largest accurate pieces, so some canopy is omitted. Bridge interiors are explicitly filled because the record contract has no holes; closed-loop bridge centers remain a known limitation.
 - Run with a fresh `--cache` directory to refresh source data; failed source downloads fail the build rather than publish a partial dataset. Tree coordinates use 5 decimals, structures 6; canopy-area retention is reported by the generator. Historical byte reproducibility requires the unversioned cached snapshot; fresh live sources can change.
 
-## Feature 3 — Step-free routing (wheelchair & stroller mode)
+## Feature 7 — Step-free routing (wheelchair & stroller mode)
 
 **What it does**
 
