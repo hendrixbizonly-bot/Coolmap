@@ -51,9 +51,9 @@ final class AppModel: ObservableObject {
     }
     func demo() async {
         // Public Abu Dhabi locations, never presented as the user's GPS position.
-        chooseOrigin(.init(latitude:24.4995,longitude:54.3888),name:"Rosewood · Abu Dhabi demo")
-        chooseDestination(.init(latitude:24.5020,longitude:54.3885),name:"The Galleria")
-        setHour(15); await load()
+        chooseOrigin(.init(latitude:24.49088,longitude:54.35495),name:"Jeddah Street · Abu Dhabi demo")
+        chooseDestination(.init(latitude:24.48821,longitude:54.35630),name:"World Trade Center")
+        setHour(16); await load()
     }
     var shortest:UUID? { routes.min { $0.distance < $1.distance }?.id }
     var shadeEstimate:UUID? {
