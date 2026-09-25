@@ -24,7 +24,6 @@ export async function evaluateWithJev<const Q extends Questions>({
     const { answers } = await Promise.race([
       experimental_evaluate({
         state, questions, model: model ?? 'typesafe-ai/jev',
-        providerOptions: { gateway: { zeroDataRetention: true } },
         abortSignal: signal, maxRetries: 0,
       }),
       deadline,

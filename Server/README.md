@@ -31,7 +31,7 @@ pnpm build
 - **Key**: uses `AI_GATEWAY_API_KEY` (Vercel AI Gateway). The key lives only in
   `Server/.env.local` / server env — never shipped to clients. Passing an
   explicit `model` bypasses the key check (tests use a mock model).
-- **Privacy**: every call sends `providerOptions.gateway.zeroDataRetention = true`.
+- **Privacy**: Zero Data Retention is off because it needs a Vercel Pro plan.
 - **Latency**: hard 3 s `AbortSignal.timeout`; `maxRetries: 0` — no retries.
 - **Return contract**:
   - `{ ok: true, answers, probabilities }` — `answers` are the typed SDK

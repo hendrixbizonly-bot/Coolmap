@@ -15,7 +15,7 @@ const answers = {
 afterEach(() => vi.unstubAllEnvs());
 
 describe('evaluateWithJev', () => {
-  it('preserves typed answers and probabilities with zero data retention', async () => {
+  it('preserves typed answers and probabilities without requiring a paid gateway plan', async () => {
     const doEvaluate = vi.fn(async () => ({ answers, warnings: [] }));
     const model = new Experimental_EvaluationMockModelV4({ doEvaluate });
     expect(await evaluateWithJev({ state: { interrupt: true }, questions, model })).toEqual({
@@ -24,7 +24,7 @@ describe('evaluateWithJev', () => {
     });
     expect(doEvaluate).toHaveBeenCalledExactlyOnceWith(expect.objectContaining({
       state: { interrupt: true }, questions,
-      providerOptions: { gateway: { zeroDataRetention: true } },
+      providerOptions: {},
       abortSignal: expect.any(AbortSignal),
     }));
   });
