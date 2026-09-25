@@ -43,9 +43,21 @@ final class AppModel: ObservableObject {
         invalidate(); destination = coordinate; destinationName = name; hasDestination = true
     }
     func demo() async {
-        chooseOrigin(.init(latitude:25.0777,longitude:55.1400),name:"Marina Mall promenade")
-        chooseDestination(.init(latitude:25.0794,longitude:55.1413),name:"Marina promenade · north")
-        setHour(16); await load()
+        // Public Abu Dhabi locations, never presented as the user's GPS position.
+        chooseOrigin(.init(latitude:24.4995,longitude:54.3888),name:"Rosewood · Abu Dhabi demo")
+        chooseDestination(.init(latitude:24.5020,longitude:54.3885),name:"The Galleria")
+        setHour(15); await load()
+    }
+    var shortest:UUID? { routes.min { $0.distance < $1.distance }?.id }
+    var shadeEstimate:UUID? {
+        guard !buildings.isEmpty,routes.allSatisfy({ $0.exposure != nil }) else { return nil }
+        return routes.min { $0.exposure!.sunSeconds < $1.exposure!.sunSeconds }?.id
+    }
+    func swapEndpoints() async {
+        let oldOrigin=origin, oldName=originName
+        chooseOrigin(destination,name:destinationName)
+        chooseDestination(oldOrigin,name:oldName)
+        await load()
     }
     static func inCoverage(_ p: CLLocationCoordinate2D) -> Bool {
         p.latitude >= 25.073 && p.latitude <= 25.085 && p.longitude >= 55.132 && p.longitude <= 55.145
@@ -73,9 +85,11 @@ final class AppModel: ObservableObject {
         routes = []; records = []; selectedSample = nil; status = ""
         let start = origin, finish = destination
         do {
-            let candidates = try await DirectionsService().routes(from:start,to:finish)
+            let returned = try await DirectionsService().routes(from:start,to:finish)
+            let candidates=returned.filter { WalkLimit.allows(seconds:$0.expectedTravelTime) }
+            guard !candidates.isEmpty || returned.isEmpty else { status="Destination is too far. Choose a walk of one hour or less, or change your starting point."; return }
             guard requestID == token else { return }
-            guard !candidates.isEmpty else { status = "No pedestrian route returned by MapKit."; return }
+            guard !candidates.isEmpty else { status = "No walking route available. Choose a nearby destination."; return }
             routes = candidates; selected = 0; busy = false; loadingBuildings = true
             let loaded = await CityBuildingProvider.shared.load(routes:candidates.map { $0.coordinates.map(\.geo) },buffer:buffer)
             guard requestID == token else { return }
@@ -101,7 +115,7 @@ final class AppModel: ObservableObject {
                 status = "No walking route was found between these places. Try a nearby street or another starting point."
             }
             #if targetEnvironment(simulator)
-            if usesCurrentLocation { status += " The simulator uses a simulated GPS location, which may not be in Dubai." }
+            if usesCurrentLocation { status += " The simulator uses a simulated GPS location, which may not be in Abu Dhabi." }
             #endif
         }
     }

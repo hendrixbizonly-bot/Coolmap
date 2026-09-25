@@ -12,16 +12,17 @@ enum AppConfiguration {
     static var reportsHost:String { value("REPORTS_HOST") }
     static var reportsKey:String { value("REPORTS_PUBLIC_KEY") }
     static var sharedReportsEnabled:Bool { !reportsHost.isEmpty && !reportsKey.isEmpty }
-    static var googleEnabled:Bool {
+    static var googleAvailable:Bool {
         #if canImport(GoogleMaps)
         !mapsKey.isEmpty && !servicesKey.isEmpty
         #else
         false
         #endif
     }
+    static var googleEnabled:Bool { googleAvailable && UserDefaults.standard.string(forKey:"mapProvider") != "apple" }
     static func initializeMaps() {
         #if canImport(GoogleMaps)
-        if googleEnabled { GMSServices.provideAPIKey(mapsKey) }
+        if googleAvailable { GMSServices.provideAPIKey(mapsKey) }
         #endif
     }
 }

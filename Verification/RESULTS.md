@@ -74,3 +74,32 @@ Verified the installed walking view using the `--city-test --sun-test --walk-tes
 ## Inline sun simulator
 
 Moved sun marker, batched shadow layer, Dubai-time slider and playback onto the normal route-selection screen. Start walk now opens walking mode directly. Verified via Simulator accessibility: simulator controls appear automatically for the Marina routes; selected Alternative; Play advanced 16:00 to 16:15 and both route estimates changed (3.1→2.5, 0.8→0.7 minutes); playback continued into night and Pause stopped at 19:15 with no direct sun on both routes. The Mac locked during the drag gesture, so dragging remains unverified. Build passed. Map layout refits route geometry when the control panel changes map size.
+
+
+## Abu Dhabi presentation redesign
+
+Built with native iOS 26 glassEffect (material fallback on earlier OS versions), a full-screen map, floating endpoint card, route pills, road-level shade classification and inline time playback. Defaults to an explicitly labeled Al Maryah Island demo; never claims the demo origin is current GPS. Map search is biased to Abu Dhabi. Map-provider selection explains missing Google credentials; both keys are still absent.
+
+Real simulator check: Rosewood-area demo → The Galleria returned an 893 m / approximately 12-minute MapKit walk, with about 4.2 model-estimated minutes of sun at 15:00. Playback changed this to approximately 4.0 minutes at 15:15 and zero after sunset. Tapped Go and verified the glass walking screen stayed on Al Maryah Island with the correct preview disclosure. The provider’s waypoint detour was 47 minutes and was rejected by the final 1.6× detour threshold. A single available route is disclosed rather than inventing a shade alternative.
+
+The app filters route candidates to <=3,600 seconds before requesting buildings. New unit coverage checks the 3,600/3,601-second boundary and invalid durations; all 28 tests passed. Attempted a live route to Louvre Abu Dhabi: MapKit returned no pedestrian route, and the app displayed recovery controls. This checks routing failure handling, not the one-hour rejection UI. Mac locking prevented completing the remaining manual search/provider checks. Final iOS build succeeded.
+
+## Sunlight and route choice — 25 September 2026
+- Added native Canvas sunlight rays and glow, isolated to a 20 fps child timeline; Reduce Motion pauses shimmer. Night hides rays.
+- Restored background-computed shadow polygons on the main route preview. MapKit draws them as one nonzero fill so overlaps do not accumulate darkness. These remain estimates from available building heights.
+- Added explicit Shortest and Shade selection, actual provider walking minutes, and percentage walking-time difference for distinct choices. Same-route result is explicitly disclosed; no extra route is fabricated.
+- Simulator interaction verified Shade selection and playback from 15:00 (4.2 estimated sun minutes) to 15:15 (4.0) and night (0.0). Final uniform-shadow renderer verified by simulator screenshot after rebuild. Mac locked during final UI capture; simctl capture still verified rendering.
+- Xcode simulator build passed; 28 ShadeCore tests passed. Google Maps remains untested without API keys. Default Abu Dhabi demo returns one useful route, so distinct-route percentage was code-reviewed rather than verified with a live alternate.
+
+## Walking navigation — 25 September 2026
+- Added an on-map directional arrow, turn symbol/distance banner, tracking camera, remaining time/distance and estimated arrival, and an explicitly labelled accelerated Demo walk for unavailable/off-route GPS.
+- Demo interpolation follows the returned route geometry; reports from demo positions are labelled simulated. Real GPS is never silently replaced by demo coordinates in the app.
+- Corrected the simulator's San Francisco test location to the public Abu Dhabi demo path using simctl. Verified navigation receives it and displays Turn left / In 73 m, 12 min, 0.9 km, and arrival estimate.
+- Build and 28 core tests passed. Further moving-GPS UI verification was interrupted by user interaction with Simulator; full physical-device walking verification remains outstanding.
+
+## Simple home and route identity — 25 September 2026
+- Normal launch now shows a destination search field, menu, and current-location control. Demo is available in the menu instead of loading automatically. Profile is explicitly a future placeholder.
+- Route cards include walking and estimated sun minutes; retained playback, time slider, navigation, reports, swapping, and map/date options. Yellow identifies Shortest and blue identifies Shade, including the walking line. Grey insets identify shaded route portions.
+- Expanded single-route fallback to real pedestrian legs through two sides of the origin/destination corridor. Rejects disconnected joins, near-duplicate paths, walks over one hour, and detours over 1.8 times the baseline duration.
+- Only exposes a Shade choice when the least-sun result is a distinct route. Abu Dhabi demo still produced no qualifying shadier alternative; this requirement is limited by returned pedestrian directions, not solved by fabricated route geometry.
+- Verified simulator home, menu/profile placeholder, and yellow/grey route preview. Simulator build and 28 core tests passed. Distinct blue shade selection not live-tested because this demo returned no shadier alternative.

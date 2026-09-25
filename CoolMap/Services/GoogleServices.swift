@@ -52,7 +52,7 @@ struct PlaceSuggestion: Identifiable, Hashable {
 }
 enum GooglePlaceService {
     static func autocomplete(_ text:String,session:String) async throws -> [PlaceSuggestion] {
-        let data=try await GoogleHTTP.request(url:URL(string:"https://places.googleapis.com/v1/places:autocomplete")!,body:["input":text,"sessionToken":session,"includedRegionCodes":["ae"],"locationBias":["circle":["center":["latitude":25.20,"longitude":55.27],"radius":50000]]])
+        let data=try await GoogleHTTP.request(url:URL(string:"https://places.googleapis.com/v1/places:autocomplete")!,body:["input":text,"sessionToken":session,"includedRegionCodes":["ae"],"locationBias":["circle":["center":["latitude":24.5005,"longitude":54.3888],"radius":50000]]])
         let json=try JSONSerialization.jsonObject(with:data) as? [String:Any]
         return (json?["suggestions"] as? [[String:Any]] ?? []).compactMap { suggestion in
             guard let prediction=suggestion["placePrediction"] as? [String:Any],let id=prediction["placeId"] as? String else { return nil }

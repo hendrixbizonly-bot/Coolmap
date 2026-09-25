@@ -45,13 +45,31 @@ struct DirectionsService {
         if AppConfiguration.googleEnabled { return try await GoogleRouteService.routes(from:from,to:to) }
         let direct = try await leg(from:from,to:to,alternates:true)
         var options = direct.map { RouteOption(routes:[$0]) }
-        if options.count == 1 && AppModel.inCoverage(from) && AppModel.inCoverage(to) {
-            // A real MapKit pedestrian detour through the demo district; no fabricated lines.
-            let waypoint = CLLocationCoordinate2D(latitude:25.0781,longitude:55.1410)
-            if let first = try? await leg(from:from,to:waypoint,alternates:false).first,
-               let second = try? await leg(from:waypoint,to:to,alternates:false).first {
-                let candidate = RouteOption(routes:[first,second])
-                if abs(candidate.distance-options[0].distance) > 20 { options.append(candidate) }
+        if options.count==1,let baseline=options.first,baseline.distance>150,baseline.distance<4500 {
+            // Ask the pedestrian router for both sides of the direct corridor.
+            // Every candidate consists of real walking legs, never a drawn shortcut.
+            let projection=CoordinateProjection(origin:from.geo)
+            let end=projection.geoToLocal(to.geo),length=end.length
+            if length>80 {
+                let normal=LocalPoint(x:-end.y/length,y:end.x/length)
+                let offset=min(180,max(65,length*0.22))
+                for side in [-1.0,1.0] {
+                    let waypoint=projection.localToGeo(end*0.5+normal*(offset*side)).coordinate
+                    guard let first=try? await leg(from:from,to:waypoint,alternates:false).first,
+                          let second=try? await leg(from:waypoint,to:to,alternates:false).first else { continue }
+                    let candidate=RouteOption(routes:[first,second])
+                    guard candidate.expectedTravelTime<=min(3600,baseline.expectedTravelTime*1.8),
+                          let joinA=first.polyline.coordinates.last,let joinB=second.polyline.coordinates.first,
+                          CLLocation(latitude:joinA.latitude,longitude:joinA.longitude).distance(from:CLLocation(latitude:joinB.latitude,longitude:joinB.longitude))<20 else { continue }
+                    let candidatePoints=candidate.coordinates.map { projection.geoToLocal($0.geo) }
+                    let genuinelyDifferent=options.allSatisfy { existing in
+                        let existingPoints=existing.coordinates.map { projection.geoToLocal($0.geo) }
+                        return candidatePoints.contains { point in
+                            (WalkingProgress.calculate(point:point,route:existingPoints,expectedSeconds:1)?.distanceOffRoute ?? 0)>35
+                        }
+                    }
+                    if genuinelyDifferent { options.append(candidate) }
+                }
             }
         }
         return options
@@ -128,7 +146,7 @@ final class SearchService: NSObject, ObservableObject, @preconcurrency MKLocalSe
     private let session=UUID().uuidString
     override init() {
         super.init(); completer.delegate=self; completer.resultTypes=[.address,.pointOfInterest]
-        completer.region=MKCoordinateRegion(center:.init(latitude:25.20,longitude:55.27),latitudinalMeters:50000,longitudinalMeters:50000)
+        completer.region=MKCoordinateRegion(center:.init(latitude:24.5005,longitude:54.3888),latitudinalMeters:50000,longitudinalMeters:50000)
     }
     private func updateQuery() {
         error=nil; searchTask?.cancel()

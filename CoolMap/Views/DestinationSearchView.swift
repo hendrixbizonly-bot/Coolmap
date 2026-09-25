@@ -22,11 +22,10 @@ struct DestinationSearchView: View {
                     if resolving { ProgressView("Finding place…") }
                     if let message = error ?? search.error { Text(message).foregroundStyle(.orange) }
                     if search.query.isEmpty {
-                        Section("Explore Dubai") {
-                            place("City Walk",subtitle:"Al Wasl · Dubai",latitude:25.2074,longitude:55.2637)
-                            place("Burj Khalifa / Dubai Mall Metro",subtitle:"Downtown Dubai",latitude:25.2014,longitude:55.2691)
-                            place("Dubai Marina Mall",subtitle:"Shopping centre · Dubai Marina",latitude:25.07698,longitude:55.14035)
-                            place("Marina promenade",subtitle:"Walk by the water",latitude:25.0794,longitude:55.1413)
+                        Section("Abu Dhabi") {
+                            place("The Galleria",subtitle:"Al Maryah Island",latitude:24.5020,longitude:54.3885)
+                            place("Rosewood Abu Dhabi",subtitle:"Al Maryah Island",latitude:24.4995,longitude:54.3888)
+                            place("Abu Dhabi Mall",subtitle:"Al Zahiyah",latitude:24.4958,longitude:54.3833)
                         }
                     }
                     ForEach(search.results,id:\.self) { result in

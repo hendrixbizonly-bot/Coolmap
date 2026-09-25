@@ -1,4 +1,4 @@
-# Coolmap — Dubai pedestrian shade prototype
+# Coolmap — Abu Dhabi walking and shade prototype
 
 Open `CoolMap.xcodeproj` in Xcode, select an iPhone simulator and Run. Tap **Where to?**, choose a destination, and allow location access or choose a starting point. Routes load automatically. The route-selection screen automatically shows the sun marker, estimated shadows, time slider and Play control; **Start walk** opens GPS progress, spoken instructions, steps and reporting. The Marina shortcut remains available. Apple Maps works without keys; Google Maps and shared reports need your own configuration (see [setup](Backend/SETUP.md)). Network access is required for routes and new building tiles. Physical-device builds require your own signing team.
 
@@ -10,7 +10,7 @@ The independent `ShadeCore` Swift package has no MapKit, SwiftUI, or CoreLocatio
 CLANG_MODULE_CACHE_PATH=/tmp/coolmap-module-cache SWIFTPM_MODULECACHE_OVERRIDE=/tmp/coolmap-module-cache swift test --disable-sandbox --scratch-path /tmp/coolmap-build
 ```
 
-The six requested synthetic cases passed before MapKit code was added: 45° shadow, high sun, low sun, east/west direction, night, and a 100 m / 10 min route producing 6 min direct sun and 4 min shade. 27 tests now pass. Additional tests cover projection, intersection, UTC conversion, Dubai solar progression, height units, uneven intervals and farther tall blockers, invalid polygons, a published NREL solar reference, low sun and real MapKit route time changes, OSM tile coverage/parsing, walking progress and Google polyline decoding.
+The six requested synthetic cases passed before MapKit code was added: 45° shadow, high sun, low sun, east/west direction, night, and a 100 m / 10 min route producing 6 min direct sun and 4 min shade. 28 tests now pass. Additional tests cover projection, intersection, UTC conversion, Dubai solar progression, height units, uneven intervals and farther tall blockers, invalid polygons, a published NREL solar reference, low sun and real MapKit route time changes, OSM tile coverage/parsing, walking progress and Google polyline decoding.
 
 ## Calculation
 
@@ -64,3 +64,10 @@ Solar algorithm: https://gml.noaa.gov/grad/solcalc/calcdetails.html and NOAA cal
 
 See `Verification/RESULTS.md`, `Verification/tests.log`, and noon/afternoon simulator screenshots for measured results.
 Building geometry © OpenStreetMap contributors, ODbL: https://www.openstreetmap.org/copyright . Bundled derived data remains subject to ODbL. MapKit attribution is provided by the map itself.
+
+
+## Abu Dhabi demo and glass UI
+
+The app now opens a labeled Rosewood / Al Maryah Island → The Galleria demo, with real MapKit walking directions and live OSM building data. The native iOS 26 Liquid Glass cards float over the map; older OS versions use material panels. Choose a start or destination to replace the demo. Routes over 60 minutes are rejected before building downloads. Shortest means least distance among returned candidates; Shade means least model-estimated sun among those candidates, not a guaranteed globally shadiest route. Unsupported long waypoint detours are not promoted. Road segments carry the shade/sun classification; whole-building shadow polygons are omitted from the main map to keep the road clear.
+
+Map options includes Apple and Google. Google remains unavailable until both local API keys are supplied. Selecting an unavailable provider explains the required configuration; it never relabels Apple as Google.

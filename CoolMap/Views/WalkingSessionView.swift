@@ -6,19 +6,61 @@ struct WalkingSessionView: View {
     let route:RouteOption
     @ObservedObject var location:LocationService
     let destinationName:String
+    var routeColor:Color = .blue
     @State private var position=MapCameraPosition.automatic
     @State private var progress:WalkingProgress?
     @State private var steps=false
     @State private var report=false
     @State private var follow=true
     @State private var previewing=true
+    @State private var demo=false
+    @State private var demoDistance=0.0
+    @State private var cameraHeading=0.0
+    private let demoTimer=Timer.publish(every:1,on:.main,in:.common).autoconnect()
     private let freshnessTimer=Timer.publish(every:5,on:.main,in:.common).autoconnect()
     @State private var speech=AVSpeechSynthesizer()
     private let panel=Color(red:0.055,green:0.09,blue:0.14)
     private var origin:CLLocationCoordinate2D { route.coordinates.first ?? .init(latitude:25.2,longitude:55.27) }
     private var projection:CoordinateProjection { .init(origin:origin.geo) }
     private var onRoute:Bool { progress.map { $0.distanceOffRoute<45 } ?? false }
+    private var routePoints:[LocalPoint] { route.coordinates.map { projection.geoToLocal($0.geo) } }
+    private var demoPose:(coordinate:CLLocationCoordinate2D,heading:Double) {
+        let points=routePoints
+        guard points.count>1 else { return (origin,0) }
+        var remaining=demoDistance
+        for index in 1..<points.count {
+            let a=points[index-1],b=points[index],delta=b-a,length=delta.length
+            guard length>0 else { continue }
+            if remaining<=length || index==points.count-1 {
+                let point=a+delta*min(1,remaining/length)
+                return (projection.localToGeo(point).coordinate,(atan2(delta.x,delta.y)*180 / .pi+360).truncatingRemainder(dividingBy:360))
+            }
+            remaining-=length
+        }
+        return (origin,0)
+    }
+    private var walkingHeading:Double {
+        if demo { return demoPose.heading }
+        if let fix=location.lastFix,fix.course>=0,fix.speed>0.5 { return fix.course }
+        return location.heading
+    }
+    private var maneuverSymbol:String {
+        let text=instruction.lowercased()
+        if text.contains("left") { return "arrow.turn.up.left" }
+        if text.contains("right") { return "arrow.turn.up.right" }
+        if text.contains("destination") { return "flag.checkered" }
+        return "arrow.up"
+    }
+    private var stepDistance:Double {
+        var accumulated=0.0
+        for step in route.steps {
+            accumulated+=step.distance
+            if accumulated>(progress?.distanceFromStart ?? 0)+5 { return max(0,accumulated-(progress?.distanceFromStart ?? 0)) }
+        }
+        return progress?.remainingDistance ?? route.distance
+    }
     private var freshCoordinate:CLLocationCoordinate2D? {
+        if demo { return demoPose.coordinate }
         guard let fix=location.lastFix,abs(fix.timestamp.timeIntervalSinceNow)<30,
               fix.horizontalAccuracy>=0,fix.horizontalAccuracy<65 else { return nil }
         return fix.coordinate
@@ -28,11 +70,7 @@ struct WalkingSessionView: View {
         return freshCoordinate
     }
     private var previewMessage:String {
-        #if targetEnvironment(simulator)
-        return "The simulator’s GPS is away from this walk or unavailable. Showing your Dubai route. Live guidance starts when GPS is near the route."
-        #else
-        return "Your location is away from this walk or unavailable. Showing your route. Live guidance starts when you’re nearby."
-        #endif
+        "Waiting for a nearby GPS location. You can preview the walk with Demo walk."
     }
     private var nextStep:WalkingStep? {
         guard !route.steps.isEmpty else { return nil }
@@ -51,13 +89,14 @@ struct WalkingSessionView: View {
         activeMap
         .safeAreaInset(edge:.top) {
             HStack(spacing:16) {
-                Image(systemName:"location.north.fill").font(.largeTitle)
+                Image(systemName:maneuverSymbol).font(.system(size:36,weight:.bold)).frame(width:46)
                 VStack(alignment:.leading,spacing:7) {
-                    Text(instruction).font(.headline)
-                    Text(followCoordinate == nil ? destinationName : onRoute ? "Following your location · walking estimate" : "Head to the nearby route").font(.caption).opacity(0.8)
+                    if followCoordinate != nil { Text("In \(Int(stepDistance.rounded())) m").font(.subheadline).opacity(0.85) }
+                    Text(instruction).font(.title3.bold())
+                    Text(followCoordinate == nil ? destinationName : onRoute ? (demo ? "DEMO WALK · simulated location" : "Walking to \(destinationName)") : "Head to the nearby route").font(.caption).opacity(0.8)
                 }
                 Spacer()
-            }.padding(20).background(.blue,in:RoundedRectangle(cornerRadius:20)).padding(12)
+            }.padding(20).coolGlass().padding(12)
         }
         .overlay(alignment:.trailing) {
             Button { follow=true; previewing=false; update() } label: { Image(systemName:"location.viewfinder").font(.title2).padding().background(panel,in:Circle()) }.padding().accessibilityLabel("Show route or nearby location")
@@ -73,28 +112,39 @@ struct WalkingSessionView: View {
                 } else {
                     Text("\(Int(ceil(route.expectedTravelTime/60))) min · \(Int(route.distance)) m walk").font(.headline)
                     Text(followCoordinate == nil ? previewMessage : "Join the route to start tracking your walk.").font(.caption).foregroundStyle(.secondary)
+                    if followCoordinate == nil {
+                        Button("Demo walk") { demo=true; demoDistance=0; follow=true; update() }.buttonStyle(.borderedProminent)
+                    }
                 }
+                if demo { Button("Stop demo") { demo=false; progress=nil; showRoute(); update() }.font(.caption) }
                 HStack(alignment:.top) {
                     action("Hear",icon:"speaker.wave.2.fill") { speech.speak(AVSpeechUtterance(string:instruction)) }
                     Spacer(); action("Steps",icon:"list.bullet") { steps=true }
                     Spacer(); action("Report",icon:"exclamationmark.bubble") { report=true }
                     Spacer(); action("End",icon:"xmark",color:.red) { dismiss() }
                 }
-            }.padding(20).background(panel)
+            }.padding(20).coolGlass()
         }
         .preferredColorScheme(.dark)
         .onAppear { showRoute(); location.startTracking(); update() }
         .onDisappear { location.stopTracking(); speech.stopSpeaking(at:.immediate) }
+        .onReceive(demoTimer) { _ in
+            guard demo else { return }
+            // Accelerated preview, independent of the user's real GPS.
+            let length=zip(routePoints,routePoints.dropFirst()).reduce(0.0) { $0+($1.1-$1.0).length }
+            demoDistance=min(length,demoDistance+8)
+            withAnimation(.linear(duration:1)) { update() }
+        }
         .onReceive(freshnessTimer) { _ in update() }
         .onReceive(location.$coordinate) { _ in update() }
         .onReceive(location.$heading) { _ in if follow { update() } }
         .sheet(isPresented:$steps) { WalkNavigationView(route:route,location:location) }
-        .sheet(isPresented:$report) { RouteReportView(coordinate:(followCoordinate ?? origin).geo,locationDescription:followCoordinate == nil ? "Route start (preview — not your GPS location)" : "Your current GPS position") }
+        .sheet(isPresented:$report) { RouteReportView(coordinate:(followCoordinate ?? origin).geo,locationDescription:demo ? "Simulated demo position (not GPS)" : followCoordinate == nil ? "Route start (preview — not your GPS location)" : "Your current GPS position") }
     }
     @ViewBuilder private var activeMap:some View {
         #if canImport(GoogleMaps)
         if AppConfiguration.googleEnabled {
-            GoogleRouteMap(routes:[route],selected:route.id,origin:origin,destination:route.coordinates.last,followCoordinate:followCoordinate,heading:location.heading)
+            GoogleRouteMap(routes:[route],selected:route.id,origin:origin,destination:route.coordinates.last,followCoordinate:followCoordinate,heading:walkingHeading,routeTint:UIColor(routeColor),navigationArrow:true)
         } else { appleMap }
         #else
         appleMap
@@ -102,12 +152,22 @@ struct WalkingSessionView: View {
     }
     private var appleMap:some View {
         Map(position:$position) {
-            if followCoordinate != nil { UserAnnotation() }
-            Marker("Start",coordinate:origin).tint(.blue)
+            Annotation(demo ? "Demo position" : followCoordinate == nil ? "Route start" : "You",coordinate:followCoordinate ?? origin) {
+                Image(systemName:"location.north.fill")
+                    .font(.system(size:30,weight:.bold)).foregroundStyle(.blue)
+                    .rotationEffect(.degrees((followCoordinate == nil ? demoPose.heading : walkingHeading)-cameraHeading))
+                    .frame(width:56,height:56).background(.white,in:Circle())
+                    .overlay(Circle().stroke(.blue.opacity(0.2),lineWidth:6))
+                    .shadow(color:.black.opacity(0.25),radius:7,y:3)
+            }.annotationTitles(.hidden)
             MapPolyline(coordinates:route.coordinates).stroke(.white,lineWidth:10)
-            MapPolyline(coordinates:route.coordinates).stroke(.blue,lineWidth:6)
+            MapPolyline(coordinates:route.coordinates).stroke(routeColor,lineWidth:6)
             if let end=route.coordinates.last { Marker(destinationName,coordinate:end).tint(.red) }
         }.mapStyle(.standard(elevation:.realistic,pointsOfInterest:.excludingAll))
+        .onMapCameraChange { context in
+            cameraHeading=context.camera.heading
+            if position.positionedByUser { follow=false }
+        }
     }
     private func metric(_ value:String,_ caption:String) -> some View { VStack(alignment:.leading) { Text(value).font(.title3.bold()); Text(caption).font(.caption).foregroundStyle(.secondary) } }
     private func action(_ title:String,icon:String,color:Color = .blue,action:@escaping ()->Void) -> some View { Button(action:action) { VStack(spacing:8) { Image(systemName:icon).font(.title3); Text(title).font(.caption) }.foregroundStyle(color) } }
@@ -122,6 +182,6 @@ struct WalkingSessionView: View {
         progress=WalkingProgress.calculate(point:projection.geoToLocal(coordinate.geo),route:route.coordinates.map { projection.geoToLocal($0.geo) },expectedSeconds:route.expectedTravelTime)
         guard progress?.canFollowLocation == true else { if !previewing { showRoute() }; return }
         previewing=false
-        if follow { position = .camera(.init(centerCoordinate:coordinate,distance:500,heading:location.heading,pitch:55)) }
+        if follow { position = .camera(.init(centerCoordinate:coordinate,distance:350,heading:walkingHeading,pitch:50)) }
     }
 }
