@@ -153,7 +153,7 @@ struct MapScreen: View {
                         HStack(spacing:12) {
                             Image(systemName:"figure.walk").font(.title3).frame(width:40,height:40).background(accent.opacity(0.2),in:Circle())
                             VStack(alignment:.leading,spacing:5) {
-                                Text(route.id == model.fastest ? "Fastest" : route.id == model.bestShade ? "Most shade" : "Alternative").font(.headline).foregroundStyle(.white)
+                                Text(routeLabel(route)).font(.headline).foregroundStyle(.white)
                                 Text(sunText(route)).font(.subheadline).foregroundStyle(route.exposure == nil ? Color.secondary : .orange)
                             }
                             Spacer()
@@ -250,6 +250,17 @@ struct MapScreen: View {
     private var departureLabel: String {
         let formatter = DateFormatter(); formatter.timeZone = TimeZone(identifier:"Asia/Dubai"); formatter.dateFormat = "h:mm a"
         return formatter.string(from:model.departure)
+    }
+    private func routeLabel(_ route: RouteOption) -> String {
+        if route.id == model.fastest { return route.id == model.coolest ? "Fastest · coolest" : "Fastest" }
+        guard route.id == model.coolest,
+              let fastest = model.routes.first(where: { $0.id == model.fastest }) else { return "Alternative" }
+        let extra = Int(ceil(max(0,route.expectedTravelTime-fastest.expectedTravelTime)/60))
+        let label = "Coolest · +\(extra) min"
+        guard let baseline = fastest.exposure?.sunSeconds, baseline > 0,
+              let sun = route.exposure?.sunSeconds else { return label }
+        let reduction = Int(((baseline-sun)/baseline*100).rounded())
+        return reduction > 0 ? "\(label) · \(reduction)% less sun" : label
     }
     private func sunText(_ route: RouteOption) -> String {
         if model.loadingBuildings { return "Checking shade…" }
