@@ -131,3 +131,23 @@ On the walking screen, tap the orange **Stage demo** toggle (bottom-left). It pl
 
 - Live model credentials not tested — all Jev tests use `Experimental_EvaluationMockModelV4`; real gateway calls need a valid `AI_GATEWAY_API_KEY`.
 - No routes consume `evaluateWithJev` yet; no deployment config.
+
+## R-A1 — Off-route duration tracker
+
+**What it does**
+
+- Adds a public `OffRouteTracker` (`Sendable` value type) to `ShadeCore`. Each `update(distanceOffRoute:at:)` call returns the current route deviation in meters and the continuous seconds spent beyond the 25 m off-route threshold.
+- Returning to 25 m or less resets the clock; the next departure starts a fresh count at zero.
+- Elapsed time is clamped so it can never go negative, even if timestamps arrive out of order.
+- No app behavior changes — nothing calls the tracker yet.
+
+**Files changed**
+
+| File | Change |
+| --- | --- |
+| `Sources/ShadeCore/WalkingProgress.swift` | New `OffRouteTracker` struct. |
+| `Tests/ShadeCoreTests/WalkingCameraTests.swift` | Four tests covering on-route zero time, accumulation, reset on return, and negative-time clamping. |
+
+**Not covered / follow-ups**
+
+- Wiring the tracker into the walking UI / reroute flow is a separate task.
