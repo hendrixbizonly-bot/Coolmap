@@ -192,3 +192,85 @@ On the walking screen, tap the orange **Stage demo** toggle (bottom-left). It pl
 
 - Per-piece quantized footprint area is capped at 115% of source-mask area; the 10 MB budget keeps the largest accurate pieces, so some canopy is omitted. Bridge interiors are explicitly filled because the record contract has no holes; closed-loop bridge centers remain a known limitation.
 - Run with a fresh `--cache` directory to refresh source data; failed source downloads fail the build rather than publish a partial dataset. Tree coordinates use 5 decimals, structures 6; canopy-area retention is reported by the generator. Historical byte reproducibility requires the unversioned cached snapshot; fresh live sources can change.
+
+## Feature 7 — Step-free routing (wheelchair & stroller mode)
+
+**What it does**
+
+- **Step-free toggle** (high-contrast, `figure.roll`) at the top of the route options. It is remembered between launches. When on, the app re-ranks the MapKit walking alternatives by accessibility instead of speed and auto-selects the best one.
+- **Barrier tagging from OpenStreetMap.** The same route-scoped OSM download that powers shade (`CityBuildingProvider`) is now also parsed for pedestrian barriers (`OSMAccessParser` in ShadeCore, cached per tile under `OSMAccess-v1`):
+  - `highway=steps` without `ramp=yes` / `ramp:wheelchair=yes` / `ramp:stroller=yes` / `wheelchair=yes` → **Steps, no ramp** (blocking)
+  - `barrier=kerb` + `kerb=raised` → **Raised kerb** (blocking); `kerb=flush|lowered` is fine
+  - `wheelchair=no` on any footway/node → **Not wheelchair accessible** (blocking)
+  - `incline=*` above **8.3 % (1:12)** → **Incline N%** (slow-down, +2 min penalty). Accepts `12%`, `1:10`, `0.15`, `steep`; `up`/`down` is unknown and ignored.
+  - `surface=cobblestone|sett|gravel|unpaved|ground|sand|grass|…` → **Surface: …** (slow-down, +1 min penalty)
+  - `highway=elevator` → shown as an elevator marker; only blocking if `wheelchair=no` or a walker has reported it broken.
+- **Route scoring** (`StepFreeAssessment`): a barrier counts against a route when it is within 12 m of the route line. Routes with no blocking barrier are "step-free"; among them the lowest adjusted time wins. If every alternative has a barrier, the one with the fewest/least penalised barriers is selected and the card is titled **Fewest barriers**, with a red note "No fully step-free route found".
+- **Pace calibration:** with the toggle on, every ETA (route cards, walking screen, arrival estimate, progress) uses `expected × 1.35 + penalties` — a steadier wheelchair/stroller pace.
+- **Visualising barriers:** with the toggle on, blocking OSM ways are drawn as solid red lines (dashed for slow-downs) and point barriers get a red marker with a stair / kerb / incline / surface icon on both the route map (Apple) and the walking map. Each route card lists "⚠ N barrier(s): Steps, no ramp, Raised kerb…" or "Step-free ✓ (· N min slower for slope/surface)".
+- **Crowdsourced accessibility reports:** three new hazard categories in the report sheet — **Steps / no ramp** (30 d), **Broken elevator** (12 h), **Missing kerb ramp** (30 d). Active reports of these kinds count as blocking barriers in the step-free scoring, so a freshly reported broken lift immediately demotes the route that depends on it. They go through the same Still there? verification loop as other pins.
+- **Photo trust markers:** the report sheet has an optional **Add photo** (Photos picker). The photo is downscaled to 1280 px JPEG and stored on-device under `Documents/report-photos/`; it shows as a thumbnail in the Still there? card and in the pin's callout so the next walker can eyeball the ramp/kerb before arriving. Photos are **not** uploaded to Supabase yet.
+
+**Stage demo**
+
+The **Stage demo** button on the walking screen is now a menu with two scenarios: **Fallen tree ahead** (Feature 2) and **Broken elevator (step-free)** — another walker reported "Lift out of service — use the ramp on the north side" 10 minutes ago on your route; the simulated walker approaches it and the Still there? card fires. With Step-free on, the banner reads "step-free pace" and any OSM barriers on the route are drawn in red as the walker passes them. **Stop demo** clears the pin; demo pins are never saved or uploaded.
+
+**Files changed**
+
+| File | Change |
+| --- | --- |
+| `Sources/ShadeCore/Accessibility.swift` (new) | `AccessBarrier`, `OSMAccessParser`, `RouteAccessibility`, `StepFreeAssessment` (pure Swift). |
+| `Tests/ShadeCoreTests/AccessibilityTests.swift` (new) | Parser rules, incline parsing, corridor matching/penalties. |
+| `CoolMap/Services/CityBuildingProvider.swift` | `BuildingLoad.barriers`; barriers parsed from the same OSM XML and cached. |
+| `CoolMap/Services/AppModel.swift` | `stepFree` (persisted), `barriers`, `reportBarriers`, `accessibility(_:)`, `bestStepFree`, `eta(_:)`. |
+| `CoolMap/Services/RouteReports.swift` | New categories (`isAccessBarrier`, `barrierKind`), `RouteReport.photo`, `attachPhoto`, `photoURL`, generalised `plantStageDemo(at:category:note:ageMinutes:)`. |
+| `CoolMap/Views/MapScreen.swift` | Step-free toggle, per-route accessibility lines, adjusted ETAs, barrier data passed to the map and walking screen. |
+| `CoolMap/Views/BatchedRouteMap.swift` | Red barrier polylines and markers, photo thumbnail in callouts. |
+| `CoolMap/Views/WalkingSessionView.swift` | Step-free ETA/progress, barrier overlays, demo menu with the broken-elevator scenario. |
+| `CoolMap/Views/HazardReportSheet.swift` | Photo picker in the report sheet, thumbnail in `StillThereCard`. |
+| `Backend/reports.sql` | Category constraint extended with the three new categories (re-run if the table exists). |
+| `CoolMap.xcodeproj/project.pbxproj` | Regenerated (`Scripts/generate_project.py`) for the new ShadeCore file. |
+
+**Not covered / follow-ups**
+
+- Barriers are only as good as OSM coverage: an untagged flight of steps is invisible, and steps whose end touches the sidewalk within 12 m can flag a route that merely passes them. Elevation-model slope (no `incline` tag) is not computed yet.
+- MapKit still produces the candidate routes; the app re-ranks and penalises, it does not compute a detour itself. Google Maps provider does not draw barriers.
+- Photo upload/sharing to Supabase; per-account reputation for accessibility reports.
+
+## Feature 8 — Jev reroute-decision API (R-J1)
+
+**What it does**
+
+- `POST /api/reroute-decision` validates a walking-state payload (zod) and returns `{ prompt, urgency, reason, confidence?, debug }` deciding whether to interrupt the walker with a cooler alternative route.
+- Deterministic gates run first: a 180 s prompt cooldown and missing alternative stay quiet; blocked/closed/fallen-tree hazards ahead hard-trigger an immediate prompt; alternatives saving under 10% of remaining heat stay quiet only when there are no community reports ahead.
+- Non-blocking community reports bypass the heat-saving gate so Jev can weigh category, note, distance, optional age in minutes and confirmation; recent, confirmed, nearby reports can justify a small-heat-saving reroute.
+- Otherwise `lib/weather.ts` fetches the current Dubai-hour temperature from Open-Meteo (10 min per-coordinate cache, 1.5 s timeout, silently optional) and `evaluateWithJev` scores `rerouteWorthIt` (boolean) and `urgency` (0–3); prompting requires probability ≥ 0.6.
+- If Jev fails or times out, a rule fallback prompts only when the alternative cuts ≥ 25% of remaining heat for ≤ 3 extra minutes. Debug output lists each question's answer and probability.
+- Zero Data Retention is enabled on every Jev call through the Vercel Pro gateway.
+
+**Files changed**
+
+| File | Change |
+| --- | --- |
+| `Server/lib/reroute.ts` (+ `reroute.test.ts`) | **New.** Request schema, Jev question definitions, `decideReroute` gating/fallback logic + mock-model tests. |
+| `Server/lib/weather.ts` (+ `weather.test.ts`) | **New.** `currentTemperature` Open-Meteo lookup with cache + tests. |
+| `Server/app/api/reroute-decision/route.ts` (+ `route.test.ts`) | **New.** POST endpoint with 400 validation and decision tests. |
+| `Server/package.json`, `Server/pnpm-lock.yaml` | Pin `zod@4.1.12`. |
+| `FEATURES.md` | This entry. |
+
+**Not covered / follow-ups**
+
+- Vercel preview pending H1b; no Swift changes here.
+- Live Jev verified with three local HTTP 200 responses and real question probabilities (2.037 s, 0.731 s, 0.408 s); the 3 s model timeout is unchanged. Weather remains optional and separately covered by mock tests.
+
+## R-V — Jev live decision panel
+
+**What it does**
+
+- `GET /demo` polls `/api/decisions` every second (no-store, keeps last good data on errors) and renders the newest decision hero — `rerouteWorthIt` answer + confidence bar, urgency, outcome, heat/time/temperature/sunset/hazard metrics — plus a timeline of earlier checks; without Jev questions it falls back to a truthful prompt headline.
+- `POST /api/reroute-decision` records each validated decision into a bounded in-process log (20, newest-first, snapshotted); `GET /api/decisions` serves it with `no-store`. The log is per server instance, so restarts or replicas do not share it.
+- `pnpm demo:replay` (`BASE_URL` to override) posts five staged states ~6 s apart to fill the panel; scenario values deliberately expire the prompt cooldown so decisions vary.
+
+**Not covered / follow-ups**
+
+- The panel surfaces optional `debug.temperatureC`; absent values render as `—`.

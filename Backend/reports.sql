@@ -3,7 +3,7 @@
 -- current app. Never reapply this file over an authenticated profile deployment.
 create table if not exists public.route_reports (
   id uuid primary key,
-  category text not null check (category in ('Broken sidewalk','Blocked crossing','No shade','Construction','Other','Blocked path','Missing shade','No pavement')),
+  category text not null check (category in ('Broken sidewalk','Blocked crossing','No shade','Construction','Steps / no ramp','Broken elevator','Missing kerb ramp','Other','Blocked path','Missing shade','No pavement')),
   note text not null default '' check (char_length(note) <= 1000),
   latitude double precision not null check (latitude between 24 and 26.5),
   longitude double precision not null check (longitude between 54 and 57),

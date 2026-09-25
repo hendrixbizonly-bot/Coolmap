@@ -13,6 +13,7 @@ struct BatchedRouteMap: UIViewRepresentable {
     var shadowsRevision=0
     var exposureRevision=0
     var hazards:[RouteReport]=[]
+    var barriers:[AccessBarrier]=[]
     var onCenterChange:((CLLocationCoordinate2D)->Void)?
     var routeTint:UIColor = .systemBlue
     var onHeadingChange:((Double)->Void)?
@@ -41,6 +42,18 @@ struct BatchedRouteMap: UIViewRepresentable {
             map.removeAnnotations(c.hazardPins)
             c.hazardPins=hazards.map(HazardAnnotation.init)
             map.addAnnotations(c.hazardPins)
+        }
+        let barrierKey=barriers.map { "\($0.id)@\($0.blocking)" }.joined()
+        if c.barrierKey != barrierKey {
+            c.barrierKey=barrierKey
+            map.removeAnnotations(c.barrierPins)
+            c.barrierPins=barriers.filter { $0.points.count<2 }.map(BarrierAnnotation.init)
+            map.addAnnotations(c.barrierPins)
+            c.replace("barriers",on:map,with:barriers.filter { $0.points.count>=2 }.map { barrier in
+                let line=MKPolyline(coordinates:barrier.points.map(\.coordinate),count:barrier.points.count)
+                line.title=barrier.blocking ? "barrier" : "barrier-slow"
+                return line
+            })
         }
         if c.recordsRevision != recordsRevision {
             c.recordsRevision=recordsRevision
@@ -73,7 +86,7 @@ struct BatchedRouteMap: UIViewRepresentable {
         let fitKey="\(selected?.uuidString ?? "")-\(origin?.latitude ?? 0)-\(origin?.longitude ?? 0)-\(destination?.latitude ?? 0)-\(destination?.longitude ?? 0)"
         if c.fitKey != fitKey {
             c.fitKey=fitKey
-            map.removeAnnotations(map.annotations.filter { !($0 is HazardAnnotation) })
+            map.removeAnnotations(map.annotations.filter { !($0 is HazardAnnotation) && !($0 is BarrierAnnotation) })
             for (name,coordinate) in [("Start",origin),("Finish",destination)] {
                 if let coordinate { let pin=MKPointAnnotation(); pin.title=name; pin.coordinate=coordinate; map.addAnnotation(pin) }
             }
@@ -92,8 +105,9 @@ struct BatchedRouteMap: UIViewRepresentable {
         var routeTint:UIColor = .systemBlue
         var recordsRevision:UUID?
         var shadowsRevision:Int?
-        var routeKey="",fitKey="",hazardKey=""
+        var routeKey="",fitKey="",hazardKey="",barrierKey=""
         var hazardPins:[HazardAnnotation]=[]
+        var barrierPins:[BarrierAnnotation]=[]
         var onCenterChange:((CLLocationCoordinate2D)->Void)?
         var layers:[String:[MKOverlay]]=[:]
         var onHeadingChange:((Double)->Void)?
@@ -113,8 +127,9 @@ struct BatchedRouteMap: UIViewRepresentable {
             let renderer:MKOverlayPathRenderer
             if let multi=overlay as? MKMultiPolyline { renderer=MKMultiPolylineRenderer(multiPolyline:multi) }
             else { renderer=MKPolylineRenderer(polyline:overlay as! MKPolyline) }
-            renderer.strokeColor=key=="alternatives" ? .systemGray : key=="shade" ? .systemGray : routeTint
-            renderer.lineWidth=key=="alternatives" ? 3 : key=="shade" ? 4 : 8
+            renderer.strokeColor=key=="alternatives" ? .systemGray : key=="shade" ? .systemGray : key=="barriers" ? .systemRed : routeTint
+            renderer.lineWidth=key=="barriers" ? 5 : key=="alternatives" ? 3 : key=="shade" ? 4 : 8
+            if let line=overlay as? MKPolyline,line.title=="barrier-slow" { renderer.lineDashPattern=[8,6] }
             renderer.lineCap = .round
             return renderer
         }
@@ -126,6 +141,21 @@ struct BatchedRouteMap: UIViewRepresentable {
                 view.markerTintColor=UIColor(hazard.report.hazard.color)
                 view.glyphImage=UIImage(systemName:hazard.report.hazard.icon)
                 view.canShowCallout=true
+                view.displayPriority = .required
+                if let url=RouteReportStore.shared.photoURL(hazard.report),let image=UIImage(contentsOfFile:url.path) {
+                    let photo=UIImageView(image:image)
+                    photo.frame=CGRect(x:0,y:0,width:120,height:90)
+                    photo.contentMode = .scaleAspectFill
+                    photo.clipsToBounds=true
+                    view.detailCalloutAccessoryView=photo
+                }
+                return view
+            }
+            if let barrier=annotation as? BarrierAnnotation {
+                let view=mapView.dequeueReusableAnnotationView(withIdentifier:"barrier") as? MKMarkerAnnotationView ?? MKMarkerAnnotationView(annotation:annotation,reuseIdentifier:"barrier")
+                view.annotation=annotation
+                view.markerTintColor=barrier.barrier.kind == .elevator ? .systemPurple : .systemRed
+                view.glyphImage=UIImage(systemName:barrier.barrier.kind.mapIcon)
                 view.displayPriority = .required
                 return view
             }
@@ -149,6 +179,26 @@ struct BatchedRouteMap: UIViewRepresentable {
             guard !lastHeading.isFinite || abs(heading-lastHeading)>0.5 else { return }
             lastHeading=heading
             DispatchQueue.main.async { [weak self] in self?.onHeadingChange?(heading) }
+        }
+    }
+}
+
+final class BarrierAnnotation:NSObject,MKAnnotation {
+    let barrier:AccessBarrier
+    init(barrier:AccessBarrier) { self.barrier=barrier }
+    var coordinate:CLLocationCoordinate2D { barrier.points[0].coordinate }
+    var title:String? { barrier.detail }
+    var subtitle:String? { "barrier-\(barrier.kind.rawValue)" }
+}
+extension AccessBarrier.Kind {
+    var mapIcon:String {
+        switch self {
+        case .steps: return "stairs"
+        case .raisedKerb: return "figure.roll"
+        case .steepIncline: return "arrow.up.right"
+        case .roughSurface: return "square.grid.3x3"
+        case .noWheelchair: return "nosign"
+        case .elevator: return "arrow.up.and.down.square.fill"
         }
     }
 }

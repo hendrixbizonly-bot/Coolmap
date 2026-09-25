@@ -11,13 +11,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "check": "tsc --noEmit && eslint . && vitest run"
+    "check": "tsc --noEmit && eslint . && vitest run",
+    "demo:replay": "node scripts/demo-replay.mjs"
   },
   "dependencies": {
     "ai": "7.0.105",
     "next": "16.3.5",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "zod": "4.1.12"
   },
   "devDependencies": {
     "@types/node": "22.19.15",
