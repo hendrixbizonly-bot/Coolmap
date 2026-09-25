@@ -60,6 +60,9 @@ struct WalkingSessionView: View {
                 Spacer()
             }.padding(20).background(.blue,in:RoundedRectangle(cornerRadius:20)).padding(12)
         }
+        .overlay(alignment:.top) {
+            if let r=reports.verification { StillThereCard(store:reports,report:r).padding(.horizontal,16).transition(.move(edge:.top).combined(with:.opacity)) }
+        }
         .overlay(alignment:.trailing) {
             VStack(spacing:14) {
                 Button { follow=true; previewing=false; update() } label: { Image(systemName:"location.viewfinder").font(.title2).padding().background(panel,in:Circle()) }.accessibilityLabel("Show route or nearby location")
@@ -90,7 +93,7 @@ struct WalkingSessionView: View {
         .onAppear { showRoute(); location.startTracking(); update() }
         .onDisappear { location.stopTracking(); speech.stopSpeaking(at:.immediate) }
         .onReceive(freshnessTimer) { _ in update() }
-        .onReceive(location.$coordinate) { _ in update() }
+        .onReceive(location.$coordinate) { c in update(); if let c { reports.checkProximity(to:c.geo) } }
         .onReceive(location.$heading) { _ in if follow { update() } }
         .sheet(isPresented:$steps) { WalkNavigationView(route:route,location:location) }
         .sheet(isPresented:$report) { HazardReportSheet(store:reports,coordinate:(followCoordinate ?? origin).geo,locationDescription:followCoordinate == nil ? "Route start (preview — not your GPS location)" : "Your current GPS position") }

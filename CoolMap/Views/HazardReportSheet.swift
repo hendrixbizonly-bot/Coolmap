@@ -24,6 +24,47 @@ struct HazardReportButton: View {
     }
 }
 
+/// Waze-style “Still there?” card shown when the walker is within the trigger zone of an active pin.
+/// Times out as a neutral event after a few seconds.
+struct StillThereCard: View {
+    @ObservedObject var store:RouteReportStore
+    let report:RouteReport
+    @State private var remaining=8.0
+    private let tick=Timer.publish(every:0.1,on:.main,in:.common).autoconnect()
+    private let panel=Color(red:0.055,green:0.09,blue:0.14)
+    var body:some View {
+        VStack(spacing:14) {
+            HStack(spacing:12) {
+                Image(systemName:report.hazard.icon).font(.title2).foregroundStyle(.black).frame(width:44,height:44).background(report.hazard.color,in:Circle())
+                VStack(alignment:.leading,spacing:3) {
+                    Text("Still there?").font(.headline)
+                    Text("\(report.hazard.rawValue) · reported \(RelativeDateTimeFormatter().localizedString(for:report.date,relativeTo:Date()))").font(.caption).foregroundStyle(.secondary)
+                }
+                Spacer()
+                Button { store.dismissVerification() } label: { Image(systemName:"xmark").font(.caption.bold()).padding(8).background(.white.opacity(0.1),in:Circle()) }.accessibilityLabel("Dismiss")
+            }
+            HStack(spacing:12) {
+                Button { store.answerVerification(stillThere:true) } label: {
+                    Label("Still there",systemImage:"hand.thumbsup.fill").font(.subheadline.bold()).frame(maxWidth:.infinity).padding(.vertical,12)
+                        .foregroundStyle(.white).background(Color(red:0.25,green:0.50,blue:1),in:RoundedRectangle(cornerRadius:14))
+                }
+                Button { store.answerVerification(stillThere:false) } label: {
+                    Label("Not there",systemImage:"xmark.circle.fill").font(.subheadline.bold()).frame(maxWidth:.infinity).padding(.vertical,12)
+                        .foregroundStyle(.black).background(Color(red:1,green:0.6,blue:0.1),in:RoundedRectangle(cornerRadius:14))
+                }
+            }
+            GeometryReader { g in
+                Capsule().fill(.white.opacity(0.1)).overlay(alignment:.leading) { Capsule().fill(.white.opacity(0.5)).frame(width:g.size.width*remaining/8) }
+            }.frame(height:3)
+        }
+        .padding(16).background(panel,in:RoundedRectangle(cornerRadius:22)).overlay(RoundedRectangle(cornerRadius:22).stroke(.white.opacity(0.12)))
+        .shadow(color:.black.opacity(0.4),radius:12,y:6)
+        .onReceive(tick) { _ in remaining-=0.1; if remaining<=0 { store.dismissVerification() } }
+        .accessibilityElement(children:.contain)
+        .accessibilityLabel("Is the \(report.hazard.rawValue) still there?")
+    }
+}
+
 /// One-tap crowd-sourced hazard reporting. Pick a hazard, it is pinned at your position immediately.
 struct HazardReportSheet: View {
     @Environment(\.dismiss) private var dismiss

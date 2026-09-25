@@ -30,6 +30,10 @@ struct MapScreen: View {
         ZStack {
             if navigation { panel } else { activeMap.ignoresSafeArea(edges:.horizontal) }
             if !model.routes.isEmpty && !navigation { sunBadge }
+            if let report=reports.verification, !navigation {
+                VStack { StillThereCard(store:reports,report:report).padding(.horizontal,16).padding(.top,8); Spacer() }
+                    .transition(.move(edge:.top).combined(with:.opacity)).animation(.spring,value:report.id)
+            }
             VStack {
                 Spacer()
                 HStack(alignment:.bottom) {
@@ -61,6 +65,7 @@ struct MapScreen: View {
             HazardReportSheet(store:reports,coordinate:reportPoint.coordinate,locationDescription:reportPoint.description)
         }
         .onReceive(expiryTicker) { _ in reports.purgeExpired() }
+        .onReceive(location.$coordinate) { coordinate in if let coordinate, !navigation { reports.checkProximity(to:coordinate.geo) } }
         .onChange(of:model.hasOrigin) { _,has in if has { Task { await reports.refresh(around:model.origin.geo) } } }
         .sheet(isPresented:$timePicker) {
             NavigationStack {
