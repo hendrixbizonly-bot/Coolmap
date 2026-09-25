@@ -261,3 +261,15 @@ The **Stage demo** button on the walking screen is now a menu with two scenarios
 
 - Vercel preview pending H1b; no Swift changes here.
 - Live Jev verified with three local HTTP 200 responses and real question probabilities (2.037 s, 0.731 s, 0.408 s); the 3 s model timeout is unchanged. Weather remains optional and separately covered by mock tests.
+
+## R-V — Jev live decision panel
+
+**What it does**
+
+- `GET /demo` polls `/api/decisions` every second (no-store, keeps last good data on errors) and renders the newest decision hero — `rerouteWorthIt` answer + confidence bar, urgency, outcome, heat/time/temperature/sunset/hazard metrics — plus a timeline of earlier checks; without Jev questions it falls back to a truthful prompt headline.
+- `POST /api/reroute-decision` records each validated decision into a bounded in-process log (20, newest-first, snapshotted); `GET /api/decisions` serves it with `no-store`. The log is per server instance, so restarts or replicas do not share it.
+- `pnpm demo:replay` (`BASE_URL` to override) posts five staged states ~6 s apart to fill the panel; scenario values deliberately expire the prompt cooldown so decisions vary.
+
+**Not covered / follow-ups**
+
+- The panel surfaces optional `debug.temperatureC`; absent values render as `—`.
