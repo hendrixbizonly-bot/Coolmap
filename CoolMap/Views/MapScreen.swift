@@ -69,7 +69,7 @@ struct MapScreen:View {
             Button("OK",role:.cancel) {}
         } message: { Text("Add Maps SDK and Routes/Places keys to Config/Local.xcconfig, then rebuild. Apple Maps is active until setup is complete.") }
         .fullScreenCover(isPresented:$navigation) {
-            if let route=model.active { WalkingSessionView(route:route,location:location,destinationName:model.destinationName,routeColor:shadePreferred ? .blue : .yellow,stepFree:model.stepFree,barriers:model.stepFree ? model.barriers+model.reportBarriers : []) }
+            if let route=model.active { WalkingSessionView(route:route,location:location,destinationName:model.destinationName,routeColor:shadePreferred ? .blue : .yellow,stepFree:model.stepFree,barriers:model.stepFree ? model.barriers+model.reportBarriers : [],alternative:model.routes.first { $0.id != route.id && $0.id == (route.id == model.shortest ? model.shadeEstimate : model.shortest) } ?? model.routes.first { $0.id != route.id }) }
         }
         .onChange(of:model.departure) { _,_ in syncTime(); model.recalculate(); updateShadows() }
         .onChange(of:model.recordsRevision) { _,_ in updateShadows() }

@@ -274,3 +274,7 @@ The **Stage demo** button on the walking screen is now a menu with two scenarios
 **Not covered / follow-ups**
 
 - The panel surfaces optional `debug.temperatureC`; absent values render as `—`.
+
+## Feature 8 — Mid-walk cooler-route suggestion (R-A2b)
+- With `REROUTE_API_URL` configured, the walking screen checks every 10 s — and immediately when a community report appears near the route ahead — whether the server suggests a cooler alternative, then shows a dismissible "Switch" banner; nothing is sent when the URL is unset.
+- If the server is unreachable or answers oddly the check fails silently — walking, demo mode, and hazard reporting are unaffected.

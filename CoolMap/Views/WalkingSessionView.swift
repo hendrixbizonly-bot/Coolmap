@@ -3,13 +3,14 @@ import MapKit
 import AVFoundation
 struct WalkingSessionView: View {
     @Environment(\.dismiss) private var dismiss
-    let route:RouteOption
+    @State var route:RouteOption
     @ObservedObject var location:LocationService
     @ObservedObject private var reports=RouteReportStore.shared
     let destinationName:String
     var routeColor:Color = .blue
     var stepFree=false
     var barriers:[AccessBarrier]=[]
+    var alternative:RouteOption? = nil
     @State private var position=MapCameraPosition.automatic
     @State private var progress:WalkingProgress?
     @State private var steps=false
@@ -26,6 +27,13 @@ struct WalkingSessionView: View {
     @State private var stageDemo=false
     @State private var demoHazardDistance=0.0
     private let stageTimer=Timer.publish(every:0.5,on:.main,in:.common).autoconnect()
+    @State private var walkStarted:Date?
+    @State private var lastReroutePrompt:Date?
+    @State private var rerouteInFlight=false
+    @State private var rerouteBanner:(heatReduction:Int,extraMinutes:Int,ahead:String?)?
+    @State private var sentReports:Set<UUID>=[]
+    @State private var walkingActive=false
+    private let rerouteTimer=Timer.publish(every:10,on:.main,in:.common).autoconnect()
     private static let demoMetresPerSecond=3.0
     private let panel=Color(red:0.055,green:0.09,blue:0.14)
     private var origin:CLLocationCoordinate2D { route.coordinates.first ?? .init(latitude:25.2,longitude:55.27) }
@@ -166,6 +174,17 @@ struct WalkingSessionView: View {
             }.padding().padding(.bottom,10)
         }
         .safeAreaInset(edge:.bottom) {
+            VStack(spacing:8) {
+                if let banner=rerouteBanner {
+                    VStack(spacing:8) {
+                        Text(banner.ahead.map { "Cooler way available · \($0) ahead · +\(banner.extraMinutes) min" } ?? "Cooler way available · \(banner.heatReduction)% less heat · +\(banner.extraMinutes) min").font(.subheadline.bold())
+                        HStack {
+                            Button("Switch") { switchRoute() }
+                            Spacer()
+                            Button("Dismiss") { rerouteBanner=nil }
+                        }
+                    }.padding(16).coolGlass()
+                }
             VStack(spacing:18) {
                 if let p=progress,onRoute {
                     HStack {
@@ -188,10 +207,18 @@ struct WalkingSessionView: View {
                     Spacer(); action("End",icon:"xmark",color:.red) { dismiss() }
                 }
             }.padding(20).coolGlass()
+            }
         }
         .preferredColorScheme(.dark)
-        .onAppear { showRoute(); location.startTracking(); update() }
-        .onDisappear { location.stopTracking(); speech.stopSpeaking(at:.immediate); if stageDemo { reports.clearDemoHazards() } }
+        .onAppear { walkingActive=true; showRoute(); location.startTracking(); update() }
+        .onDisappear { walkingActive=false; location.stopTracking(); speech.stopSpeaking(at:.immediate); if stageDemo { reports.clearDemoHazards() } }
+        .onReceive(rerouteTimer) { _ in Task { await checkReroute() } }
+        .task(id:followCoordinate != nil) {
+            guard followCoordinate != nil,!AppConfiguration.rerouteURL.isEmpty,walkStarted == nil else { return }
+            walkStarted=Date()
+            do { try await Task.sleep(nanoseconds:3_000_000_000) } catch { return }
+            await checkReroute()
+        }
         .onReceive(demoTimer) { _ in
             guard demo else { return }
             // Accelerated preview, independent of the user's real GPS.
@@ -200,6 +227,7 @@ struct WalkingSessionView: View {
             withAnimation(.linear(duration:1)) { update() }
         }
         .onReceive(freshnessTimer) { _ in update() }
+        .onChange(of:reports.active.map(\.id)) { _,_ in update() }
         .onReceive(stageTimer) { _ in
             guard stageDemo,demoDistance<route.distance,reports.verification==nil else { return }
             demoDistance+=Self.demoMetresPerSecond*0.5
@@ -246,6 +274,54 @@ struct WalkingSessionView: View {
             if position.positionedByUser { follow=false }
         }
     }
+    @MainActor private func checkReroute() async {
+        guard walkingActive,!AppConfiguration.rerouteURL.isEmpty,!rerouteInFlight,
+              let coordinate=followCoordinate,let progress,let exposure=route.exposure else { return }
+        let now=Date(),routeID=route.id
+        if walkStarted == nil { walkStarted=now }
+        let currentHeat=RouteHeat.cost(exposure,expectedTravelTime:route.expectedTravelTime,fromDistance:progress.distanceFromStart)
+        let alt=alternative.flatMap { $0.id != routeID ? $0 : nil }
+        let altHeat=alt.flatMap { option in option.exposure.map { RouteHeat.cost($0,expectedTravelTime:option.expectedTravelTime) } }
+        let alternativeBody:Any
+        if let alt,let exposure=alt.exposure,let altHeat {
+            alternativeBody=["totalSeconds":alt.expectedTravelTime,"heat":altHeat,"sunSeconds":exposure.sunSeconds]
+        } else { alternativeBody=NSNull() }
+        let pinned=reports.active.compactMap { report -> (RouteReport,Double)? in
+            guard let pin=WalkingProgress.calculate(point:projection.geoToLocal(report.coordinate),route:routePoints,expectedSeconds:route.expectedTravelTime),pin.distanceOffRoute<=30,pin.distanceFromStart>=progress.distanceFromStart else { return nil }
+            return (report,pin.distanceFromStart-progress.distanceFromStart)
+        }
+        let hazards:[[String:Any]]=pinned.map { report,ahead in
+            ["category":report.hazard.rawValue,"note":report.note,"metersAhead":ahead,"minutesAgo":Int(-report.date.timeIntervalSinceNow/60),"confirmed":report.confirmedAt != nil]
+        }
+        sentReports.formUnion(pinned.map { $0.0.id })
+        let formatter=ISO8601DateFormatter()
+        formatter.timeZone=TimeZone(secondsFromGMT:4*3600)
+        let body:[String:Any]=[
+            "lat":coordinate.latitude,"lon":coordinate.longitude,"localTime":formatter.string(from:now),
+            "offRouteMeters":progress.distanceOffRoute,"offRouteSeconds":0,
+            "walkedSeconds":max(0,now.timeIntervalSince(walkStarted ?? now)),
+            "secondsSinceLastPrompt":lastReroutePrompt.map { max(0,now.timeIntervalSince($0)) } ?? 9999,
+            "minutesToSunset":120,
+            "current":["remainingSeconds":progress.remainingSeconds,"remainingHeat":currentHeat,"remainingSunSeconds":exposure.sunSeconds],
+            "alternative":alternativeBody,"hazardsAhead":hazards]
+        rerouteInFlight=true
+        defer { rerouteInFlight=false }
+        guard let decision=await RerouteService.decide(body),decision.prompt,walkingActive,route.id==routeID,
+              followCoordinate != nil,rerouteBanner == nil,
+              lastReroutePrompt.map({ Date().timeIntervalSince($0)>=60 }) ?? true,
+              let alt,let altHeat else { return }
+        rerouteBanner=(currentHeat>0 ? max(0,Int(((1-altHeat/currentHeat)*100).rounded())) : 0,max(0,Int(ceil((alt.expectedTravelTime-progress.remainingSeconds)/60))),pinned.first?.0.summary)
+        lastReroutePrompt=Date()
+    }
+    private func switchRoute() {
+        guard let alternative,alternative.id != route.id else { return }
+        route=alternative
+        rerouteBanner=nil
+        demoDistance=0
+        if stageDemo { reports.clearDemoHazards(); demoHazardDistance=0 }
+        follow=true
+        update()
+    }
     private func metric(_ value:String,_ caption:String) -> some View { VStack(alignment:.leading) { Text(value).font(.title3.bold()); Text(caption).font(.caption).foregroundStyle(.secondary) } }
     private func action(_ title:String,icon:String,color:Color = .blue,action:@escaping ()->Void) -> some View { Button(action:action) { VStack(spacing:8) { Image(systemName:icon).font(.title3); Text(title).font(.caption) }.foregroundStyle(color) } }
     private func showRoute() {
@@ -260,5 +336,13 @@ struct WalkingSessionView: View {
         guard progress?.canFollowLocation == true else { if !previewing { showRoute() }; return }
         previewing=false
         if follow { position = .camera(.init(centerCoordinate:coordinate,distance:350,heading:walkingHeading,pitch:50)) }
+        if walkingActive,!AppConfiguration.rerouteURL.isEmpty,let progress,unsentHazardAhead(progress) { Task { await checkReroute() } }
+    }
+    private func unsentHazardAhead(_ progress:WalkingProgress) -> Bool {
+        reports.active.contains { report in
+            guard !sentReports.contains(report.id),let pin=WalkingProgress.calculate(point:projection.geoToLocal(report.coordinate),route:routePoints,expectedSeconds:route.expectedTravelTime) else { return false }
+            let ahead=pin.distanceFromStart-progress.distanceFromStart
+            return pin.distanceOffRoute<=30 && ahead>=0 && ahead<=200
+        }
     }
 }
