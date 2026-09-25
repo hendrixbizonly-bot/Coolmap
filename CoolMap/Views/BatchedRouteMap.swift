@@ -18,6 +18,7 @@ struct BatchedRouteMap: UIViewRepresentable {
     var routeTint:UIColor = .systemBlue
     var onHeadingChange:((Double)->Void)?
     var floatingControls=false
+    var etaSeconds:((RouteOption)->Double)?=nil
     func makeCoordinator()->Coordinator { Coordinator() }
     func makeUIView(context:Context)->MKMapView {
         let map=RouteFittingMapView()
@@ -63,7 +64,8 @@ struct BatchedRouteMap: UIViewRepresentable {
             c.shadowsRevision=shadowsRevision
             c.replace("shadows",on:map,with:shadows.isEmpty ? [] : [MKMultiPolygon(shadows.map { MKPolygon(coordinates:$0.map(\.coordinate),count:$0.count) })])
         }
-        let routeKey=routes.map { $0.id.uuidString }.joined()+"\(selected?.uuidString ?? "")-\(exposureRevision)-\(routeTint.description)"
+        let selectedETA=routes.first(where:{$0.id==selected}).map { etaSeconds?($0) ?? $0.expectedTravelTime } ?? 0
+        let routeKey=routes.map { $0.id.uuidString }.joined()+"\(selected?.uuidString ?? "")-\(exposureRevision)-\(routeTint.description)-\(selectedETA)"
         if c.routeKey != routeKey {
             c.routeKey=routeKey
             for key in ["routes","alternatives","sun","shade","night"] { c.replace(key,on:map,with:[]) }
@@ -83,7 +85,7 @@ struct BatchedRouteMap: UIViewRepresentable {
                 }
             }
         }
-        let fitKey="\(selected?.uuidString ?? "")-\(origin?.latitude ?? 0)-\(origin?.longitude ?? 0)-\(destination?.latitude ?? 0)-\(destination?.longitude ?? 0)"
+        let fitKey="\(selected?.uuidString ?? "")-\(origin?.latitude ?? 0)-\(origin?.longitude ?? 0)-\(destination?.latitude ?? 0)-\(destination?.longitude ?? 0)-\(selectedETA)"
         if c.fitKey != fitKey {
             c.fitKey=fitKey
             map.removeAnnotations(map.annotations.filter { !($0 is HazardAnnotation) && !($0 is BarrierAnnotation) })
@@ -93,7 +95,7 @@ struct BatchedRouteMap: UIViewRepresentable {
             if let route=routes.first(where:{$0.id==selected}),!route.coordinates.isEmpty {
                 let label=RouteTimeAnnotation()
                 label.coordinate=route.coordinates[route.coordinates.count/2]
-                label.title="\(Int(ceil(route.expectedTravelTime/60))) min"
+                label.title="\(Int(ceil((etaSeconds?(route) ?? route.expectedTravelTime)/60))) min"
                 map.addAnnotation(label)
                 let rect=MKPolyline(coordinates:route.coordinates,count:route.coordinates.count).boundingMapRect
                 (map as? RouteFittingMapView)?.routeRect=rect
