@@ -17,12 +17,12 @@ section{padding:28px 0;border-top:1px solid var(--line)}
 .q{display:grid;grid-template-columns:1fr auto;gap:8px 32px;align-items:end;padding:14px 0}
 .q+.q{border-top:1px solid var(--line)}
 .qt{font-size:40px;font-weight:600;letter-spacing:-.02em}
-.qi{grid-column:1/-1;color:var(--mute);font-size:14px;max-width:880px}
+.qi{grid-column:1/-1;color:var(--mute);font-size:13px;max-width:880px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .ans{font-size:40px;font-weight:600;text-align:right;white-space:nowrap}
 .ans small{font-size:18px;color:var(--mute);font-weight:500;margin-left:10px}
 .bar{grid-column:1/-1;height:4px;border-radius:2px;background:var(--line);overflow:hidden}
 .bar i{display:block;height:100%;width:0;border-radius:2px;transition:width .5s cubic-bezier(.2,.8,.2,1),background .3s}
-.rule{font-size:40px;font-weight:600;letter-spacing:-.02em}
+.saw{font-size:34px;font-weight:600;letter-spacing:-.02em;line-height:1.2}.saw .sub{display:block;font-size:17px;font-weight:400;color:var(--mute);letter-spacing:0;margin-top:8px}.rule{font-size:40px;font-weight:600;letter-spacing:-.02em}
 .stats{display:grid;grid-template-columns:repeat(6,1fr)}
 .stat{padding:0 18px;border-left:1px solid var(--line)}.stat:first-child{padding-left:0;border-left:0}
 .stat .v{font-size:26px;font-weight:500;white-space:nowrap}.stat .k{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-top:4px}
@@ -59,12 +59,16 @@ function hero(d){
         <div class="bar"><i data-w="${Math.round(x.probability*100)}" style="background:${colr}"></i></div>
         <div class="qi">${esc(Q[x.id]?.instructions||'')}</div></div>`}).join('');
   } else {
-    const txt=r.reason==='hard_trigger'?'Safety rule: path blocked ahead. Reroute offered.':r.reason==='rule'?'Jev unavailable. Backup rule decided.':'Not asked: no reports ahead, no real heat saving.';
+    const txt=r.reason==='hard_trigger'?'Safety rule: path blocked ahead. Reroute offered.':r.reason==='rule'?'Jev unavailable. Backup rule decided.':'Not asked. Nothing ahead and the heat saving is too small to interrupt.';
     asked=`<div class="rule" style="color:${col(d)}">${txt}</div>`;
   }
   const reps=q.hazardsAhead.length?q.hazardsAhead.map(h=>`<div class="rep">“${esc(h.note||h.category)}”<span>${esc(h.category)} · ${Math.round(h.metersAhead)} m ahead${h.minutesAgo!=null?' · '+h.minutesAgo+' min ago':''}${h.confirmed?' · confirmed':''}</span></div>`).join(''):'<div class="rep" style="color:var(--mute)">No community reports ahead</div>';
+  const top=q.hazardsAhead[0];
+  const trade=a?`${saved} less heat for ${ex}`:'no alternative route';
+  const saw=top?`<div class="saw">“${esc(top.note||top.category)}”<span class="sub">${esc(top.category)} · ${Math.round(top.metersAhead)} m ahead${top.minutesAgo!=null?' · reported '+top.minutesAgo+' min ago':''}${top.confirmed?' · confirmed by walkers':' · unconfirmed'}${q.hazardsAhead.length>1?' · +'+(q.hazardsAhead.length-1)+' more report':''} &nbsp;|&nbsp; alternative: ${trade}</span></div>`
+    :`<div class="saw" style="color:var(--mute)">No community reports ahead<span class="sub">alternative: ${trade}</span></div>`;
   return `<section><div class="meta">Decided by <b>${who(r.reason)}</b> · ${new Date(d.receivedAt).toLocaleTimeString('en-GB',tz)} UAE · ${r.prompt?'<b style="color:'+col(d)+'">Cooler way offered</b>':(r.debug?.questions?.find(x=>x.id==='rerouteWorthIt'&&x.answer)?'Stayed quiet · below the 60% bar':'Stayed quiet')}</div>
-    <div class="lbl" style="margin-top:18px">Jev was asked</div>${asked}</section>
+    <div class="lbl" style="margin-top:22px">What Jev saw</div>${saw}<div class="lbl" style="margin-top:30px">Jev was asked</div>${asked}</section>
     <section><div class="lbl">Data fed in</div><div class="stats">
       <div class="stat"><div class="v">${saved}</div><div class="k">Heat saved</div></div>
       <div class="stat"><div class="v">${ex}</div><div class="k">Extra time</div></div>
@@ -72,7 +76,7 @@ function hero(d){
       <div class="stat"><div class="v">${q.minutesToSunset} min</div><div class="k">To sunset</div></div>
       <div class="stat"><div class="v">${Math.round(q.walkedSeconds/60)} min</div><div class="k">Walked</div></div>
       <div class="stat"><div class="v">${q.hazardsAhead.length}</div><div class="k">Reports ahead</div></div></div>
-      <div class="reports">${reps}</div></section>`;
+</section>`;
 }
 function row(d){const r=d.response,h=d.request.hazardsAhead[0];const jq=r.debug?.questions?.find(x=>x.id==='rerouteWorthIt');
   return `<li><span class="t">${new Date(d.receivedAt).toLocaleTimeString('en-GB',tz)}</span><i class="d" style="background:${col(d)}"></i>
