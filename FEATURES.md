@@ -261,3 +261,25 @@ The **Stage demo** button on the walking screen is now a menu with two scenarios
 
 - Vercel preview pending H1b; no Swift changes here.
 - Live Jev verified with three local HTTP 200 responses and real question probabilities (2.037 s, 0.731 s, 0.408 s); the 3 s model timeout is unchanged. Weather remains optional and separately covered by mock tests.
+
+## R-V — Jev live decision panel
+
+**What it does**
+
+- `GET /demo` renders a dark live panel that polls `/api/decisions` every second (no-store, abortable, keeps last good data on errors) and shows the newest reroute decision hero: who decided, prompt outcome, Jev question confidence bars, heat saved, extra time, temperature, and next hazard, plus a timeline of up to 19 earlier checks.
+- `POST /api/reroute-decision` now records every validated decision into a bounded in-process log (20 entries, newest first, snapshotted payloads) stored on `globalThis` so it survives Next.js dev module reloads.
+- `GET /api/decisions` returns the log newest-first with `Cache-Control: no-store`; the log is per server instance and in-memory only, so restarts clear it and it is not shared across replicas.
+
+**Files changed**
+
+| File | Change |
+| --- | --- |
+| `Server/lib/decision-log.ts` (+ `decision-log.test.ts`) | **New.** `recordDecision`/`recentDecisions` bounded global log + tests. |
+| `Server/app/api/decisions/route.ts` | **New.** Force-dynamic GET returning the log with no-store. |
+| `Server/app/api/reroute-decision/route.ts` | Record each successful decision. |
+| `Server/app/demo/page.tsx` (+ `page.module.css`) | **New.** Live panel UI. |
+| `FEATURES.md` | This entry. |
+
+**Not covered / follow-ups**
+
+- The panel surfaces optional `debug.temperatureC`; absent values render as `—`.
