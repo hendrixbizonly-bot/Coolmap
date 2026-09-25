@@ -1,4 +1,5 @@
 import SwiftUI
+import PhotosUI
 
 /// Waze-style persistent report control: always visible on the map, one tap opens the quick report sheet.
 struct HazardReportButton: View {
@@ -41,6 +42,9 @@ struct StillThereCard: View {
                     Text("\(report.summary) · reported \(RelativeDateTimeFormatter().localizedString(for:report.date,relativeTo:Date()))").font(.caption).foregroundStyle(.secondary)
                 }
                 Spacer()
+                if let url=store.photoURL(report),let image=UIImage(contentsOfFile:url.path) {
+                    Image(uiImage:image).resizable().scaledToFill().frame(width:44,height:44).clipShape(RoundedRectangle(cornerRadius:10))
+                }
                 Button { store.dismissVerification() } label: { Image(systemName:"xmark").font(.caption.bold()).padding(8).background(.white.opacity(0.1),in:Circle()) }.accessibilityLabel("Dismiss")
             }
             HStack(spacing:12) {
@@ -75,6 +79,8 @@ struct HazardReportSheet: View {
     @State private var note=""
     @State private var error:String?
     @State private var saving=false
+    @State private var photoItem:PhotosPickerItem?
+    @State private var photoData:Data?
     private let panel=Color(red:0.055,green:0.09,blue:0.14)
     private var columns:[GridItem] { Array(repeating:GridItem(.flexible(),spacing:14),count:2) }
     var body:some View {
@@ -102,6 +108,20 @@ struct HazardReportSheet: View {
                     }
                     TextField("Add a note (optional)",text:$note,axis:.vertical)
                         .lineLimit(1...3).padding(14).background(.white.opacity(0.08),in:RoundedRectangle(cornerRadius:14))
+                    PhotosPicker(selection:$photoItem,matching:.images,photoLibrary:.shared()) {
+                        HStack(spacing:12) {
+                            if let photoData,let image=UIImage(data:photoData) {
+                                Image(uiImage:image).resizable().scaledToFill().frame(width:44,height:44).clipShape(RoundedRectangle(cornerRadius:10))
+                            } else {
+                                Image(systemName:"camera.fill").frame(width:44,height:44).background(.white.opacity(0.08),in:RoundedRectangle(cornerRadius:10))
+                            }
+                            Text(photoData == nil ? "Add photo (optional)" : "Change photo").font(.subheadline)
+                            Spacer()
+                        }
+                    }
+                    .onChange(of:photoItem) { _,item in
+                        Task { photoData=try? await item?.loadTransferable(type:Data.self) }
+                    }
                     if let error { Text(error).foregroundStyle(.red).font(.footnote) }
                     Text("Community reports are unverified and don’t change routes or shade estimates.")
                         .font(.caption2).foregroundStyle(.secondary)
@@ -117,7 +137,9 @@ struct HazardReportSheet: View {
                     saving=true
                     Task {
                         do {
-                            try await store.save(.init(category:picked.rawValue,note:note.trimmingCharacters(in:.whitespacesAndNewlines),coordinate:coordinate,date:Date(),locationDescription:locationDescription))
+                            let report=RouteReport(category:picked.rawValue,note:note.trimmingCharacters(in:.whitespacesAndNewlines),coordinate:coordinate,date:Date(),locationDescription:locationDescription)
+                            try await store.save(report)
+                            if let photoData { store.attachPhoto(photoData,to:report.id) }
                             dismiss()
                         } catch { self.error="Couldn’t save the report. Please try again."; saving=false }
                     }
