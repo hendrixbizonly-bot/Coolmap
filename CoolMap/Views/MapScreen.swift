@@ -153,7 +153,7 @@ struct MapScreen: View {
                         Label("Step-free",systemImage:"figure.roll").font(.subheadline.bold())
                     }.tint(Color(red:0.2,green:0.85,blue:0.6)).padding(10).background(.white.opacity(0.06),in:RoundedRectangle(cornerRadius:14))
                     if model.stepFree {
-                        Text("Wheelchair & stroller friendly: avoids steps, raised kerbs and >8.3% slopes · slower pace ETA").font(.caption2).foregroundStyle(.secondary)
+                        Text("Wheelchair & stroller friendly: avoids steps, raised kerbs and >8.3% slopes · slower pace ETA").font(.caption2).foregroundStyle(.secondary).fixedSize(horizontal:false,vertical:true)
                     }
                 }
                 ForEach(Array(model.routes.enumerated()),id:\.element.id) { index,route in
@@ -161,14 +161,14 @@ struct MapScreen: View {
                         HStack(spacing:12) {
                             Image(systemName:"figure.walk").font(.title3).frame(width:40,height:40).background(accent.opacity(0.2),in:Circle())
                             VStack(alignment:.leading,spacing:5) {
-                                Text(model.stepFree && route.id == model.bestStepFree ? "Step-free" : route.id == model.fastest ? "Fastest" : route.id == model.bestShade ? "Most shade" : "Alternative").font(.headline).foregroundStyle(.white)
+                                Text(model.stepFree && route.id == model.bestStepFree ? (model.accessibility(route).isStepFree ? "Step-free" : "Fewest barriers") : route.id == model.fastest ? "Fastest" : route.id == model.bestShade ? "Most shade" : "Alternative").font(.headline).foregroundStyle(.white)
                                 Text(sunText(route)).font(.subheadline).foregroundStyle(route.exposure == nil ? Color.secondary : .orange)
                                 if model.stepFree {
                                     let a=model.accessibility(route)
                                     if a.isStepFree {
                                         Text("Step-free ✓"+(a.penaltySeconds>0 ? " · \(Int(a.penaltySeconds/60)) min slower for slope/surface" : "")).font(.caption).foregroundStyle(.green)
                                     } else {
-                                        Text("⚠ \(a.blocking.count) barrier(s): "+a.blocking.prefix(2).map(\.detail).joined(separator:", ")).font(.caption).foregroundStyle(.red)
+                                        Text("⚠ \(a.blocking.count) barrier(s): "+a.blocking.prefix(2).map(\.detail).joined(separator:", ")).font(.caption).foregroundStyle(.red).fixedSize(horizontal:false,vertical:true)
                                     }
                                 }
                             }
@@ -182,7 +182,7 @@ struct MapScreen: View {
                     }.buttonStyle(.plain)
                 }
                 if model.stepFree,let active=model.active,!model.accessibility(active).isStepFree {
-                    Text("No fully step-free route found — barriers are marked in red on the map.").font(.caption).foregroundStyle(.red)
+                    Text("No fully step-free route found — barriers are marked in red on the map.").font(.caption).foregroundStyle(.red).fixedSize(horizontal:false,vertical:true)
                 }
                 sunControls
                 if model.active?.exposure != nil {
