@@ -278,3 +278,8 @@ The **Stage demo** button on the walking screen is now a menu with two scenarios
 ## Feature 8 — Mid-walk cooler-route suggestion (R-A2b)
 - With `REROUTE_API_URL` configured, the walking screen checks every 10 s — and immediately when a community report appears near the route ahead — whether the server suggests a cooler alternative, then shows a dismissible "Switch" banner; nothing is sent when the URL is unset.
 - If the server is unreachable or answers oddly the check fails silently — walking, demo mode, and hazard reporting are unaffected.
+
+## Jev live viewer + demo walk
+- `/jev-live.html` shows live decisions, polling same-origin `/api/decisions` every 250 ms.
+- `pnpm demo:walk -- --loop` submits the approved illustrative walk to the live API (macOS `date`, default `GAP=2.5` seconds).
+- Heat numbers are illustrative; community reports and Jev calls flow through the live server.

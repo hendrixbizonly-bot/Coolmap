@@ -12,7 +12,8 @@
     "build": "next build",
     "start": "next start",
     "check": "tsc --noEmit && eslint . && vitest run",
-    "demo:replay": "node scripts/demo-replay.mjs"
+    "demo:replay": "node scripts/demo-replay.mjs",
+    "demo:walk": "bash scripts/jev-walk.sh"
   },
   "dependencies": {
     "ai": "7.0.105",
