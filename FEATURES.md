@@ -174,3 +174,21 @@ On the walking screen, tap the orange **Stage demo** toggle (bottom-left). It pl
 
 - `k` is fixed at `RouteHeat.defaultK`; no UI preference for sun sensitivity.
 - Remaining-walk recosting via `fromDistance` is exposed in ShadeCore but not yet wired into the walking session UI.
+
+## Feature 6 — Abu Dhabi tree crowns and shade structures (D4)
+
+**What it does**
+
+- `Scripts/build_shade.py` builds `abudhabi-shade.json` for longitude 54.31–54.41 and latitude 24.42–24.52 from Meta canopy height v2 (CC BY 4.0) and OpenStreetMap (ODbL).
+- Trees use connected pixels ≥ 3 m, drop components below 30 m² (coordinator-approved to fit the 10 MB bundle cap), simplify convex crowns to ≤ 8 vertices, and store the 90th-percentile height, half-height clearance and 0.65 transmissivity.
+- OSM adds covered highways, roofs/canopies, shelters and bridges with metre-based buffers and the agreed clearance/transmission defaults. Bridge width is full deck width (half on each side).
+- Optional fields remain compatible with today's BuildingRecord decoder; this data-only change does not activate new app behaviour.
+
+**Files changed**
+
+- `Scripts/build_shade.py`, append-only pinned `Scripts/requirements.txt`, `CoolMap/Resources/abudhabi-shade.json`, generated Xcode project and `Verification/d4-crowns-preview.png` (500 m satellite-overlay sanity check).
+
+**Not covered / follow-ups**
+
+- Canopy crowns are simplified connected-component hulls, not individually detected palms; touching crowns can merge and convex hulls can span gaps. Imagery and canopy observations may differ in date.
+- Run with a fresh `--cache` directory to refresh source data; failed source downloads fail the build rather than publish a partial dataset. Tree coordinates use 5 decimals, structures 6; canopy-area retention is reported by the generator.
