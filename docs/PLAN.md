@@ -28,6 +28,8 @@ It supersedes the scope of `~/.devin/plans/plan-dc3a83134a256f7b.md` for this ha
   - Never hand-edit `CoolMap.xcodeproj`. After adding or removing files run `python3 Scripts/generate_project.py`.
   - Resolve any `project.pbxproj` conflict by regenerating, never by hand-merging.
 - **Setup:** `Scripts/setup.sh`. Add `--test` for core tests, `--run` to build and launch on a simulator.
+  - Orca runs it automatically for every new worktree (`orca.yaml`).
+  - Orca also copies `Config/Local.xcconfig` and `Server/.env.local` from the main checkout into the worktree (`.worktreeinclude`), so builders never need the key pasted in.
 - **Config pattern:**
   - Keys live in `Config/Local.xcconfig` (gitignored), flow into Info.plist keys in `generate_project.py`, and are read in `CoolMap/Services/AppConfiguration.swift`.
   - **An empty key means the feature is off.**
@@ -257,7 +259,9 @@ Every build task `X` implicitly gets review `X.R` (deps `[X]`) and an optional f
   - `C-app` passes.
 
 **R-J0 Server scaffold** · deps `[]`
-- **Target:** new `Server/`: Next.js App Router, TypeScript strict, pnpm, ESLint, Vitest. Plus `Server/.env.example` and a short `Server/README.md`.
+- **Target:** new Next.js App Router app in `Server/` (TypeScript strict, pnpm, ESLint, Vitest), plus a short `Server/README.md`.
+  - `Server/.env.example` already exists: keep it, and add any new variables to it.
+  - If the scaffolder refuses a non-empty folder, scaffold into a temporary folder and move the files in.
 - **Change:**
   - `lib/jev.ts`: `evaluateWithJev({state, questions, model?})` wraps `experimental_evaluate` with `zeroDataRetention`, a 3 s AbortSignal timeout, and returns `{ok:true, answers, probabilities} | {ok:false, reason}`. The model is injectable.
   - `app/api/health/route.ts`.
@@ -440,7 +444,8 @@ R-L ──────────────────┘
 | ID | You do | When |
 |---|---|---|
 | H0 | Nothing: `main` is pushed with this plan and `Scripts/setup.sh` | Done |
-| H1 | After R-J0 merges: `cd Server && vercel link`, add `AI_GATEWAY_API_KEY` to the Vercel project env (Preview and Production) and to `Server/.env.local`, then `vercel deploy`. Give the orchestrator the preview URL. | ≈ 0:45 |
+| H1a | Paste the key into `Server/.env.local` in the **main checkout**. Orca copies it into each new worktree. | Before launch |
+| H1b | After R-J0 merges: `cd Server && vercel link`, add `AI_GATEWAY_API_KEY` to the Vercel project env (Preview and Production), then `vercel deploy`. Give the orchestrator the preview URL. | ≈ 0:45 |
 | H2 | Merge PRs the orchestrator marks ready | Continuous |
 | H3 | Make the GitHub repo public, or invite the judges | 2:50 |
 

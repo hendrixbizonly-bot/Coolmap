@@ -1,0 +1,4 @@
+scripts:
+  setup: |
+    set -e
+    Scripts/setup.sh
