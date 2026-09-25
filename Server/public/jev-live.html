@@ -22,7 +22,7 @@ section{padding:28px 0;border-top:1px solid var(--line)}
 .ans small{font-size:18px;color:var(--mute);font-weight:500;margin-left:10px}
 .bar{grid-column:1/-1;height:4px;border-radius:2px;background:var(--line);overflow:hidden}
 .bar i{display:block;height:100%;width:0;border-radius:2px;transition:width .5s cubic-bezier(.2,.8,.2,1),background .3s}
-.saw{font-size:34px;font-weight:600;letter-spacing:-.02em;line-height:1.2}.saw .sub{display:block;font-size:17px;font-weight:400;color:var(--mute);letter-spacing:0;margin-top:8px}.rule{font-size:40px;font-weight:600;letter-spacing:-.02em}
+.verdict{font-size:30px;font-weight:600;letter-spacing:-.015em;line-height:1.25;margin:14px 0 4px}.saw{font-size:34px;font-weight:600;letter-spacing:-.02em;line-height:1.2}.saw .sub{display:block;font-size:17px;font-weight:400;color:var(--mute);letter-spacing:0;margin-top:8px}.rule{font-size:40px;font-weight:600;letter-spacing:-.02em}
 .stats{display:grid;grid-template-columns:repeat(6,1fr)}
 .stat{padding:0 18px;border-left:1px solid var(--line)}.stat:first-child{padding-left:0;border-left:0}
 .stat .v{font-size:26px;font-weight:500;white-space:nowrap}.stat .k{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-top:4px}
@@ -67,7 +67,15 @@ function hero(d){
   const trade=a?`${saved} less heat for ${ex}`:'no alternative route';
   const saw=top?`<div class="saw">“${esc(top.note||top.category)}”<span class="sub">${esc(top.category)} · ${Math.round(top.metersAhead)} m ahead${top.minutesAgo!=null?' · reported '+top.minutesAgo+' min ago':''}${top.confirmed?' · confirmed by walkers':' · unconfirmed'}${q.hazardsAhead.length>1?' · +'+(q.hazardsAhead.length-1)+' more report':''} &nbsp;|&nbsp; alternative: ${trade}</span></div>`
     :`<div class="saw" style="color:var(--mute)">No community reports ahead<span class="sub">alternative: ${trade}</span></div>`;
-  return `<section><div class="meta">Decided by <b>${who(r.reason)}</b> · ${new Date(d.receivedAt).toLocaleTimeString('en-GB',tz)} UAE · ${r.prompt?'<b style="color:'+col(d)+'">Cooler way offered</b>':(r.debug?.questions?.find(x=>x.id==='rerouteWorthIt'&&x.answer)?'Stayed quiet · below the 60% bar':'Stayed quiet')}</div>
+  const nm=top?`“${esc(top.note||top.category)}”`:'';
+  const jq=r.debug?.questions?.find(x=>x.id==='rerouteWorthIt');
+  let verdict;
+  if(r.reason==='hard_trigger') verdict=`Cooler way offered: community report ${nm} blocks the path ${top?Math.round(top.metersAhead)+' m ahead':''}`;
+  else if(r.reason==='rule') verdict=r.prompt?`Cooler way offered by the backup rule (Jev unavailable)`:`Stayed quiet: Jev unavailable, backup rule saw no clear win`;
+  else if(r.reason==='jev'&&r.prompt) verdict=top?`Cooler way offered because of community report ${nm}, ${Math.round(top.metersAhead)} m ahead`:`Cooler way offered: ${trade}`;
+  else if(r.reason==='jev') verdict=top?(jq&&jq.answer?`Stayed quiet: Jev leaned yes on ${nm} (${Math.round(jq.probability*100)}%), below the 60% bar`:`Stayed quiet: Jev judged ${nm} not worth a ${ex} detour`):`Stayed quiet: Jev judged ${trade} not worth interrupting`;
+  else verdict=`Stayed quiet: nothing reported ahead and only ${saved} less heat`;
+  return `<section><div class="meta">Decided by <b>${who(r.reason)}</b> · ${new Date(d.receivedAt).toLocaleTimeString('en-GB',tz)} UAE</div><div class="verdict" style="color:${r.prompt?col(d):'var(--fg)'}">${verdict}</div>
     <div class="lbl" style="margin-top:22px">What Jev saw</div>${saw}<div class="lbl" style="margin-top:30px">Jev was asked</div>${asked}</section>
     <section><div class="lbl">Data fed in</div><div class="stats">
       <div class="stat"><div class="v">${saved}</div><div class="k">Heat saved</div></div>
