@@ -69,7 +69,7 @@ struct MapScreen:View {
             Button("OK",role:.cancel) {}
         } message: { Text("Add Maps SDK and Routes/Places keys to Config/Local.xcconfig, then rebuild. Apple Maps is active until setup is complete.") }
         .fullScreenCover(isPresented:$navigation) {
-            if let route=model.active { WalkingSessionView(route:route,location:location,destinationName:model.destinationName,routeColor:shadePreferred ? .blue : .yellow) }
+            if let route=model.active { WalkingSessionView(route:route,location:location,destinationName:model.destinationName,routeColor:shadePreferred ? .blue : .yellow,stepFree:model.stepFree,barriers:model.stepFree ? model.barriers+model.reportBarriers : []) }
         }
         .onChange(of:model.departure) { _,_ in syncTime(); model.recalculate(); updateShadows() }
         .onChange(of:model.recordsRevision) { _,_ in updateShadows() }
@@ -121,15 +121,31 @@ struct MapScreen:View {
     }
     private var routeControls:some View {
         VStack(spacing:10) {
+            VStack(alignment:.leading,spacing:4) {
+                Toggle(isOn:$model.stepFree) {
+                    Label("Step-free",systemImage:"figure.roll").font(.subheadline.bold())
+                }.tint(Color(red:0.2,green:0.85,blue:0.6))
+                if model.stepFree {
+                    Text("Wheelchair & stroller friendly: avoids steps, raised kerbs and >8.3% slopes · slower pace ETA").font(.caption2).foregroundStyle(.white.opacity(0.8))
+                }
+            }.padding(.horizontal,12).padding(.vertical,8).coolGlass()
             HStack(spacing:8) {
                 if let shortest=model.routes.first(where:{$0.id==model.shortest}) {
-                    routePill(shortest,title:"Shortest",color:.yellow,isShade:false)
+                    routePill(shortest,title:model.stepFree && shortest.id==model.bestStepFree ? "Step-free" : "Shortest",color:model.stepFree && shortest.id==model.bestStepFree ? Color(red:0.2,green:0.85,blue:0.6) : .yellow,isShade:false)
                 }
                 if let shade=model.routes.first(where:{$0.id==model.shadeEstimate}),shade.id != model.shortest {
-                    routePill(shade,title:"Shade",color:.blue,isShade:true)
+                    routePill(shade,title:model.stepFree && shade.id==model.bestStepFree ? "Step-free" : "Shade",color:model.stepFree && shade.id==model.bestStepFree ? Color(red:0.2,green:0.85,blue:0.6) : .blue,isShade:true)
                 } else {
                     Text(model.loadingBuildings || model.calculating ? "Checking shade…" : "No shadier route found")
                         .font(.caption).frame(maxWidth:.infinity).padding(.vertical,17).coolGlass()
+                }
+            }
+            if model.stepFree {
+                if let active=model.active {
+                    let a=model.accessibility(active)
+                    Text(a.isStepFree ? "Step-free ✓"+(a.penaltySeconds>0 ? " · \(Int(a.penaltySeconds/60)) min slower for slope/surface" : "") : "⚠ \(a.blocking.count) barrier(s): "+a.blocking.prefix(2).map(\.detail).joined(separator:", "))
+                        .font(.caption).foregroundStyle(a.isStepFree ? .green : .red)
+                    if !a.isStepFree { Text("No fully step-free route found — barriers are marked in red on the map.").font(.caption).foregroundStyle(.red) }
                 }
             }
             HStack(spacing:10) {
@@ -155,7 +171,7 @@ struct MapScreen:View {
               HStack(spacing:5) {
                 Circle().fill(color).frame(width:7,height:7)
                 Text(title).fontWeight(.semibold)
-                Text("\(Int(ceil(route.expectedTravelTime/60))) min").foregroundStyle(.white.opacity(0.8))
+                Text("\(Int(ceil(model.eta(route)/60))) min").foregroundStyle(.white.opacity(0.8))
                           }
                 if isShade,let shortest=model.routes.first(where:{$0.id==model.shortest}),route.id != shortest.id {
                     Text(String(format:"%+.0f%% walk time",(route.expectedTravelTime/shortest.expectedTravelTime-1)*100)).font(.caption2)
@@ -164,7 +180,7 @@ struct MapScreen:View {
             }.font(.subheadline).frame(maxWidth:.infinity).frame(height:68)
                 .background(shadePreferred==isShade ? color.opacity(0.24) : .clear,in:Capsule())
                 .overlay(Capsule().stroke(shadePreferred==isShade ? color : .white.opacity(0.2),lineWidth:1.5))
-        }.buttonStyle(.plain).coolGlass().accessibilityLabel("\(title), \(Int(ceil(route.expectedTravelTime/60))) minutes")
+        }.buttonStyle(.plain).coolGlass().accessibilityLabel("\(title), \(Int(ceil(model.eta(route)/60))) minutes")
     }
     private var sunBadge:some View {
         GeometryReader { geometry in
@@ -190,7 +206,7 @@ struct MapScreen:View {
         #endif
     }
     private var appleMap:some View {
-        BatchedRouteMap(routes:model.routes,selected:model.active?.id,origin:model.hasOrigin ? model.origin : nil,destination:model.hasDestination ? model.destination : nil,shadows:polygons,shadowsRevision:shadowRevision,exposureRevision:model.exposureRevision,hazards:reports.active,onCenterChange:{ mapCenter.coordinate=$0 },routeTint:shadePreferred ? .systemBlue : .systemYellow,onHeadingChange:{ heading=$0 },floatingControls:true)
+        BatchedRouteMap(routes:model.routes,selected:model.active?.id,origin:model.hasOrigin ? model.origin : nil,destination:model.hasDestination ? model.destination : nil,shadows:polygons,shadowsRevision:shadowRevision,exposureRevision:model.exposureRevision,hazards:reports.active,barriers:model.stepFree ? model.barriers : [],onCenterChange:{ mapCenter.coordinate=$0 },routeTint:shadePreferred ? .systemBlue : .systemYellow,onHeadingChange:{ heading=$0 },floatingControls:true)
     }
     private var settingsView:some View {
         NavigationStack {

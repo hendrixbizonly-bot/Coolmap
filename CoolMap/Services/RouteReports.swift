@@ -9,6 +9,9 @@ enum HazardCategory: String, CaseIterable, Codable, Identifiable {
     case blockedCrossing="Blocked crossing"
     case noShade="No shade"
     case construction="Construction"
+    case stepsNoRamp="Steps / no ramp"
+    case brokenElevator="Broken elevator"
+    case missingKerbRamp="Missing kerb ramp"
     case other="Other"
     var id:String { rawValue }
     var icon:String {
@@ -17,6 +20,9 @@ enum HazardCategory: String, CaseIterable, Codable, Identifiable {
         case .blockedCrossing: return "figure.walk.diamond.fill"
         case .noShade: return "sun.max.trianglebadge.exclamationmark.fill"
         case .construction: return "cone.fill"
+        case .stepsNoRamp: return "stairs"
+        case .brokenElevator: return "arrow.up.and.down.square.fill"
+        case .missingKerbRamp: return "figure.roll"
         case .other: return "exclamationmark.triangle.fill"
         }
     }
@@ -26,15 +32,33 @@ enum HazardCategory: String, CaseIterable, Codable, Identifiable {
         case .blockedCrossing: return Color(red:0.9,green:0.25,blue:0.3)
         case .noShade: return Color(red:0.98,green:0.72,blue:0.15)
         case .construction: return Color(red:1,green:0.55,blue:0.1)
+        case .stepsNoRamp, .missingKerbRamp: return Color(red:0.85,green:0.3,blue:0.3)
+        case .brokenElevator: return Color(red:0.55,green:0.35,blue:0.85)
         case .other: return Color(red:0.6,green:0.5,blue:0.9)
         }
     }
     var lifetime:TimeInterval {
         switch self {
         case .blockedCrossing: return 6*3600
+        case .brokenElevator: return 12*3600
         case .other: return 24*3600
         case .brokenSidewalk, .construction: return 14*86400
-        case .noShade: return 30*86400
+        case .noShade, .stepsNoRamp, .missingKerbRamp: return 30*86400
+        }
+    }
+    /// Hazards that physically block wheelchairs and strollers.
+    var isAccessBarrier:Bool {
+        switch self {
+        case .stepsNoRamp, .brokenElevator, .missingKerbRamp: return true
+        default: return false
+        }
+    }
+    var barrierKind:AccessBarrier.Kind {
+        switch self {
+        case .stepsNoRamp: return .steps
+        case .brokenElevator: return .elevator
+        case .missingKerbRamp: return .raisedKerb
+        default: return .noWheelchair
         }
     }
     var lifetimeLabel:String {
@@ -63,15 +87,17 @@ struct RouteReport: Codable, Identifiable {
     var confirmedAt:Date?
     /// Weighted “Not there” votes; the pin clears once these reach `RouteReport.clearThreshold`.
     var denials:Double=0
+    /// Relative filename of a locally stored reporter photo under <documents>/report-photos/.
+    var photo:String?
     static let clearThreshold=2.0
     var hazard:HazardCategory { HazardCategory(legacy:category) }
     /// What the walker is being asked about: the reporter's note when there is one, else the category.
     var summary:String { note.isEmpty ? hazard.rawValue : note }
     var expiresAt:Date { (confirmedAt ?? date).addingTimeInterval(hazard.lifetime) }
     var isActive:Bool { expiresAt>Date() && denials<RouteReport.clearThreshold }
-    init(id:UUID=UUID(),category:String,note:String,coordinate:GeoPoint,date:Date,locationDescription:String,shared:Bool=false,confirmedAt:Date?=nil,denials:Double=0) {
+    init(id:UUID=UUID(),category:String,note:String,coordinate:GeoPoint,date:Date,locationDescription:String,shared:Bool=false,confirmedAt:Date?=nil,denials:Double=0,photo:String?=nil) {
         self.id=id; self.category=category; self.note=note; self.coordinate=coordinate; self.date=date
-        self.locationDescription=locationDescription; self.shared=shared; self.confirmedAt=confirmedAt; self.denials=denials
+        self.locationDescription=locationDescription; self.shared=shared; self.confirmedAt=confirmedAt; self.denials=denials; self.photo=photo
     }
     init(from decoder:Decoder) throws {
         let c=try decoder.container(keyedBy:CodingKeys.self)
@@ -79,6 +105,7 @@ struct RouteReport: Codable, Identifiable {
         coordinate=try c.decode(GeoPoint.self,forKey:.coordinate); date=try c.decode(Date.self,forKey:.date)
         locationDescription=try c.decode(String.self,forKey:.locationDescription); shared=try c.decodeIfPresent(Bool.self,forKey:.shared) ?? false
         confirmedAt=try c.decodeIfPresent(Date.self,forKey:.confirmedAt); denials=try c.decodeIfPresent(Double.self,forKey:.denials) ?? 0
+        photo=try c.decodeIfPresent(String.self,forKey:.photo)
     }
 }
 
@@ -171,10 +198,27 @@ final class RouteReportStore: ObservableObject {
     var demoMode:Bool { !demo.isEmpty }
     /// Stage demo: one pin on the walker's own route, as if another walker reported it 10 minutes ago.
     /// Returns the pin so the caller can position the simulated walk relative to it.
-    @discardableResult func plantStageDemo(at p:GeoPoint)->RouteReport {
-        let r=RouteReport(category:HazardCategory.other.rawValue,note:"Fallen tree across the path",coordinate:p,date:Date()-10*60,locationDescription:"Reported by another walker")
+    @discardableResult func plantStageDemo(at p:GeoPoint,category:HazardCategory = .other,note:String = "Fallen tree across the path",ageMinutes:Double = 10)->RouteReport {
+        let r=RouteReport(category:category.rawValue,note:note,coordinate:p,date:Date()-ageMinutes*60,locationDescription:"Reported by another walker")
         demo=[r]
         return r
+    }
+    private let photoFolder=FileManager.default.urls(for:.documentDirectory,in:.userDomainMask)[0].appendingPathComponent("report-photos")
+    /// Reporter photos stay on-device (never uploaded); kept under <documents>/report-photos/<id>.jpg.
+    func attachPhoto(_ data:Data,to id:UUID) {
+        guard let image=UIImage(data:data) else { return }
+        let scale=min(1,1280/max(image.size.width,image.size.height))
+        let sized=scale<1 ? UIGraphicsImageRenderer(size:CGSize(width:image.size.width*scale,height:image.size.height*scale)).image { _ in image.draw(in:CGRect(origin:.zero,size:CGSize(width:image.size.width*scale,height:image.size.height*scale))) } : image
+        guard let jpeg=sized.jpegData(compressionQuality:0.7) else { return }
+        try? FileManager.default.createDirectory(at:photoFolder,withIntermediateDirectories:true)
+        let name=id.uuidString+".jpg"
+        try? jpeg.write(to:photoFolder.appendingPathComponent(name),options:.atomic)
+        update(id) { $0.photo=name }
+    }
+    func photoURL(_ r:RouteReport)->URL? {
+        guard let photo=r.photo else { return nil }
+        let url=photoFolder.appendingPathComponent(photo)
+        return FileManager.default.fileExists(atPath:url.path) ? url : nil
     }
     func clearDemoHazards() { demo=[]; if let v=verification, !reports.contains(where:{$0.id==v.id}) && !nearby.contains(where:{$0.id==v.id}) { verification=nil } }
     func purgeExpired() {
