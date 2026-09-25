@@ -4,6 +4,9 @@ import MapKit
 struct MapScreen: View {
     @StateObject private var model = AppModel()
     @StateObject private var location = LocationService()
+    @ObservedObject private var reports = RouteReportStore.shared
+    @State private var reporting = false
+    @State private var mapCenter = MapCenter()
     @State private var searchOrigin: Bool?
     @State private var settings = false
     @State private var timePicker = false
@@ -18,6 +21,7 @@ struct MapScreen: View {
     @State private var shadowTask:Task<Void,Never>?
     @State private var updatingShadows=false
     private let ticker=Timer.publish(every:0.8,on:.main,in:.common).autoconnect()
+    private let expiryTicker=Timer.publish(every:60,on:.main,in:.common).autoconnect()
 
     @State private var position = MapCameraPosition.region(MKCoordinateRegion(center:.init(latitude:25.20,longitude:55.27),latitudinalMeters:18000,longitudinalMeters:18000))
     private let panel = Color(red:0.055,green:0.09,blue:0.14)
@@ -28,11 +32,14 @@ struct MapScreen: View {
             if !model.routes.isEmpty && !navigation { sunBadge }
             VStack {
                 Spacer()
-                HStack {
+                HStack(alignment:.bottom) {
                     Spacer()
-                    Button { useLocation() } label: {
-                        Image(systemName:location.locating ? "location.circle" : "location.fill").font(.title3).frame(width:48,height:48).background(panel,in:Circle())
-                    }.accessibilityLabel("Use my location")
+                    VStack(spacing:14) {
+                        Button { useLocation() } label: {
+                            Image(systemName:location.locating ? "location.circle" : "location.fill").font(.title3).frame(width:48,height:48).background(panel,in:Circle())
+                        }.accessibilityLabel("Use my location")
+                        if !navigation { HazardReportButton { reporting = true } }
+                    }
                 }.padding(.horizontal,20).padding(.bottom,12)
             }
         }
@@ -50,6 +57,11 @@ struct MapScreen: View {
             }
         }
         .sheet(isPresented:$settings) { debugSettings }
+        .sheet(isPresented:$reporting) {
+            HazardReportSheet(store:reports,coordinate:reportPoint.coordinate,locationDescription:reportPoint.description)
+        }
+        .onReceive(expiryTicker) { _ in reports.purgeExpired() }
+        .onChange(of:model.hasOrigin) { _,has in if has { Task { await reports.refresh(around:model.origin.geo) } } }
         .sheet(isPresented:$timePicker) {
             NavigationStack {
                 Form {
@@ -241,6 +253,13 @@ struct MapScreen: View {
         if e.samples.allSatisfy({ $0.solar.elevationDegrees <= 0 }) { return "After sunset · no direct sun" }
         return String(format:"Up to %.1f min sun",ceil(e.sunSeconds/6)/10)
     }
+    /// Where a new report is pinned: your GPS fix when known, otherwise the spot you’re looking at.
+    private var reportPoint:(coordinate:GeoPoint,description:String) {
+        if let fix=location.lastFix,abs(fix.timestamp.timeIntervalSinceNow)<120,fix.horizontalAccuracy<100 { return (fix.coordinate.geo,"Your current location") }
+        if let center=mapCenter.coordinate { return (center.geo,"Map center") }
+        if model.hasOrigin { return (model.origin.geo,model.originName) }
+        return (.init(latitude:25.20,longitude:55.27),"Dubai")
+    }
     private func useLocation() {
         model.invalidate(); model.hasOrigin = false; model.usesCurrentLocation = true; location.request()
     }
@@ -262,13 +281,14 @@ struct MapScreen: View {
     }
     @ViewBuilder private var appleDisplayMap:some View {
         if model.debug { map }
-        else { BatchedRouteMap(routes:model.routes,selected:model.active?.id,origin:model.hasOrigin ? model.origin : nil,destination:model.hasDestination ? model.destination : nil,records:model.records,recordsRevision:model.recordsRevision,shadows:polygons,shadowsRevision:shadowRevision,exposureRevision:model.exposureRevision,onHeadingChange:{ heading=$0 }) }
+        else { BatchedRouteMap(routes:model.routes,selected:model.active?.id,origin:model.hasOrigin ? model.origin : nil,destination:model.hasDestination ? model.destination : nil,records:model.records,recordsRevision:model.recordsRevision,shadows:polygons,shadowsRevision:shadowRevision,exposureRevision:model.exposureRevision,hazards:reports.active,onHeadingChange:{ heading=$0 },onCenterChange:{ mapCenter.coordinate=$0 }) }
     }
     private var map: some View {
         Map(position:$position) {
             UserAnnotation()
             if model.hasOrigin { Marker(model.originName,systemImage:"figure.walk",coordinate:model.origin).tint(accent) }
             if model.hasDestination { Marker(model.destinationName,coordinate:model.destination).tint(.mint) }
+            ForEach(reports.active) { report in Marker(report.hazard.rawValue,systemImage:report.hazard.icon,coordinate:report.coordinate.coordinate).tint(report.hazard.color) }
             ForEach(model.routes) { route in MapPolyline(coordinates:route.coordinates).stroke(route.id == model.active?.id ? accent : .gray.opacity(0.6),lineWidth:route.id == model.active?.id ? 7 : 4) }
             if !model.calculating,let exposure = model.active?.exposure {
                 ForEach(Array(exposure.samples.enumerated()),id:\.offset) { index,value in
@@ -319,6 +339,8 @@ struct MapScreen: View {
         }
     }
 }
+/// Reference holder so map panning doesn’t re-render the whole screen.
+final class MapCenter { var coordinate:CLLocationCoordinate2D? }
 struct ShadeDebugView: View {
     let index: Int
     let value: ClassifiedSample

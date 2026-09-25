@@ -5,6 +5,7 @@ struct WalkingSessionView: View {
     @Environment(\.dismiss) private var dismiss
     let route:RouteOption
     @ObservedObject var location:LocationService
+    @ObservedObject private var reports=RouteReportStore.shared
     let destinationName:String
     @State private var position=MapCameraPosition.automatic
     @State private var progress:WalkingProgress?
@@ -60,7 +61,10 @@ struct WalkingSessionView: View {
             }.padding(20).background(.blue,in:RoundedRectangle(cornerRadius:20)).padding(12)
         }
         .overlay(alignment:.trailing) {
-            Button { follow=true; previewing=false; update() } label: { Image(systemName:"location.viewfinder").font(.title2).padding().background(panel,in:Circle()) }.padding().accessibilityLabel("Show route or nearby location")
+            VStack(spacing:14) {
+                Button { follow=true; previewing=false; update() } label: { Image(systemName:"location.viewfinder").font(.title2).padding().background(panel,in:Circle()) }.accessibilityLabel("Show route or nearby location")
+                HazardReportButton { report=true }
+            }.padding()
         }
         .safeAreaInset(edge:.bottom) {
             VStack(spacing:18) {
@@ -89,7 +93,7 @@ struct WalkingSessionView: View {
         .onReceive(location.$coordinate) { _ in update() }
         .onReceive(location.$heading) { _ in if follow { update() } }
         .sheet(isPresented:$steps) { WalkNavigationView(route:route,location:location) }
-        .sheet(isPresented:$report) { RouteReportView(coordinate:(followCoordinate ?? origin).geo,locationDescription:followCoordinate == nil ? "Route start (preview — not your GPS location)" : "Your current GPS position") }
+        .sheet(isPresented:$report) { HazardReportSheet(store:reports,coordinate:(followCoordinate ?? origin).geo,locationDescription:followCoordinate == nil ? "Route start (preview — not your GPS location)" : "Your current GPS position") }
     }
     @ViewBuilder private var activeMap:some View {
         #if canImport(GoogleMaps)
@@ -107,6 +111,7 @@ struct WalkingSessionView: View {
             MapPolyline(coordinates:route.coordinates).stroke(.white,lineWidth:10)
             MapPolyline(coordinates:route.coordinates).stroke(.blue,lineWidth:6)
             if let end=route.coordinates.last { Marker(destinationName,coordinate:end).tint(.red) }
+            ForEach(reports.active) { r in Marker(r.hazard.rawValue,systemImage:r.hazard.icon,coordinate:r.coordinate.coordinate).tint(r.hazard.color) }
         }.mapStyle(.standard(elevation:.realistic,pointsOfInterest:.excludingAll))
     }
     private func metric(_ value:String,_ caption:String) -> some View { VStack(alignment:.leading) { Text(value).font(.title3.bold()); Text(caption).font(.caption).foregroundStyle(.secondary) } }
