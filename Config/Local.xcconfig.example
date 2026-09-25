@@ -1,0 +1,8 @@
+// Copy to Local.xcconfig. Never commit credentials.
+// Restrict Google keys to com.hendrix.coolmap and only the enabled APIs.
+GOOGLE_MAPS_API_KEY =
+GOOGLE_SERVICES_API_KEY =
+// Supabase URL as host only, e.g. abcdef.supabase.co
+REPORTS_HOST =
+// Use a publishable/anon key, NEVER a service_role key.
+REPORTS_PUBLIC_KEY =

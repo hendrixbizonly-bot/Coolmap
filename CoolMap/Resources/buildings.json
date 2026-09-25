@@ -1,0 +1,8246 @@
+[
+  {
+    "id": "osm-way-30680772",
+    "footprint": [
+      {
+        "latitude": 25.0848922,
+        "longitude": 55.1403102
+      },
+      {
+        "latitude": 25.0851912,
+        "longitude": 55.1406237
+      },
+      {
+        "latitude": 25.0852344,
+        "longitude": 55.1405644
+      },
+      {
+        "latitude": 25.0852537,
+        "longitude": 55.1406078
+      },
+      {
+        "latitude": 25.0852823,
+        "longitude": 55.1406384
+      },
+      {
+        "latitude": 25.0853255,
+        "longitude": 55.1406592
+      },
+      {
+        "latitude": 25.0851128,
+        "longitude": 55.1409346
+      },
+      {
+        "latitude": 25.0846967,
+        "longitude": 55.140531
+      },
+      {
+        "latitude": 25.0847334,
+        "longitude": 55.1404866
+      },
+      {
+        "latitude": 25.0847316,
+        "longitude": 55.1404281
+      },
+      {
+        "latitude": 25.0847653,
+        "longitude": 55.140444
+      },
+      {
+        "latitude": 25.0847877,
+        "longitude": 55.1404422
+      },
+      {
+        "latitude": 25.0848102,
+        "longitude": 55.1404359
+      },
+      {
+        "latitude": 25.0848337,
+        "longitude": 55.1404229
+      },
+      {
+        "latitude": 25.0848479,
+        "longitude": 55.1404098
+      },
+      {
+        "latitude": 25.0848635,
+        "longitude": 55.1403922
+      },
+      {
+        "latitude": 25.084878,
+        "longitude": 55.1403637
+      }
+    ],
+    "heightMeters": 32.0,
+    "heightSource": "levelsEstimate",
+    "name": null
+  },
+  {
+    "id": "osm-way-47500591",
+    "footprint": [
+      {
+        "latitude": 25.0790593,
+        "longitude": 55.1338004
+      },
+      {
+        "latitude": 25.0789104,
+        "longitude": 55.1336577
+      },
+      {
+        "latitude": 25.0788026,
+        "longitude": 55.1337949
+      },
+      {
+        "latitude": 25.0783725,
+        "longitude": 55.1343424
+      },
+      {
+        "latitude": 25.0786945,
+        "longitude": 55.1346508
+      },
+      {
+        "latitude": 25.078801,
+        "longitude": 55.1345153
+      },
+      {
+        "latitude": 25.0786268,
+        "longitude": 55.1343485
+      },
+      {
+        "latitude": 25.0786776,
+        "longitude": 55.1342838
+      },
+      {
+        "latitude": 25.0789,
+        "longitude": 55.1344958
+      },
+      {
+        "latitude": 25.0790651,
+        "longitude": 55.1342846
+      },
+      {
+        "latitude": 25.0788443,
+        "longitude": 55.134074
+      }
+    ],
+    "heightMeters": 38.400000000000006,
+    "heightSource": "levelsEstimate",
+    "name": "Hilton Dubai Jumeirah"
+  },
+  {
+    "id": "osm-way-47808238",
+    "footprint": [
+      {
+        "latitude": 25.075318,
+        "longitude": 55.1318441
+      },
+      {
+        "latitude": 25.0754341,
+        "longitude": 55.1319724
+      },
+      {
+        "latitude": 25.0756278,
+        "longitude": 55.132151
+      },
+      {
+        "latitude": 25.0756054,
+        "longitude": 55.1321769
+      },
+      {
+        "latitude": 25.0752987,
+        "longitude": 55.132593
+      },
+      {
+        "latitude": 25.0749592,
+        "longitude": 55.1323036
+      },
+      {
+        "latitude": 25.0752917,
+        "longitude": 55.1318746
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": "Sofitel Dubai Jumeirah Beach"
+  },
+  {
+    "id": "osm-way-47808681",
+    "footprint": [
+      {
+        "latitude": 25.0775373,
+        "longitude": 55.1342204
+      },
+      {
+        "latitude": 25.0775434,
+        "longitude": 55.1338835
+      },
+      {
+        "latitude": 25.0771436,
+        "longitude": 55.1334817
+      },
+      {
+        "latitude": 25.0770344,
+        "longitude": 55.1333733
+      },
+      {
+        "latitude": 25.0761779,
+        "longitude": 55.1325585
+      },
+      {
+        "latitude": 25.0761287,
+        "longitude": 55.1326182
+      },
+      {
+        "latitude": 25.0759812,
+        "longitude": 55.1324767
+      },
+      {
+        "latitude": 25.0760333,
+        "longitude": 55.1324142
+      },
+      {
+        "latitude": 25.075685,
+        "longitude": 55.1320754
+      },
+      {
+        "latitude": 25.0756278,
+        "longitude": 55.132151
+      },
+      {
+        "latitude": 25.0756054,
+        "longitude": 55.1321769
+      },
+      {
+        "latitude": 25.0752987,
+        "longitude": 55.132593
+      },
+      {
+        "latitude": 25.0755944,
+        "longitude": 55.132907
+      },
+      {
+        "latitude": 25.0757844,
+        "longitude": 55.1331846
+      },
+      {
+        "latitude": 25.0759053,
+        "longitude": 55.1334264
+      },
+      {
+        "latitude": 25.0760384,
+        "longitude": 55.1337403
+      },
+      {
+        "latitude": 25.0761355,
+        "longitude": 55.1340814
+      },
+      {
+        "latitude": 25.0761969,
+        "longitude": 55.1344455
+      },
+      {
+        "latitude": 25.0762373,
+        "longitude": 55.1346935
+      },
+      {
+        "latitude": 25.076314,
+        "longitude": 55.1349738
+      },
+      {
+        "latitude": 25.0765198,
+        "longitude": 55.1353125
+      },
+      {
+        "latitude": 25.0765983,
+        "longitude": 55.1353412
+      },
+      {
+        "latitude": 25.0770342,
+        "longitude": 55.1348559
+      },
+      {
+        "latitude": 25.0770481,
+        "longitude": 55.1348383
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": "Rimal"
+  },
+  {
+    "id": "osm-way-47808686",
+    "footprint": [
+      {
+        "latitude": 25.0802251,
+        "longitude": 55.1365651
+      },
+      {
+        "latitude": 25.079514,
+        "longitude": 55.1374734
+      },
+      {
+        "latitude": 25.079817,
+        "longitude": 55.1378705
+      },
+      {
+        "latitude": 25.0800866,
+        "longitude": 55.1383029
+      },
+      {
+        "latitude": 25.0803038,
+        "longitude": 55.1387221
+      },
+      {
+        "latitude": 25.080371,
+        "longitude": 55.1388409
+      },
+      {
+        "latitude": 25.0806927,
+        "longitude": 55.1394494
+      },
+      {
+        "latitude": 25.0809381,
+        "longitude": 55.139441
+      },
+      {
+        "latitude": 25.0813044,
+        "longitude": 55.1389841
+      },
+      {
+        "latitude": 25.0818225,
+        "longitude": 55.1382979
+      },
+      {
+        "latitude": 25.0817719,
+        "longitude": 55.1380981
+      },
+      {
+        "latitude": 25.0805414,
+        "longitude": 55.136971
+      },
+      {
+        "latitude": 25.0804767,
+        "longitude": 55.1369118
+      },
+      {
+        "latitude": 25.0805184,
+        "longitude": 55.1368612
+      },
+      {
+        "latitude": 25.0803226,
+        "longitude": 55.1366636
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": "Sadaf"
+  },
+  {
+    "id": "osm-way-47808687",
+    "footprint": [
+      {
+        "latitude": 25.0832955,
+        "longitude": 55.1395614
+      },
+      {
+        "latitude": 25.083309,
+        "longitude": 55.1398293
+      },
+      {
+        "latitude": 25.0829357,
+        "longitude": 55.1402943
+      },
+      {
+        "latitude": 25.0824444,
+        "longitude": 55.1408989
+      },
+      {
+        "latitude": 25.0821934,
+        "longitude": 55.1409403
+      },
+      {
+        "latitude": 25.0817492,
+        "longitude": 55.1406486
+      },
+      {
+        "latitude": 25.081542,
+        "longitude": 55.1404316
+      },
+      {
+        "latitude": 25.0813957,
+        "longitude": 55.1402765
+      },
+      {
+        "latitude": 25.0809829,
+        "longitude": 55.1398391
+      },
+      {
+        "latitude": 25.0809548,
+        "longitude": 55.1396091
+      },
+      {
+        "latitude": 25.0813908,
+        "longitude": 55.139051
+      },
+      {
+        "latitude": 25.0818868,
+        "longitude": 55.1383756
+      },
+      {
+        "latitude": 25.0820968,
+        "longitude": 55.1383908
+      }
+    ],
+    "heightMeters": 6.4,
+    "heightSource": "levelsEstimate",
+    "name": "Murjan"
+  },
+  {
+    "id": "osm-way-100959727",
+    "footprint": [
+      {
+        "latitude": 25.0785251,
+        "longitude": 55.1431353
+      },
+      {
+        "latitude": 25.0785677,
+        "longitude": 55.143079
+      },
+      {
+        "latitude": 25.0784122,
+        "longitude": 55.142913
+      },
+      {
+        "latitude": 25.0782588,
+        "longitude": 55.1431135
+      },
+      {
+        "latitude": 25.0782558,
+        "longitude": 55.1432674
+      },
+      {
+        "latitude": 25.0783422,
+        "longitude": 55.1433516
+      }
+    ],
+    "heightMeters": 90.001344,
+    "heightSource": "exact",
+    "name": "Radisson BLU Residence"
+  },
+  {
+    "id": "osm-way-100959736",
+    "footprint": [
+      {
+        "latitude": 25.0718414,
+        "longitude": 55.1357672
+      },
+      {
+        "latitude": 25.0720406,
+        "longitude": 55.1355021
+      },
+      {
+        "latitude": 25.0722198,
+        "longitude": 55.1357317
+      },
+      {
+        "latitude": 25.0724152,
+        "longitude": 55.1359703
+      },
+      {
+        "latitude": 25.0726198,
+        "longitude": 55.1361685
+      },
+      {
+        "latitude": 25.0727738,
+        "longitude": 55.1362909
+      },
+      {
+        "latitude": 25.0729475,
+        "longitude": 55.1363979
+      },
+      {
+        "latitude": 25.0731535,
+        "longitude": 55.1365138
+      },
+      {
+        "latitude": 25.0729176,
+        "longitude": 55.1367928
+      },
+      {
+        "latitude": 25.0726311,
+        "longitude": 55.1365243
+      },
+      {
+        "latitude": 25.0725197,
+        "longitude": 55.1364138
+      }
+    ],
+    "heightMeters": 229.0,
+    "heightSource": "exact",
+    "name": "Dubai Marina Yacht Club"
+  },
+  {
+    "id": "osm-way-104783565",
+    "footprint": [
+      {
+        "latitude": 25.0837784,
+        "longitude": 55.1397266
+      },
+      {
+        "latitude": 25.0840226,
+        "longitude": 55.1399639
+      },
+      {
+        "latitude": 25.0835935,
+        "longitude": 55.1405021
+      },
+      {
+        "latitude": 25.0833494,
+        "longitude": 55.1402648
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": "Tennis courts Le Royal M\u00e9ridien"
+  },
+  {
+    "id": "osm-way-110405499",
+    "footprint": [
+      {
+        "latitude": 25.0746022,
+        "longitude": 55.1436381
+      },
+      {
+        "latitude": 25.0748694,
+        "longitude": 55.1439069
+      },
+      {
+        "latitude": 25.0746812,
+        "longitude": 55.1441348
+      },
+      {
+        "latitude": 25.0744141,
+        "longitude": 55.1438661
+      }
+    ],
+    "heightMeters": 139.4,
+    "heightSource": "exact",
+    "name": "Madina Tower"
+  },
+  {
+    "id": "osm-way-110405501",
+    "footprint": [
+      {
+        "latitude": 25.0739395,
+        "longitude": 55.1430445
+      },
+      {
+        "latitude": 25.07421,
+        "longitude": 55.1433058
+      },
+      {
+        "latitude": 25.0740472,
+        "longitude": 55.1435112
+      },
+      {
+        "latitude": 25.0737767,
+        "longitude": 55.1432499
+      }
+    ],
+    "heightMeters": 139.4,
+    "heightSource": "exact",
+    "name": "Reef Tower"
+  },
+  {
+    "id": "osm-way-141041880",
+    "footprint": [
+      {
+        "latitude": 25.0818358,
+        "longitude": 55.1362599
+      },
+      {
+        "latitude": 25.0817107,
+        "longitude": 55.1364204
+      },
+      {
+        "latitude": 25.081726,
+        "longitude": 55.1364349
+      },
+      {
+        "latitude": 25.0815494,
+        "longitude": 55.1366616
+      },
+      {
+        "latitude": 25.0815754,
+        "longitude": 55.1366864
+      },
+      {
+        "latitude": 25.0815269,
+        "longitude": 55.1367486
+      },
+      {
+        "latitude": 25.0815891,
+        "longitude": 55.1368077
+      },
+      {
+        "latitude": 25.081544,
+        "longitude": 55.1368656
+      },
+      {
+        "latitude": 25.0818466,
+        "longitude": 55.1371531
+      },
+      {
+        "latitude": 25.0819444,
+        "longitude": 55.1370276
+      },
+      {
+        "latitude": 25.0816799,
+        "longitude": 55.1367765
+      },
+      {
+        "latitude": 25.0819775,
+        "longitude": 55.1363945
+      },
+      {
+        "latitude": 25.0818889,
+        "longitude": 55.1363104
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-141041881",
+    "footprint": [
+      {
+        "latitude": 25.0820042,
+        "longitude": 55.1369993
+      },
+      {
+        "latitude": 25.0822521,
+        "longitude": 55.1372376
+      },
+      {
+        "latitude": 25.0822758,
+        "longitude": 55.1372075
+      },
+      {
+        "latitude": 25.0823015,
+        "longitude": 55.1372322
+      },
+      {
+        "latitude": 25.082372,
+        "longitude": 55.1371428
+      },
+      {
+        "latitude": 25.0824005,
+        "longitude": 55.1371701
+      },
+      {
+        "latitude": 25.0825255,
+        "longitude": 55.1370114
+      },
+      {
+        "latitude": 25.0828157,
+        "longitude": 55.13729
+      },
+      {
+        "latitude": 25.0827628,
+        "longitude": 55.1373571
+      },
+      {
+        "latitude": 25.082819,
+        "longitude": 55.137411
+      },
+      {
+        "latitude": 25.0828395,
+        "longitude": 55.1373849
+      },
+      {
+        "latitude": 25.0828593,
+        "longitude": 55.1374038
+      },
+      {
+        "latitude": 25.0828828,
+        "longitude": 55.1374263
+      },
+      {
+        "latitude": 25.082898,
+        "longitude": 55.1374069
+      },
+      {
+        "latitude": 25.0830264,
+        "longitude": 55.1375289
+      },
+      {
+        "latitude": 25.0830123,
+        "longitude": 55.1375469
+      },
+      {
+        "latitude": 25.083052,
+        "longitude": 55.1375846
+      },
+      {
+        "latitude": 25.083071,
+        "longitude": 55.1375472
+      },
+      {
+        "latitude": 25.083283,
+        "longitude": 55.1376982
+      },
+      {
+        "latitude": 25.0831831,
+        "longitude": 55.1378692
+      },
+      {
+        "latitude": 25.0831393,
+        "longitude": 55.1378381
+      },
+      {
+        "latitude": 25.0830498,
+        "longitude": 55.1379924
+      },
+      {
+        "latitude": 25.0830663,
+        "longitude": 55.1380567
+      },
+      {
+        "latitude": 25.083445,
+        "longitude": 55.1384132
+      },
+      {
+        "latitude": 25.0835027,
+        "longitude": 55.1384124
+      },
+      {
+        "latitude": 25.0836323,
+        "longitude": 55.1383078
+      },
+      {
+        "latitude": 25.0836021,
+        "longitude": 55.1382621
+      },
+      {
+        "latitude": 25.0837433,
+        "longitude": 55.1381482
+      },
+      {
+        "latitude": 25.0838231,
+        "longitude": 55.1383641
+      },
+      {
+        "latitude": 25.0835507,
+        "longitude": 55.1385911
+      },
+      {
+        "latitude": 25.0834467,
+        "longitude": 55.1385905
+      },
+      {
+        "latitude": 25.08354,
+        "longitude": 55.1386844
+      },
+      {
+        "latitude": 25.083493,
+        "longitude": 55.1387413
+      },
+      {
+        "latitude": 25.0834271,
+        "longitude": 55.1386749
+      },
+      {
+        "latitude": 25.0831911,
+        "longitude": 55.1389607
+      },
+      {
+        "latitude": 25.0826662,
+        "longitude": 55.1384323
+      },
+      {
+        "latitude": 25.0828107,
+        "longitude": 55.1382573
+      },
+      {
+        "latitude": 25.0827368,
+        "longitude": 55.138183
+      },
+      {
+        "latitude": 25.0827965,
+        "longitude": 55.1381108
+      },
+      {
+        "latitude": 25.0828444,
+        "longitude": 55.1381589
+      },
+      {
+        "latitude": 25.0828964,
+        "longitude": 55.138096
+      },
+      {
+        "latitude": 25.0828829,
+        "longitude": 55.1379716
+      },
+      {
+        "latitude": 25.0828349,
+        "longitude": 55.1379261
+      },
+      {
+        "latitude": 25.0828683,
+        "longitude": 55.1378832
+      },
+      {
+        "latitude": 25.0826624,
+        "longitude": 55.137688
+      },
+      {
+        "latitude": 25.0826253,
+        "longitude": 55.1377357
+      },
+      {
+        "latitude": 25.0825611,
+        "longitude": 55.1378183
+      },
+      {
+        "latitude": 25.082515,
+        "longitude": 55.1377745
+      },
+      {
+        "latitude": 25.0825691,
+        "longitude": 55.1377052
+      },
+      {
+        "latitude": 25.0825525,
+        "longitude": 55.137689
+      },
+      {
+        "latitude": 25.0825198,
+        "longitude": 55.1376582
+      },
+      {
+        "latitude": 25.0825499,
+        "longitude": 55.1376198
+      },
+      {
+        "latitude": 25.082354,
+        "longitude": 55.1374325
+      },
+      {
+        "latitude": 25.0823306,
+        "longitude": 55.1374622
+      },
+      {
+        "latitude": 25.0819372,
+        "longitude": 55.1370844
+      },
+      {
+        "latitude": 25.0819692,
+        "longitude": 55.1370437
+      }
+    ],
+    "heightMeters": 20.4978,
+    "heightSource": "exact",
+    "name": "Hotel The Ritz-Carlton"
+  },
+  {
+    "id": "osm-way-141041883",
+    "footprint": [
+      {
+        "latitude": 25.0833225,
+        "longitude": 55.1372005
+      },
+      {
+        "latitude": 25.0832948,
+        "longitude": 55.1372655
+      },
+      {
+        "latitude": 25.0833482,
+        "longitude": 55.1373178
+      },
+      {
+        "latitude": 25.0833264,
+        "longitude": 55.1374166
+      },
+      {
+        "latitude": 25.0833871,
+        "longitude": 55.1374398
+      },
+      {
+        "latitude": 25.0833871,
+        "longitude": 55.1374988
+      },
+      {
+        "latitude": 25.0835935,
+        "longitude": 55.137514
+      },
+      {
+        "latitude": 25.0835875,
+        "longitude": 55.1373768
+      },
+      {
+        "latitude": 25.0836592,
+        "longitude": 55.1373647
+      },
+      {
+        "latitude": 25.0836467,
+        "longitude": 55.1372833
+      },
+      {
+        "latitude": 25.0835498,
+        "longitude": 55.1372842
+      },
+      {
+        "latitude": 25.0834818,
+        "longitude": 55.1372856
+      },
+      {
+        "latitude": 25.083398,
+        "longitude": 55.1372547
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-175842521",
+    "footprint": [
+      {
+        "latitude": 25.0769302,
+        "longitude": 55.1411122
+      },
+      {
+        "latitude": 25.0770869,
+        "longitude": 55.1410297
+      },
+      {
+        "latitude": 25.077165,
+        "longitude": 55.1409518
+      },
+      {
+        "latitude": 25.0771938,
+        "longitude": 55.1409424
+      },
+      {
+        "latitude": 25.0772406,
+        "longitude": 55.1409272
+      },
+      {
+        "latitude": 25.0772889,
+        "longitude": 55.1410363
+      },
+      {
+        "latitude": 25.0773541,
+        "longitude": 55.1409737
+      },
+      {
+        "latitude": 25.0774414,
+        "longitude": 55.1411933
+      },
+      {
+        "latitude": 25.0770941,
+        "longitude": 55.1416839
+      },
+      {
+        "latitude": 25.0770063,
+        "longitude": 55.1417292
+      },
+      {
+        "latitude": 25.0769062,
+        "longitude": 55.141703
+      },
+      {
+        "latitude": 25.0768356,
+        "longitude": 55.1416556
+      },
+      {
+        "latitude": 25.0767742,
+        "longitude": 55.1415912
+      },
+      {
+        "latitude": 25.0767221,
+        "longitude": 55.1414929
+      },
+      {
+        "latitude": 25.0769169,
+        "longitude": 55.1411313
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-182059340",
+    "footprint": [
+      {
+        "latitude": 25.0745783,
+        "longitude": 55.1447209
+      },
+      {
+        "latitude": 25.0748195,
+        "longitude": 55.1449476
+      },
+      {
+        "latitude": 25.075003,
+        "longitude": 55.1447096
+      },
+      {
+        "latitude": 25.0747618,
+        "longitude": 55.1444829
+      }
+    ],
+    "heightMeters": 150.0,
+    "heightSource": "exact",
+    "name": "Armada Tower 2"
+  },
+  {
+    "id": "osm-way-182059365",
+    "footprint": [
+      {
+        "latitude": 25.0742256,
+        "longitude": 55.1439927
+      },
+      {
+        "latitude": 25.0739686,
+        "longitude": 55.1442985
+      },
+      {
+        "latitude": 25.0737742,
+        "longitude": 55.1440994
+      },
+      {
+        "latitude": 25.0740312,
+        "longitude": 55.1437936
+      }
+    ],
+    "heightMeters": 145.8,
+    "heightSource": "exact",
+    "name": "O2 Residence"
+  },
+  {
+    "id": "osm-way-193774331",
+    "footprint": [
+      {
+        "latitude": 25.0725421,
+        "longitude": 55.1369427
+      },
+      {
+        "latitude": 25.0724754,
+        "longitude": 55.1369866
+      },
+      {
+        "latitude": 25.0724373,
+        "longitude": 55.1370832
+      },
+      {
+        "latitude": 25.072432,
+        "longitude": 55.1371748
+      },
+      {
+        "latitude": 25.0731159,
+        "longitude": 55.1378435
+      },
+      {
+        "latitude": 25.0732687,
+        "longitude": 55.137653
+      }
+    ],
+    "heightMeters": 24.59736,
+    "heightSource": "exact",
+    "name": "Azure"
+  },
+  {
+    "id": "osm-way-193783038",
+    "footprint": [
+      {
+        "latitude": 25.0729315,
+        "longitude": 55.1379283
+      },
+      {
+        "latitude": 25.0728059,
+        "longitude": 55.1380863
+      },
+      {
+        "latitude": 25.0726553,
+        "longitude": 55.1379403
+      },
+      {
+        "latitude": 25.0725232,
+        "longitude": 55.1381066
+      },
+      {
+        "latitude": 25.0728215,
+        "longitude": 55.1383549
+      },
+      {
+        "latitude": 25.0730628,
+        "longitude": 55.1380555
+      }
+    ],
+    "heightMeters": 69.695568,
+    "heightSource": "exact",
+    "name": "The Cascades"
+  },
+  {
+    "id": "osm-way-193783274",
+    "footprint": [
+      {
+        "latitude": 25.0732414,
+        "longitude": 55.1382486
+      },
+      {
+        "latitude": 25.0731841,
+        "longitude": 55.138324
+      },
+      {
+        "latitude": 25.0731438,
+        "longitude": 55.1382886
+      },
+      {
+        "latitude": 25.0730651,
+        "longitude": 55.1383908
+      },
+      {
+        "latitude": 25.0730466,
+        "longitude": 55.1383712
+      },
+      {
+        "latitude": 25.0729737,
+        "longitude": 55.1384656
+      },
+      {
+        "latitude": 25.0730843,
+        "longitude": 55.1385746
+      },
+      {
+        "latitude": 25.0731066,
+        "longitude": 55.1386144
+      },
+      {
+        "latitude": 25.073211,
+        "longitude": 55.1386134
+      },
+      {
+        "latitude": 25.0732034,
+        "longitude": 55.1385659
+      },
+      {
+        "latitude": 25.07336,
+        "longitude": 55.138361
+      }
+    ],
+    "heightMeters": 118.4,
+    "heightSource": "levelsEstimate",
+    "name": "La Riviera Tower"
+  },
+  {
+    "id": "osm-way-194030216",
+    "footprint": [
+      {
+        "latitude": 25.0739956,
+        "longitude": 55.1375649
+      },
+      {
+        "latitude": 25.0738578,
+        "longitude": 55.137734
+      },
+      {
+        "latitude": 25.0735527,
+        "longitude": 55.1374307
+      },
+      {
+        "latitude": 25.0736905,
+        "longitude": 55.1372617
+      }
+    ],
+    "heightMeters": 32.0,
+    "heightSource": "levelsEstimate",
+    "name": "Al Majara 3"
+  },
+  {
+    "id": "osm-way-194030217",
+    "footprint": [
+      {
+        "latitude": 25.074689,
+        "longitude": 55.1369883
+      },
+      {
+        "latitude": 25.0743959,
+        "longitude": 55.1373391
+      },
+      {
+        "latitude": 25.0745192,
+        "longitude": 55.1374647
+      },
+      {
+        "latitude": 25.0748123,
+        "longitude": 55.1371139
+      }
+    ],
+    "heightMeters": 32.0,
+    "heightSource": "levelsEstimate",
+    "name": "Al Majara 4"
+  },
+  {
+    "id": "osm-way-194030218",
+    "footprint": [
+      {
+        "latitude": 25.074267,
+        "longitude": 55.1367354
+      },
+      {
+        "latitude": 25.0739789,
+        "longitude": 55.1370704
+      },
+      {
+        "latitude": 25.0738497,
+        "longitude": 55.1369349
+      },
+      {
+        "latitude": 25.0740006,
+        "longitude": 55.1367594
+      },
+      {
+        "latitude": 25.0740454,
+        "longitude": 55.1367073
+      }
+    ],
+    "heightMeters": 22.400000000000002,
+    "heightSource": "levelsEstimate",
+    "name": "Al Majar 5"
+  },
+  {
+    "id": "osm-way-194030219",
+    "footprint": [
+      {
+        "latitude": 25.0733432,
+        "longitude": 55.1367355
+      },
+      {
+        "latitude": 25.0735131,
+        "longitude": 55.1368993
+      },
+      {
+        "latitude": 25.0733142,
+        "longitude": 55.1371375
+      },
+      {
+        "latitude": 25.0732071,
+        "longitude": 55.1370359
+      },
+      {
+        "latitude": 25.0731756,
+        "longitude": 55.1370708
+      },
+      {
+        "latitude": 25.0730662,
+        "longitude": 55.136963
+      },
+      {
+        "latitude": 25.0731294,
+        "longitude": 55.1368831
+      }
+    ],
+    "heightMeters": 102.4,
+    "heightSource": "levelsEstimate",
+    "name": "Al Majara 2"
+  },
+  {
+    "id": "osm-way-194030220",
+    "footprint": [
+      {
+        "latitude": 25.0742613,
+        "longitude": 55.1376691
+      },
+      {
+        "latitude": 25.0740431,
+        "longitude": 55.1379502
+      },
+      {
+        "latitude": 25.0741132,
+        "longitude": 55.1380162
+      },
+      {
+        "latitude": 25.0741555,
+        "longitude": 55.1379613
+      },
+      {
+        "latitude": 25.0742976,
+        "longitude": 55.138093
+      },
+      {
+        "latitude": 25.0745044,
+        "longitude": 55.1378304
+      },
+      {
+        "latitude": 25.0744362,
+        "longitude": 55.1377656
+      },
+      {
+        "latitude": 25.074405,
+        "longitude": 55.1378096
+      }
+    ],
+    "heightMeters": 92.80000000000001,
+    "heightSource": "levelsEstimate",
+    "name": "Al Majara 1"
+  },
+  {
+    "id": "osm-way-195258180",
+    "footprint": [
+      {
+        "latitude": 25.0749745,
+        "longitude": 55.1378949
+      },
+      {
+        "latitude": 25.0751338,
+        "longitude": 55.1380335
+      },
+      {
+        "latitude": 25.0753423,
+        "longitude": 55.1377412
+      },
+      {
+        "latitude": 25.075183,
+        "longitude": 55.1376027
+      }
+    ],
+    "heightMeters": 153.000456,
+    "heightSource": "exact",
+    "name": "Silverene Tower A"
+  },
+  {
+    "id": "osm-way-195527257",
+    "footprint": [
+      {
+        "latitude": 25.084034,
+        "longitude": 55.1420848
+      },
+      {
+        "latitude": 25.0843212,
+        "longitude": 55.1423444
+      },
+      {
+        "latitude": 25.0843309,
+        "longitude": 55.1427306
+      },
+      {
+        "latitude": 25.0840904,
+        "longitude": 55.1426981
+      },
+      {
+        "latitude": 25.0838937,
+        "longitude": 55.1426287
+      },
+      {
+        "latitude": 25.0836817,
+        "longitude": 55.1425093
+      }
+    ],
+    "heightMeters": 19.200000000000003,
+    "heightSource": "levelsEstimate",
+    "name": "Sky View Tower"
+  },
+  {
+    "id": "osm-way-195527381",
+    "footprint": [
+      {
+        "latitude": 25.0753543,
+        "longitude": 55.1397492
+      },
+      {
+        "latitude": 25.0755471,
+        "longitude": 55.139444
+      },
+      {
+        "latitude": 25.0758563,
+        "longitude": 55.1396821
+      },
+      {
+        "latitude": 25.0754554,
+        "longitude": 55.1403168
+      },
+      {
+        "latitude": 25.075373,
+        "longitude": 55.140443
+      },
+      {
+        "latitude": 25.0752927,
+        "longitude": 55.1403799
+      },
+      {
+        "latitude": 25.0752379,
+        "longitude": 55.1403366
+      },
+      {
+        "latitude": 25.0750408,
+        "longitude": 55.1401812
+      },
+      {
+        "latitude": 25.0749822,
+        "longitude": 55.140135
+      },
+      {
+        "latitude": 25.074895,
+        "longitude": 55.1400663
+      },
+      {
+        "latitude": 25.0751214,
+        "longitude": 55.1397162
+      },
+      {
+        "latitude": 25.075186,
+        "longitude": 55.1397667
+      },
+      {
+        "latitude": 25.0752337,
+        "longitude": 55.1397826
+      },
+      {
+        "latitude": 25.0752847,
+        "longitude": 55.1397817
+      },
+      {
+        "latitude": 25.0753209,
+        "longitude": 55.1397699
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": "Marina Plaza"
+  },
+  {
+    "id": "osm-way-195819043",
+    "footprint": [
+      {
+        "latitude": 25.0762798,
+        "longitude": 55.1386585
+      },
+      {
+        "latitude": 25.0763247,
+        "longitude": 55.1386854
+      },
+      {
+        "latitude": 25.07636,
+        "longitude": 55.138726
+      },
+      {
+        "latitude": 25.0763823,
+        "longitude": 55.1387767
+      },
+      {
+        "latitude": 25.0763893,
+        "longitude": 55.1388326
+      },
+      {
+        "latitude": 25.0763804,
+        "longitude": 55.138888
+      },
+      {
+        "latitude": 25.0763565,
+        "longitude": 55.1389377
+      },
+      {
+        "latitude": 25.0763199,
+        "longitude": 55.138977
+      },
+      {
+        "latitude": 25.0762742,
+        "longitude": 55.1390019
+      },
+      {
+        "latitude": 25.0762237,
+        "longitude": 55.13901
+      },
+      {
+        "latitude": 25.0761733,
+        "longitude": 55.1390006
+      },
+      {
+        "latitude": 25.0761281,
+        "longitude": 55.1389746
+      },
+      {
+        "latitude": 25.0760924,
+        "longitude": 55.1389345
+      },
+      {
+        "latitude": 25.0760769,
+        "longitude": 55.1389052
+      },
+      {
+        "latitude": 25.0760704,
+        "longitude": 55.1388872
+      },
+      {
+        "latitude": 25.0760677,
+        "longitude": 55.1388778
+      },
+      {
+        "latitude": 25.0760619,
+        "longitude": 55.1388205
+      },
+      {
+        "latitude": 25.0760746,
+        "longitude": 55.1387588
+      },
+      {
+        "latitude": 25.0760806,
+        "longitude": 55.1387449
+      },
+      {
+        "latitude": 25.0760876,
+        "longitude": 55.1387316
+      },
+      {
+        "latitude": 25.0760958,
+        "longitude": 55.1387187
+      },
+      {
+        "latitude": 25.0761329,
+        "longitude": 55.13868
+      },
+      {
+        "latitude": 25.076179,
+        "longitude": 55.1386558
+      },
+      {
+        "latitude": 25.0762296,
+        "longitude": 55.1386484
+      }
+    ],
+    "heightMeters": 27.0,
+    "heightSource": "exact",
+    "name": "pier 7"
+  },
+  {
+    "id": "osm-way-195819892",
+    "footprint": [
+      {
+        "latitude": 25.077321,
+        "longitude": 55.1366841
+      },
+      {
+        "latitude": 25.0772877,
+        "longitude": 55.1371566
+      },
+      {
+        "latitude": 25.0772752,
+        "longitude": 55.1373331
+      },
+      {
+        "latitude": 25.0774647,
+        "longitude": 55.1373492
+      },
+      {
+        "latitude": 25.0775103,
+        "longitude": 55.1366975
+      }
+    ],
+    "heightMeters": 45.098208,
+    "heightSource": "exact",
+    "name": "Marina Quay North"
+  },
+  {
+    "id": "osm-way-195819893",
+    "footprint": [
+      {
+        "latitude": 25.0767656,
+        "longitude": 55.1365907
+      },
+      {
+        "latitude": 25.0769382,
+        "longitude": 55.1366607
+      },
+      {
+        "latitude": 25.0767069,
+        "longitude": 55.1372897
+      },
+      {
+        "latitude": 25.0765295,
+        "longitude": 55.1372038
+      },
+      {
+        "latitude": 25.0765903,
+        "longitude": 55.1370427
+      }
+    ],
+    "heightMeters": 45.098208,
+    "heightSource": "exact",
+    "name": "Marina Quay East"
+  },
+  {
+    "id": "osm-way-196014302",
+    "footprint": [
+      {
+        "latitude": 25.0728243,
+        "longitude": 55.1313822
+      },
+      {
+        "latitude": 25.0731455,
+        "longitude": 55.1309983
+      },
+      {
+        "latitude": 25.0735829,
+        "longitude": 55.1304461
+      },
+      {
+        "latitude": 25.0738346,
+        "longitude": 55.1304513
+      },
+      {
+        "latitude": 25.0738883,
+        "longitude": 55.130495
+      },
+      {
+        "latitude": 25.073933,
+        "longitude": 55.1304308
+      },
+      {
+        "latitude": 25.0741344,
+        "longitude": 55.1306173
+      },
+      {
+        "latitude": 25.0747576,
+        "longitude": 55.1311941
+      },
+      {
+        "latitude": 25.0747526,
+        "longitude": 55.131264
+      },
+      {
+        "latitude": 25.0748335,
+        "longitude": 55.1313478
+      },
+      {
+        "latitude": 25.0749135,
+        "longitude": 55.1313384
+      },
+      {
+        "latitude": 25.0753808,
+        "longitude": 55.1317711
+      },
+      {
+        "latitude": 25.075318,
+        "longitude": 55.1318441
+      },
+      {
+        "latitude": 25.0752917,
+        "longitude": 55.1318746
+      },
+      {
+        "latitude": 25.0749592,
+        "longitude": 55.1323036
+      },
+      {
+        "latitude": 25.0746408,
+        "longitude": 55.1321401
+      },
+      {
+        "latitude": 25.0741811,
+        "longitude": 55.1319724
+      },
+      {
+        "latitude": 25.0738177,
+        "longitude": 55.1319266
+      },
+      {
+        "latitude": 25.0734786,
+        "longitude": 55.1319001
+      },
+      {
+        "latitude": 25.0731916,
+        "longitude": 55.1318427
+      },
+      {
+        "latitude": 25.0728514,
+        "longitude": 55.1316426
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": "JBR Amwaj"
+  },
+  {
+    "id": "osm-way-196017150",
+    "footprint": [
+      {
+        "latitude": 25.0778344,
+        "longitude": 55.1342352
+      },
+      {
+        "latitude": 25.077719,
+        "longitude": 55.1342648
+      },
+      {
+        "latitude": 25.0771661,
+        "longitude": 55.1349397
+      },
+      {
+        "latitude": 25.0767736,
+        "longitude": 55.1354276
+      },
+      {
+        "latitude": 25.0767962,
+        "longitude": 55.135609
+      },
+      {
+        "latitude": 25.0768407,
+        "longitude": 55.1357227
+      },
+      {
+        "latitude": 25.077181,
+        "longitude": 55.1359445
+      },
+      {
+        "latitude": 25.0775454,
+        "longitude": 55.1361401
+      },
+      {
+        "latitude": 25.0781279,
+        "longitude": 55.1362943
+      },
+      {
+        "latitude": 25.0785863,
+        "longitude": 55.1365518
+      },
+      {
+        "latitude": 25.0793021,
+        "longitude": 55.1357031
+      },
+      {
+        "latitude": 25.0786177,
+        "longitude": 55.1350423
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": "Bahar"
+  },
+  {
+    "id": "osm-way-196140415",
+    "footprint": [
+      {
+        "latitude": 25.0734986,
+        "longitude": 55.1378025
+      },
+      {
+        "latitude": 25.0738993,
+        "longitude": 55.1381865
+      },
+      {
+        "latitude": 25.0738348,
+        "longitude": 55.1382717
+      },
+      {
+        "latitude": 25.0739904,
+        "longitude": 55.1384258
+      },
+      {
+        "latitude": 25.073782,
+        "longitude": 55.1386789
+      },
+      {
+        "latitude": 25.0736155,
+        "longitude": 55.138884
+      },
+      {
+        "latitude": 25.0734567,
+        "longitude": 55.1389006
+      },
+      {
+        "latitude": 25.0733261,
+        "longitude": 55.1387849
+      },
+      {
+        "latitude": 25.0735758,
+        "longitude": 55.1384798
+      },
+      {
+        "latitude": 25.0736713,
+        "longitude": 55.1383595
+      },
+      {
+        "latitude": 25.0733231,
+        "longitude": 55.1380185
+      }
+    ],
+    "heightMeters": 16.0,
+    "heightSource": "levelsEstimate",
+    "name": "Marina Mansions"
+  },
+  {
+    "id": "osm-way-196657154",
+    "footprint": [
+      {
+        "latitude": 25.0798394,
+        "longitude": 55.1372537
+      },
+      {
+        "latitude": 25.0796289,
+        "longitude": 55.137345
+      },
+      {
+        "latitude": 25.0797451,
+        "longitude": 55.1376712
+      },
+      {
+        "latitude": 25.0799555,
+        "longitude": 55.1375799
+      }
+    ],
+    "heightMeters": 80.0,
+    "heightSource": "levelsEstimate",
+    "name": null
+  },
+  {
+    "id": "osm-way-196657155",
+    "footprint": [
+      {
+        "latitude": 25.0784066,
+        "longitude": 55.1371805
+      },
+      {
+        "latitude": 25.0782231,
+        "longitude": 55.1374537
+      },
+      {
+        "latitude": 25.0783982,
+        "longitude": 55.1375971
+      },
+      {
+        "latitude": 25.0785817,
+        "longitude": 55.1373239
+      }
+    ],
+    "heightMeters": 154.999944,
+    "heightSource": "exact",
+    "name": "Bay Central West"
+  },
+  {
+    "id": "osm-way-196657156",
+    "footprint": [
+      {
+        "latitude": 25.0766656,
+        "longitude": 55.1333837
+      },
+      {
+        "latitude": 25.0762571,
+        "longitude": 55.1334041
+      },
+      {
+        "latitude": 25.0762721,
+        "longitude": 55.1337722
+      },
+      {
+        "latitude": 25.0766807,
+        "longitude": 55.1337518
+      }
+    ],
+    "heightMeters": 147.593304,
+    "heightSource": "exact",
+    "name": "Rimal 4"
+  },
+  {
+    "id": "osm-way-196657158",
+    "footprint": [
+      {
+        "latitude": 25.0801182,
+        "longitude": 55.1429399
+      },
+      {
+        "latitude": 25.079941,
+        "longitude": 55.1431401
+      },
+      {
+        "latitude": 25.0801386,
+        "longitude": 55.1433533
+      },
+      {
+        "latitude": 25.080221,
+        "longitude": 55.1432601
+      },
+      {
+        "latitude": 25.0803158,
+        "longitude": 55.143153
+      }
+    ],
+    "heightMeters": 105.0,
+    "heightSource": "exact",
+    "name": "La Verda Suites and Villas Dubai Marina"
+  },
+  {
+    "id": "osm-way-196657160",
+    "footprint": [
+      {
+        "latitude": 25.0796829,
+        "longitude": 55.1441702
+      },
+      {
+        "latitude": 25.0794028,
+        "longitude": 55.1445316
+      },
+      {
+        "latitude": 25.0792882,
+        "longitude": 55.1444233
+      },
+      {
+        "latitude": 25.0793987,
+        "longitude": 55.1442809
+      },
+      {
+        "latitude": 25.0795684,
+        "longitude": 55.1440619
+      }
+    ],
+    "heightMeters": 41.6,
+    "heightSource": "levelsEstimate",
+    "name": null
+  },
+  {
+    "id": "osm-way-196657161",
+    "footprint": [
+      {
+        "latitude": 25.0764591,
+        "longitude": 55.136171
+      },
+      {
+        "latitude": 25.0762401,
+        "longitude": 55.1364403
+      },
+      {
+        "latitude": 25.0764188,
+        "longitude": 55.1366174
+      },
+      {
+        "latitude": 25.0766377,
+        "longitude": 55.1363481
+      }
+    ],
+    "heightMeters": 168.091104,
+    "heightSource": "exact",
+    "name": "Marina Quay West"
+  },
+  {
+    "id": "osm-way-196657162",
+    "footprint": [
+      {
+        "latitude": 25.0770732,
+        "longitude": 55.1352486
+      },
+      {
+        "latitude": 25.0769037,
+        "longitude": 55.1354651
+      },
+      {
+        "latitude": 25.0772469,
+        "longitude": 55.1357928
+      },
+      {
+        "latitude": 25.0774165,
+        "longitude": 55.1355764
+      }
+    ],
+    "heightMeters": 213.189312,
+    "heightSource": "exact",
+    "name": "Bahar 1"
+  },
+  {
+    "id": "osm-way-196657163",
+    "footprint": [
+      {
+        "latitude": 25.0779134,
+        "longitude": 55.1348494
+      },
+      {
+        "latitude": 25.0779131,
+        "longitude": 55.1351091
+      },
+      {
+        "latitude": 25.078306,
+        "longitude": 55.1351444
+      },
+      {
+        "latitude": 25.0783172,
+        "longitude": 55.1348693
+      }
+    ],
+    "heightMeters": 153.60000000000002,
+    "heightSource": "levelsEstimate",
+    "name": "Hilton Dubai The Walk"
+  },
+  {
+    "id": "osm-way-196657164",
+    "footprint": [
+      {
+        "latitude": 25.0809297,
+        "longitude": 55.1376791
+      },
+      {
+        "latitude": 25.0806999,
+        "longitude": 55.1374432
+      },
+      {
+        "latitude": 25.0808417,
+        "longitude": 55.1372747
+      },
+      {
+        "latitude": 25.0810716,
+        "longitude": 55.1375106
+      }
+    ],
+    "heightMeters": 151.692864,
+    "heightSource": "exact",
+    "name": "Sadaf 5"
+  },
+  {
+    "id": "osm-way-196657165",
+    "footprint": [
+      {
+        "latitude": 25.0824259,
+        "longitude": 55.1391124
+      },
+      {
+        "latitude": 25.0824021,
+        "longitude": 55.139531
+      },
+      {
+        "latitude": 25.0826486,
+        "longitude": 55.1395481
+      },
+      {
+        "latitude": 25.0826723,
+        "longitude": 55.1391294
+      }
+    ],
+    "heightMeters": 106.594656,
+    "heightSource": "exact",
+    "name": "Murjan 3"
+  },
+  {
+    "id": "osm-way-196657169",
+    "footprint": [
+      {
+        "latitude": 25.0807214,
+        "longitude": 55.1442632
+      },
+      {
+        "latitude": 25.0805257,
+        "longitude": 55.1440761
+      },
+      {
+        "latitude": 25.0803178,
+        "longitude": 55.1443412
+      },
+      {
+        "latitude": 25.0805134,
+        "longitude": 55.1445284
+      }
+    ],
+    "heightMeters": 157.999176,
+    "heightSource": "exact",
+    "name": "Time Place"
+  },
+  {
+    "id": "osm-way-196657170",
+    "footprint": [
+      {
+        "latitude": 25.0785568,
+        "longitude": 55.1379076
+      },
+      {
+        "latitude": 25.0783471,
+        "longitude": 55.1381843
+      },
+      {
+        "latitude": 25.0784912,
+        "longitude": 55.1383175
+      },
+      {
+        "latitude": 25.0787009,
+        "longitude": 55.1380408
+      }
+    ],
+    "heightMeters": 179.99964,
+    "heightSource": "exact",
+    "name": "Bay Central"
+  },
+  {
+    "id": "osm-way-196657171",
+    "footprint": [
+      {
+        "latitude": 25.079752,
+        "longitude": 55.142951
+      },
+      {
+        "latitude": 25.0796173,
+        "longitude": 55.1427963
+      },
+      {
+        "latitude": 25.0793441,
+        "longitude": 55.1430863
+      },
+      {
+        "latitude": 25.0794789,
+        "longitude": 55.143241
+      }
+    ],
+    "heightMeters": 135.0,
+    "heightSource": "exact",
+    "name": "City Premiere Marina Hotel Apartments"
+  },
+  {
+    "id": "osm-way-196657172",
+    "footprint": [
+      {
+        "latitude": 25.078662,
+        "longitude": 55.1361696
+      },
+      {
+        "latitude": 25.0782843,
+        "longitude": 55.1361338
+      },
+      {
+        "latitude": 25.0782657,
+        "longitude": 55.1363732
+      },
+      {
+        "latitude": 25.0786434,
+        "longitude": 55.1364089
+      }
+    ],
+    "heightMeters": 112.0,
+    "heightSource": "levelsEstimate",
+    "name": "Bahar 6"
+  },
+  {
+    "id": "osm-way-196657173",
+    "footprint": [
+      {
+        "latitude": 25.0789225,
+        "longitude": 55.1357667
+      },
+      {
+        "latitude": 25.0787228,
+        "longitude": 55.1357639
+      },
+      {
+        "latitude": 25.0787195,
+        "longitude": 55.1360552
+      },
+      {
+        "latitude": 25.0789192,
+        "longitude": 55.136058
+      }
+    ],
+    "heightMeters": 196.791072,
+    "heightSource": "exact",
+    "name": "Bahar 5"
+  },
+  {
+    "id": "osm-way-196657175",
+    "footprint": [
+      {
+        "latitude": 25.0820652,
+        "longitude": 55.1387489
+      },
+      {
+        "latitude": 25.0817874,
+        "longitude": 55.1387142
+      },
+      {
+        "latitude": 25.0817469,
+        "longitude": 55.1391093
+      },
+      {
+        "latitude": 25.0820247,
+        "longitude": 55.139144
+      }
+    ],
+    "heightMeters": 110.694216,
+    "heightSource": "exact",
+    "name": "Murjan 2"
+  },
+  {
+    "id": "osm-way-196657180",
+    "footprint": [
+      {
+        "latitude": 25.0733701,
+        "longitude": 55.1327895
+      },
+      {
+        "latitude": 25.0731789,
+        "longitude": 55.1326773
+      },
+      {
+        "latitude": 25.0730251,
+        "longitude": 55.1329969
+      },
+      {
+        "latitude": 25.0732163,
+        "longitude": 55.133109
+      }
+    ],
+    "heightMeters": 130.000248,
+    "heightSource": "exact",
+    "name": "The Point"
+  },
+  {
+    "id": "osm-way-196657181",
+    "footprint": [
+      {
+        "latitude": 25.075793,
+        "longitude": 55.1349273
+      },
+      {
+        "latitude": 25.0755417,
+        "longitude": 55.1349934
+      },
+      {
+        "latitude": 25.0756024,
+        "longitude": 55.1352747
+      },
+      {
+        "latitude": 25.0758538,
+        "longitude": 55.1352085
+      }
+    ],
+    "heightMeters": 98.0,
+    "heightSource": "exact",
+    "name": "Al Sahab 1"
+  },
+  {
+    "id": "osm-way-196657183",
+    "footprint": [
+      {
+        "latitude": 25.0831255,
+        "longitude": 55.1395872
+      },
+      {
+        "latitude": 25.0830397,
+        "longitude": 55.1395774
+      },
+      {
+        "latitude": 25.0830315,
+        "longitude": 55.1396646
+      },
+      {
+        "latitude": 25.0827587,
+        "longitude": 55.1396335
+      },
+      {
+        "latitude": 25.0827372,
+        "longitude": 55.1398634
+      },
+      {
+        "latitude": 25.0830026,
+        "longitude": 55.1398937
+      },
+      {
+        "latitude": 25.0829951,
+        "longitude": 55.1399732
+      },
+      {
+        "latitude": 25.0830883,
+        "longitude": 55.1399838
+      }
+    ],
+    "heightMeters": 135.294624,
+    "heightSource": "exact",
+    "name": "Murjan 4"
+  },
+  {
+    "id": "osm-way-196657185",
+    "footprint": [
+      {
+        "latitude": 25.0802149,
+        "longitude": 55.1366396
+      },
+      {
+        "latitude": 25.0799224,
+        "longitude": 55.1370032
+      },
+      {
+        "latitude": 25.0800788,
+        "longitude": 55.1371566
+      },
+      {
+        "latitude": 25.0803713,
+        "longitude": 55.136793
+      }
+    ],
+    "heightMeters": 73.60000000000001,
+    "heightSource": "levelsEstimate",
+    "name": "Sadaf 3"
+  },
+  {
+    "id": "osm-way-196657187",
+    "footprint": [
+      {
+        "latitude": 25.075043,
+        "longitude": 55.1316689
+      },
+      {
+        "latitude": 25.0748002,
+        "longitude": 55.1316791
+      },
+      {
+        "latitude": 25.0748153,
+        "longitude": 55.1321193
+      },
+      {
+        "latitude": 25.0750581,
+        "longitude": 55.1321091
+      }
+    ],
+    "heightMeters": 98.395536,
+    "heightSource": "exact",
+    "name": "Amwaj 1"
+  },
+  {
+    "id": "osm-way-196657189",
+    "footprint": [
+      {
+        "latitude": 25.0786025,
+        "longitude": 55.1352967
+      },
+      {
+        "latitude": 25.0785323,
+        "longitude": 55.1352936
+      },
+      {
+        "latitude": 25.0783937,
+        "longitude": 55.1352876
+      },
+      {
+        "latitude": 25.0783786,
+        "longitude": 55.1357105
+      },
+      {
+        "latitude": 25.0785874,
+        "longitude": 55.1357196
+      },
+      {
+        "latitude": 25.0786006,
+        "longitude": 55.135351
+      }
+    ],
+    "heightMeters": 127.095504,
+    "heightSource": "exact",
+    "name": "Bahar 4"
+  },
+  {
+    "id": "osm-way-196657190",
+    "footprint": [
+      {
+        "latitude": 25.0804593,
+        "longitude": 55.136974
+      },
+      {
+        "latitude": 25.08033,
+        "longitude": 55.1371675
+      },
+      {
+        "latitude": 25.0806042,
+        "longitude": 55.1374199
+      },
+      {
+        "latitude": 25.0807454,
+        "longitude": 55.1372328
+      }
+    ],
+    "heightMeters": 221.388432,
+    "heightSource": "exact",
+    "name": "Sadaf 4"
+  },
+  {
+    "id": "osm-way-196657191",
+    "footprint": [
+      {
+        "latitude": 25.0761557,
+        "longitude": 55.1327417
+      },
+      {
+        "latitude": 25.0757378,
+        "longitude": 55.1327758
+      },
+      {
+        "latitude": 25.0757662,
+        "longitude": 55.1331994
+      },
+      {
+        "latitude": 25.0761841,
+        "longitude": 55.1331653
+      }
+    ],
+    "heightMeters": 159.891984,
+    "heightSource": "exact",
+    "name": "Rimal 5"
+  },
+  {
+    "id": "osm-way-196657195",
+    "footprint": [
+      {
+        "latitude": 25.0757302,
+        "longitude": 55.1324006
+      },
+      {
+        "latitude": 25.0755235,
+        "longitude": 55.1324124
+      },
+      {
+        "latitude": 25.0755406,
+        "longitude": 55.132778
+      },
+      {
+        "latitude": 25.0757472,
+        "longitude": 55.1327663
+      }
+    ],
+    "heightMeters": 147.593304,
+    "heightSource": "exact",
+    "name": "Rimal 6"
+  },
+  {
+    "id": "osm-way-196657196",
+    "footprint": [
+      {
+        "latitude": 25.081161,
+        "longitude": 55.1390372
+      },
+      {
+        "latitude": 25.0808173,
+        "longitude": 55.138727
+      },
+      {
+        "latitude": 25.0805753,
+        "longitude": 55.139054
+      },
+      {
+        "latitude": 25.080919,
+        "longitude": 55.1393641
+      }
+    ],
+    "heightMeters": 188.591952,
+    "heightSource": "exact",
+    "name": "Sadaf 8"
+  },
+  {
+    "id": "osm-way-196657198",
+    "footprint": [
+      {
+        "latitude": 25.082223,
+        "longitude": 55.1404048
+      },
+      {
+        "latitude": 25.082007,
+        "longitude": 55.1402019
+      },
+      {
+        "latitude": 25.0818747,
+        "longitude": 55.1403736
+      },
+      {
+        "latitude": 25.0820906,
+        "longitude": 55.1405765
+      }
+    ],
+    "heightMeters": 163.991544,
+    "heightSource": "exact",
+    "name": "Murjan 6"
+  },
+  {
+    "id": "osm-way-196657199",
+    "footprint": [
+      {
+        "latitude": 25.0799531,
+        "longitude": 55.1447499
+      },
+      {
+        "latitude": 25.0800946,
+        "longitude": 55.1445874
+      },
+      {
+        "latitude": 25.079955,
+        "longitude": 55.1444393
+      },
+      {
+        "latitude": 25.0796838,
+        "longitude": 55.1447509
+      },
+      {
+        "latitude": 25.079824,
+        "longitude": 55.1449001
+      }
+    ],
+    "heightMeters": 62.0,
+    "heightSource": "exact",
+    "name": "Marina Diamond 1"
+  },
+  {
+    "id": "osm-way-196657201",
+    "footprint": [
+      {
+        "latitude": 25.0774194,
+        "longitude": 55.1340454
+      },
+      {
+        "latitude": 25.0771266,
+        "longitude": 55.1340604
+      },
+      {
+        "latitude": 25.077136,
+        "longitude": 55.1342827
+      },
+      {
+        "latitude": 25.0774288,
+        "longitude": 55.1342677
+      }
+    ],
+    "heightMeters": 155.792424,
+    "heightSource": "exact",
+    "name": "Rimal 2"
+  },
+  {
+    "id": "osm-way-196657205",
+    "footprint": [
+      {
+        "latitude": 25.0825902,
+        "longitude": 55.1404935
+      },
+      {
+        "latitude": 25.0823171,
+        "longitude": 55.1404608
+      },
+      {
+        "latitude": 25.0822942,
+        "longitude": 55.1406937
+      },
+      {
+        "latitude": 25.0825673,
+        "longitude": 55.1407264
+      }
+    ],
+    "heightMeters": 163.991544,
+    "heightSource": "exact",
+    "name": "Murjan 5"
+  },
+  {
+    "id": "osm-way-196657209",
+    "footprint": [
+      {
+        "latitude": 25.0814001,
+        "longitude": 55.1398918
+      },
+      {
+        "latitude": 25.0810817,
+        "longitude": 55.1395639
+      },
+      {
+        "latitude": 25.0813586,
+        "longitude": 55.1392362
+      },
+      {
+        "latitude": 25.081677,
+        "longitude": 55.1395641
+      }
+    ],
+    "heightMeters": 188.591952,
+    "heightSource": "exact",
+    "name": "Murjan 1"
+  },
+  {
+    "id": "osm-way-196657210",
+    "footprint": [
+      {
+        "latitude": 25.076865,
+        "longitude": 55.1349089
+      },
+      {
+        "latitude": 25.0765729,
+        "longitude": 55.1346509
+      },
+      {
+        "latitude": 25.0763518,
+        "longitude": 55.1349561
+      },
+      {
+        "latitude": 25.0766438,
+        "longitude": 55.1352141
+      }
+    ],
+    "heightMeters": 188.591952,
+    "heightSource": "exact",
+    "name": "Rimal 1"
+  },
+  {
+    "id": "osm-way-196657215",
+    "footprint": [
+      {
+        "latitude": 25.0758837,
+        "longitude": 55.1354786
+      },
+      {
+        "latitude": 25.0756815,
+        "longitude": 55.135762
+      },
+      {
+        "latitude": 25.0758852,
+        "longitude": 55.1359392
+      },
+      {
+        "latitude": 25.0760875,
+        "longitude": 55.1356558
+      }
+    ],
+    "heightMeters": 180.0,
+    "heightSource": "exact",
+    "name": "Al Sahab 2"
+  },
+  {
+    "id": "osm-way-196657217",
+    "footprint": [
+      {
+        "latitude": 25.0769317,
+        "longitude": 55.1338575
+      },
+      {
+        "latitude": 25.0768436,
+        "longitude": 55.1338632
+      },
+      {
+        "latitude": 25.0768486,
+        "longitude": 55.1339579
+      },
+      {
+        "latitude": 25.0765307,
+        "longitude": 55.1339785
+      },
+      {
+        "latitude": 25.0765423,
+        "longitude": 55.1341966
+      },
+      {
+        "latitude": 25.076868,
+        "longitude": 55.1341755
+      },
+      {
+        "latitude": 25.076874,
+        "longitude": 55.134289
+      },
+      {
+        "latitude": 25.0769543,
+        "longitude": 55.1342838
+      }
+    ],
+    "heightMeters": 163.991544,
+    "heightSource": "exact",
+    "name": "Rimal 3"
+  },
+  {
+    "id": "osm-way-196657218",
+    "footprint": [
+      {
+        "latitude": 25.0776283,
+        "longitude": 55.1347734
+      },
+      {
+        "latitude": 25.0774128,
+        "longitude": 55.1347551
+      },
+      {
+        "latitude": 25.0773915,
+        "longitude": 55.135061
+      },
+      {
+        "latitude": 25.077607,
+        "longitude": 55.1350793
+      }
+    ],
+    "heightMeters": 139.394184,
+    "heightSource": "exact",
+    "name": "Bahar 2"
+  },
+  {
+    "id": "osm-way-196657219",
+    "footprint": [
+      {
+        "latitude": 25.0779,
+        "longitude": 55.1357654
+      },
+      {
+        "latitude": 25.0774355,
+        "longitude": 55.135711
+      },
+      {
+        "latitude": 25.077407,
+        "longitude": 55.1360089
+      },
+      {
+        "latitude": 25.0778715,
+        "longitude": 55.1360631
+      }
+    ],
+    "heightMeters": 160.934,
+    "heightSource": "exact",
+    "name": "Sheraton The Walk, Dubai"
+  },
+  {
+    "id": "osm-way-196657220",
+    "footprint": [
+      {
+        "latitude": 25.0815452,
+        "longitude": 55.1447359
+      },
+      {
+        "latitude": 25.0814653,
+        "longitude": 55.1447484
+      },
+      {
+        "latitude": 25.0813896,
+        "longitude": 55.14481
+      },
+      {
+        "latitude": 25.0813029,
+        "longitude": 55.14489
+      },
+      {
+        "latitude": 25.081246,
+        "longitude": 55.144975
+      },
+      {
+        "latitude": 25.0812228,
+        "longitude": 55.1450169
+      },
+      {
+        "latitude": 25.0811967,
+        "longitude": 55.1450817
+      },
+      {
+        "latitude": 25.0812969,
+        "longitude": 55.1451864
+      },
+      {
+        "latitude": 25.0813582,
+        "longitude": 55.1451505
+      },
+      {
+        "latitude": 25.0814218,
+        "longitude": 55.1451017
+      },
+      {
+        "latitude": 25.0814713,
+        "longitude": 55.1450461
+      },
+      {
+        "latitude": 25.0815173,
+        "longitude": 55.1449806
+      },
+      {
+        "latitude": 25.0815675,
+        "longitude": 55.1449024
+      },
+      {
+        "latitude": 25.0816115,
+        "longitude": 55.1448037
+      }
+    ],
+    "heightMeters": 120.0,
+    "heightSource": "exact",
+    "name": "Bayside Residence"
+  },
+  {
+    "id": "osm-way-196657221",
+    "footprint": [
+      {
+        "latitude": 25.0802536,
+        "longitude": 55.1382607
+      },
+      {
+        "latitude": 25.0804363,
+        "longitude": 55.1385324
+      },
+      {
+        "latitude": 25.0806091,
+        "longitude": 55.1383924
+      },
+      {
+        "latitude": 25.0804168,
+        "longitude": 55.1381176
+      },
+      {
+        "latitude": 25.0803722,
+        "longitude": 55.1381409
+      },
+      {
+        "latitude": 25.0803417,
+        "longitude": 55.1380919
+      },
+      {
+        "latitude": 25.0803375,
+        "longitude": 55.1380398
+      },
+      {
+        "latitude": 25.0804022,
+        "longitude": 55.1380359
+      },
+      {
+        "latitude": 25.0804352,
+        "longitude": 55.1376914
+      },
+      {
+        "latitude": 25.080211,
+        "longitude": 55.1376695
+      },
+      {
+        "latitude": 25.0801798,
+        "longitude": 55.1380248
+      },
+      {
+        "latitude": 25.0801887,
+        "longitude": 55.1381325
+      }
+    ],
+    "heightMeters": 155.792424,
+    "heightSource": "exact",
+    "name": "Sadaf 1 & 2"
+  },
+  {
+    "id": "osm-way-196657222",
+    "footprint": [
+      {
+        "latitude": 25.0814396,
+        "longitude": 55.1380847
+      },
+      {
+        "latitude": 25.0814093,
+        "longitude": 55.1380295
+      },
+      {
+        "latitude": 25.081244,
+        "longitude": 55.1377285
+      },
+      {
+        "latitude": 25.0810497,
+        "longitude": 55.1378716
+      },
+      {
+        "latitude": 25.0812398,
+        "longitude": 55.1382185
+      },
+      {
+        "latitude": 25.0811574,
+        "longitude": 55.1385722
+      },
+      {
+        "latitude": 25.0813829,
+        "longitude": 55.1386421
+      },
+      {
+        "latitude": 25.0814652,
+        "longitude": 55.1382886
+      }
+    ],
+    "heightMeters": 188.591952,
+    "heightSource": "exact",
+    "name": "Sadaf 6 & 7"
+  },
+  {
+    "id": "osm-way-196657224",
+    "footprint": [
+      {
+        "latitude": 25.0846247,
+        "longitude": 55.1419047
+      },
+      {
+        "latitude": 25.0844774,
+        "longitude": 55.1417619
+      },
+      {
+        "latitude": 25.0842888,
+        "longitude": 55.1415792
+      },
+      {
+        "latitude": 25.0841779,
+        "longitude": 55.1414717
+      },
+      {
+        "latitude": 25.0839336,
+        "longitude": 55.1417791
+      },
+      {
+        "latitude": 25.0840445,
+        "longitude": 55.1418866
+      },
+      {
+        "latitude": 25.0842331,
+        "longitude": 55.1420693
+      },
+      {
+        "latitude": 25.0843805,
+        "longitude": 55.1422121
+      }
+    ],
+    "heightMeters": 9.600000000000001,
+    "heightSource": "levelsEstimate",
+    "name": "The Royal Oceanic"
+  },
+  {
+    "id": "osm-way-196713425",
+    "footprint": [
+      {
+        "latitude": 25.0772451,
+        "longitude": 55.1415559
+      },
+      {
+        "latitude": 25.0774654,
+        "longitude": 55.1417701
+      },
+      {
+        "latitude": 25.0774606,
+        "longitude": 55.1418774
+      },
+      {
+        "latitude": 25.0771962,
+        "longitude": 55.1421631
+      },
+      {
+        "latitude": 25.0771421,
+        "longitude": 55.1421765
+      },
+      {
+        "latitude": 25.0769254,
+        "longitude": 55.141948
+      },
+      {
+        "latitude": 25.0771117,
+        "longitude": 55.1417053
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-196719896",
+    "footprint": [
+      {
+        "latitude": 25.0789591,
+        "longitude": 55.1364664
+      },
+      {
+        "latitude": 25.0794525,
+        "longitude": 55.136936
+      },
+      {
+        "latitude": 25.0794768,
+        "longitude": 55.1370862
+      },
+      {
+        "latitude": 25.0793991,
+        "longitude": 55.1372167
+      },
+      {
+        "latitude": 25.0789542,
+        "longitude": 55.1367561
+      },
+      {
+        "latitude": 25.0789008,
+        "longitude": 55.1366005
+      }
+    ],
+    "heightMeters": 44.800000000000004,
+    "heightSource": "levelsEstimate",
+    "name": "Al Fattan Business Centre"
+  },
+  {
+    "id": "osm-way-200915107",
+    "footprint": [
+      {
+        "latitude": 25.077749,
+        "longitude": 55.1398366
+      },
+      {
+        "latitude": 25.0776395,
+        "longitude": 55.1399889
+      },
+      {
+        "latitude": 25.0776271,
+        "longitude": 55.1400061
+      },
+      {
+        "latitude": 25.0773672,
+        "longitude": 55.1403675
+      },
+      {
+        "latitude": 25.0774361,
+        "longitude": 55.140413
+      },
+      {
+        "latitude": 25.0774274,
+        "longitude": 55.1404443
+      },
+      {
+        "latitude": 25.0774081,
+        "longitude": 55.1405137
+      },
+      {
+        "latitude": 25.0773994,
+        "longitude": 55.1405712
+      },
+      {
+        "latitude": 25.0773973,
+        "longitude": 55.1406469
+      },
+      {
+        "latitude": 25.0774068,
+        "longitude": 55.1407223
+      },
+      {
+        "latitude": 25.0774229,
+        "longitude": 55.1407809
+      },
+      {
+        "latitude": 25.0774463,
+        "longitude": 55.1408417
+      },
+      {
+        "latitude": 25.0773541,
+        "longitude": 55.1409737
+      },
+      {
+        "latitude": 25.0772889,
+        "longitude": 55.1410363
+      },
+      {
+        "latitude": 25.0772406,
+        "longitude": 55.1409272
+      },
+      {
+        "latitude": 25.0771938,
+        "longitude": 55.1409424
+      },
+      {
+        "latitude": 25.077165,
+        "longitude": 55.1409518
+      },
+      {
+        "latitude": 25.0770869,
+        "longitude": 55.1410297
+      },
+      {
+        "latitude": 25.0769302,
+        "longitude": 55.1411122
+      },
+      {
+        "latitude": 25.0768488,
+        "longitude": 55.1411316
+      },
+      {
+        "latitude": 25.0765666,
+        "longitude": 55.141128
+      },
+      {
+        "latitude": 25.0762358,
+        "longitude": 55.1411218
+      },
+      {
+        "latitude": 25.0760643,
+        "longitude": 55.1410328
+      },
+      {
+        "latitude": 25.0758798,
+        "longitude": 55.140941
+      },
+      {
+        "latitude": 25.0757176,
+        "longitude": 55.1408118
+      },
+      {
+        "latitude": 25.0755563,
+        "longitude": 55.1406756
+      },
+      {
+        "latitude": 25.0755709,
+        "longitude": 55.1403591
+      },
+      {
+        "latitude": 25.076086,
+        "longitude": 55.1394633
+      },
+      {
+        "latitude": 25.0761944,
+        "longitude": 55.1394248
+      },
+      {
+        "latitude": 25.0764653,
+        "longitude": 55.1392986
+      },
+      {
+        "latitude": 25.0765181,
+        "longitude": 55.1392912
+      },
+      {
+        "latitude": 25.0767057,
+        "longitude": 55.1393187
+      },
+      {
+        "latitude": 25.0769314,
+        "longitude": 55.1393882
+      },
+      {
+        "latitude": 25.0771403,
+        "longitude": 55.1395189
+      },
+      {
+        "latitude": 25.0772367,
+        "longitude": 55.139599
+      },
+      {
+        "latitude": 25.0773176,
+        "longitude": 55.1397624
+      },
+      {
+        "latitude": 25.077364,
+        "longitude": 55.140096
+      },
+      {
+        "latitude": 25.0775286,
+        "longitude": 55.1398671
+      },
+      {
+        "latitude": 25.0775427,
+        "longitude": 55.1398476
+      },
+      {
+        "latitude": 25.0776273,
+        "longitude": 55.1397299
+      }
+    ],
+    "heightMeters": 25.0,
+    "heightSource": "exact",
+    "name": "Dubai Marina Mall"
+  },
+  {
+    "id": "osm-way-232011230",
+    "footprint": [
+      {
+        "latitude": 25.073056,
+        "longitude": 55.1423645
+      },
+      {
+        "latitude": 25.0728174,
+        "longitude": 55.1421458
+      },
+      {
+        "latitude": 25.0726121,
+        "longitude": 55.1424188
+      },
+      {
+        "latitude": 25.0728508,
+        "longitude": 55.1426375
+      }
+    ],
+    "heightMeters": 147.593304,
+    "heightSource": "exact",
+    "name": "Hilton Residences JLT"
+  },
+  {
+    "id": "osm-way-232528420",
+    "footprint": [
+      {
+        "latitude": 25.0738324,
+        "longitude": 55.1327995
+      },
+      {
+        "latitude": 25.0737988,
+        "longitude": 55.1330472
+      },
+      {
+        "latitude": 25.0735381,
+        "longitude": 55.1330041
+      },
+      {
+        "latitude": 25.0735716,
+        "longitude": 55.1327564
+      }
+    ],
+    "heightMeters": 114.793776,
+    "heightSource": "exact",
+    "name": "The Delphine"
+  },
+  {
+    "id": "osm-way-232528421",
+    "footprint": [
+      {
+        "latitude": 25.0744924,
+        "longitude": 55.1332025
+      },
+      {
+        "latitude": 25.0743795,
+        "longitude": 55.1333974
+      },
+      {
+        "latitude": 25.074205,
+        "longitude": 55.1332618
+      },
+      {
+        "latitude": 25.0743179,
+        "longitude": 55.1330736
+      }
+    ],
+    "heightMeters": 94.295976,
+    "heightSource": "exact",
+    "name": "The Aurora"
+  },
+  {
+    "id": "osm-way-232528422",
+    "footprint": [
+      {
+        "latitude": 25.0743877,
+        "longitude": 55.1326174
+      },
+      {
+        "latitude": 25.0743144,
+        "longitude": 55.1328628
+      },
+      {
+        "latitude": 25.0740977,
+        "longitude": 55.1327839
+      },
+      {
+        "latitude": 25.0741722,
+        "longitude": 55.1325346
+      }
+    ],
+    "heightMeters": 147.593304,
+    "heightSource": "exact",
+    "name": "The Shemara"
+  },
+  {
+    "id": "osm-way-232528423",
+    "footprint": [
+      {
+        "latitude": 25.0748401,
+        "longitude": 55.1334918
+      },
+      {
+        "latitude": 25.0749379,
+        "longitude": 55.1336345
+      },
+      {
+        "latitude": 25.0747787,
+        "longitude": 55.1337914
+      },
+      {
+        "latitude": 25.0746983,
+        "longitude": 55.1336894
+      },
+      {
+        "latitude": 25.074727,
+        "longitude": 55.1336084
+      },
+      {
+        "latitude": 25.0747765,
+        "longitude": 55.1335351
+      }
+    ],
+    "heightMeters": 98.395536,
+    "heightSource": "exact",
+    "name": "The Beauport"
+  },
+  {
+    "id": "osm-way-232528424",
+    "footprint": [
+      {
+        "latitude": 25.0754484,
+        "longitude": 55.1335883
+      },
+      {
+        "latitude": 25.0755475,
+        "longitude": 55.1337954
+      },
+      {
+        "latitude": 25.0753365,
+        "longitude": 55.1339186
+      },
+      {
+        "latitude": 25.0752373,
+        "longitude": 55.1337115
+      }
+    ],
+    "heightMeters": 143.493744,
+    "heightSource": "exact",
+    "name": "The Attessa"
+  },
+  {
+    "id": "osm-way-232528425",
+    "footprint": [
+      {
+        "latitude": 25.0752887,
+        "longitude": 55.1342324
+      },
+      {
+        "latitude": 25.0753959,
+        "longitude": 55.1345303
+      },
+      {
+        "latitude": 25.0752116,
+        "longitude": 55.1346111
+      },
+      {
+        "latitude": 25.0751045,
+        "longitude": 55.1343131
+      }
+    ],
+    "heightMeters": 159.891984,
+    "heightSource": "exact",
+    "name": "The Paloma"
+  },
+  {
+    "id": "osm-way-262243084",
+    "footprint": [
+      {
+        "latitude": 25.084883,
+        "longitude": 55.1421275
+      },
+      {
+        "latitude": 25.0849885,
+        "longitude": 55.1426586
+      },
+      {
+        "latitude": 25.0850691,
+        "longitude": 55.1426186
+      },
+      {
+        "latitude": 25.0855363,
+        "longitude": 55.1425349
+      },
+      {
+        "latitude": 25.0855969,
+        "longitude": 55.142448
+      },
+      {
+        "latitude": 25.0850218,
+        "longitude": 55.1419468
+      }
+    ],
+    "heightMeters": 16.0,
+    "heightSource": "levelsEstimate",
+    "name": "Botanica Tower"
+  },
+  {
+    "id": "osm-way-279159302",
+    "footprint": [
+      {
+        "latitude": 25.0789188,
+        "longitude": 55.1381389
+      },
+      {
+        "latitude": 25.0790681,
+        "longitude": 55.1382789
+      },
+      {
+        "latitude": 25.0792868,
+        "longitude": 55.1379948
+      },
+      {
+        "latitude": 25.0791376,
+        "longitude": 55.1378548
+      }
+    ],
+    "heightMeters": 154.999944,
+    "heightSource": "exact",
+    "name": "Intercontinental Tower"
+  },
+  {
+    "id": "osm-way-279536861",
+    "footprint": [
+      {
+        "latitude": 25.0787851,
+        "longitude": 55.133211
+      },
+      {
+        "latitude": 25.0783525,
+        "longitude": 55.132788
+      },
+      {
+        "latitude": 25.078208,
+        "longitude": 55.132972
+      },
+      {
+        "latitude": 25.0780889,
+        "longitude": 55.1331352
+      },
+      {
+        "latitude": 25.0780068,
+        "longitude": 55.1336496
+      },
+      {
+        "latitude": 25.0781343,
+        "longitude": 55.1337864
+      },
+      {
+        "latitude": 25.078362,
+        "longitude": 55.1334976
+      },
+      {
+        "latitude": 25.078489,
+        "longitude": 55.1336091
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-289718699",
+    "footprint": [
+      {
+        "latitude": 25.0778584,
+        "longitude": 55.1347701
+      },
+      {
+        "latitude": 25.0777965,
+        "longitude": 55.134829
+      },
+      {
+        "latitude": 25.0778565,
+        "longitude": 55.1349734
+      },
+      {
+        "latitude": 25.0779118,
+        "longitude": 55.1348168
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": "Ad Ventura Marketing Services Private Limited"
+  },
+  {
+    "id": "osm-way-320159248",
+    "footprint": [
+      {
+        "latitude": 25.0793987,
+        "longitude": 55.1442809
+      },
+      {
+        "latitude": 25.0792687,
+        "longitude": 55.144157
+      },
+      {
+        "latitude": 25.0792971,
+        "longitude": 55.1441207
+      },
+      {
+        "latitude": 25.0792517,
+        "longitude": 55.1440775
+      },
+      {
+        "latitude": 25.0791168,
+        "longitude": 55.14425
+      },
+      {
+        "latitude": 25.0791989,
+        "longitude": 55.1443283
+      },
+      {
+        "latitude": 25.0792248,
+        "longitude": 55.1442953
+      },
+      {
+        "latitude": 25.0792399,
+        "longitude": 55.1443097
+      },
+      {
+        "latitude": 25.0792526,
+        "longitude": 55.1443218
+      },
+      {
+        "latitude": 25.0792218,
+        "longitude": 55.1443611
+      },
+      {
+        "latitude": 25.0792882,
+        "longitude": 55.1444233
+      }
+    ],
+    "heightMeters": 6.4,
+    "heightSource": "levelsEstimate",
+    "name": null
+  },
+  {
+    "id": "osm-way-320159686",
+    "footprint": [
+      {
+        "latitude": 25.0785251,
+        "longitude": 55.1431353
+      },
+      {
+        "latitude": 25.0787273,
+        "longitude": 55.1433437
+      },
+      {
+        "latitude": 25.0785443,
+        "longitude": 55.14356
+      },
+      {
+        "latitude": 25.0783422,
+        "longitude": 55.1433516
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-320159693",
+    "footprint": [
+      {
+        "latitude": 25.0788474,
+        "longitude": 55.142477
+      },
+      {
+        "latitude": 25.0788479,
+        "longitude": 55.1425085
+      },
+      {
+        "latitude": 25.0788577,
+        "longitude": 55.1425414
+      },
+      {
+        "latitude": 25.0789877,
+        "longitude": 55.1427004
+      },
+      {
+        "latitude": 25.0791,
+        "longitude": 55.1428191
+      },
+      {
+        "latitude": 25.0796227,
+        "longitude": 55.1420746
+      },
+      {
+        "latitude": 25.079845,
+        "longitude": 55.141758
+      },
+      {
+        "latitude": 25.079858,
+        "longitude": 55.1417466
+      },
+      {
+        "latitude": 25.0796899,
+        "longitude": 55.1415672
+      },
+      {
+        "latitude": 25.0795589,
+        "longitude": 55.1417349
+      },
+      {
+        "latitude": 25.0794944,
+        "longitude": 55.1416661
+      },
+      {
+        "latitude": 25.0794865,
+        "longitude": 55.1416577
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-320814927",
+    "footprint": [
+      {
+        "latitude": 25.0847213,
+        "longitude": 55.1446904
+      },
+      {
+        "latitude": 25.0847165,
+        "longitude": 55.1447571
+      },
+      {
+        "latitude": 25.0846928,
+        "longitude": 55.1448187
+      },
+      {
+        "latitude": 25.0846527,
+        "longitude": 55.1448689
+      },
+      {
+        "latitude": 25.0846003,
+        "longitude": 55.1449026
+      },
+      {
+        "latitude": 25.0845409,
+        "longitude": 55.1449162
+      },
+      {
+        "latitude": 25.0844807,
+        "longitude": 55.1449085
+      },
+      {
+        "latitude": 25.0844258,
+        "longitude": 55.1448802
+      },
+      {
+        "latitude": 25.0843818,
+        "longitude": 55.1448341
+      },
+      {
+        "latitude": 25.0843521,
+        "longitude": 55.1447716
+      },
+      {
+        "latitude": 25.084343,
+        "longitude": 55.1447017
+      },
+      {
+        "latitude": 25.0847068,
+        "longitude": 55.1446254
+      }
+    ],
+    "heightMeters": 183.0,
+    "heightSource": "exact",
+    "name": "Marina Terrace"
+  },
+  {
+    "id": "osm-way-320814954",
+    "footprint": [
+      {
+        "latitude": 25.0840864,
+        "longitude": 55.1447981
+      },
+      {
+        "latitude": 25.0838845,
+        "longitude": 55.1447312
+      },
+      {
+        "latitude": 25.0837898,
+        "longitude": 55.1450794
+      },
+      {
+        "latitude": 25.0839916,
+        "longitude": 55.1451463
+      }
+    ],
+    "heightMeters": 145.0,
+    "heightSource": "exact",
+    "name": "Marina Tower"
+  },
+  {
+    "id": "osm-way-320815029",
+    "footprint": [
+      {
+        "latitude": 25.085663,
+        "longitude": 55.1448468
+      },
+      {
+        "latitude": 25.085455,
+        "longitude": 55.1451032
+      },
+      {
+        "latitude": 25.0849178,
+        "longitude": 55.1449444
+      },
+      {
+        "latitude": 25.0848861,
+        "longitude": 55.1448487
+      },
+      {
+        "latitude": 25.0852329,
+        "longitude": 55.1444213
+      }
+    ],
+    "heightMeters": 12.8,
+    "heightSource": "levelsEstimate",
+    "name": "Iris Blue"
+  },
+  {
+    "id": "osm-way-320818518",
+    "footprint": [
+      {
+        "latitude": 25.0817965,
+        "longitude": 55.1419775
+      },
+      {
+        "latitude": 25.0817771,
+        "longitude": 55.1419078
+      },
+      {
+        "latitude": 25.0817049,
+        "longitude": 55.1418935
+      },
+      {
+        "latitude": 25.0816268,
+        "longitude": 55.1419133
+      },
+      {
+        "latitude": 25.0815487,
+        "longitude": 55.1419384
+      },
+      {
+        "latitude": 25.0814491,
+        "longitude": 55.1420173
+      },
+      {
+        "latitude": 25.0814637,
+        "longitude": 55.1420799
+      },
+      {
+        "latitude": 25.0815977,
+        "longitude": 55.1421012
+      },
+      {
+        "latitude": 25.0817414,
+        "longitude": 55.1420501
+      }
+    ],
+    "heightMeters": 143.493744,
+    "heightSource": "exact",
+    "name": "Fairfield Tower"
+  },
+  {
+    "id": "osm-way-320818519",
+    "footprint": [
+      {
+        "latitude": 25.0826904,
+        "longitude": 55.1421151
+      },
+      {
+        "latitude": 25.0826103,
+        "longitude": 55.1420347
+      },
+      {
+        "latitude": 25.082569,
+        "longitude": 55.1420454
+      },
+      {
+        "latitude": 25.0825349,
+        "longitude": 55.1420293
+      },
+      {
+        "latitude": 25.0825131,
+        "longitude": 55.1420991
+      },
+      {
+        "latitude": 25.0824791,
+        "longitude": 55.1421688
+      },
+      {
+        "latitude": 25.0824303,
+        "longitude": 55.1422263
+      },
+      {
+        "latitude": 25.0824499,
+        "longitude": 55.1422466
+      },
+      {
+        "latitude": 25.0824353,
+        "longitude": 55.1422653
+      },
+      {
+        "latitude": 25.0825034,
+        "longitude": 55.1423324
+      },
+      {
+        "latitude": 25.0825252,
+        "longitude": 55.1423083
+      },
+      {
+        "latitude": 25.082552,
+        "longitude": 55.1423458
+      },
+      {
+        "latitude": 25.0825787,
+        "longitude": 55.1422868
+      },
+      {
+        "latitude": 25.0826394,
+        "longitude": 55.1422224
+      },
+      {
+        "latitude": 25.0826977,
+        "longitude": 55.1421876
+      },
+      {
+        "latitude": 25.0826783,
+        "longitude": 55.14215
+      }
+    ],
+    "heightMeters": 115.0,
+    "heightSource": "exact",
+    "name": "Blakely Tower"
+  },
+  {
+    "id": "osm-way-320819580",
+    "footprint": [
+      {
+        "latitude": 25.0818287,
+        "longitude": 55.1413287
+      },
+      {
+        "latitude": 25.0818135,
+        "longitude": 55.1413453
+      },
+      {
+        "latitude": 25.0818377,
+        "longitude": 55.1413775
+      },
+      {
+        "latitude": 25.0817697,
+        "longitude": 55.1414258
+      },
+      {
+        "latitude": 25.0817163,
+        "longitude": 55.1414821
+      },
+      {
+        "latitude": 25.0816896,
+        "longitude": 55.1415438
+      },
+      {
+        "latitude": 25.0816483,
+        "longitude": 55.1415009
+      },
+      {
+        "latitude": 25.0816191,
+        "longitude": 55.141517
+      },
+      {
+        "latitude": 25.0815705,
+        "longitude": 55.1414634
+      },
+      {
+        "latitude": 25.08159,
+        "longitude": 55.1414339
+      },
+      {
+        "latitude": 25.0815559,
+        "longitude": 55.1414124
+      },
+      {
+        "latitude": 25.0816143,
+        "longitude": 55.1413453
+      },
+      {
+        "latitude": 25.0816531,
+        "longitude": 55.1412863
+      },
+      {
+        "latitude": 25.081675,
+        "longitude": 55.1412139
+      },
+      {
+        "latitude": 25.0817066,
+        "longitude": 55.1412407
+      },
+      {
+        "latitude": 25.0817284,
+        "longitude": 55.1412273
+      }
+    ],
+    "heightMeters": 114.699288,
+    "heightSource": "exact",
+    "name": "Sanibel Tower"
+  },
+  {
+    "id": "osm-way-320819753",
+    "footprint": [
+      {
+        "latitude": 25.0821317,
+        "longitude": 55.1421742
+      },
+      {
+        "latitude": 25.0821608,
+        "longitude": 55.1423029
+      },
+      {
+        "latitude": 25.0821511,
+        "longitude": 55.1423968
+      },
+      {
+        "latitude": 25.0820928,
+        "longitude": 55.1425228
+      },
+      {
+        "latitude": 25.0820321,
+        "longitude": 55.1425148
+      },
+      {
+        "latitude": 25.0820029,
+        "longitude": 55.1423995
+      },
+      {
+        "latitude": 25.0820127,
+        "longitude": 55.1422868
+      },
+      {
+        "latitude": 25.0820855,
+        "longitude": 55.1421581
+      }
+    ],
+    "heightMeters": 143.493744,
+    "heightSource": "exact",
+    "name": "Bonaire Tower"
+  },
+  {
+    "id": "osm-way-320820683",
+    "footprint": [
+      {
+        "latitude": 25.0819507,
+        "longitude": 55.1413386
+      },
+      {
+        "latitude": 25.0818985,
+        "longitude": 55.141399
+      },
+      {
+        "latitude": 25.0819495,
+        "longitude": 55.1414862
+      },
+      {
+        "latitude": 25.0820151,
+        "longitude": 55.1415519
+      },
+      {
+        "latitude": 25.0821013,
+        "longitude": 55.141623
+      },
+      {
+        "latitude": 25.0821766,
+        "longitude": 55.1416538
+      },
+      {
+        "latitude": 25.0822191,
+        "longitude": 55.1415774
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-320820879",
+    "footprint": [
+      {
+        "latitude": 25.0823503,
+        "longitude": 55.141694
+      },
+      {
+        "latitude": 25.0822847,
+        "longitude": 55.1417705
+      },
+      {
+        "latitude": 25.0823321,
+        "longitude": 55.1418429
+      },
+      {
+        "latitude": 25.0824098,
+        "longitude": 55.1419287
+      },
+      {
+        "latitude": 25.0825009,
+        "longitude": 55.1419891
+      },
+      {
+        "latitude": 25.0825592,
+        "longitude": 55.1418912
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-348842896",
+    "footprint": [
+      {
+        "latitude": 25.0746461,
+        "longitude": 55.1387982
+      },
+      {
+        "latitude": 25.0744599,
+        "longitude": 55.139013
+      },
+      {
+        "latitude": 25.0741669,
+        "longitude": 55.139333
+      },
+      {
+        "latitude": 25.0739181,
+        "longitude": 55.139107
+      },
+      {
+        "latitude": 25.0741934,
+        "longitude": 55.1387596
+      },
+      {
+        "latitude": 25.0743712,
+        "longitude": 55.138534
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": "West Avenue Tower"
+  },
+  {
+    "id": "osm-way-430676838",
+    "footprint": [
+      {
+        "latitude": 25.0751695,
+        "longitude": 55.1331158
+      },
+      {
+        "latitude": 25.0750462,
+        "longitude": 55.1332342
+      },
+      {
+        "latitude": 25.0751661,
+        "longitude": 55.1333864
+      },
+      {
+        "latitude": 25.0752894,
+        "longitude": 55.133268
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-430676888",
+    "footprint": [
+      {
+        "latitude": 25.0746979,
+        "longitude": 55.1327134
+      },
+      {
+        "latitude": 25.0748073,
+        "longitude": 55.1327805
+      },
+      {
+        "latitude": 25.0748631,
+        "longitude": 55.1328261
+      },
+      {
+        "latitude": 25.0747757,
+        "longitude": 55.1329682
+      },
+      {
+        "latitude": 25.0746129,
+        "longitude": 55.1328556
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-430676918",
+    "footprint": [
+      {
+        "latitude": 25.0749798,
+        "longitude": 55.1329387
+      },
+      {
+        "latitude": 25.0750891,
+        "longitude": 55.1330433
+      },
+      {
+        "latitude": 25.0750648,
+        "longitude": 55.1330755
+      },
+      {
+        "latitude": 25.0749506,
+        "longitude": 55.1329736
+      }
+    ],
+    "heightMeters": 3.2,
+    "heightSource": "levelsEstimate",
+    "name": "Marina Promenade Guard House"
+  },
+  {
+    "id": "osm-way-430677061",
+    "footprint": [
+      {
+        "latitude": 25.0739181,
+        "longitude": 55.1324184
+      },
+      {
+        "latitude": 25.0738088,
+        "longitude": 55.1324076
+      },
+      {
+        "latitude": 25.0736776,
+        "longitude": 55.1326651
+      },
+      {
+        "latitude": 25.0737626,
+        "longitude": 55.1327
+      },
+      {
+        "latitude": 25.0737723,
+        "longitude": 55.1326598
+      },
+      {
+        "latitude": 25.0737966,
+        "longitude": 55.1326759
+      },
+      {
+        "latitude": 25.0738258,
+        "longitude": 55.1326356
+      },
+      {
+        "latitude": 25.0737893,
+        "longitude": 55.1326195
+      },
+      {
+        "latitude": 25.0738063,
+        "longitude": 55.1325847
+      },
+      {
+        "latitude": 25.0738452,
+        "longitude": 55.1326034
+      },
+      {
+        "latitude": 25.0738622,
+        "longitude": 55.1325713
+      },
+      {
+        "latitude": 25.0738306,
+        "longitude": 55.1325444
+      },
+      {
+        "latitude": 25.0738404,
+        "longitude": 55.1325069
+      },
+      {
+        "latitude": 25.0738792,
+        "longitude": 55.1325176
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-430677062",
+    "footprint": [
+      {
+        "latitude": 25.073923,
+        "longitude": 55.1329468
+      },
+      {
+        "latitude": 25.0738598,
+        "longitude": 55.1331157
+      },
+      {
+        "latitude": 25.0741732,
+        "longitude": 55.1332364
+      },
+      {
+        "latitude": 25.0741914,
+        "longitude": 55.1331788
+      },
+      {
+        "latitude": 25.0742242,
+        "longitude": 55.1330621
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-430677063",
+    "footprint": [
+      {
+        "latitude": 25.0745449,
+        "longitude": 55.1328341
+      },
+      {
+        "latitude": 25.0747028,
+        "longitude": 55.1329494
+      },
+      {
+        "latitude": 25.0745716,
+        "longitude": 55.1331667
+      },
+      {
+        "latitude": 25.0744137,
+        "longitude": 55.133046
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-430677064",
+    "footprint": [
+      {
+        "latitude": 25.0750818,
+        "longitude": 55.1333115
+      },
+      {
+        "latitude": 25.0752203,
+        "longitude": 55.1334725
+      },
+      {
+        "latitude": 25.0750162,
+        "longitude": 55.1336388
+      },
+      {
+        "latitude": 25.0748923,
+        "longitude": 55.1334886
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-430677065",
+    "footprint": [
+      {
+        "latitude": 25.0749523,
+        "longitude": 55.1337539
+      },
+      {
+        "latitude": 25.0751328,
+        "longitude": 55.1340854
+      },
+      {
+        "latitude": 25.0749946,
+        "longitude": 55.1341771
+      },
+      {
+        "latitude": 25.0748141,
+        "longitude": 55.1338457
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-433294227",
+    "footprint": [
+      {
+        "latitude": 25.0788163,
+        "longitude": 55.1438753
+      },
+      {
+        "latitude": 25.0786376,
+        "longitude": 55.1436822
+      },
+      {
+        "latitude": 25.0788156,
+        "longitude": 55.1434815
+      },
+      {
+        "latitude": 25.0789334,
+        "longitude": 55.1436088
+      },
+      {
+        "latitude": 25.0789943,
+        "longitude": 55.1436746
+      }
+    ],
+    "heightMeters": 90.196416,
+    "heightSource": "exact",
+    "name": null
+  },
+  {
+    "id": "osm-way-433294228",
+    "footprint": [
+      {
+        "latitude": 25.0790749,
+        "longitude": 55.1434493
+      },
+      {
+        "latitude": 25.0790059,
+        "longitude": 55.1435272
+      },
+      {
+        "latitude": 25.0789334,
+        "longitude": 55.1436088
+      },
+      {
+        "latitude": 25.0788158,
+        "longitude": 55.1434816
+      },
+      {
+        "latitude": 25.0789573,
+        "longitude": 55.143322
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": "Marina Medcare Medical Centre"
+  },
+  {
+    "id": "osm-way-464693691",
+    "footprint": [
+      {
+        "latitude": 25.0785557,
+        "longitude": 55.1418465
+      },
+      {
+        "latitude": 25.078414,
+        "longitude": 55.1417034
+      },
+      {
+        "latitude": 25.0786682,
+        "longitude": 55.1413966
+      },
+      {
+        "latitude": 25.0788099,
+        "longitude": 55.1415397
+      }
+    ],
+    "heightMeters": 95.0,
+    "heightSource": "exact",
+    "name": "Dolce Vita"
+  },
+  {
+    "id": "osm-way-473329857",
+    "footprint": [
+      {
+        "latitude": 25.0831667,
+        "longitude": 55.1428736
+      },
+      {
+        "latitude": 25.0831409,
+        "longitude": 55.1427272
+      },
+      {
+        "latitude": 25.0831188,
+        "longitude": 55.1427313
+      },
+      {
+        "latitude": 25.0830949,
+        "longitude": 55.1426154
+      },
+      {
+        "latitude": 25.0831096,
+        "longitude": 55.1426113
+      },
+      {
+        "latitude": 25.083082,
+        "longitude": 55.1424833
+      },
+      {
+        "latitude": 25.083047,
+        "longitude": 55.1424894
+      },
+      {
+        "latitude": 25.0830379,
+        "longitude": 55.1424368
+      },
+      {
+        "latitude": 25.0829034,
+        "longitude": 55.1424691
+      },
+      {
+        "latitude": 25.0828721,
+        "longitude": 55.1423796
+      },
+      {
+        "latitude": 25.0827801,
+        "longitude": 55.1424243
+      },
+      {
+        "latitude": 25.0827985,
+        "longitude": 55.1424894
+      },
+      {
+        "latitude": 25.0828464,
+        "longitude": 55.1426988
+      },
+      {
+        "latitude": 25.0828703,
+        "longitude": 55.1427557
+      },
+      {
+        "latitude": 25.0828795,
+        "longitude": 55.1428146
+      },
+      {
+        "latitude": 25.0828777,
+        "longitude": 55.1428471
+      },
+      {
+        "latitude": 25.0828648,
+        "longitude": 55.1428959
+      },
+      {
+        "latitude": 25.0828721,
+        "longitude": 55.1429468
+      },
+      {
+        "latitude": 25.0828869,
+        "longitude": 55.1429772
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-475847395",
+    "footprint": [
+      {
+        "latitude": 25.082834,
+        "longitude": 55.1409866
+      },
+      {
+        "latitude": 25.0826081,
+        "longitude": 55.1412467
+      },
+      {
+        "latitude": 25.0828,
+        "longitude": 55.1414318
+      },
+      {
+        "latitude": 25.0830137,
+        "longitude": 55.141169
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-475847396",
+    "footprint": [
+      {
+        "latitude": 25.0832081,
+        "longitude": 55.1413674
+      },
+      {
+        "latitude": 25.0831231,
+        "longitude": 55.1412816
+      },
+      {
+        "latitude": 25.0830793,
+        "longitude": 55.1413245
+      },
+      {
+        "latitude": 25.0830405,
+        "longitude": 55.1412816
+      },
+      {
+        "latitude": 25.082902,
+        "longitude": 55.1414318
+      },
+      {
+        "latitude": 25.0830405,
+        "longitude": 55.1415659
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-485592624",
+    "footprint": [
+      {
+        "latitude": 25.0782925,
+        "longitude": 55.1358869
+      },
+      {
+        "latitude": 25.0781503,
+        "longitude": 55.1358694
+      },
+      {
+        "latitude": 25.0779967,
+        "longitude": 55.1358505
+      },
+      {
+        "latitude": 25.077964,
+        "longitude": 55.1361744
+      },
+      {
+        "latitude": 25.0781577,
+        "longitude": 55.1361982
+      },
+      {
+        "latitude": 25.0781483,
+        "longitude": 55.1362916
+      },
+      {
+        "latitude": 25.0782467,
+        "longitude": 55.1363412
+      },
+      {
+        "latitude": 25.0782535,
+        "longitude": 55.1362732
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-489522440",
+    "footprint": [
+      {
+        "latitude": 25.0752077,
+        "longitude": 55.1383955
+      },
+      {
+        "latitude": 25.0752488,
+        "longitude": 55.1386148
+      },
+      {
+        "latitude": 25.0755788,
+        "longitude": 55.1385392
+      },
+      {
+        "latitude": 25.0755376,
+        "longitude": 55.13832
+      }
+    ],
+    "heightMeters": 121.999248,
+    "heightSource": "exact",
+    "name": "Silverene Tower B"
+  },
+  {
+    "id": "osm-way-490548860",
+    "footprint": [
+      {
+        "latitude": 25.0756705,
+        "longitude": 55.1380351
+      },
+      {
+        "latitude": 25.0756501,
+        "longitude": 55.1380408
+      },
+      {
+        "latitude": 25.0756601,
+        "longitude": 55.1380845
+      },
+      {
+        "latitude": 25.0756805,
+        "longitude": 55.1380788
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": "Dubai Marina"
+  },
+  {
+    "id": "osm-way-491572824",
+    "footprint": [
+      {
+        "latitude": 25.0751738,
+        "longitude": 55.1348643
+      },
+      {
+        "latitude": 25.0751546,
+        "longitude": 55.1348704
+      },
+      {
+        "latitude": 25.0751618,
+        "longitude": 55.1348978
+      },
+      {
+        "latitude": 25.0751809,
+        "longitude": 55.1348917
+      }
+    ],
+    "heightMeters": 3.2,
+    "heightSource": "levelsEstimate",
+    "name": "Marina Promenade (Water Bus)"
+  },
+  {
+    "id": "osm-way-491572830",
+    "footprint": [
+      {
+        "latitude": 25.0776225,
+        "longitude": 55.1400431
+      },
+      {
+        "latitude": 25.0776147,
+        "longitude": 55.1400548
+      },
+      {
+        "latitude": 25.0776265,
+        "longitude": 55.1400644
+      },
+      {
+        "latitude": 25.0776343,
+        "longitude": 55.1400527
+      }
+    ],
+    "heightMeters": 3.2,
+    "heightSource": "levelsEstimate",
+    "name": "Marina Mall (Water Bus)"
+  },
+  {
+    "id": "osm-way-497514026",
+    "footprint": [
+      {
+        "latitude": 25.0838136,
+        "longitude": 55.1420514
+      },
+      {
+        "latitude": 25.083638,
+        "longitude": 55.1418755
+      },
+      {
+        "latitude": 25.0833552,
+        "longitude": 55.1422064
+      },
+      {
+        "latitude": 25.0835341,
+        "longitude": 55.1423859
+      }
+    ],
+    "heightMeters": 134.4,
+    "heightSource": "levelsEstimate",
+    "name": "Barcelo Residences"
+  },
+  {
+    "id": "osm-way-501462237",
+    "footprint": [
+      {
+        "latitude": 25.0841246,
+        "longitude": 55.141303
+      },
+      {
+        "latitude": 25.0839346,
+        "longitude": 55.1415413
+      },
+      {
+        "latitude": 25.0834231,
+        "longitude": 55.1410441
+      },
+      {
+        "latitude": 25.0833913,
+        "longitude": 55.1410628
+      },
+      {
+        "latitude": 25.0833548,
+        "longitude": 55.1410851
+      },
+      {
+        "latitude": 25.0833269,
+        "longitude": 55.141095
+      },
+      {
+        "latitude": 25.0833004,
+        "longitude": 55.1411011
+      },
+      {
+        "latitude": 25.083277,
+        "longitude": 55.1411041
+      },
+      {
+        "latitude": 25.0832534,
+        "longitude": 55.1411064
+      },
+      {
+        "latitude": 25.0832307,
+        "longitude": 55.1411057
+      },
+      {
+        "latitude": 25.0832104,
+        "longitude": 55.1411045
+      },
+      {
+        "latitude": 25.0831948,
+        "longitude": 55.1411241
+      },
+      {
+        "latitude": 25.08297,
+        "longitude": 55.1409056
+      },
+      {
+        "latitude": 25.0831805,
+        "longitude": 55.1406364
+      },
+      {
+        "latitude": 25.083215,
+        "longitude": 55.1406106
+      },
+      {
+        "latitude": 25.0832448,
+        "longitude": 55.1405905
+      },
+      {
+        "latitude": 25.0832749,
+        "longitude": 55.1405816
+      },
+      {
+        "latitude": 25.0833066,
+        "longitude": 55.1405756
+      },
+      {
+        "latitude": 25.0833395,
+        "longitude": 55.1405761
+      },
+      {
+        "latitude": 25.0833826,
+        "longitude": 55.1405815
+      }
+    ],
+    "heightMeters": 9.600000000000001,
+    "heightSource": "levelsEstimate",
+    "name": "Trident Grand Residence"
+  },
+  {
+    "id": "osm-way-506268845",
+    "footprint": [
+      {
+        "latitude": 25.0789943,
+        "longitude": 55.1436746
+      },
+      {
+        "latitude": 25.0790453,
+        "longitude": 55.1437299
+      },
+      {
+        "latitude": 25.0792076,
+        "longitude": 55.1439054
+      },
+      {
+        "latitude": 25.0790296,
+        "longitude": 55.144106
+      },
+      {
+        "latitude": 25.0788163,
+        "longitude": 55.1438753
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-506268849",
+    "footprint": [
+      {
+        "latitude": 25.0799531,
+        "longitude": 55.1447499
+      },
+      {
+        "latitude": 25.079824,
+        "longitude": 55.1449001
+      },
+      {
+        "latitude": 25.0800339,
+        "longitude": 55.1451224
+      },
+      {
+        "latitude": 25.0801637,
+        "longitude": 55.1449734
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-522996800",
+    "footprint": [
+      {
+        "latitude": 25.0776576,
+        "longitude": 55.1323838
+      },
+      {
+        "latitude": 25.0775191,
+        "longitude": 55.1325635
+      },
+      {
+        "latitude": 25.0777013,
+        "longitude": 55.1327352
+      },
+      {
+        "latitude": 25.0778349,
+        "longitude": 55.1325555
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-532466346",
+    "footprint": [
+      {
+        "latitude": 25.0799352,
+        "longitude": 55.1391742
+      },
+      {
+        "latitude": 25.0797928,
+        "longitude": 55.1389849
+      },
+      {
+        "latitude": 25.0795152,
+        "longitude": 55.1392431
+      },
+      {
+        "latitude": 25.0796658,
+        "longitude": 55.1394437
+      }
+    ],
+    "heightMeters": 138.001248,
+    "heightSource": "exact",
+    "name": "Continental Tower"
+  },
+  {
+    "id": "osm-way-532466348",
+    "footprint": [
+      {
+        "latitude": 25.0807313,
+        "longitude": 55.1404873
+      },
+      {
+        "latitude": 25.0805767,
+        "longitude": 55.1403382
+      },
+      {
+        "latitude": 25.0803205,
+        "longitude": 55.140662
+      },
+      {
+        "latitude": 25.080475,
+        "longitude": 55.1408111
+      }
+    ],
+    "heightMeters": 163.991544,
+    "heightSource": "exact",
+    "name": "Marina Residences"
+  },
+  {
+    "id": "osm-way-532574146",
+    "footprint": [
+      {
+        "latitude": 25.0754,
+        "longitude": 55.132127
+      },
+      {
+        "latitude": 25.075267,
+        "longitude": 55.1320069
+      },
+      {
+        "latitude": 25.0750374,
+        "longitude": 55.1323167
+      },
+      {
+        "latitude": 25.0751704,
+        "longitude": 55.1324368
+      }
+    ],
+    "heightMeters": 127.095504,
+    "heightSource": "exact",
+    "name": null
+  },
+  {
+    "id": "osm-way-532586635",
+    "footprint": [
+      {
+        "latitude": 25.0831091,
+        "longitude": 55.1444809
+      },
+      {
+        "latitude": 25.0830795,
+        "longitude": 55.1444547
+      },
+      {
+        "latitude": 25.083017,
+        "longitude": 55.1443994
+      },
+      {
+        "latitude": 25.0828994,
+        "longitude": 55.144442
+      },
+      {
+        "latitude": 25.082858,
+        "longitude": 55.1444921
+      },
+      {
+        "latitude": 25.0828366,
+        "longitude": 55.1445196
+      },
+      {
+        "latitude": 25.0828201,
+        "longitude": 55.1445423
+      },
+      {
+        "latitude": 25.082969,
+        "longitude": 55.1446741
+      }
+    ],
+    "heightMeters": 174.0,
+    "heightSource": "exact",
+    "name": "Dusit Princess Residence"
+  },
+  {
+    "id": "osm-way-532586636",
+    "footprint": [
+      {
+        "latitude": 25.0837155,
+        "longitude": 55.1441434
+      },
+      {
+        "latitude": 25.0835834,
+        "longitude": 55.1439914
+      },
+      {
+        "latitude": 25.0835075,
+        "longitude": 55.1439448
+      },
+      {
+        "latitude": 25.0833602,
+        "longitude": 55.1439965
+      },
+      {
+        "latitude": 25.0833745,
+        "longitude": 55.1441885
+      },
+      {
+        "latitude": 25.0833861,
+        "longitude": 55.1442005
+      },
+      {
+        "latitude": 25.0835198,
+        "longitude": 55.1443507
+      },
+      {
+        "latitude": 25.0835485,
+        "longitude": 55.1443749
+      },
+      {
+        "latitude": 25.0836176,
+        "longitude": 55.1444081
+      },
+      {
+        "latitude": 25.0836878,
+        "longitude": 55.1443987
+      },
+      {
+        "latitude": 25.0837853,
+        "longitude": 55.1442751
+      },
+      {
+        "latitude": 25.0837905,
+        "longitude": 55.1441979
+      }
+    ],
+    "heightMeters": 97.8,
+    "heightSource": "exact",
+    "name": "Pelagos"
+  },
+  {
+    "id": "osm-way-532586643",
+    "footprint": [
+      {
+        "latitude": 25.0848102,
+        "longitude": 55.1404359
+      },
+      {
+        "latitude": 25.0848337,
+        "longitude": 55.1404229
+      },
+      {
+        "latitude": 25.0848479,
+        "longitude": 55.1404098
+      },
+      {
+        "latitude": 25.0848635,
+        "longitude": 55.1403922
+      },
+      {
+        "latitude": 25.084878,
+        "longitude": 55.1403637
+      },
+      {
+        "latitude": 25.0848848,
+        "longitude": 55.140335
+      },
+      {
+        "latitude": 25.0848866,
+        "longitude": 55.1403082
+      },
+      {
+        "latitude": 25.0848821,
+        "longitude": 55.1402761
+      },
+      {
+        "latitude": 25.0848656,
+        "longitude": 55.1402448
+      },
+      {
+        "latitude": 25.0848491,
+        "longitude": 55.1402224
+      },
+      {
+        "latitude": 25.0848249,
+        "longitude": 55.1402023
+      },
+      {
+        "latitude": 25.0848023,
+        "longitude": 55.1401963
+      },
+      {
+        "latitude": 25.0847615,
+        "longitude": 55.1401991
+      },
+      {
+        "latitude": 25.0847376,
+        "longitude": 55.1402085
+      },
+      {
+        "latitude": 25.0846919,
+        "longitude": 55.1402372
+      },
+      {
+        "latitude": 25.0846547,
+        "longitude": 55.1402476
+      },
+      {
+        "latitude": 25.0846095,
+        "longitude": 55.1402527
+      },
+      {
+        "latitude": 25.0845537,
+        "longitude": 55.1402472
+      },
+      {
+        "latitude": 25.084513,
+        "longitude": 55.1402374
+      },
+      {
+        "latitude": 25.0844738,
+        "longitude": 55.1402222
+      },
+      {
+        "latitude": 25.0844276,
+        "longitude": 55.140198
+      },
+      {
+        "latitude": 25.0843936,
+        "longitude": 55.1401715
+      },
+      {
+        "latitude": 25.084364,
+        "longitude": 55.1401381
+      },
+      {
+        "latitude": 25.0843419,
+        "longitude": 55.1401016
+      },
+      {
+        "latitude": 25.0843521,
+        "longitude": 55.1400807
+      },
+      {
+        "latitude": 25.084347,
+        "longitude": 55.140057
+      },
+      {
+        "latitude": 25.0843337,
+        "longitude": 55.1400428
+      },
+      {
+        "latitude": 25.0843147,
+        "longitude": 55.1400402
+      },
+      {
+        "latitude": 25.084286,
+        "longitude": 55.139974
+      },
+      {
+        "latitude": 25.0842691,
+        "longitude": 55.1399082
+      },
+      {
+        "latitude": 25.0842605,
+        "longitude": 55.1398423
+      },
+      {
+        "latitude": 25.0841301,
+        "longitude": 55.1398131
+      },
+      {
+        "latitude": 25.0841041,
+        "longitude": 55.139956
+      },
+      {
+        "latitude": 25.0841073,
+        "longitude": 55.1400429
+      },
+      {
+        "latitude": 25.0841421,
+        "longitude": 55.1401238
+      },
+      {
+        "latitude": 25.0841819,
+        "longitude": 55.1401038
+      },
+      {
+        "latitude": 25.084236,
+        "longitude": 55.1401934
+      },
+      {
+        "latitude": 25.0842996,
+        "longitude": 55.1402779
+      },
+      {
+        "latitude": 25.0843551,
+        "longitude": 55.1403299
+      },
+      {
+        "latitude": 25.0844134,
+        "longitude": 55.1403661
+      },
+      {
+        "latitude": 25.0844771,
+        "longitude": 55.140392
+      },
+      {
+        "latitude": 25.0844632,
+        "longitude": 55.1404446
+      },
+      {
+        "latitude": 25.0845546,
+        "longitude": 55.1404778
+      },
+      {
+        "latitude": 25.0846416,
+        "longitude": 55.140487
+      },
+      {
+        "latitude": 25.0847334,
+        "longitude": 55.1404866
+      },
+      {
+        "latitude": 25.0847316,
+        "longitude": 55.1404281
+      },
+      {
+        "latitude": 25.0847653,
+        "longitude": 55.140444
+      },
+      {
+        "latitude": 25.0847877,
+        "longitude": 55.1404422
+      }
+    ],
+    "heightMeters": 45.098208,
+    "heightSource": "exact",
+    "name": null
+  },
+  {
+    "id": "osm-way-532586644",
+    "footprint": [
+      {
+        "latitude": 25.0844508,
+        "longitude": 55.1392092
+      },
+      {
+        "latitude": 25.0843524,
+        "longitude": 55.1391079
+      },
+      {
+        "latitude": 25.084289,
+        "longitude": 55.139121
+      },
+      {
+        "latitude": 25.0842379,
+        "longitude": 55.1391576
+      },
+      {
+        "latitude": 25.084185,
+        "longitude": 55.1392278
+      },
+      {
+        "latitude": 25.0841469,
+        "longitude": 55.1392777
+      },
+      {
+        "latitude": 25.0841001,
+        "longitude": 55.1393694
+      },
+      {
+        "latitude": 25.0842401,
+        "longitude": 55.139499
+      },
+      {
+        "latitude": 25.0842716,
+        "longitude": 55.1394826
+      },
+      {
+        "latitude": 25.0843299,
+        "longitude": 55.1394449
+      },
+      {
+        "latitude": 25.0843752,
+        "longitude": 55.1393994
+      },
+      {
+        "latitude": 25.0844002,
+        "longitude": 55.1393511
+      },
+      {
+        "latitude": 25.0844309,
+        "longitude": 55.1392814
+      }
+    ],
+    "heightMeters": 81.997296,
+    "heightSource": "exact",
+    "name": "Tower 1"
+  },
+  {
+    "id": "osm-way-532586678",
+    "footprint": [
+      {
+        "latitude": 25.0808167,
+        "longitude": 55.135401
+      },
+      {
+        "latitude": 25.080713,
+        "longitude": 55.1352851
+      },
+      {
+        "latitude": 25.0802805,
+        "longitude": 55.1355555
+      },
+      {
+        "latitude": 25.0803065,
+        "longitude": 55.1358316
+      },
+      {
+        "latitude": 25.0805206,
+        "longitude": 55.1358673
+      }
+    ],
+    "heightMeters": 127.095504,
+    "heightSource": "exact",
+    "name": "Al Fattan Crystal Tower B"
+  },
+  {
+    "id": "osm-way-532586680",
+    "footprint": [
+      {
+        "latitude": 25.0802266,
+        "longitude": 55.134977
+      },
+      {
+        "latitude": 25.0803518,
+        "longitude": 55.1350631
+      },
+      {
+        "latitude": 25.0802079,
+        "longitude": 55.1355885
+      },
+      {
+        "latitude": 25.0799583,
+        "longitude": 55.1356212
+      },
+      {
+        "latitude": 25.0798797,
+        "longitude": 55.1353984
+      }
+    ],
+    "heightMeters": 147.593304,
+    "heightSource": "exact",
+    "name": "Al Fattan Crystal Tower A"
+  },
+  {
+    "id": "osm-way-532586682",
+    "footprint": [
+      {
+        "latitude": 25.0797145,
+        "longitude": 55.1355789
+      },
+      {
+        "latitude": 25.0799459,
+        "longitude": 55.135849
+      },
+      {
+        "latitude": 25.0800065,
+        "longitude": 55.1358445
+      },
+      {
+        "latitude": 25.0801155,
+        "longitude": 55.1359471
+      },
+      {
+        "latitude": 25.0801115,
+        "longitude": 55.1360051
+      },
+      {
+        "latitude": 25.0803902,
+        "longitude": 55.1362696
+      },
+      {
+        "latitude": 25.0813297,
+        "longitude": 55.135063
+      },
+      {
+        "latitude": 25.0806351,
+        "longitude": 55.1344333
+      }
+    ],
+    "heightMeters": 9.600000000000001,
+    "heightSource": "levelsEstimate",
+    "name": "Rixos Premium"
+  },
+  {
+    "id": "osm-way-532586684",
+    "footprint": [
+      {
+        "latitude": 25.077501,
+        "longitude": 55.1323704
+      },
+      {
+        "latitude": 25.0774459,
+        "longitude": 55.1321913
+      },
+      {
+        "latitude": 25.0775072,
+        "longitude": 55.1320865
+      },
+      {
+        "latitude": 25.0772531,
+        "longitude": 55.1318567
+      },
+      {
+        "latitude": 25.0771255,
+        "longitude": 55.1321005
+      },
+      {
+        "latitude": 25.0771941,
+        "longitude": 55.1322643
+      },
+      {
+        "latitude": 25.0773883,
+        "longitude": 55.1324714
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-532586686",
+    "footprint": [
+      {
+        "latitude": 25.0772968,
+        "longitude": 55.1326297
+      },
+      {
+        "latitude": 25.077052,
+        "longitude": 55.1323999
+      },
+      {
+        "latitude": 25.0769877,
+        "longitude": 55.1324877
+      },
+      {
+        "latitude": 25.0769081,
+        "longitude": 55.1324201
+      },
+      {
+        "latitude": 25.0768154,
+        "longitude": 55.1325445
+      },
+      {
+        "latitude": 25.0771386,
+        "longitude": 55.1328447
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-532586688",
+    "footprint": [
+      {
+        "latitude": 25.0780391,
+        "longitude": 55.1329663
+      },
+      {
+        "latitude": 25.0779882,
+        "longitude": 55.1329241
+      },
+      {
+        "latitude": 25.0778509,
+        "longitude": 55.1326769
+      },
+      {
+        "latitude": 25.0777109,
+        "longitude": 55.1328623
+      },
+      {
+        "latitude": 25.0778229,
+        "longitude": 55.1329691
+      },
+      {
+        "latitude": 25.0778025,
+        "longitude": 55.1329972
+      },
+      {
+        "latitude": 25.0779348,
+        "longitude": 55.1331292
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-532586689",
+    "footprint": [
+      {
+        "latitude": 25.0777867,
+        "longitude": 55.1333846
+      },
+      {
+        "latitude": 25.0775933,
+        "longitude": 55.1331964
+      },
+      {
+        "latitude": 25.0774254,
+        "longitude": 55.1334099
+      },
+      {
+        "latitude": 25.0776544,
+        "longitude": 55.1336374
+      }
+    ],
+    "heightMeters": 6.4,
+    "heightSource": "levelsEstimate",
+    "name": null
+  },
+  {
+    "id": "osm-way-532586691",
+    "footprint": [
+      {
+        "latitude": 25.0769576,
+        "longitude": 55.1320752
+      },
+      {
+        "latitude": 25.0771001,
+        "longitude": 55.1318842
+      },
+      {
+        "latitude": 25.0770619,
+        "longitude": 55.1318448
+      },
+      {
+        "latitude": 25.0771052,
+        "longitude": 55.1317999
+      },
+      {
+        "latitude": 25.0770034,
+        "longitude": 55.1317212
+      },
+      {
+        "latitude": 25.0769729,
+        "longitude": 55.1317549
+      },
+      {
+        "latitude": 25.0768889,
+        "longitude": 55.1317156
+      },
+      {
+        "latitude": 25.076866,
+        "longitude": 55.1317493
+      },
+      {
+        "latitude": 25.0767668,
+        "longitude": 55.131665
+      },
+      {
+        "latitude": 25.0766294,
+        "longitude": 55.1318476
+      },
+      {
+        "latitude": 25.0766828,
+        "longitude": 55.1318982
+      },
+      {
+        "latitude": 25.0766679,
+        "longitude": 55.131919
+      },
+      {
+        "latitude": 25.0768263,
+        "longitude": 55.1320603
+      },
+      {
+        "latitude": 25.0768813,
+        "longitude": 55.1320049
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-532586693",
+    "footprint": [
+      {
+        "latitude": 25.0768592,
+        "longitude": 55.1323667
+      },
+      {
+        "latitude": 25.0765257,
+        "longitude": 55.132058
+      },
+      {
+        "latitude": 25.0764284,
+        "longitude": 55.1321863
+      },
+      {
+        "latitude": 25.0767618,
+        "longitude": 55.1324949
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-532586694",
+    "footprint": [
+      {
+        "latitude": 25.0762884,
+        "longitude": 55.1320561
+      },
+      {
+        "latitude": 25.0763953,
+        "longitude": 55.1319235
+      },
+      {
+        "latitude": 25.0762681,
+        "longitude": 55.1318055
+      },
+      {
+        "latitude": 25.0763317,
+        "longitude": 55.1317156
+      },
+      {
+        "latitude": 25.0761616,
+        "longitude": 55.1315512
+      },
+      {
+        "latitude": 25.0761159,
+        "longitude": 55.1315939
+      },
+      {
+        "latitude": 25.0760632,
+        "longitude": 55.131621
+      },
+      {
+        "latitude": 25.0760174,
+        "longitude": 55.1316268
+      },
+      {
+        "latitude": 25.0759946,
+        "longitude": 55.131621
+      },
+      {
+        "latitude": 25.0759506,
+        "longitude": 55.1316787
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-532610128",
+    "footprint": [
+      {
+        "latitude": 25.0758563,
+        "longitude": 55.1396821
+      },
+      {
+        "latitude": 25.0754554,
+        "longitude": 55.1403168
+      },
+      {
+        "latitude": 25.0751461,
+        "longitude": 55.1400787
+      },
+      {
+        "latitude": 25.0753543,
+        "longitude": 55.1397492
+      },
+      {
+        "latitude": 25.0755471,
+        "longitude": 55.139444
+      }
+    ],
+    "heightMeters": 110.0,
+    "heightSource": "exact",
+    "name": "SONO Windows & Doors"
+  },
+  {
+    "id": "osm-way-532610129",
+    "footprint": [
+      {
+        "latitude": 25.0755655,
+        "longitude": 55.1390939
+      },
+      {
+        "latitude": 25.0754498,
+        "longitude": 55.1387773
+      },
+      {
+        "latitude": 25.0753514,
+        "longitude": 55.1388212
+      },
+      {
+        "latitude": 25.0753909,
+        "longitude": 55.1389293
+      },
+      {
+        "latitude": 25.0753215,
+        "longitude": 55.1389602
+      },
+      {
+        "latitude": 25.0752796,
+        "longitude": 55.1388455
+      },
+      {
+        "latitude": 25.0751831,
+        "longitude": 55.1388885
+      },
+      {
+        "latitude": 25.075299,
+        "longitude": 55.1392057
+      },
+      {
+        "latitude": 25.0753903,
+        "longitude": 55.139165
+      },
+      {
+        "latitude": 25.0753592,
+        "longitude": 55.1390799
+      },
+      {
+        "latitude": 25.0754168,
+        "longitude": 55.1390543
+      },
+      {
+        "latitude": 25.0754501,
+        "longitude": 55.1391453
+      }
+    ],
+    "heightMeters": 98.395536,
+    "heightSource": "exact",
+    "name": "Crowne Plaza Dubai Marina"
+  },
+  {
+    "id": "osm-way-532610130",
+    "footprint": [
+      {
+        "latitude": 25.0741934,
+        "longitude": 55.1387596
+      },
+      {
+        "latitude": 25.0744599,
+        "longitude": 55.139013
+      },
+      {
+        "latitude": 25.0746461,
+        "longitude": 55.1387982
+      },
+      {
+        "latitude": 25.0743712,
+        "longitude": 55.138534
+      }
+    ],
+    "heightMeters": 131.195064,
+    "heightSource": "exact",
+    "name": "West Avenue Tower"
+  },
+  {
+    "id": "osm-way-532610131",
+    "footprint": [
+      {
+        "latitude": 25.077749,
+        "longitude": 55.1398366
+      },
+      {
+        "latitude": 25.0776395,
+        "longitude": 55.1399889
+      },
+      {
+        "latitude": 25.0776271,
+        "longitude": 55.1400061
+      },
+      {
+        "latitude": 25.0773672,
+        "longitude": 55.1403675
+      },
+      {
+        "latitude": 25.0772124,
+        "longitude": 55.1405829
+      },
+      {
+        "latitude": 25.0772037,
+        "longitude": 55.1405609
+      },
+      {
+        "latitude": 25.0771353,
+        "longitude": 55.1404395
+      },
+      {
+        "latitude": 25.077364,
+        "longitude": 55.140096
+      },
+      {
+        "latitude": 25.0775286,
+        "longitude": 55.1398671
+      },
+      {
+        "latitude": 25.0775427,
+        "longitude": 55.1398476
+      },
+      {
+        "latitude": 25.0776273,
+        "longitude": 55.1397299
+      }
+    ],
+    "heightMeters": 123.0,
+    "heightSource": "exact",
+    "name": "The Address Dubai Marina"
+  },
+  {
+    "id": "osm-way-532610132",
+    "footprint": [
+      {
+        "latitude": 25.0773672,
+        "longitude": 55.1403675
+      },
+      {
+        "latitude": 25.0774361,
+        "longitude": 55.140413
+      },
+      {
+        "latitude": 25.0774081,
+        "longitude": 55.1405137
+      },
+      {
+        "latitude": 25.0773994,
+        "longitude": 55.1405712
+      },
+      {
+        "latitude": 25.0773973,
+        "longitude": 55.1406469
+      },
+      {
+        "latitude": 25.0774068,
+        "longitude": 55.1407223
+      },
+      {
+        "latitude": 25.0774229,
+        "longitude": 55.1407809
+      },
+      {
+        "latitude": 25.0774463,
+        "longitude": 55.1408417
+      },
+      {
+        "latitude": 25.0773541,
+        "longitude": 55.1409737
+      },
+      {
+        "latitude": 25.0772889,
+        "longitude": 55.1410363
+      },
+      {
+        "latitude": 25.0772406,
+        "longitude": 55.1409272
+      },
+      {
+        "latitude": 25.0772154,
+        "longitude": 55.1408123
+      },
+      {
+        "latitude": 25.0772068,
+        "longitude": 55.1407324
+      },
+      {
+        "latitude": 25.0772026,
+        "longitude": 55.1406643
+      },
+      {
+        "latitude": 25.0772124,
+        "longitude": 55.1405829
+      }
+    ],
+    "heightMeters": 60.0,
+    "heightSource": "exact",
+    "name": null
+  },
+  {
+    "id": "osm-way-532640144",
+    "footprint": [
+      {
+        "latitude": 25.0785981,
+        "longitude": 55.1405336
+      },
+      {
+        "latitude": 25.078647,
+        "longitude": 55.1404974
+      },
+      {
+        "latitude": 25.0786825,
+        "longitude": 55.1404456
+      },
+      {
+        "latitude": 25.0787009,
+        "longitude": 55.1403838
+      },
+      {
+        "latitude": 25.0787001,
+        "longitude": 55.1403188
+      },
+      {
+        "latitude": 25.0786803,
+        "longitude": 55.1402577
+      },
+      {
+        "latitude": 25.0786436,
+        "longitude": 55.140207
+      },
+      {
+        "latitude": 25.0785939,
+        "longitude": 55.1401722
+      },
+      {
+        "latitude": 25.0785368,
+        "longitude": 55.1401571
+      },
+      {
+        "latitude": 25.0784782,
+        "longitude": 55.1401632
+      },
+      {
+        "latitude": 25.0784247,
+        "longitude": 55.14019
+      },
+      {
+        "latitude": 25.0783819,
+        "longitude": 55.1402346
+      },
+      {
+        "latitude": 25.0783545,
+        "longitude": 55.140292
+      },
+      {
+        "latitude": 25.0783455,
+        "longitude": 55.1403562
+      },
+      {
+        "latitude": 25.0783559,
+        "longitude": 55.1404202
+      },
+      {
+        "latitude": 25.0783845,
+        "longitude": 55.1404769
+      },
+      {
+        "latitude": 25.0784283,
+        "longitude": 55.1405204
+      },
+      {
+        "latitude": 25.0784825,
+        "longitude": 55.1405458
+      },
+      {
+        "latitude": 25.0785412,
+        "longitude": 55.1405504
+      }
+    ],
+    "heightMeters": 80.0,
+    "heightSource": "exact",
+    "name": "The Atlantic Tower"
+  },
+  {
+    "id": "osm-way-532640145",
+    "footprint": [
+      {
+        "latitude": 25.078647,
+        "longitude": 55.1404974
+      },
+      {
+        "latitude": 25.0787671,
+        "longitude": 55.1406285
+      },
+      {
+        "latitude": 25.0786439,
+        "longitude": 55.1407476
+      },
+      {
+        "latitude": 25.0784825,
+        "longitude": 55.1405458
+      },
+      {
+        "latitude": 25.0785412,
+        "longitude": 55.1405504
+      },
+      {
+        "latitude": 25.0785981,
+        "longitude": 55.1405336
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-532640146",
+    "footprint": [
+      {
+        "latitude": 25.079845,
+        "longitude": 55.141758
+      },
+      {
+        "latitude": 25.0796922,
+        "longitude": 55.1415924
+      },
+      {
+        "latitude": 25.0794617,
+        "longitude": 55.1419057
+      },
+      {
+        "latitude": 25.0796227,
+        "longitude": 55.1420746
+      }
+    ],
+    "heightMeters": 49.197768,
+    "heightSource": "exact",
+    "name": "Marina View Tower 2"
+  },
+  {
+    "id": "osm-way-532640147",
+    "footprint": [
+      {
+        "latitude": 25.0793011,
+        "longitude": 55.1423363
+      },
+      {
+        "latitude": 25.0791473,
+        "longitude": 55.1421835
+      },
+      {
+        "latitude": 25.0788798,
+        "longitude": 55.1425118
+      },
+      {
+        "latitude": 25.0790337,
+        "longitude": 55.1426646
+      },
+      {
+        "latitude": 25.079245,
+        "longitude": 55.1424051
+      }
+    ],
+    "heightMeters": 98.395536,
+    "heightSource": "exact",
+    "name": "Marina View Tower 1"
+  },
+  {
+    "id": "osm-way-532640148",
+    "footprint": [
+      {
+        "latitude": 25.0803158,
+        "longitude": 55.143153
+      },
+      {
+        "latitude": 25.080541,
+        "longitude": 55.1433088
+      },
+      {
+        "latitude": 25.0807123,
+        "longitude": 55.1434546
+      },
+      {
+        "latitude": 25.0808584,
+        "longitude": 55.1436685
+      },
+      {
+        "latitude": 25.0809426,
+        "longitude": 55.143836
+      },
+      {
+        "latitude": 25.0808752,
+        "longitude": 55.1439755
+      },
+      {
+        "latitude": 25.0807909,
+        "longitude": 55.1441523
+      },
+      {
+        "latitude": 25.0807214,
+        "longitude": 55.1442632
+      },
+      {
+        "latitude": 25.0805257,
+        "longitude": 55.1440761
+      },
+      {
+        "latitude": 25.0806123,
+        "longitude": 55.1439338
+      },
+      {
+        "latitude": 25.0806942,
+        "longitude": 55.1437806
+      },
+      {
+        "latitude": 25.0804077,
+        "longitude": 55.1435018
+      },
+      {
+        "latitude": 25.0802971,
+        "longitude": 55.1433679
+      },
+      {
+        "latitude": 25.080221,
+        "longitude": 55.1432601
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-560388310",
+    "footprint": [
+      {
+        "latitude": 25.0814372,
+        "longitude": 55.1351597
+      },
+      {
+        "latitude": 25.0815803,
+        "longitude": 55.1352993
+      },
+      {
+        "latitude": 25.0811527,
+        "longitude": 55.1358242
+      },
+      {
+        "latitude": 25.0814925,
+        "longitude": 55.1361658
+      },
+      {
+        "latitude": 25.0818812,
+        "longitude": 55.1356567
+      },
+      {
+        "latitude": 25.0820284,
+        "longitude": 55.1358008
+      },
+      {
+        "latitude": 25.0810489,
+        "longitude": 55.1369677
+      },
+      {
+        "latitude": 25.0807604,
+        "longitude": 55.1366762
+      },
+      {
+        "latitude": 25.0805073,
+        "longitude": 55.1364204
+      },
+      {
+        "latitude": 25.0804482,
+        "longitude": 55.1363607
+      }
+    ],
+    "heightMeters": 25.6,
+    "heightSource": "levelsEstimate",
+    "name": "Five JBR"
+  },
+  {
+    "id": "osm-way-560390435",
+    "footprint": [
+      {
+        "latitude": 25.0822291,
+        "longitude": 55.1386787
+      },
+      {
+        "latitude": 25.0823141,
+        "longitude": 55.1387645
+      },
+      {
+        "latitude": 25.0822643,
+        "longitude": 55.1388074
+      },
+      {
+        "latitude": 25.0823299,
+        "longitude": 55.1388799
+      },
+      {
+        "latitude": 25.0823262,
+        "longitude": 55.1389228
+      },
+      {
+        "latitude": 25.0822024,
+        "longitude": 55.1389147
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": "Daily Gourmet"
+  },
+  {
+    "id": "osm-way-560390447",
+    "footprint": [
+      {
+        "latitude": 25.0806031,
+        "longitude": 55.1377625
+      },
+      {
+        "latitude": 25.0806385,
+        "longitude": 55.1377685
+      },
+      {
+        "latitude": 25.0806737,
+        "longitude": 55.1377618
+      },
+      {
+        "latitude": 25.0807053,
+        "longitude": 55.1377432
+      },
+      {
+        "latitude": 25.0807299,
+        "longitude": 55.1377146
+      },
+      {
+        "latitude": 25.0807451,
+        "longitude": 55.1376789
+      },
+      {
+        "latitude": 25.0807493,
+        "longitude": 55.1376397
+      },
+      {
+        "latitude": 25.0807412,
+        "longitude": 55.1375983
+      },
+      {
+        "latitude": 25.0807208,
+        "longitude": 55.1375624
+      },
+      {
+        "latitude": 25.0806907,
+        "longitude": 55.1375362
+      },
+      {
+        "latitude": 25.0806544,
+        "longitude": 55.1375228
+      },
+      {
+        "latitude": 25.0806161,
+        "longitude": 55.1375236
+      },
+      {
+        "latitude": 25.0805802,
+        "longitude": 55.1375387
+      },
+      {
+        "latitude": 25.0805511,
+        "longitude": 55.1375663
+      },
+      {
+        "latitude": 25.0805322,
+        "longitude": 55.1376031
+      },
+      {
+        "latitude": 25.0805256,
+        "longitude": 55.1376419
+      },
+      {
+        "latitude": 25.0805304,
+        "longitude": 55.137681
+      },
+      {
+        "latitude": 25.0805462,
+        "longitude": 55.1377164
+      },
+      {
+        "latitude": 25.0805713,
+        "longitude": 55.1377446
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-570622025",
+    "footprint": [
+      {
+        "latitude": 25.0775327,
+        "longitude": 55.1351286
+      },
+      {
+        "latitude": 25.0781266,
+        "longitude": 55.1352108
+      },
+      {
+        "latitude": 25.0780829,
+        "longitude": 55.1356146
+      },
+      {
+        "latitude": 25.0779162,
+        "longitude": 55.1355968
+      },
+      {
+        "latitude": 25.0778288,
+        "longitude": 55.1355682
+      },
+      {
+        "latitude": 25.0777155,
+        "longitude": 55.135511
+      },
+      {
+        "latitude": 25.0776378,
+        "longitude": 55.1354556
+      },
+      {
+        "latitude": 25.0775602,
+        "longitude": 55.1353913
+      },
+      {
+        "latitude": 25.0775051,
+        "longitude": 55.1353216
+      },
+      {
+        "latitude": 25.0774744,
+        "longitude": 55.1353359
+      },
+      {
+        "latitude": 25.0774404,
+        "longitude": 55.1353323
+      },
+      {
+        "latitude": 25.0774064,
+        "longitude": 55.1353145
+      },
+      {
+        "latitude": 25.0773821,
+        "longitude": 55.1352894
+      },
+      {
+        "latitude": 25.077366,
+        "longitude": 55.1352483
+      },
+      {
+        "latitude": 25.0773595,
+        "longitude": 55.1352144
+      },
+      {
+        "latitude": 25.0773676,
+        "longitude": 55.1351787
+      },
+      {
+        "latitude": 25.0773983,
+        "longitude": 55.1351304
+      },
+      {
+        "latitude": 25.0774307,
+        "longitude": 55.1351072
+      },
+      {
+        "latitude": 25.0774825,
+        "longitude": 55.1351054
+      }
+    ],
+    "heightMeters": 3.2,
+    "heightSource": "levelsEstimate",
+    "name": null
+  },
+  {
+    "id": "osm-way-628864498",
+    "footprint": [
+      {
+        "latitude": 25.0849573,
+        "longitude": 55.1385154
+      },
+      {
+        "latitude": 25.0849726,
+        "longitude": 55.1385348
+      },
+      {
+        "latitude": 25.084993,
+        "longitude": 55.1385471
+      },
+      {
+        "latitude": 25.085016,
+        "longitude": 55.138551
+      },
+      {
+        "latitude": 25.0850389,
+        "longitude": 55.1385459
+      },
+      {
+        "latitude": 25.0850587,
+        "longitude": 55.1385324
+      },
+      {
+        "latitude": 25.0850731,
+        "longitude": 55.1385122
+      },
+      {
+        "latitude": 25.0850804,
+        "longitude": 55.1384878
+      },
+      {
+        "latitude": 25.0850796,
+        "longitude": 55.1384621
+      },
+      {
+        "latitude": 25.0850709,
+        "longitude": 55.1384383
+      },
+      {
+        "latitude": 25.0850574,
+        "longitude": 55.1384211
+      },
+      {
+        "latitude": 25.0850398,
+        "longitude": 55.1384094
+      },
+      {
+        "latitude": 25.0850198,
+        "longitude": 55.1384041
+      },
+      {
+        "latitude": 25.0849957,
+        "longitude": 55.1384068
+      },
+      {
+        "latitude": 25.0849741,
+        "longitude": 55.1384188
+      },
+      {
+        "latitude": 25.0849578,
+        "longitude": 55.1384386
+      },
+      {
+        "latitude": 25.0849489,
+        "longitude": 55.1384635
+      },
+      {
+        "latitude": 25.0849488,
+        "longitude": 55.1384903
+      }
+    ],
+    "heightMeters": 3.2,
+    "heightSource": "levelsEstimate",
+    "name": "Pool Bar"
+  },
+  {
+    "id": "osm-way-628864499",
+    "footprint": [
+      {
+        "latitude": 25.0847371,
+        "longitude": 55.138622
+      },
+      {
+        "latitude": 25.084643,
+        "longitude": 55.138738
+      },
+      {
+        "latitude": 25.0845927,
+        "longitude": 55.1386883
+      },
+      {
+        "latitude": 25.0846869,
+        "longitude": 55.1385723
+      }
+    ],
+    "heightMeters": 3.0,
+    "heightSource": "exact",
+    "name": null
+  },
+  {
+    "id": "osm-way-684996251",
+    "footprint": [
+      {
+        "latitude": 25.0791759,
+        "longitude": 55.1410689
+      },
+      {
+        "latitude": 25.0792281,
+        "longitude": 55.1410933
+      },
+      {
+        "latitude": 25.0792165,
+        "longitude": 55.1411272
+      },
+      {
+        "latitude": 25.0792486,
+        "longitude": 55.1411487
+      },
+      {
+        "latitude": 25.0791648,
+        "longitude": 55.141264
+      },
+      {
+        "latitude": 25.0790536,
+        "longitude": 55.1414013
+      },
+      {
+        "latitude": 25.0790358,
+        "longitude": 55.1413391
+      },
+      {
+        "latitude": 25.0789996,
+        "longitude": 55.141365
+      },
+      {
+        "latitude": 25.078993,
+        "longitude": 55.1413419
+      },
+      {
+        "latitude": 25.0789466,
+        "longitude": 55.1413176
+      },
+      {
+        "latitude": 25.0789512,
+        "longitude": 55.1412622
+      },
+      {
+        "latitude": 25.0789221,
+        "longitude": 55.1412253
+      },
+      {
+        "latitude": 25.0789648,
+        "longitude": 55.1411725
+      },
+      {
+        "latitude": 25.0789345,
+        "longitude": 55.1411365
+      },
+      {
+        "latitude": 25.078977,
+        "longitude": 55.1410901
+      },
+      {
+        "latitude": 25.078744,
+        "longitude": 55.1408731
+      },
+      {
+        "latitude": 25.0787247,
+        "longitude": 55.140895
+      },
+      {
+        "latitude": 25.0787315,
+        "longitude": 55.140915
+      },
+      {
+        "latitude": 25.0786223,
+        "longitude": 55.1410499
+      },
+      {
+        "latitude": 25.0785826,
+        "longitude": 55.1410111
+      },
+      {
+        "latitude": 25.0788315,
+        "longitude": 55.1406895
+      },
+      {
+        "latitude": 25.0789002,
+        "longitude": 55.1407833
+      },
+      {
+        "latitude": 25.0788928,
+        "longitude": 55.140804
+      },
+      {
+        "latitude": 25.0791091,
+        "longitude": 55.1410148
+      },
+      {
+        "latitude": 25.0791316,
+        "longitude": 55.1409905
+      },
+      {
+        "latitude": 25.0791472,
+        "longitude": 55.1410186
+      },
+      {
+        "latitude": 25.0791764,
+        "longitude": 55.1409983
+      }
+    ],
+    "heightMeters": 75.0,
+    "heightSource": "exact",
+    "name": "Orra Harbour Residences & Hotel Apartments"
+  },
+  {
+    "id": "osm-way-684996252",
+    "footprint": [
+      {
+        "latitude": 25.0756579,
+        "longitude": 55.1347681
+      },
+      {
+        "latitude": 25.0756838,
+        "longitude": 55.1348734
+      },
+      {
+        "latitude": 25.075637,
+        "longitude": 55.1348874
+      },
+      {
+        "latitude": 25.0756322,
+        "longitude": 55.1348682
+      },
+      {
+        "latitude": 25.0755785,
+        "longitude": 55.1348842
+      },
+      {
+        "latitude": 25.0755908,
+        "longitude": 55.134934
+      },
+      {
+        "latitude": 25.0755365,
+        "longitude": 55.1349503
+      },
+      {
+        "latitude": 25.0755319,
+        "longitude": 55.1349314
+      },
+      {
+        "latitude": 25.0754906,
+        "longitude": 55.1349438
+      },
+      {
+        "latitude": 25.0755,
+        "longitude": 55.1349818
+      },
+      {
+        "latitude": 25.0753648,
+        "longitude": 55.1350223
+      },
+      {
+        "latitude": 25.0754412,
+        "longitude": 55.1353334
+      },
+      {
+        "latitude": 25.0753751,
+        "longitude": 55.1353532
+      },
+      {
+        "latitude": 25.0752786,
+        "longitude": 55.1349608
+      },
+      {
+        "latitude": 25.0754715,
+        "longitude": 55.134903
+      },
+      {
+        "latitude": 25.0754625,
+        "longitude": 55.1348667
+      },
+      {
+        "latitude": 25.0755175,
+        "longitude": 55.1348503
+      },
+      {
+        "latitude": 25.0755141,
+        "longitude": 55.1348367
+      },
+      {
+        "latitude": 25.0755589,
+        "longitude": 55.1348233
+      },
+      {
+        "latitude": 25.0755558,
+        "longitude": 55.1348106
+      },
+      {
+        "latitude": 25.0756112,
+        "longitude": 55.134794
+      },
+      {
+        "latitude": 25.0756085,
+        "longitude": 55.1347829
+      }
+    ],
+    "heightMeters": 3.2,
+    "heightSource": "levelsEstimate",
+    "name": null
+  },
+  {
+    "id": "osm-way-684999806",
+    "footprint": [
+      {
+        "latitude": 25.0783426,
+        "longitude": 55.1371273
+      },
+      {
+        "latitude": 25.0782646,
+        "longitude": 55.1372425
+      },
+      {
+        "latitude": 25.0781298,
+        "longitude": 55.1371312
+      },
+      {
+        "latitude": 25.0782078,
+        "longitude": 55.137016
+      }
+    ],
+    "heightMeters": 3.2,
+    "heightSource": "levelsEstimate",
+    "name": null
+  },
+  {
+    "id": "osm-way-684999807",
+    "footprint": [
+      {
+        "latitude": 25.0771972,
+        "longitude": 55.1365855
+      },
+      {
+        "latitude": 25.0771613,
+        "longitude": 55.1366722
+      },
+      {
+        "latitude": 25.0767945,
+        "longitude": 55.1364871
+      },
+      {
+        "latitude": 25.0768303,
+        "longitude": 55.1364005
+      }
+    ],
+    "heightMeters": 3.2,
+    "heightSource": "levelsEstimate",
+    "name": null
+  },
+  {
+    "id": "osm-way-700484317",
+    "footprint": [
+      {
+        "latitude": 25.0834296,
+        "longitude": 55.1449916
+      },
+      {
+        "latitude": 25.0832814,
+        "longitude": 55.1448414
+      },
+      {
+        "latitude": 25.0833505,
+        "longitude": 55.1447583
+      },
+      {
+        "latitude": 25.0833701,
+        "longitude": 55.1447347
+      },
+      {
+        "latitude": 25.0834327,
+        "longitude": 55.1446594
+      },
+      {
+        "latitude": 25.0835809,
+        "longitude": 55.1448096
+      }
+    ],
+    "heightMeters": 118.4,
+    "heightSource": "levelsEstimate",
+    "name": "No.9"
+  },
+  {
+    "id": "osm-way-709693708",
+    "footprint": [
+      {
+        "latitude": 25.0843951,
+        "longitude": 55.1388056
+      },
+      {
+        "latitude": 25.0838876,
+        "longitude": 55.139446
+      },
+      {
+        "latitude": 25.0838133,
+        "longitude": 55.1393744
+      },
+      {
+        "latitude": 25.0837763,
+        "longitude": 55.1394222
+      },
+      {
+        "latitude": 25.0837236,
+        "longitude": 55.1393723
+      },
+      {
+        "latitude": 25.0836724,
+        "longitude": 55.139422
+      },
+      {
+        "latitude": 25.0833474,
+        "longitude": 55.1391352
+      },
+      {
+        "latitude": 25.08342,
+        "longitude": 55.1390477
+      },
+      {
+        "latitude": 25.0833648,
+        "longitude": 55.1389888
+      },
+      {
+        "latitude": 25.0838568,
+        "longitude": 55.1383301
+      },
+      {
+        "latitude": 25.0838704,
+        "longitude": 55.1383554
+      },
+      {
+        "latitude": 25.0839136,
+        "longitude": 55.1383094
+      }
+    ],
+    "heightMeters": 6.4,
+    "heightSource": "levelsEstimate",
+    "name": "1/JBR"
+  },
+  {
+    "id": "osm-way-752109960",
+    "footprint": [
+      {
+        "latitude": 25.0832506,
+        "longitude": 55.1414815
+      },
+      {
+        "latitude": 25.0835369,
+        "longitude": 55.1417706
+      },
+      {
+        "latitude": 25.0832708,
+        "longitude": 55.1421047
+      },
+      {
+        "latitude": 25.0830629,
+        "longitude": 55.1418903
+      },
+      {
+        "latitude": 25.083004,
+        "longitude": 55.141794
+      }
+    ],
+    "heightMeters": 147.0,
+    "heightSource": "exact",
+    "name": "LIV Lux"
+  },
+  {
+    "id": "osm-way-984443570",
+    "footprint": [
+      {
+        "latitude": 25.0813234,
+        "longitude": 55.1408508
+      },
+      {
+        "latitude": 25.0812114,
+        "longitude": 55.1407562
+      },
+      {
+        "latitude": 25.0809819,
+        "longitude": 55.1405539
+      },
+      {
+        "latitude": 25.0809376,
+        "longitude": 55.1405148
+      },
+      {
+        "latitude": 25.0807444,
+        "longitude": 55.1407679
+      },
+      {
+        "latitude": 25.0805916,
+        "longitude": 55.1409669
+      },
+      {
+        "latitude": 25.0806914,
+        "longitude": 55.1409956
+      },
+      {
+        "latitude": 25.080909,
+        "longitude": 55.1409117
+      },
+      {
+        "latitude": 25.0809275,
+        "longitude": 55.1409265
+      },
+      {
+        "latitude": 25.0809427,
+        "longitude": 55.1409029
+      },
+      {
+        "latitude": 25.0809647,
+        "longitude": 55.1409204
+      },
+      {
+        "latitude": 25.0809804,
+        "longitude": 55.1408969
+      },
+      {
+        "latitude": 25.0810016,
+        "longitude": 55.1409128
+      },
+      {
+        "latitude": 25.0810187,
+        "longitude": 55.1408877
+      },
+      {
+        "latitude": 25.0810449,
+        "longitude": 55.1409075
+      },
+      {
+        "latitude": 25.0810629,
+        "longitude": 55.1408803
+      },
+      {
+        "latitude": 25.0811007,
+        "longitude": 55.1409095
+      },
+      {
+        "latitude": 25.0812614,
+        "longitude": 55.1409466
+      }
+    ],
+    "heightMeters": 84.0,
+    "heightSource": "exact",
+    "name": "LIV Residence"
+  },
+  {
+    "id": "osm-way-1027255413",
+    "footprint": [
+      {
+        "latitude": 25.0786094,
+        "longitude": 55.1321668
+      },
+      {
+        "latitude": 25.0786162,
+        "longitude": 55.1321502
+      },
+      {
+        "latitude": 25.0786175,
+        "longitude": 55.1321321
+      },
+      {
+        "latitude": 25.0786132,
+        "longitude": 55.1321145
+      },
+      {
+        "latitude": 25.0786036,
+        "longitude": 55.1320996
+      },
+      {
+        "latitude": 25.0785901,
+        "longitude": 55.1320892
+      },
+      {
+        "latitude": 25.0785741,
+        "longitude": 55.1320845
+      },
+      {
+        "latitude": 25.0785577,
+        "longitude": 55.1320861
+      },
+      {
+        "latitude": 25.0785443,
+        "longitude": 55.1320926
+      },
+      {
+        "latitude": 25.0785333,
+        "longitude": 55.1321033
+      },
+      {
+        "latitude": 25.0785258,
+        "longitude": 55.1321171
+      },
+      {
+        "latitude": 25.0785224,
+        "longitude": 55.1321328
+      },
+      {
+        "latitude": 25.0785235,
+        "longitude": 55.1321489
+      },
+      {
+        "latitude": 25.0785289,
+        "longitude": 55.1321639
+      },
+      {
+        "latitude": 25.0785382,
+        "longitude": 55.1321764
+      },
+      {
+        "latitude": 25.0785505,
+        "longitude": 55.1321852
+      },
+      {
+        "latitude": 25.0785665,
+        "longitude": 55.1321896
+      },
+      {
+        "latitude": 25.078583,
+        "longitude": 55.1321878
+      },
+      {
+        "latitude": 25.0785978,
+        "longitude": 55.1321799
+      }
+    ],
+    "heightMeters": 40.0,
+    "heightSource": "exact",
+    "name": "The Flying Cup"
+  },
+  {
+    "id": "osm-way-1027255414",
+    "footprint": [
+      {
+        "latitude": 25.0784172,
+        "longitude": 55.1321868
+      },
+      {
+        "latitude": 25.0784123,
+        "longitude": 55.132152
+      },
+      {
+        "latitude": 25.0784243,
+        "longitude": 55.1321009
+      },
+      {
+        "latitude": 25.0784574,
+        "longitude": 55.1320691
+      },
+      {
+        "latitude": 25.0785064,
+        "longitude": 55.1320499
+      },
+      {
+        "latitude": 25.0785504,
+        "longitude": 55.1320445
+      },
+      {
+        "latitude": 25.078595,
+        "longitude": 55.1320571
+      },
+      {
+        "latitude": 25.0786211,
+        "longitude": 55.1320853
+      },
+      {
+        "latitude": 25.0786298,
+        "longitude": 55.1321303
+      },
+      {
+        "latitude": 25.0786255,
+        "longitude": 55.132176
+      },
+      {
+        "latitude": 25.0786026,
+        "longitude": 55.1322084
+      },
+      {
+        "latitude": 25.0785608,
+        "longitude": 55.1322468
+      },
+      {
+        "latitude": 25.0785135,
+        "longitude": 55.1322594
+      },
+      {
+        "latitude": 25.0784656,
+        "longitude": 55.1322534
+      },
+      {
+        "latitude": 25.0784362,
+        "longitude": 55.1322276
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": "The Flying Cup"
+  },
+  {
+    "id": "osm-way-1027255415",
+    "footprint": [
+      {
+        "latitude": 25.0784666,
+        "longitude": 55.1321156
+      },
+      {
+        "latitude": 25.0784459,
+        "longitude": 55.1321218
+      },
+      {
+        "latitude": 25.0784742,
+        "longitude": 55.1322361
+      },
+      {
+        "latitude": 25.0784949,
+        "longitude": 55.1322299
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-1047694635",
+    "footprint": [
+      {
+        "latitude": 25.075449,
+        "longitude": 55.1357401
+      },
+      {
+        "latitude": 25.075689,
+        "longitude": 55.1361433
+      },
+      {
+        "latitude": 25.0757697,
+        "longitude": 55.1360848
+      },
+      {
+        "latitude": 25.0755463,
+        "longitude": 55.1357096
+      }
+    ],
+    "heightMeters": 19.200000000000003,
+    "heightSource": "levelsEstimate",
+    "name": null
+  },
+  {
+    "id": "osm-way-1080498413",
+    "footprint": [
+      {
+        "latitude": 25.0778921,
+        "longitude": 55.1410731
+      },
+      {
+        "latitude": 25.0777247,
+        "longitude": 55.1409401
+      },
+      {
+        "latitude": 25.0776597,
+        "longitude": 55.1410397
+      },
+      {
+        "latitude": 25.0778119,
+        "longitude": 55.1411607
+      },
+      {
+        "latitude": 25.0778234,
+        "longitude": 55.1411826
+      },
+      {
+        "latitude": 25.0777704,
+        "longitude": 55.1412166
+      },
+      {
+        "latitude": 25.0777477,
+        "longitude": 55.1412513
+      },
+      {
+        "latitude": 25.0777845,
+        "longitude": 55.1413213
+      },
+      {
+        "latitude": 25.0778734,
+        "longitude": 55.141392
+      },
+      {
+        "latitude": 25.0779031,
+        "longitude": 55.141373
+      },
+      {
+        "latitude": 25.077952,
+        "longitude": 55.141298
+      },
+      {
+        "latitude": 25.0779359,
+        "longitude": 55.1412673
+      },
+      {
+        "latitude": 25.0778947,
+        "longitude": 55.1412345
+      },
+      {
+        "latitude": 25.0780069,
+        "longitude": 55.1410624
+      },
+      {
+        "latitude": 25.0780985,
+        "longitude": 55.1411352
+      },
+      {
+        "latitude": 25.0781334,
+        "longitude": 55.1411129
+      },
+      {
+        "latitude": 25.0781785,
+        "longitude": 55.1410438
+      },
+      {
+        "latitude": 25.0782217,
+        "longitude": 55.1410161
+      },
+      {
+        "latitude": 25.0783382,
+        "longitude": 55.1408375
+      },
+      {
+        "latitude": 25.0782238,
+        "longitude": 55.1407466
+      },
+      {
+        "latitude": 25.078009,
+        "longitude": 55.1408841
+      },
+      {
+        "latitude": 25.077961,
+        "longitude": 55.1409578
+      },
+      {
+        "latitude": 25.0779594,
+        "longitude": 55.1409587
+      },
+      {
+        "latitude": 25.0779377,
+        "longitude": 55.1409988
+      },
+      {
+        "latitude": 25.0779239,
+        "longitude": 55.1410244
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-1080498416",
+    "footprint": [
+      {
+        "latitude": 25.0848073,
+        "longitude": 55.1412395
+      },
+      {
+        "latitude": 25.0846786,
+        "longitude": 55.141116
+      },
+      {
+        "latitude": 25.0846593,
+        "longitude": 55.1411404
+      },
+      {
+        "latitude": 25.0846247,
+        "longitude": 55.1411072
+      },
+      {
+        "latitude": 25.0844251,
+        "longitude": 55.1413609
+      },
+      {
+        "latitude": 25.0847226,
+        "longitude": 55.1416464
+      },
+      {
+        "latitude": 25.0852097,
+        "longitude": 55.1410275
+      },
+      {
+        "latitude": 25.0851128,
+        "longitude": 55.1409346
+      },
+      {
+        "latitude": 25.0849625,
+        "longitude": 55.1411256
+      },
+      {
+        "latitude": 25.0849251,
+        "longitude": 55.1410897
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-1105448795",
+    "footprint": [
+      {
+        "latitude": 25.0843524,
+        "longitude": 55.1391079
+      },
+      {
+        "latitude": 25.0844345,
+        "longitude": 55.1390121
+      },
+      {
+        "latitude": 25.0845338,
+        "longitude": 55.1391158
+      },
+      {
+        "latitude": 25.0844508,
+        "longitude": 55.1392092
+      }
+    ],
+    "heightMeters": 32.0,
+    "heightSource": "levelsEstimate",
+    "name": null
+  },
+  {
+    "id": "osm-way-1105448796",
+    "footprint": [
+      {
+        "latitude": 25.0843186,
+        "longitude": 55.1405123
+      },
+      {
+        "latitude": 25.0842754,
+        "longitude": 55.140565
+      },
+      {
+        "latitude": 25.0842444,
+        "longitude": 55.1406055
+      },
+      {
+        "latitude": 25.0841961,
+        "longitude": 55.140558
+      },
+      {
+        "latitude": 25.084144,
+        "longitude": 55.1405068
+      },
+      {
+        "latitude": 25.0841785,
+        "longitude": 55.1404643
+      },
+      {
+        "latitude": 25.0842215,
+        "longitude": 55.1404134
+      },
+      {
+        "latitude": 25.0841827,
+        "longitude": 55.1403674
+      },
+      {
+        "latitude": 25.0841316,
+        "longitude": 55.1402776
+      },
+      {
+        "latitude": 25.0840791,
+        "longitude": 55.1401556
+      },
+      {
+        "latitude": 25.0841421,
+        "longitude": 55.1401238
+      },
+      {
+        "latitude": 25.0841819,
+        "longitude": 55.1401038
+      },
+      {
+        "latitude": 25.084236,
+        "longitude": 55.1401934
+      },
+      {
+        "latitude": 25.0842996,
+        "longitude": 55.1402779
+      },
+      {
+        "latitude": 25.0843542,
+        "longitude": 55.1403296
+      },
+      {
+        "latitude": 25.0844134,
+        "longitude": 55.1403661
+      },
+      {
+        "latitude": 25.0844771,
+        "longitude": 55.140392
+      },
+      {
+        "latitude": 25.0844632,
+        "longitude": 55.1404446
+      },
+      {
+        "latitude": 25.084605,
+        "longitude": 55.1404969
+      },
+      {
+        "latitude": 25.0845677,
+        "longitude": 55.1406384
+      },
+      {
+        "latitude": 25.0844535,
+        "longitude": 55.1405981
+      },
+      {
+        "latitude": 25.0843612,
+        "longitude": 55.1405472
+      }
+    ],
+    "heightMeters": 32.0,
+    "heightSource": "levelsEstimate",
+    "name": null
+  },
+  {
+    "id": "osm-way-1105448797",
+    "footprint": [
+      {
+        "latitude": 25.0841001,
+        "longitude": 55.1393694
+      },
+      {
+        "latitude": 25.0842401,
+        "longitude": 55.139499
+      },
+      {
+        "latitude": 25.0842586,
+        "longitude": 55.1395527
+      },
+      {
+        "latitude": 25.0843219,
+        "longitude": 55.139557
+      },
+      {
+        "latitude": 25.0843667,
+        "longitude": 55.1396195
+      },
+      {
+        "latitude": 25.0843654,
+        "longitude": 55.1396864
+      },
+      {
+        "latitude": 25.0843391,
+        "longitude": 55.1397373
+      },
+      {
+        "latitude": 25.0842982,
+        "longitude": 55.1397562
+      },
+      {
+        "latitude": 25.0842605,
+        "longitude": 55.1398423
+      },
+      {
+        "latitude": 25.0841301,
+        "longitude": 55.1398131
+      },
+      {
+        "latitude": 25.0839259,
+        "longitude": 55.1395486
+      }
+    ],
+    "heightMeters": 32.0,
+    "heightSource": "levelsEstimate",
+    "name": null
+  },
+  {
+    "id": "osm-way-1164957071",
+    "footprint": [
+      {
+        "latitude": 25.0837335,
+        "longitude": 55.1363982
+      },
+      {
+        "latitude": 25.0838766,
+        "longitude": 55.1365338
+      },
+      {
+        "latitude": 25.0836801,
+        "longitude": 55.1367864
+      },
+      {
+        "latitude": 25.0835401,
+        "longitude": 55.1366537
+      },
+      {
+        "latitude": 25.0835895,
+        "longitude": 55.1365903
+      },
+      {
+        "latitude": 25.0835661,
+        "longitude": 55.1365681
+      },
+      {
+        "latitude": 25.0836349,
+        "longitude": 55.1364795
+      },
+      {
+        "latitude": 25.0836552,
+        "longitude": 55.1364988
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": "Tamoka"
+  },
+  {
+    "id": "osm-way-1239705479",
+    "footprint": [
+      {
+        "latitude": 25.0805073,
+        "longitude": 55.1364204
+      },
+      {
+        "latitude": 25.0804355,
+        "longitude": 55.1365084
+      },
+      {
+        "latitude": 25.0803362,
+        "longitude": 55.136644
+      },
+      {
+        "latitude": 25.0803226,
+        "longitude": 55.1366636
+      },
+      {
+        "latitude": 25.0805184,
+        "longitude": 55.1368612
+      },
+      {
+        "latitude": 25.0804767,
+        "longitude": 55.1369118
+      },
+      {
+        "latitude": 25.0805414,
+        "longitude": 55.136971
+      },
+      {
+        "latitude": 25.0805975,
+        "longitude": 55.1368906
+      },
+      {
+        "latitude": 25.080699,
+        "longitude": 55.1367521
+      },
+      {
+        "latitude": 25.0807604,
+        "longitude": 55.1366762
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-1239705484",
+    "footprint": [
+      {
+        "latitude": 25.0790744,
+        "longitude": 55.1354689
+      },
+      {
+        "latitude": 25.0790495,
+        "longitude": 55.1354987
+      },
+      {
+        "latitude": 25.0789383,
+        "longitude": 55.1356355
+      },
+      {
+        "latitude": 25.0791623,
+        "longitude": 55.1358604
+      },
+      {
+        "latitude": 25.0792205,
+        "longitude": 55.1357898
+      },
+      {
+        "latitude": 25.0792467,
+        "longitude": 55.1356375
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-1239705485",
+    "footprint": [
+      {
+        "latitude": 25.0786006,
+        "longitude": 55.135351
+      },
+      {
+        "latitude": 25.0787507,
+        "longitude": 55.1353812
+      },
+      {
+        "latitude": 25.0788183,
+        "longitude": 55.1352945
+      },
+      {
+        "latitude": 25.0788396,
+        "longitude": 55.1352672
+      },
+      {
+        "latitude": 25.0785537,
+        "longitude": 55.1349935
+      },
+      {
+        "latitude": 25.0784019,
+        "longitude": 55.1351913
+      },
+      {
+        "latitude": 25.0785323,
+        "longitude": 55.1352936
+      },
+      {
+        "latitude": 25.0786025,
+        "longitude": 55.1352967
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-1239705489",
+    "footprint": [
+      {
+        "latitude": 25.0778746,
+        "longitude": 55.1343476
+      },
+      {
+        "latitude": 25.0778425,
+        "longitude": 55.1344007
+      },
+      {
+        "latitude": 25.0778246,
+        "longitude": 55.1345699
+      },
+      {
+        "latitude": 25.0778765,
+        "longitude": 55.1345742
+      },
+      {
+        "latitude": 25.0778675,
+        "longitude": 55.1347419
+      },
+      {
+        "latitude": 25.0782046,
+        "longitude": 55.1347858
+      },
+      {
+        "latitude": 25.0782013,
+        "longitude": 55.1346453
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-1239705490",
+    "footprint": [
+      {
+        "latitude": 25.0778041,
+        "longitude": 55.134352
+      },
+      {
+        "latitude": 25.0777966,
+        "longitude": 55.1346218
+      },
+      {
+        "latitude": 25.0777724,
+        "longitude": 55.1346529
+      },
+      {
+        "latitude": 25.0774946,
+        "longitude": 55.1346322
+      },
+      {
+        "latitude": 25.0774989,
+        "longitude": 55.1345676
+      },
+      {
+        "latitude": 25.0776752,
+        "longitude": 55.1343514
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-1242101373",
+    "footprint": [
+      {
+        "latitude": 25.0796136,
+        "longitude": 55.1340915
+      },
+      {
+        "latitude": 25.079997,
+        "longitude": 55.1344618
+      },
+      {
+        "latitude": 25.0798562,
+        "longitude": 55.1346394
+      },
+      {
+        "latitude": 25.0794729,
+        "longitude": 55.1342692
+      }
+    ],
+    "heightMeters": 138.0,
+    "heightSource": "exact",
+    "name": "La Vie Residences"
+  },
+  {
+    "id": "osm-way-1243989025",
+    "footprint": [
+      {
+        "latitude": 25.0833505,
+        "longitude": 55.1447583
+      },
+      {
+        "latitude": 25.0833158,
+        "longitude": 55.1447275
+      },
+      {
+        "latitude": 25.0832856,
+        "longitude": 55.1447006
+      },
+      {
+        "latitude": 25.0832215,
+        "longitude": 55.14478
+      },
+      {
+        "latitude": 25.0832814,
+        "longitude": 55.1448414
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-1243989026",
+    "footprint": [
+      {
+        "latitude": 25.0832856,
+        "longitude": 55.1447006
+      },
+      {
+        "latitude": 25.0832579,
+        "longitude": 55.1446727
+      },
+      {
+        "latitude": 25.0832302,
+        "longitude": 55.1446448
+      },
+      {
+        "latitude": 25.0831661,
+        "longitude": 55.1447295
+      },
+      {
+        "latitude": 25.0832215,
+        "longitude": 55.14478
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-1349484070",
+    "footprint": [
+      {
+        "latitude": 25.0770344,
+        "longitude": 55.1333733
+      },
+      {
+        "latitude": 25.0773775,
+        "longitude": 55.1329521
+      },
+      {
+        "latitude": 25.0774876,
+        "longitude": 55.1330615
+      },
+      {
+        "latitude": 25.077434,
+        "longitude": 55.1331274
+      },
+      {
+        "latitude": 25.0774908,
+        "longitude": 55.1331838
+      },
+      {
+        "latitude": 25.0774386,
+        "longitude": 55.1332479
+      },
+      {
+        "latitude": 25.0773808,
+        "longitude": 55.1331905
+      },
+      {
+        "latitude": 25.0771436,
+        "longitude": 55.1334817
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-1349580833",
+    "footprint": [
+      {
+        "latitude": 25.072848,
+        "longitude": 55.1321692
+      },
+      {
+        "latitude": 25.0729962,
+        "longitude": 55.1322535
+      },
+      {
+        "latitude": 25.073167,
+        "longitude": 55.132315
+      },
+      {
+        "latitude": 25.0726136,
+        "longitude": 55.1331682
+      },
+      {
+        "latitude": 25.0724807,
+        "longitude": 55.133131
+      },
+      {
+        "latitude": 25.0724187,
+        "longitude": 55.1330982
+      },
+      {
+        "latitude": 25.0722835,
+        "longitude": 55.13297
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-1465056672",
+    "footprint": [
+      {
+        "latitude": 25.0756693,
+        "longitude": 55.1342144
+      },
+      {
+        "latitude": 25.0756954,
+        "longitude": 55.1342696
+      },
+      {
+        "latitude": 25.0756508,
+        "longitude": 55.1343619
+      },
+      {
+        "latitude": 25.0754286,
+        "longitude": 55.1344898
+      },
+      {
+        "latitude": 25.0753778,
+        "longitude": 55.1343821
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-1465061426",
+    "footprint": [
+      {
+        "latitude": 25.0800133,
+        "longitude": 55.1378995
+      },
+      {
+        "latitude": 25.0799432,
+        "longitude": 55.1379453
+      },
+      {
+        "latitude": 25.0799759,
+        "longitude": 55.1380064
+      },
+      {
+        "latitude": 25.080046,
+        "longitude": 55.1379606
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-1465061427",
+    "footprint": [
+      {
+        "latitude": 25.0800388,
+        "longitude": 55.1380231
+      },
+      {
+        "latitude": 25.080121,
+        "longitude": 55.1381632
+      },
+      {
+        "latitude": 25.0800557,
+        "longitude": 55.1382099
+      },
+      {
+        "latitude": 25.0799735,
+        "longitude": 55.1380697
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-1465061428",
+    "footprint": [
+      {
+        "latitude": 25.0804605,
+        "longitude": 55.1388144
+      },
+      {
+        "latitude": 25.0805437,
+        "longitude": 55.138968
+      },
+      {
+        "latitude": 25.0804826,
+        "longitude": 55.1390084
+      },
+      {
+        "latitude": 25.0803994,
+        "longitude": 55.1388547
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-1465061429",
+    "footprint": [
+      {
+        "latitude": 25.0805602,
+        "longitude": 55.138762
+      },
+      {
+        "latitude": 25.0806006,
+        "longitude": 55.1388434
+      },
+      {
+        "latitude": 25.0805407,
+        "longitude": 55.1388796
+      },
+      {
+        "latitude": 25.0805003,
+        "longitude": 55.1387982
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-1465061430",
+    "footprint": [
+      {
+        "latitude": 25.0818686,
+        "longitude": 55.1396578
+      },
+      {
+        "latitude": 25.0818686,
+        "longitude": 55.1397225
+      },
+      {
+        "latitude": 25.0818924,
+        "longitude": 55.1397953
+      },
+      {
+        "latitude": 25.0819382,
+        "longitude": 55.139771
+      },
+      {
+        "latitude": 25.0819656,
+        "longitude": 55.1398114
+      },
+      {
+        "latitude": 25.0820224,
+        "longitude": 55.1398438
+      },
+      {
+        "latitude": 25.0820865,
+        "longitude": 55.1398579
+      },
+      {
+        "latitude": 25.0821597,
+        "longitude": 55.1400014
+      },
+      {
+        "latitude": 25.0822348,
+        "longitude": 55.1400965
+      },
+      {
+        "latitude": 25.08233,
+        "longitude": 55.1401894
+      },
+      {
+        "latitude": 25.082427,
+        "longitude": 55.140238
+      },
+      {
+        "latitude": 25.0825424,
+        "longitude": 55.1402764
+      },
+      {
+        "latitude": 25.0826632,
+        "longitude": 55.1401025
+      },
+      {
+        "latitude": 25.0826211,
+        "longitude": 55.1399833
+      },
+      {
+        "latitude": 25.0825442,
+        "longitude": 55.1398478
+      },
+      {
+        "latitude": 25.0824289,
+        "longitude": 55.1397346
+      },
+      {
+        "latitude": 25.082319,
+        "longitude": 55.1396841
+      },
+      {
+        "latitude": 25.0822311,
+        "longitude": 55.1396598
+      },
+      {
+        "latitude": 25.082222,
+        "longitude": 55.1395951
+      },
+      {
+        "latitude": 25.0821853,
+        "longitude": 55.1395507
+      },
+      {
+        "latitude": 25.0821506,
+        "longitude": 55.1395102
+      },
+      {
+        "latitude": 25.0821561,
+        "longitude": 55.1394658
+      },
+      {
+        "latitude": 25.0821066,
+        "longitude": 55.1394577
+      },
+      {
+        "latitude": 25.0820535,
+        "longitude": 55.1394556
+      },
+      {
+        "latitude": 25.0820242,
+        "longitude": 55.1394617
+      },
+      {
+        "latitude": 25.0820389,
+        "longitude": 55.1395001
+      },
+      {
+        "latitude": 25.0819931,
+        "longitude": 55.1395284
+      },
+      {
+        "latitude": 25.081951,
+        "longitude": 55.139579
+      },
+      {
+        "latitude": 25.0819217,
+        "longitude": 55.1396558
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-1465061437",
+    "footprint": [
+      {
+        "latitude": 25.0800787,
+        "longitude": 55.1372513
+      },
+      {
+        "latitude": 25.0801426,
+        "longitude": 55.1373231
+      },
+      {
+        "latitude": 25.0800912,
+        "longitude": 55.1373787
+      },
+      {
+        "latitude": 25.0800274,
+        "longitude": 55.1373069
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-1465061438",
+    "footprint": [
+      {
+        "latitude": 25.0772747,
+        "longitude": 55.1348511
+      },
+      {
+        "latitude": 25.0773264,
+        "longitude": 55.1348992
+      },
+      {
+        "latitude": 25.0772967,
+        "longitude": 55.1349381
+      },
+      {
+        "latitude": 25.077245,
+        "longitude": 55.1348901
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-1465061439",
+    "footprint": [
+      {
+        "latitude": 25.0771704,
+        "longitude": 55.1349702
+      },
+      {
+        "latitude": 25.0772221,
+        "longitude": 55.1350182
+      },
+      {
+        "latitude": 25.0771923,
+        "longitude": 55.1350572
+      },
+      {
+        "latitude": 25.0771406,
+        "longitude": 55.1350091
+      }
+    ],
+    "heightMeters": null,
+    "heightSource": null,
+    "name": null
+  },
+  {
+    "id": "osm-way-1555871425",
+    "footprint": [
+      {
+        "latitude": 25.0822291,
+        "longitude": 55.1437631
+      },
+      {
+        "latitude": 25.0823107,
+        "longitude": 55.1436658
+      },
+      {
+        "latitude": 25.0822675,
+        "longitude": 55.1436162
+      },
+      {
+        "latitude": 25.0824147,
+        "longitude": 55.1434383
+      },
+      {
+        "latitude": 25.0824606,
+        "longitude": 55.1434905
+      },
+      {
+        "latitude": 25.0825094,
+        "longitude": 55.1434334
+      },
+      {
+        "latitude": 25.0831746,
+        "longitude": 55.1430306
+      },
+      {
+        "latitude": 25.0832718,
+        "longitude": 55.1432523
+      },
+      {
+        "latitude": 25.0832167,
+        "longitude": 55.1434812
+      },
+      {
+        "latitude": 25.0827045,
+        "longitude": 55.1436368
+      },
+      {
+        "latitude": 25.0824234,
+        "longitude": 55.1439655
+      },
+      {
+        "latitude": 25.0823827,
+        "longitude": 55.1440105
+      },
+      {
+        "latitude": 25.0822588,
+        "longitude": 55.1438799
+      },
+      {
+        "latitude": 25.0822943,
+        "longitude": 55.143831
+      }
+    ],
+    "heightMeters": 6.0,
+    "heightSource": "exact",
+    "name": "Marina Shores"
+  },
+  {
+    "id": "osm-way-1555871427",
+    "footprint": [
+      {
+        "latitude": 25.0825094,
+        "longitude": 55.1434334
+      },
+      {
+        "latitude": 25.0827045,
+        "longitude": 55.1436368
+      },
+      {
+        "latitude": 25.0824234,
+        "longitude": 55.1439655
+      },
+      {
+        "latitude": 25.0822948,
+        "longitude": 55.1438315
+      },
+      {
+        "latitude": 25.0822943,
+        "longitude": 55.143831
+      },
+      {
+        "latitude": 25.0822291,
+        "longitude": 55.1437631
+      },
+      {
+        "latitude": 25.0823107,
+        "longitude": 55.1436658
+      },
+      {
+        "latitude": 25.0824606,
+        "longitude": 55.1434905
+      }
+    ],
+    "heightMeters": 104.0,
+    "heightSource": "exact",
+    "name": null
+  },
+  {
+    "id": "osm-way-1557572092",
+    "footprint": [
+      {
+        "latitude": 25.0802939,
+        "longitude": 55.1396397
+      },
+      {
+        "latitude": 25.0800063,
+        "longitude": 55.1392699
+      },
+      {
+        "latitude": 25.0797459,
+        "longitude": 55.1395485
+      },
+      {
+        "latitude": 25.0798218,
+        "longitude": 55.1396231
+      },
+      {
+        "latitude": 25.0798961,
+        "longitude": 55.1397263
+      },
+      {
+        "latitude": 25.0799411,
+        "longitude": 55.1397969
+      },
+      {
+        "latitude": 25.0799712,
+        "longitude": 55.1398557
+      },
+      {
+        "latitude": 25.0799523,
+        "longitude": 55.1398747
+      },
+      {
+        "latitude": 25.080002,
+        "longitude": 55.1399287
+      },
+      {
+        "latitude": 25.0799835,
+        "longitude": 55.1399484
+      },
+      {
+        "latitude": 25.0800201,
+        "longitude": 55.1400027
+      },
+      {
+        "latitude": 25.0800384,
+        "longitude": 55.140071
+      },
+      {
+        "latitude": 25.0800525,
+        "longitude": 55.1401355
+      },
+      {
+        "latitude": 25.080057,
+        "longitude": 55.1402053
+      },
+      {
+        "latitude": 25.080112,
+        "longitude": 55.1401955
+      },
+      {
+        "latitude": 25.0801474,
+        "longitude": 55.1401428
+      },
+      {
+        "latitude": 25.0803273,
+        "longitude": 55.1399587
+      },
+      {
+        "latitude": 25.0803824,
+        "longitude": 55.1397501
+      }
+    ],
+    "heightMeters": 169.999152,
+    "heightSource": "exact",
+    "name": "Luna Bay"
+  }
+]

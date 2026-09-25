@@ -1,0 +1,2120 @@
+[
+  {
+    "samples" : [
+      {
+        "longitude" : 55.14002827499997,
+        "azimuth" : 173.64984805315032,
+        "latitude" : 25.077644037499997,
+        "elevation" : 63.876273347966325,
+        "sun" : false,
+        "building" : "osm-way-200915107"
+      },
+      {
+        "building" : "osm-way-200915107",
+        "elevation" : 63.87723599781107,
+        "sun" : false,
+        "latitude" : 25.077662712499993,
+        "azimuth" : 173.67226518772793,
+        "longitude" : 55.140051824999979
+      },
+      {
+        "building" : "osm-way-532610131",
+        "latitude" : 25.077681387499986,
+        "azimuth" : 173.69468386174844,
+        "longitude" : 55.140075374999995,
+        "elevation" : 63.878195152826883,
+        "sun" : false
+      },
+      {
+        "azimuth" : 173.71710406965099,
+        "latitude" : 25.077700062499982,
+        "elevation" : 63.879150812803566,
+        "sun" : false,
+        "longitude" : 55.140098925000004,
+        "building" : "osm-way-532610131"
+      },
+      {
+        "azimuth" : 173.73827495893943,
+        "latitude" : 25.077714949999987,
+        "building" : "osm-way-532610131",
+        "elevation" : 63.880052709996896,
+        "sun" : false,
+        "longitude" : 55.140123174999999
+      },
+      {
+        "elevation" : 63.880901396507205,
+        "longitude" : 55.140148124999989,
+        "sun" : false,
+        "building" : "osm-way-532610131",
+        "latitude" : 25.077726049999999,
+        "azimuth" : 173.75819628048271
+      },
+      {
+        "azimuth" : 173.78196986921421,
+        "elevation" : 63.881921317103064,
+        "latitude" : 25.077728537500004,
+        "building" : "osm-way-532610131",
+        "sun" : false,
+        "longitude" : 55.140179570833318
+      },
+      {
+        "sun" : false,
+        "azimuth" : 173.80959658345841,
+        "building" : "osm-way-532610131",
+        "elevation" : 63.883110561960478,
+        "latitude" : 25.077722412500002,
+        "longitude" : 55.140217512499987
+      },
+      {
+        "elevation" : 63.884294499880603,
+        "azimuth" : 173.83722563641027,
+        "latitude" : 25.077716287499999,
+        "longitude" : 55.140255454166663,
+        "sun" : false,
+        "building" : "osm-way-532610131"
+      },
+      {
+        "building" : "osm-way-532610131",
+        "azimuth" : 173.86485702213702,
+        "latitude" : 25.077710162500001,
+        "sun" : false,
+        "elevation" : 63.885473130686229,
+        "longitude" : 55.140293395833332
+      },
+      {
+        "latitude" : 25.077704037499998,
+        "elevation" : 63.886646453670757,
+        "longitude" : 55.140331337500001,
+        "sun" : false,
+        "building" : "osm-way-532610131",
+        "azimuth" : 173.8924907350945
+      },
+      {
+        "longitude" : 55.140369279166677,
+        "latitude" : 25.077697912499996,
+        "sun" : false,
+        "building" : "osm-way-532610131",
+        "azimuth" : 173.92012675625779,
+        "elevation" : 63.887814467553447
+      },
+      {
+        "latitude" : 25.077691787499997,
+        "azimuth" : 173.94776507967879,
+        "elevation" : 63.888977172164651,
+        "longitude" : 55.140407220833346,
+        "sun" : false,
+        "building" : "osm-way-532610132"
+      },
+      {
+        "building" : "osm-way-532610131",
+        "elevation" : 63.89013456680108,
+        "sun" : false,
+        "longitude" : 55.140445162500022,
+        "azimuth" : 173.97540569979981,
+        "latitude" : 25.077685662499995
+      },
+      {
+        "sun" : false,
+        "azimuth" : 174.00304859744244,
+        "latitude" : 25.077679537499993,
+        "building" : "osm-way-532610131",
+        "elevation" : 63.891286650378461,
+        "longitude" : 55.140483104166691
+      },
+      {
+        "building" : "osm-way-532610131",
+        "latitude" : 25.077673412499994,
+        "sun" : false,
+        "longitude" : 55.14052104583336,
+        "azimuth" : 174.03069376703695,
+        "elevation" : 63.89243342220049
+      },
+      {
+        "sun" : true,
+        "building" : null,
+        "latitude" : 25.077667287499992,
+        "longitude" : 55.140558987500036,
+        "azimuth" : 174.05834120036911,
+        "elevation" : 63.893574882011038
+      },
+      {
+        "longitude" : 55.140596929166705,
+        "latitude" : 25.077661162499989,
+        "sun" : true,
+        "azimuth" : 174.08599088511778,
+        "elevation" : 63.89471102883779,
+        "building" : null
+      },
+      {
+        "building" : "osm-way-532610132",
+        "azimuth" : 174.11273915386573,
+        "elevation" : 63.895798759616191,
+        "latitude" : 25.077661449999994,
+        "longitude" : 55.140633525000034,
+        "sun" : false
+      },
+      {
+        "longitude" : 55.140668775000009,
+        "sun" : true,
+        "building" : null,
+        "azimuth" : 174.13858576810003,
+        "latitude" : 25.077668150000004,
+        "elevation" : 63.89683857749354
+      },
+      {
+        "latitude" : 25.077680525000009,
+        "longitude" : 55.140699725000005,
+        "sun" : true,
+        "elevation" : 63.897828281819848,
+        "azimuth" : 174.16344538378041,
+        "building" : null
+      },
+      {
+        "azimuth" : 174.187317764662,
+        "sun" : true,
+        "latitude" : 25.07769857500001,
+        "building" : null,
+        "elevation" : 63.898768384585772,
+        "longitude" : 55.140726375000007
+      },
+      {
+        "sun" : true,
+        "latitude" : 25.077720825000011,
+        "azimuth" : 174.21209714226381,
+        "longitude" : 55.140750075,
+        "elevation" : 63.899736418671331,
+        "building" : null
+      },
+      {
+        "latitude" : 25.077747275000007,
+        "sun" : true,
+        "building" : null,
+        "azimuth" : 174.23778368828766,
+        "longitude" : 55.140770824999983,
+        "elevation" : 63.90073191577526
+      },
+      {
+        "latitude" : 25.077778000000002,
+        "longitude" : 55.140785333333312,
+        "sun" : true,
+        "building" : null,
+        "azimuth" : 174.26478018473642,
+        "elevation" : 63.901770217689155
+      },
+      {
+        "sun" : true,
+        "azimuth" : 174.29308690546873,
+        "building" : null,
+        "elevation" : 63.902850587489418,
+        "longitude" : 55.140793599999995,
+        "latitude" : 25.077812999999995
+      },
+      {
+        "longitude" : 55.140801866666685,
+        "latitude" : 25.077847999999989,
+        "sun" : true,
+        "building" : null,
+        "azimuth" : 174.32139580874036,
+        "elevation" : 63.903925388580852
+      },
+      {
+        "elevation" : 63.904985036678113,
+        "building" : null,
+        "sun" : true,
+        "longitude" : 55.140802575000023,
+        "latitude" : 25.077882824999985,
+        "azimuth" : 174.3494562678959
+      },
+      {
+        "elevation" : 63.90602967735547,
+        "building" : null,
+        "sun" : true,
+        "longitude" : 55.140795725000011,
+        "latitude" : 25.077917474999985,
+        "azimuth" : 174.37726820577382
+      },
+      {
+        "sun" : true,
+        "latitude" : 25.077945683333322,
+        "building" : null,
+        "elevation" : 63.906942262099015,
+        "longitude" : 55.140783966666675,
+        "azimuth" : 174.40162671314238
+      },
+      {
+        "azimuth" : 174.42253110766296,
+        "sun" : true,
+        "building" : null,
+        "latitude" : 25.077967449999989,
+        "elevation" : 63.907724544878228,
+        "longitude" : 55.140767300000022
+      },
+      {
+        "sun" : true,
+        "building" : null,
+        "elevation" : 63.908503791153485,
+        "azimuth" : 174.44343667021303,
+        "longitude" : 55.140750633333354,
+        "latitude" : 25.077989216666658
+      },
+      {
+        "latitude" : 25.078009908333328,
+        "longitude" : 55.140726766666695,
+        "sun" : true,
+        "elevation" : 63.909398055486129,
+        "building" : null,
+        "azimuth" : 174.46741484701943
+      },
+      {
+        "latitude" : 25.078029524999994,
+        "building" : null,
+        "sun" : true,
+        "longitude" : 55.140695700000023,
+        "azimuth" : 174.49446623507515,
+        "elevation" : 63.910405802490502
+      },
+      {
+        "sun" : true,
+        "building" : null,
+        "longitude" : 55.140664633333358,
+        "azimuth" : 174.52151956927082,
+        "latitude" : 25.078049141666661,
+        "elevation" : 63.91140846509456
+      },
+      {
+        "elevation" : 63.912406042538613,
+        "longitude" : 55.140633566666686,
+        "sun" : true,
+        "latitude" : 25.078068758333327,
+        "building" : null,
+        "azimuth" : 174.54857483548642
+      },
+      {
+        "longitude" : 55.140602500000021,
+        "sun" : true,
+        "azimuth" : 174.57563203309792,
+        "latitude" : 25.078088374999997,
+        "building" : null,
+        "elevation" : 63.913398534581063
+      },
+      {
+        "elevation" : 63.914385940469998,
+        "azimuth" : 174.60269114797586,
+        "longitude" : 55.140571433333356,
+        "building" : null,
+        "latitude" : 25.078107991666663,
+        "sun" : true
+      },
+      {
+        "sun" : true,
+        "azimuth" : 174.62975216598443,
+        "elevation" : 63.915368259457637,
+        "longitude" : 55.140540366666684,
+        "building" : null,
+        "latitude" : 25.078127608333329
+      },
+      {
+        "sun" : true,
+        "latitude" : 25.078147224999999,
+        "building" : null,
+        "azimuth" : 174.65681508648913,
+        "longitude" : 55.140509300000019,
+        "elevation" : 63.916345491305997
+      },
+      {
+        "elevation" : 63.917317635272333,
+        "azimuth" : 174.68387989534654,
+        "longitude" : 55.140478233333347,
+        "sun" : true,
+        "latitude" : 25.078166841666665,
+        "building" : null
+      },
+      {
+        "latitude" : 25.078186458333331,
+        "sun" : true,
+        "longitude" : 55.140447166666682,
+        "building" : null,
+        "azimuth" : 174.71094657840626,
+        "elevation" : 63.918284690622251
+      },
+      {
+        "azimuth" : 174.73801513502303,
+        "latitude" : 25.078206074999997,
+        "building" : null,
+        "longitude" : 55.14041610000001,
+        "sun" : true,
+        "elevation" : 63.919246657119949
+      },
+      {
+        "latitude" : 25.078225691666667,
+        "sun" : true,
+        "elevation" : 63.920203534035991,
+        "building" : null,
+        "azimuth" : 174.76508555103783,
+        "longitude" : 55.140385033333345
+      },
+      {
+        "longitude" : 55.140353966666673,
+        "azimuth" : 174.79215781228777,
+        "latitude" : 25.078245308333333,
+        "elevation" : 63.921155320645184,
+        "building" : null,
+        "sun" : true
+      },
+      {
+        "latitude" : 25.078264924999999,
+        "sun" : true,
+        "azimuth" : 174.81923191811552,
+        "elevation" : 63.922102016716764,
+        "building" : null,
+        "longitude" : 55.140322900000008
+      },
+      {
+        "sun" : true,
+        "azimuth" : 174.84630785209697,
+        "building" : null,
+        "latitude" : 25.078284541666669,
+        "elevation" : 63.923043621450375,
+        "longitude" : 55.140291833333343
+      },
+      {
+        "latitude" : 25.078304158333335,
+        "longitude" : 55.140260766666671,
+        "sun" : true,
+        "azimuth" : 174.87338560681144,
+        "elevation" : 63.923980134375235,
+        "building" : null
+      },
+      {
+        "longitude" : 55.140229700000006,
+        "azimuth" : 174.90046517483415,
+        "elevation" : 63.924911555021026,
+        "sun" : true,
+        "latitude" : 25.078323775000001,
+        "building" : null
+      },
+      {
+        "latitude" : 25.078343391666667,
+        "sun" : true,
+        "azimuth" : 174.92754654197847,
+        "longitude" : 55.140198633333334,
+        "elevation" : 63.925837882682977,
+        "building" : null
+      },
+      {
+        "azimuth" : 174.95388378559494,
+        "latitude" : 25.078358816666668,
+        "sun" : true,
+        "longitude" : 55.140166308333335,
+        "building" : null,
+        "elevation" : 63.926737471301429
+      },
+      {
+        "elevation" : 63.927610729566133,
+        "longitude" : 55.140132725000015,
+        "building" : null,
+        "azimuth" : 174.97947675867977,
+        "latitude" : 25.07837005,
+        "sun" : true
+      },
+      {
+        "elevation" : 63.928479439218506,
+        "sun" : true,
+        "longitude" : 55.140099141666681,
+        "latitude" : 25.078381283333332,
+        "azimuth" : 175.00507132825999,
+        "building" : null
+      },
+      {
+        "building" : null,
+        "azimuth" : 175.03066748828485,
+        "latitude" : 25.078392516666661,
+        "longitude" : 55.140065558333362,
+        "sun" : true,
+        "elevation" : 63.929343600060001
+      },
+      {
+        "azimuth" : 175.05626522631576,
+        "elevation" : 63.930203211123164,
+        "sun" : true,
+        "building" : null,
+        "latitude" : 25.078403749999993,
+        "longitude" : 55.140031975000028
+      },
+      {
+        "azimuth" : 175.08186453629514,
+        "elevation" : 63.93105827221445,
+        "latitude" : 25.078414983333325,
+        "sun" : true,
+        "building" : null,
+        "longitude" : 55.139998391666701
+      },
+      {
+        "latitude" : 25.078430933333326,
+        "sun" : true,
+        "elevation" : 63.931836261016237,
+        "azimuth" : 175.10544630219397,
+        "longitude" : 55.139971766666704,
+        "building" : null
+      },
+      {
+        "latitude" : 25.078451599999994,
+        "sun" : true,
+        "longitude" : 55.139952100000038,
+        "azimuth" : 175.12701016450103,
+        "building" : null,
+        "elevation" : 63.932538169017107
+      },
+      {
+        "sun" : true,
+        "latitude" : 25.078472266666658,
+        "building" : null,
+        "azimuth" : 175.14857510653621,
+        "longitude" : 55.139932433333371,
+        "elevation" : 63.933236847945736
+      },
+      {
+        "azimuth" : 175.16717879326643,
+        "sun" : true,
+        "longitude" : 55.13991950000004,
+        "elevation" : 63.933834983329433,
+        "latitude" : 25.078492074999993,
+        "building" : null
+      },
+      {
+        "building" : null,
+        "elevation" : 63.934333722654202,
+        "longitude" : 55.139913300000046,
+        "latitude" : 25.078511024999994,
+        "azimuth" : 175.18282084079033,
+        "sun" : true
+      },
+      {
+        "sun" : true,
+        "longitude" : 55.139911550000036,
+        "azimuth" : 175.20089686111703,
+        "elevation" : 63.934907474534107,
+        "latitude" : 25.078533383333326,
+        "building" : null
+      },
+      {
+        "longitude" : 55.139914250000018,
+        "azimuth" : 175.22140714623242,
+        "latitude" : 25.07855914999999,
+        "sun" : true,
+        "elevation" : 63.935555322292018,
+        "building" : null
+      },
+      {
+        "sun" : true,
+        "azimuth" : 175.24191838344257,
+        "latitude" : 25.078584916666653,
+        "building" : null,
+        "longitude" : 55.139916950000007,
+        "elevation" : 63.936200249478638
+      },
+      {
+        "building" : null,
+        "longitude" : 55.139928474999998,
+        "elevation" : 63.936934448419542,
+        "azimuth" : 175.26529509815248,
+        "latitude" : 25.078611524999989,
+        "sun" : true
+      },
+      {
+        "building" : null,
+        "latitude" : 25.07863897499999,
+        "azimuth" : 175.29153774201325,
+        "sun" : true,
+        "elevation" : 63.937756524333878,
+        "longitude" : 55.139948824999991
+      },
+      {
+        "latitude" : 25.078666424999991,
+        "sun" : true,
+        "longitude" : 55.139969174999983,
+        "building" : null,
+        "azimuth" : 175.31778192731474,
+        "elevation" : 63.938573818920588
+      },
+      {
+        "building" : null,
+        "elevation" : 63.939386331802162,
+        "sun" : true,
+        "latitude" : 25.078693874999992,
+        "longitude" : 55.139989524999976,
+        "azimuth" : 175.34402764746551
+      },
+      {
+        "longitude" : 55.14001596249998,
+        "sun" : true,
+        "azimuth" : 175.37100725104256,
+        "latitude" : 25.078716937499994,
+        "building" : null,
+        "elevation" : 63.940221700445825
+      },
+      {
+        "latitude" : 25.078735612499994,
+        "longitude" : 55.140048487499996,
+        "sun" : true,
+        "azimuth" : 175.39872087683079,
+        "building" : null,
+        "elevation" : 63.941079512890305
+      },
+      {
+        "longitude" : 55.140081012500012,
+        "sun" : true,
+        "building" : null,
+        "elevation" : 63.941931993675212,
+        "azimuth" : 175.42643620328806,
+        "latitude" : 25.07875428749999
+      },
+      {
+        "longitude" : 55.140113537500028,
+        "azimuth" : 175.45415321773532,
+        "sun" : true,
+        "building" : null,
+        "elevation" : 63.942779142204444,
+        "latitude" : 25.07877296249999
+      },
+      {
+        "azimuth" : 175.48142372478731,
+        "longitude" : 55.140147920000032,
+        "latitude" : 25.078786204999989,
+        "sun" : false,
+        "building" : "osm-way-532640144",
+        "elevation" : 63.943612532024304
+      },
+      {
+        "azimuth" : 175.50824765146729,
+        "elevation" : 63.944432417669624,
+        "building" : "osm-way-532640144",
+        "latitude" : 25.078794014999989,
+        "sun" : false,
+        "longitude" : 55.140184160000025
+      },
+      {
+        "building" : "osm-way-532640144",
+        "azimuth" : 175.53507315183697,
+        "elevation" : 63.945247309115743,
+        "latitude" : 25.078801824999989,
+        "longitude" : 55.140220400000025,
+        "sun" : false
+      },
+      {
+        "azimuth" : 175.5619002141874,
+        "latitude" : 25.078809634999992,
+        "elevation" : 63.946057205819443,
+        "longitude" : 55.140256640000018,
+        "building" : "osm-way-532640144",
+        "sun" : false
+      },
+      {
+        "longitude" : 55.140292880000018,
+        "sun" : false,
+        "latitude" : 25.078817444999991,
+        "azimuth" : 175.58872882692367,
+        "elevation" : 63.946862107067012,
+        "building" : "osm-way-532640144"
+      },
+      {
+        "latitude" : 25.078825254999991,
+        "elevation" : 63.947662012820338,
+        "building" : "osm-way-532640144",
+        "longitude" : 55.140329120000011,
+        "sun" : false,
+        "azimuth" : 175.61555898259803
+      },
+      {
+        "elevation" : 63.94845692250685,
+        "sun" : false,
+        "building" : "osm-way-532640144",
+        "azimuth" : 175.64239067412268,
+        "longitude" : 55.140365360000011,
+        "latitude" : 25.078833064999991
+      },
+      {
+        "elevation" : 63.949246835599844,
+        "latitude" : 25.07884087499999,
+        "longitude" : 55.140401600000004,
+        "sun" : false,
+        "building" : "osm-way-532640144",
+        "azimuth" : 175.66922388977059
+      },
+      {
+        "latitude" : 25.078848684999993,
+        "elevation" : 63.950031751328893,
+        "building" : "osm-way-532640144",
+        "longitude" : 55.140437840000004,
+        "sun" : false,
+        "azimuth" : 175.69605861567686
+      },
+      {
+        "longitude" : 55.140474079999997,
+        "latitude" : 25.078856494999993,
+        "sun" : false,
+        "building" : "osm-way-532640144",
+        "azimuth" : 175.72289485115141,
+        "elevation" : 63.950811669868266
+      },
+      {
+        "sun" : false,
+        "elevation" : 63.951557830241171,
+        "latitude" : 25.078867799999994,
+        "longitude" : 55.140507589999999,
+        "building" : "osm-way-532640144",
+        "azimuth" : 175.74886387245169
+      },
+      {
+        "azimuth" : 175.7739655229135,
+        "latitude" : 25.078882599999993,
+        "longitude" : 55.140538369999994,
+        "building" : null,
+        "elevation" : 63.952270701852925,
+        "sun" : true
+      },
+      {
+        "latitude" : 25.078897399999992,
+        "longitude" : 55.14056914999999,
+        "sun" : true,
+        "azimuth" : 175.79906845030791,
+        "elevation" : 63.952979200589404,
+        "building" : null
+      },
+      {
+        "sun" : true,
+        "elevation" : 63.953683326581313,
+        "building" : null,
+        "latitude" : 25.078912199999991,
+        "longitude" : 55.140599929999986,
+        "azimuth" : 175.82417265114441
+      },
+      {
+        "latitude" : 25.07892699999999,
+        "building" : null,
+        "sun" : true,
+        "azimuth" : 175.84927811563591,
+        "longitude" : 55.140630709999982,
+        "elevation" : 63.954383079050999
+      },
+      {
+        "latitude" : 25.07894664374999,
+        "longitude" : 55.140659556249986,
+        "building" : null,
+        "azimuth" : 175.87556617870689,
+        "elevation" : 63.955106911422412,
+        "sun" : true
+      },
+      {
+        "elevation" : 63.955854176655748,
+        "azimuth" : 175.90303700655329,
+        "longitude" : 55.14068646874999,
+        "latitude" : 25.07897113124999,
+        "sun" : false,
+        "building" : "osm-way-684996251"
+      },
+      {
+        "azimuth" : 175.93050929913989,
+        "elevation" : 63.956596205240686,
+        "latitude" : 25.078995618749993,
+        "longitude" : 55.140713381249995,
+        "sun" : false,
+        "building" : "osm-way-684996251"
+      },
+      {
+        "longitude" : 55.14074029375,
+        "building" : "osm-way-684996251",
+        "latitude" : 25.079020106249992,
+        "sun" : false,
+        "azimuth" : 175.95798305078949,
+        "elevation" : 63.957332996858391
+      },
+      {
+        "azimuth" : 175.98545824905,
+        "longitude" : 55.140767206249997,
+        "sun" : false,
+        "latitude" : 25.079044593749991,
+        "elevation" : 63.958064551000021,
+        "building" : "osm-way-684996251"
+      },
+      {
+        "elevation" : 63.958790867224124,
+        "latitude" : 25.07906908124999,
+        "longitude" : 55.140794118750001,
+        "building" : "osm-way-684996251",
+        "sun" : false,
+        "azimuth" : 176.01293488372266
+      },
+      {
+        "elevation" : 63.959511945030165,
+        "longitude" : 55.140821031250006,
+        "building" : "osm-way-684996251",
+        "latitude" : 25.079093568749993,
+        "sun" : false,
+        "azimuth" : 176.04041294234753
+      },
+      {
+        "sun" : false,
+        "latitude" : 25.079118056249992,
+        "longitude" : 55.140847943750011,
+        "building" : "osm-way-684996251",
+        "azimuth" : 176.06789241923525,
+        "elevation" : 63.960227784108412
+      },
+      {
+        "longitude" : 55.140868470000008,
+        "latitude" : 25.079143359999993,
+        "sun" : false,
+        "building" : "osm-way-684996251",
+        "azimuth" : 176.09319234633108,
+        "elevation" : 63.960879413513879
+      },
+      {
+        "sun" : false,
+        "latitude" : 25.07916947999999,
+        "longitude" : 55.140882610000006,
+        "building" : "osm-way-684996251",
+        "elevation" : 63.961467981406003,
+        "azimuth" : 176.11631240613849
+      },
+      {
+        "azimuth" : 176.13943343902179,
+        "elevation" : 63.962052840654188,
+        "latitude" : 25.079195599999991,
+        "sun" : false,
+        "building" : "osm-way-684996251",
+        "longitude" : 55.140896749999996
+      },
+      {
+        "elevation" : 63.962633991185037,
+        "latitude" : 25.079221719999989,
+        "longitude" : 55.140910889999994,
+        "sun" : false,
+        "azimuth" : 176.16255543878106,
+        "building" : "osm-way-684996251"
+      },
+      {
+        "elevation" : 63.963211432395305,
+        "sun" : false,
+        "longitude" : 55.140925029999991,
+        "latitude" : 25.079247839999987,
+        "building" : "osm-way-684996251",
+        "azimuth" : 176.18567839956131
+      },
+      {
+        "sun" : false,
+        "latitude" : 25.07927748749999,
+        "elevation" : 63.963829406393558,
+        "longitude" : 55.140935574999986,
+        "building" : "osm-way-684996251",
+        "azimuth" : 176.21065028331691
+      },
+      {
+        "sun" : false,
+        "elevation" : 63.964486952267542,
+        "latitude" : 25.079310662499989,
+        "building" : "osm-way-684996251",
+        "azimuth" : 176.23747132462518,
+        "longitude" : 55.140942524999993
+      },
+      {
+        "sun" : false,
+        "building" : "osm-way-684996251",
+        "elevation" : 63.96513950750024,
+        "azimuth" : 176.26429362645774,
+        "latitude" : 25.079343837499991,
+        "longitude" : 55.140949474999999
+      },
+      {
+        "latitude" : 25.079377012499993,
+        "building" : "osm-way-684996251",
+        "elevation" : 63.965787071715781,
+        "sun" : false,
+        "longitude" : 55.140956425000006,
+        "azimuth" : 176.29111717930675
+      },
+      {
+        "building" : "osm-way-684996251",
+        "elevation" : 63.966432782489356,
+        "latitude" : 25.079403999999993,
+        "sun" : false,
+        "longitude" : 55.140974325000009,
+        "azimuth" : 176.31781970208931
+      },
+      {
+        "building" : "osm-way-684996251",
+        "longitude" : 55.141003175000023,
+        "elevation" : 63.967076707913783,
+        "azimuth" : 176.34440118785733,
+        "sun" : false,
+        "latitude" : 25.079424799999991
+      },
+      {
+        "building" : "osm-way-684996251",
+        "elevation" : 63.967715731948481,
+        "azimuth" : 176.3709838970326,
+        "sun" : false,
+        "latitude" : 25.079445599999993,
+        "longitude" : 55.14103202500003
+      },
+      {
+        "building" : "osm-way-684996251",
+        "latitude" : 25.079466399999987,
+        "sun" : false,
+        "longitude" : 55.141060875000043,
+        "azimuth" : 176.39756781821495,
+        "elevation" : 63.968349853994468
+      },
+      {
+        "latitude" : 25.079465533333323,
+        "longitude" : 55.141089216666707,
+        "sun" : false,
+        "elevation" : 63.969004674606154,
+        "building" : "osm-way-684996251",
+        "azimuth" : 176.424313439
+      },
+      {
+        "sun" : false,
+        "building" : "osm-way-684996251",
+        "azimuth" : 176.45122083042611,
+        "longitude" : 55.141117050000034,
+        "elevation" : 63.969680103979478,
+        "latitude" : 25.079442999999991
+      },
+      {
+        "sun" : false,
+        "elevation" : 63.970350511922845,
+        "azimuth" : 176.478129522985,
+        "longitude" : 55.141144883333361,
+        "latitude" : 25.079420466666658,
+        "building" : "osm-way-684996251"
+      },
+      {
+        "longitude" : 55.141172716666681,
+        "sun" : false,
+        "building" : "osm-way-684996251",
+        "azimuth" : 176.50503950470875,
+        "elevation" : 63.971015898165625,
+        "latitude" : 25.079397933333325
+      },
+      {
+        "latitude" : 25.079375399999993,
+        "azimuth" : 176.53195076622978,
+        "building" : "osm-way-684996251",
+        "longitude" : 55.141200550000008,
+        "sun" : false,
+        "elevation" : 63.971676261960319
+      },
+      {
+        "longitude" : 55.141228383333335,
+        "sun" : false,
+        "latitude" : 25.07935286666666,
+        "azimuth" : 176.55886329771647,
+        "elevation" : 63.972331603281816,
+        "building" : "osm-way-684996251"
+      }
+    ],
+    "coordinates" : [
+      {
+        "latitude" : 25.077634699999997,
+        "longitude" : 55.140016499999966
+      },
+      {
+        "longitude" : 55.140110700000008,
+        "latitude" : 25.077709399999982
+      },
+      {
+        "latitude" : 25.077731600000003,
+        "longitude" : 55.14016059999998
+      },
+      {
+        "latitude" : 25.07765809999999,
+        "longitude" : 55.140615900000043
+      },
+      {
+        "longitude" : 55.1406864,
+        "latitude" : 25.077671500000008
+      },
+      {
+        "latitude" : 25.077707600000011,
+        "longitude" : 55.140739700000012
+      },
+      {
+        "longitude" : 55.140781199999971,
+        "latitude" : 25.077760500000004
+      },
+      {
+        "longitude" : 55.140806000000026,
+        "latitude" : 25.077865499999987
+      },
+      {
+        "latitude" : 25.077934799999987,
+        "longitude" : 55.140792300000008
+      },
+      {
+        "latitude" : 25.078000099999993,
+        "longitude" : 55.140742300000028
+      },
+      {
+        "longitude" : 55.140183100000002,
+        "latitude" : 25.078353200000002
+      },
+      {
+        "longitude" : 55.139981600000041,
+        "latitude" : 25.078420599999991
+      },
+      {
+        "longitude" : 55.139922600000034,
+        "latitude" : 25.078482599999994
+      },
+      {
+        "latitude" : 25.078520499999993,
+        "longitude" : 55.139910200000045
+      },
+      {
+        "longitude" : 55.139918299999998,
+        "latitude" : 25.078597799999987
+      },
+      {
+        "latitude" : 25.078707599999994,
+        "longitude" : 55.139999699999976
+      },
+      {
+        "longitude" : 55.140129800000032,
+        "latitude" : 25.07878229999999
+      },
+      {
+        "latitude" : 25.078860399999993,
+        "longitude" : 55.140492199999997
+      },
+      {
+        "longitude" : 55.140646099999984,
+        "latitude" : 25.078934399999991
+      },
+      {
+        "latitude" : 25.079130299999992,
+        "longitude" : 55.140861400000013
+      },
+      {
+        "longitude" : 55.140932099999986,
+        "latitude" : 25.079260899999987
+      },
+      {
+        "longitude" : 55.140959900000006,
+        "latitude" : 25.079393599999996
+      },
+      {
+        "longitude" : 55.141075300000047,
+        "latitude" : 25.079476799999988
+      },
+      {
+        "latitude" : 25.079341599999996,
+        "longitude" : 55.141242299999995
+      }
+    ],
+    "sunSecondsUpperEstimate" : 161.49779258847659,
+    "travelSeconds" : 310,
+    "distance" : 413
+  },
+  {
+    "coordinates" : [
+      {
+        "longitude" : 55.140016499999966,
+        "latitude" : 25.077634699999997
+      },
+      {
+        "longitude" : 55.140110700000008,
+        "latitude" : 25.077709399999982
+      },
+      {
+        "latitude" : 25.077731600000003,
+        "longitude" : 55.14016059999998
+      },
+      {
+        "longitude" : 55.140210900000028,
+        "latitude" : 25.077732200000003
+      },
+      {
+        "latitude" : 25.07765809999999,
+        "longitude" : 55.140615900000043
+      },
+      {
+        "latitude" : 25.077499899999996,
+        "longitude" : 55.140654499999997
+      },
+      {
+        "latitude" : 25.077528799999996,
+        "longitude" : 55.140717399999971
+      },
+      {
+        "longitude" : 55.140771199999982,
+        "latitude" : 25.077553399999989
+      },
+      {
+        "latitude" : 25.077478000000006,
+        "longitude" : 55.140940199999974
+      },
+      {
+        "latitude" : 25.077585199999994,
+        "longitude" : 55.141420300000014
+      },
+      {
+        "latitude" : 25.077671500000008,
+        "longitude" : 55.141409900000028
+      },
+      {
+        "longitude" : 55.141444600000028,
+        "latitude" : 25.077728300000011
+      },
+      {
+        "latitude" : 25.077765599999985,
+        "longitude" : 55.141503399999976
+      },
+      {
+        "longitude" : 55.141598999999971,
+        "latitude" : 25.077765299999989
+      },
+      {
+        "latitude" : 25.077789600000003,
+        "longitude" : 55.141650599999963
+      },
+      {
+        "latitude" : 25.077829699999992,
+        "longitude" : 55.141732699999999
+      },
+      {
+        "latitude" : 25.077865800000005,
+        "longitude" : 55.14177059999998
+      },
+      {
+        "latitude" : 25.078379300000002,
+        "longitude" : 55.142309100000013
+      },
+      {
+        "latitude" : 25.078406699999984,
+        "longitude" : 55.142316099999988
+      },
+      {
+        "latitude" : 25.078496199999982,
+        "longitude" : 55.142324899999998
+      },
+      {
+        "longitude" : 55.142318800000012,
+        "latitude" : 25.078557900000003
+      },
+      {
+        "longitude" : 55.142171999999981,
+        "latitude" : 25.078685399999987
+      },
+      {
+        "latitude" : 25.079400099999997,
+        "longitude" : 55.141300000000051
+      }
+    ],
+    "travelSeconds" : 346,
+    "sunSecondsUpperEstimate" : 240.89948864401327,
+    "samples" : [
+      {
+        "latitude" : 25.077644037499997,
+        "sun" : false,
+        "longitude" : 55.14002827499997,
+        "azimuth" : 173.64990573062914,
+        "elevation" : 63.876275877562996,
+        "building" : "osm-way-200915107"
+      },
+      {
+        "elevation" : 63.877243559479922,
+        "latitude" : 25.077662712499993,
+        "building" : "osm-way-200915107",
+        "sun" : false,
+        "longitude" : 55.140051824999979,
+        "azimuth" : 173.67243823459125
+      },
+      {
+        "sun" : false,
+        "longitude" : 55.140075374999995,
+        "latitude" : 25.077681387499986,
+        "azimuth" : 173.69497229386195,
+        "elevation" : 63.878207710679696,
+        "building" : "osm-way-532610131"
+      },
+      {
+        "building" : "osm-way-532610131",
+        "elevation" : 63.879168330496718,
+        "latitude" : 25.077700062499982,
+        "azimuth" : 173.71750790081364,
+        "sun" : false,
+        "longitude" : 55.140098925000004
+      },
+      {
+        "azimuth" : 173.73878774588195,
+        "latitude" : 25.077714949999987,
+        "elevation" : 63.880074877025798,
+        "building" : "osm-way-532610131",
+        "longitude" : 55.140123174999999,
+        "sun" : false
+      },
+      {
+        "longitude" : 55.140148124999989,
+        "sun" : false,
+        "elevation" : 63.880927907992763,
+        "latitude" : 25.077726049999999,
+        "building" : "osm-way-532610131",
+        "azimuth" : 173.75881157977278
+      },
+      {
+        "latitude" : 25.077731750000005,
+        "sun" : false,
+        "azimuth" : 173.77788565162268,
+        "building" : "osm-way-532610131",
+        "elevation" : 63.881742729262967,
+        "longitude" : 55.140173174999994
+      },
+      {
+        "building" : "osm-way-532610131",
+        "latitude" : 25.077732050000002,
+        "sun" : false,
+        "elevation" : 63.882519718754821,
+        "longitude" : 55.140198325000014,
+        "azimuth" : 173.79600979563463
+      },
+      {
+        "azimuth" : 173.81860480813168,
+        "building" : "osm-way-532610131",
+        "sun" : false,
+        "elevation" : 63.88348872231424,
+        "latitude" : 25.077728831818185,
+        "longitude" : 55.140229309090941
+      },
+      {
+        "sun" : false,
+        "elevation" : 63.884647632925123,
+        "latitude" : 25.077722095454547,
+        "building" : "osm-way-532610131",
+        "azimuth" : 173.84567161676136,
+        "longitude" : 55.14026612727276
+      },
+      {
+        "sun" : false,
+        "azimuth" : 173.87274066250154,
+        "latitude" : 25.077715359090909,
+        "longitude" : 55.140302945454579,
+        "elevation" : 63.885801450300981,
+        "building" : "osm-way-532610131"
+      },
+      {
+        "azimuth" : 173.89981193592496,
+        "sun" : false,
+        "elevation" : 63.886950173586015,
+        "latitude" : 25.077708622727272,
+        "building" : "osm-way-532610131",
+        "longitude" : 55.140339763636398
+      },
+      {
+        "latitude" : 25.077701886363634,
+        "building" : "osm-way-532610131",
+        "longitude" : 55.140376581818217,
+        "azimuth" : 173.92688542535188,
+        "elevation" : 63.888093801832831,
+        "sun" : false
+      },
+      {
+        "elevation" : 63.889232335006064,
+        "building" : "osm-way-532610131",
+        "longitude" : 55.140413400000035,
+        "azimuth" : 173.95396112769129,
+        "latitude" : 25.077695149999997,
+        "sun" : false
+      },
+      {
+        "elevation" : 63.890365771880077,
+        "sun" : false,
+        "building" : "osm-way-532610131",
+        "longitude" : 55.140450218181854,
+        "azimuth" : 173.98103902451271,
+        "latitude" : 25.077688413636359
+      },
+      {
+        "elevation" : 63.891494111896137,
+        "longitude" : 55.140487036363673,
+        "latitude" : 25.077681677272722,
+        "azimuth" : 174.00811911310643,
+        "sun" : false,
+        "building" : "osm-way-532610131"
+      },
+      {
+        "latitude" : 25.077674940909084,
+        "elevation" : 63.892617354646717,
+        "longitude" : 55.140523854545492,
+        "sun" : false,
+        "building" : "osm-way-532610131",
+        "azimuth" : 174.03520138138151
+      },
+      {
+        "sun" : true,
+        "building" : null,
+        "latitude" : 25.077668204545446,
+        "elevation" : 63.893735499295957,
+        "azimuth" : 174.06228581987705,
+        "longitude" : 55.140560672727311
+      },
+      {
+        "longitude" : 55.14059749090913,
+        "elevation" : 63.894848545005921,
+        "sun" : true,
+        "building" : null,
+        "latitude" : 25.077661468181809,
+        "azimuth" : 174.08937241912963
+      },
+      {
+        "sun" : false,
+        "building" : "osm-way-532610132",
+        "azimuth" : 174.11578355424444,
+        "longitude" : 55.140619760000035,
+        "elevation" : 63.895941485937968,
+        "latitude" : 25.077642279999992
+      },
+      {
+        "longitude" : 55.140627480000028,
+        "sun" : false,
+        "building" : "osm-way-532610132",
+        "azimuth" : 174.14151909411635,
+        "latitude" : 25.077610639999993,
+        "elevation" : 63.89701469474938
+      },
+      {
+        "latitude" : 25.077578999999993,
+        "longitude" : 55.14063520000002,
+        "sun" : false,
+        "building" : "osm-way-532610132",
+        "azimuth" : 174.16725660689883,
+        "elevation" : 63.898083301155069
+      },
+      {
+        "building" : "osm-way-532610132",
+        "latitude" : 25.077547359999993,
+        "sun" : false,
+        "longitude" : 55.140642920000012,
+        "elevation" : 63.899147304140008,
+        "azimuth" : 174.19299608237236
+      },
+      {
+        "azimuth" : 174.21873750992563,
+        "sun" : false,
+        "building" : "osm-way-532610132",
+        "elevation" : 63.900206703223112,
+        "latitude" : 25.077515719999994,
+        "longitude" : 55.140650640000004
+      },
+      {
+        "building" : "osm-way-200915107",
+        "elevation" : 63.901232363820171,
+        "longitude" : 55.140670224999994,
+        "latitude" : 25.077507124999997,
+        "sun" : false,
+        "azimuth" : 174.24432877415154
+      },
+      {
+        "latitude" : 25.077521574999995,
+        "sun" : false,
+        "azimuth" : 174.26976977278309,
+        "elevation" : 63.902224366041892,
+        "longitude" : 55.140701674999981,
+        "building" : "osm-way-532610132"
+      },
+      {
+        "building" : "osm-way-532610132",
+        "longitude" : 55.140730849999976,
+        "elevation" : 63.903140198385032,
+        "latitude" : 25.077534949999993,
+        "azimuth" : 174.29336138432484,
+        "sun" : false
+      },
+      {
+        "latitude" : 25.077547249999991,
+        "longitude" : 55.140757749999977,
+        "sun" : false,
+        "building" : "osm-way-532610132",
+        "azimuth" : 174.31510324292958,
+        "elevation" : 63.903980771193154
+      },
+      {
+        "elevation" : 63.90493780798203,
+        "latitude" : 25.07754585999999,
+        "building" : "osm-way-532610132",
+        "azimuth" : 174.33956557559509,
+        "longitude" : 55.14078809999998,
+        "sun" : false
+      },
+      {
+        "sun" : false,
+        "longitude" : 55.140821899999978,
+        "azimuth" : 174.36674896228624,
+        "building" : "osm-way-200915107",
+        "elevation" : 63.90600992186706,
+        "latitude" : 25.077530779999993
+      },
+      {
+        "elevation" : 63.90707690165047,
+        "longitude" : 55.140855699999982,
+        "sun" : false,
+        "azimuth" : 174.39393443125732,
+        "latitude" : 25.077515699999999,
+        "building" : "osm-way-200915107"
+      },
+      {
+        "latitude" : 25.077500620000002,
+        "sun" : false,
+        "building" : "osm-way-200915107",
+        "azimuth" : 174.42112196827804,
+        "longitude" : 55.140889499999979,
+        "elevation" : 63.908138746522035
+      },
+      {
+        "longitude" : 55.140923299999976,
+        "building" : "osm-way-200915107",
+        "sun" : false,
+        "azimuth" : 174.44831156798421,
+        "latitude" : 25.077485540000005,
+        "elevation" : 63.909195456203044
+      },
+      {
+        "sun" : false,
+        "latitude" : 25.07748212307693,
+        "azimuth" : 174.47563798947635,
+        "building" : "osm-way-532610132",
+        "elevation" : 63.9102404589717,
+        "longitude" : 55.140958665384595
+      },
+      {
+        "building" : "osm-way-532610132",
+        "azimuth" : 174.50310122304859,
+        "sun" : false,
+        "elevation" : 63.911273677846495,
+        "latitude" : 25.077490369230773,
+        "longitude" : 55.140995596153829
+      },
+      {
+        "azimuth" : 174.53056647787912,
+        "latitude" : 25.07749861538462,
+        "building" : null,
+        "longitude" : 55.141032526923063,
+        "elevation" : 63.912301656295803,
+        "sun" : true
+      },
+      {
+        "building" : null,
+        "sun" : true,
+        "latitude" : 25.077506861538463,
+        "azimuth" : 174.55803375278253,
+        "elevation" : 63.913324394215984,
+        "longitude" : 55.141069457692296
+      },
+      {
+        "building" : null,
+        "latitude" : 25.07751510769231,
+        "longitude" : 55.14110638846153,
+        "sun" : true,
+        "azimuth" : 174.58550302856338,
+        "elevation" : 63.914341890825476
+      },
+      {
+        "building" : null,
+        "longitude" : 55.141143319230764,
+        "sun" : true,
+        "azimuth" : 174.61297430440686,
+        "elevation" : 63.915354145494582,
+        "latitude" : 25.077523353846153
+      },
+      {
+        "elevation" : 63.916361157449266,
+        "azimuth" : 174.64044756110832,
+        "sun" : true,
+        "latitude" : 25.0775316,
+        "building" : null,
+        "longitude" : 55.141180249999998
+      },
+      {
+        "sun" : true,
+        "elevation" : 63.917362926510684,
+        "longitude" : 55.141217180769232,
+        "latitude" : 25.077539846153847,
+        "building" : null,
+        "azimuth" : 174.6679227952136
+      },
+      {
+        "latitude" : 25.077548092307691,
+        "azimuth" : 174.69539999464064,
+        "building" : null,
+        "longitude" : 55.141254111538466,
+        "sun" : true,
+        "elevation" : 63.918359451632661
+      },
+      {
+        "building" : null,
+        "sun" : true,
+        "latitude" : 25.077556338461537,
+        "longitude" : 55.141291042307699,
+        "azimuth" : 174.72287914917104,
+        "elevation" : 63.919350732391919
+      },
+      {
+        "latitude" : 25.077564584615381,
+        "longitude" : 55.141327973076933,
+        "azimuth" : 174.75036024858628,
+        "sun" : true,
+        "building" : null,
+        "elevation" : 63.920336768364173
+      },
+      {
+        "longitude" : 55.141364903846167,
+        "sun" : true,
+        "elevation" : 63.921317558598908,
+        "latitude" : 25.077572830769228,
+        "azimuth" : 174.77784328303778,
+        "building" : null
+      },
+      {
+        "elevation" : 63.922293102677315,
+        "longitude" : 55.141401834615401,
+        "building" : null,
+        "sun" : true,
+        "azimuth" : 174.80532824229817,
+        "latitude" : 25.077581076923071
+      },
+      {
+        "building" : null,
+        "elevation" : 63.923173669022979,
+        "longitude" : 55.141418566666687,
+        "latitude" : 25.077599583333331,
+        "sun" : true,
+        "azimuth" : 174.83057851870558
+      },
+      {
+        "building" : null,
+        "azimuth" : 174.85359365353327,
+        "sun" : true,
+        "latitude" : 25.077628350000001,
+        "elevation" : 63.92396043370541,
+        "longitude" : 55.141415100000017
+      },
+      {
+        "latitude" : 25.077657116666671,
+        "sun" : true,
+        "elevation" : 63.924743519336594,
+        "longitude" : 55.141411633333355,
+        "building" : null,
+        "azimuth" : 174.87661008214968
+      },
+      {
+        "longitude" : 55.141418575000031,
+        "azimuth" : 174.90105160802796,
+        "elevation" : 63.92557299400341,
+        "building" : null,
+        "sun" : true,
+        "latitude" : 25.077685700000011
+      },
+      {
+        "elevation" : 63.92644813239685,
+        "building" : null,
+        "longitude" : 55.141435925000025,
+        "azimuth" : 174.92691848487038,
+        "sun" : true,
+        "latitude" : 25.077714100000009
+      },
+      {
+        "latitude" : 25.077737625000005,
+        "azimuth" : 174.95282057437748,
+        "longitude" : 55.141459300000015,
+        "elevation" : 63.927324681434818,
+        "sun" : true,
+        "building" : null
+      },
+      {
+        "latitude" : 25.077756274999992,
+        "longitude" : 55.141488699999989,
+        "building" : null,
+        "sun" : true,
+        "azimuth" : 174.97875789040108,
+        "elevation" : 63.928202622532211
+      },
+      {
+        "elevation" : 63.929035555892582,
+        "sun" : true,
+        "building" : null,
+        "latitude" : 25.077765549999985,
+        "longitude" : 55.141519333333306,
+        "azimuth" : 175.00324685754299
+      },
+      {
+        "longitude" : 55.141551199999974,
+        "building" : null,
+        "latitude" : 25.077765449999987,
+        "azimuth" : 175.02628722989539,
+        "elevation" : 63.929824221064905,
+        "sun" : true
+      },
+      {
+        "latitude" : 25.077765349999989,
+        "building" : null,
+        "azimuth" : 175.04932890066425,
+        "longitude" : 55.141583066666641,
+        "sun" : true,
+        "elevation" : 63.930609200100967
+      },
+      {
+        "latitude" : 25.07777137499999,
+        "elevation" : 63.931350168908764,
+        "longitude" : 55.141611899999972,
+        "sun" : true,
+        "azimuth" : 175.07136125043087,
+        "building" : null
+      },
+      {
+        "sun" : true,
+        "azimuth" : 175.09238410232626,
+        "longitude" : 55.141637699999961,
+        "latitude" : 25.077783525000001,
+        "elevation" : 63.932047591199002,
+        "building" : null
+      },
+      {
+        "longitude" : 55.141664283333306,
+        "sun" : true,
+        "building" : null,
+        "latitude" : 25.077796283333335,
+        "azimuth" : 175.11413557161632,
+        "elevation" : 63.932765729991061
+      },
+      {
+        "azimuth" : 175.13661577401808,
+        "latitude" : 25.077809649999999,
+        "longitude" : 55.141691649999977,
+        "elevation" : 63.933504255860043,
+        "sun" : true,
+        "building" : null
+      },
+      {
+        "azimuth" : 175.15909715847454,
+        "sun" : true,
+        "latitude" : 25.07782301666666,
+        "longitude" : 55.141719016666656,
+        "building" : null,
+        "elevation" : 63.934239272702754
+      },
+      {
+        "longitude" : 55.14174217499999,
+        "sun" : true,
+        "building" : null,
+        "azimuth" : 175.18027551423393,
+        "elevation" : 63.934925315988792,
+        "latitude" : 25.077838724999996
+      },
+      {
+        "building" : null,
+        "azimuth" : 175.20015062767152,
+        "longitude" : 55.141761124999988,
+        "elevation" : 63.935562960575282,
+        "sun" : true,
+        "latitude" : 25.077856775000001
+      },
+      {
+        "azimuth" : 175.22421742259803,
+        "elevation" : 63.936331368381154,
+        "latitude" : 25.077878637500007,
+        "sun" : true,
+        "longitude" : 55.14178406249998,
+        "building" : null
+      },
+      {
+        "longitude" : 55.14181098749998,
+        "latitude" : 25.077904312500007,
+        "sun" : true,
+        "azimuth" : 175.25247657740158,
+        "elevation" : 63.937228438002514,
+        "building" : null
+      },
+      {
+        "elevation" : 63.93811996327976,
+        "latitude" : 25.077929987500006,
+        "longitude" : 55.14183791249998,
+        "azimuth" : 175.28073754535876,
+        "sun" : true,
+        "building" : null
+      },
+      {
+        "azimuth" : 175.30900031092028,
+        "elevation" : 63.939005943493697,
+        "latitude" : 25.077955662500006,
+        "longitude" : 55.141864837499988,
+        "sun" : true,
+        "building" : null
+      },
+      {
+        "building" : null,
+        "azimuth" : 175.33726486766955,
+        "sun" : true,
+        "latitude" : 25.077981337500006,
+        "longitude" : 55.141891762499988,
+        "elevation" : 63.939886378049074
+      },
+      {
+        "latitude" : 25.078007012500002,
+        "sun" : true,
+        "longitude" : 55.141918687499988,
+        "building" : null,
+        "azimuth" : 175.36553120205599,
+        "elevation" : 63.940761266666122
+      },
+      {
+        "building" : null,
+        "sun" : true,
+        "elevation" : 63.941630608533885,
+        "latitude" : 25.078032687500006,
+        "longitude" : 55.141945612499988,
+        "azimuth" : 175.39379930089285
+      },
+      {
+        "latitude" : 25.078058362500002,
+        "sun" : true,
+        "longitude" : 55.141972537499996,
+        "azimuth" : 175.42206915537508,
+        "elevation" : 63.94249440316942,
+        "building" : null
+      },
+      {
+        "sun" : true,
+        "building" : null,
+        "longitude" : 55.141999462499996,
+        "azimuth" : 175.45034075669128,
+        "elevation" : 63.943352650094866,
+        "latitude" : 25.078084037500005
+      },
+      {
+        "sun" : true,
+        "building" : null,
+        "azimuth" : 175.47861409151847,
+        "elevation" : 63.944205348688143,
+        "latitude" : 25.078109712500005,
+        "longitude" : 55.142026387499996
+      },
+      {
+        "azimuth" : 175.50688914652812,
+        "elevation" : 63.945052498333041,
+        "latitude" : 25.078135387500005,
+        "longitude" : 55.142053312499996,
+        "sun" : true,
+        "building" : null
+      },
+      {
+        "sun" : true,
+        "azimuth" : 175.53516591515245,
+        "longitude" : 55.142080237499997,
+        "latitude" : 25.078161062500001,
+        "building" : null,
+        "elevation" : 63.945894098630838
+      },
+      {
+        "azimuth" : 175.56344438179804,
+        "building" : null,
+        "elevation" : 63.946730148902283,
+        "sun" : true,
+        "latitude" : 25.078186737500005,
+        "longitude" : 55.142107162499997
+      },
+      {
+        "sun" : true,
+        "building" : null,
+        "longitude" : 55.142134087500004,
+        "latitude" : 25.078212412500001,
+        "azimuth" : 175.59172453989117,
+        "elevation" : 63.947560648751782
+      },
+      {
+        "elevation" : 63.948385597579652,
+        "sun" : true,
+        "latitude" : 25.078238087500004,
+        "longitude" : 55.142161012500004,
+        "building" : null,
+        "azimuth" : 175.62000637608321
+      },
+      {
+        "sun" : true,
+        "elevation" : 63.949204994788673,
+        "longitude" : 55.142187937500005,
+        "azimuth" : 175.64828987702469,
+        "latitude" : 25.078263762500004,
+        "building" : null
+      },
+      {
+        "building" : null,
+        "elevation" : 63.950018839925406,
+        "latitude" : 25.078289437500004,
+        "longitude" : 55.142214862500005,
+        "azimuth" : 175.67657503387068,
+        "sun" : true
+      },
+      {
+        "latitude" : 25.0783151125,
+        "building" : null,
+        "azimuth" : 175.70486183777462,
+        "sun" : true,
+        "elevation" : 63.950827132535878,
+        "longitude" : 55.142241787500012
+      },
+      {
+        "longitude" : 55.142268712500012,
+        "elevation" : 63.951629872034111,
+        "latitude" : 25.078340787500004,
+        "sun" : true,
+        "azimuth" : 175.7331502753733,
+        "building" : null
+      },
+      {
+        "azimuth" : 175.76144033555329,
+        "sun" : true,
+        "elevation" : 63.952427057907968,
+        "latitude" : 25.0783664625,
+        "longitude" : 55.142295637500013,
+        "building" : null
+      },
+      {
+        "latitude" : 25.078392999999995,
+        "sun" : true,
+        "azimuth" : 175.78680518135843,
+        "longitude" : 55.142312599999997,
+        "building" : null,
+        "elevation" : 63.953133521484588
+      },
+      {
+        "sun" : true,
+        "latitude" : 25.078421616666652,
+        "building" : null,
+        "longitude" : 55.142317566666655,
+        "elevation" : 63.953770329061967,
+        "azimuth" : 175.80996830787092
+      },
+      {
+        "sun" : true,
+        "azimuth" : 175.83385647690045,
+        "latitude" : 25.078451449999985,
+        "elevation" : 63.954422814434317,
+        "building" : null,
+        "longitude" : 55.142320499999997
+      },
+      {
+        "elevation" : 63.955071340046693,
+        "latitude" : 25.078481283333318,
+        "sun" : true,
+        "building" : null,
+        "longitude" : 55.142323433333331,
+        "azimuth" : 175.85774576246456
+      },
+      {
+        "azimuth" : 175.88203685823203,
+        "elevation" : 63.955726670905392,
+        "building" : null,
+        "latitude" : 25.078511624999987,
+        "sun" : true,
+        "longitude" : 55.142323375000004
+      },
+      {
+        "sun" : true,
+        "building" : null,
+        "azimuth" : 175.90672981801561,
+        "elevation" : 63.956388604390852,
+        "latitude" : 25.078542474999999,
+        "longitude" : 55.142320325000007
+      },
+      {
+        "elevation" : 63.957047403076572,
+        "longitude" : 55.142306566666676,
+        "latitude" : 25.078568525000001,
+        "building" : null,
+        "sun" : true,
+        "azimuth" : 175.931290875336
+      },
+      {
+        "elevation" : 63.957703135065529,
+        "building" : null,
+        "sun" : true,
+        "longitude" : 55.142282100000003,
+        "azimuth" : 175.95572002067991,
+        "latitude" : 25.078589775000001
+      },
+      {
+        "latitude" : 25.078611024999997,
+        "longitude" : 55.14225763333333,
+        "building" : null,
+        "azimuth" : 175.98015031127522,
+        "sun" : true,
+        "elevation" : 63.958354726150183
+      },
+      {
+        "elevation" : 63.9590021759576,
+        "sun" : true,
+        "building" : null,
+        "latitude" : 25.078632274999993,
+        "longitude" : 55.142233166666664,
+        "azimuth" : 176.00458173769402
+      },
+      {
+        "elevation" : 63.959645484243033,
+        "latitude" : 25.078653524999993,
+        "building" : null,
+        "longitude" : 55.142208699999991,
+        "azimuth" : 176.02901429502185,
+        "sun" : true
+      },
+      {
+        "longitude" : 55.142184233333317,
+        "sun" : true,
+        "latitude" : 25.078674774999989,
+        "azimuth" : 176.05344797834425,
+        "building" : null,
+        "elevation" : 63.960284650759931
+      },
+      {
+        "longitude" : 55.142157466666646,
+        "azimuth" : 176.07979318551133,
+        "sun" : true,
+        "building" : null,
+        "latitude" : 25.078697311666655,
+        "elevation" : 63.960969522920827
+      },
+      {
+        "azimuth" : 176.10805019020472,
+        "elevation" : 63.9616990524759,
+        "sun" : true,
+        "latitude" : 25.078721134999988,
+        "longitude" : 55.142128399999983,
+        "building" : null
+      },
+      {
+        "sun" : true,
+        "azimuth" : 176.13630867014137,
+        "latitude" : 25.078744958333321,
+        "longitude" : 55.14209933333332,
+        "building" : null,
+        "elevation" : 63.962423042604016
+      },
+      {
+        "latitude" : 25.078768781666653,
+        "building" : null,
+        "azimuth" : 176.16456861207132,
+        "elevation" : 63.963141492606709,
+        "longitude" : 55.142070266666657,
+        "sun" : true
+      },
+      {
+        "sun" : true,
+        "azimuth" : 176.19283000274288,
+        "elevation" : 63.963854401786406,
+        "latitude" : 25.07879260499999,
+        "longitude" : 55.142041199999994,
+        "building" : null
+      },
+      {
+        "sun" : true,
+        "building" : null,
+        "azimuth" : 176.22109283306918,
+        "longitude" : 55.142012133333324,
+        "elevation" : 63.964561770103046,
+        "latitude" : 25.078816428333322
+      },
+      {
+        "building" : null,
+        "elevation" : 63.965263596987555,
+        "azimuth" : 176.24935709430724,
+        "longitude" : 55.141983066666661,
+        "latitude" : 25.078840251666655,
+        "sun" : true
+      },
+      {
+        "sun" : true,
+        "building" : null,
+        "latitude" : 25.078864074999991,
+        "azimuth" : 176.27762277307738,
+        "elevation" : 63.965959881931951,
+        "longitude" : 55.141953999999998
+      },
+      {
+        "latitude" : 25.078887898333324,
+        "elevation" : 63.966650624252949,
+        "building" : null,
+        "longitude" : 55.141924933333335,
+        "sun" : true,
+        "azimuth" : 176.3058898561128
+      },
+      {
+        "azimuth" : 176.33415833431081,
+        "building" : null,
+        "latitude" : 25.078911721666657,
+        "elevation" : 63.967335823927918,
+        "sun" : true,
+        "longitude" : 55.141895866666673
+      },
+      {
+        "elevation" : 63.968015480395572,
+        "latitude" : 25.07893554499999,
+        "longitude" : 55.141866800000003,
+        "azimuth" : 176.36242819891618,
+        "building" : null,
+        "sun" : true
+      },
+      {
+        "sun" : true,
+        "building" : null,
+        "azimuth" : 176.39069943653465,
+        "elevation" : 63.968689593164562,
+        "latitude" : 25.078959368333326,
+        "longitude" : 55.14183773333334
+      },
+      {
+        "building" : null,
+        "elevation" : 63.969358161569374,
+        "longitude" : 55.141808666666677,
+        "latitude" : 25.078983191666659,
+        "sun" : true,
+        "azimuth" : 176.41897203388226
+      },
+      {
+        "elevation" : 63.970021185596963,
+        "latitude" : 25.079007014999991,
+        "longitude" : 55.141779600000014,
+        "azimuth" : 176.44724598184587,
+        "sun" : true,
+        "building" : null
+      },
+      {
+        "longitude" : 55.141750533333351,
+        "sun" : true,
+        "building" : null,
+        "latitude" : 25.079030838333324,
+        "azimuth" : 176.47552127165477,
+        "elevation" : 63.970678664701133
+      },
+      {
+        "latitude" : 25.07905466166666,
+        "sun" : true,
+        "longitude" : 55.141721466666681,
+        "building" : null,
+        "azimuth" : 176.50379788990119,
+        "elevation" : 63.971330598404116
+      },
+      {
+        "longitude" : 55.141692400000018,
+        "latitude" : 25.079078484999993,
+        "building" : null,
+        "elevation" : 63.97197698605698,
+        "sun" : true,
+        "azimuth" : 176.53207582328582
+      },
+      {
+        "latitude" : 25.079102308333326,
+        "longitude" : 55.141663333333355,
+        "sun" : true,
+        "building" : null,
+        "azimuth" : 176.56035506268415,
+        "elevation" : 63.972617827659008
+      },
+      {
+        "longitude" : 55.141634266666692,
+        "latitude" : 25.079126131666658,
+        "sun" : true,
+        "elevation" : 63.973253122675587,
+        "building" : null,
+        "azimuth" : 176.58863559931206
+      },
+      {
+        "longitude" : 55.141605200000029,
+        "azimuth" : 176.61691741986056,
+        "sun" : true,
+        "building" : null,
+        "latitude" : 25.079149954999995,
+        "elevation" : 63.973882870467534
+      },
+      {
+        "azimuth" : 176.64520051067507,
+        "latitude" : 25.079173778333328,
+        "elevation" : 63.974507070936887,
+        "sun" : false,
+        "longitude" : 55.141576133333359,
+        "building" : "osm-way-464693691"
+      },
+      {
+        "sun" : false,
+        "latitude" : 25.07919760166666,
+        "longitude" : 55.141547066666696,
+        "elevation" : 63.975125723560289,
+        "azimuth" : 176.67348486296078,
+        "building" : "osm-way-464693691"
+      },
+      {
+        "longitude" : 55.141518000000033,
+        "latitude" : 25.079221424999993,
+        "building" : "osm-way-464693691",
+        "sun" : false,
+        "azimuth" : 176.70177046780725,
+        "elevation" : 63.975738827992458
+      },
+      {
+        "latitude" : 25.079245248333329,
+        "longitude" : 55.14148893333337,
+        "azimuth" : 176.73005731189096,
+        "elevation" : 63.976346383610704,
+        "building" : null,
+        "sun" : true
+      },
+      {
+        "sun" : true,
+        "building" : null,
+        "elevation" : 63.976948390333149,
+        "latitude" : 25.079269071666662,
+        "longitude" : 55.141459866666708,
+        "azimuth" : 176.75834538154584
+      },
+      {
+        "elevation" : 63.97754484764787,
+        "azimuth" : 176.78663466796388,
+        "sun" : true,
+        "building" : null,
+        "longitude" : 55.141430800000037,
+        "latitude" : 25.079292894999995
+      },
+      {
+        "azimuth" : 176.81492516222181,
+        "longitude" : 55.141401733333375,
+        "elevation" : 63.978135755224201,
+        "building" : null,
+        "latitude" : 25.079316718333331,
+        "sun" : true
+      },
+      {
+        "latitude" : 25.079340541666664,
+        "sun" : false,
+        "longitude" : 55.141372666666712,
+        "building" : "osm-way-684996251",
+        "azimuth" : 176.84321685098371,
+        "elevation" : 63.978721112451559
+      },
+      {
+        "elevation" : 63.97930091926851,
+        "azimuth" : 176.87150972057032,
+        "longitude" : 55.141343600000049,
+        "building" : "osm-way-684996251",
+        "sun" : false,
+        "latitude" : 25.079364364999996
+      },
+      {
+        "longitude" : 55.141314533333386,
+        "sun" : false,
+        "building" : "osm-way-684996251",
+        "latitude" : 25.079388188333329,
+        "azimuth" : 176.89980376216283,
+        "elevation" : 63.979875175172488
+      }
+    ],
+    "distance" : 458
+  }
+]
